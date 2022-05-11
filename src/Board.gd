@@ -13,10 +13,10 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if dragged_block:
-		dragged_block.sprite.global_position = get_global_mouse_position() 
+		dragged_block.global_position = get_global_mouse_position() - dragged_block.sprite.texture.get_size() / 2
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("rotate_block"):
+	if event.is_action_pressed("right_click"):
 		if dragged_block:
 			dragged_block.rotate_shape()
 
@@ -35,6 +35,10 @@ func add_block(block: Block) -> void:
 	block.connect("block_pressed", self, "_on_block_pressed", [block])
 
 func _on_block_pressed(block: Block):
-	dragged_block = block
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	if dragged_block == block:
+		dragged_block = null
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		dragged_block = block
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 

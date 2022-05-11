@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/Tetriminos/Shape Blocks/S.png" type="Texture" id=1]
 [ext_resource path="res://src/Blocks/Block.gd" type="Script" id=2]
 
-[node name="S" type="Node2D"]
+[node name="S" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -23,3 +23,6 @@ position = Vector2( -65, 32 )
 
 [node name="Position2D4" type="Position2D" parent="Sprite"]
 position = Vector2( -1, 32 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 192, 67, 191, 67, 132, 68, 132, 127.8, 0, 128, 0, 61, 60, 60, 60, 0, 192, 0 )

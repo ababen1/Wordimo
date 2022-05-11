@@ -1,4 +1,4 @@
-#tool
+tool
 extends Node2D
 
 const FONT = preload("res://assets/LetterFont.tres")
@@ -16,13 +16,9 @@ enum COLORS {
 
 export var letter: String setget set_letter
 export(COLORS) var color = COLORS.NONE setget set_color
-
-signal pressed
 	
 func _ready() -> void:
-	if not Engine.editor_hint:
-# warning-ignore:return_value_discarded
-		$Panel/ToolButton.connect("pressed", self, "_on_press")
+	pass
 
 func _enter_tree() -> void:
 	if Engine.editor_hint:
@@ -37,7 +33,7 @@ func set_letter(val: String) -> void:
 	letter = val.to_upper()
 	if not is_inside_tree() and not Engine.editor_hint:
 		yield(self, "ready")
-	$Panel/ToolButton.text = letter
+	$Container/Letter.text = letter
 
 func set_random_letter() -> void:
 	set_letter(VALID_LETTERS[rand_range(0, VALID_LETTERS.length() - 1)])
@@ -58,6 +54,3 @@ func _enum_to_filename(val: int) -> String:
 
 func _on_ToolButton_pressed() -> void:
 	print(letter)
-
-func _on_press() -> void:
-	emit_signal("pressed")
