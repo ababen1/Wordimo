@@ -4,10 +4,10 @@
 [ext_resource path="res://src/Blocks/Block.gd" type="Script" id=2]
 
 [node name="I" type="Area2D"]
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 32, 128 )
 texture = ExtResource( 1 )
 centered = false
 offset = Vector2( -32, -128 )
@@ -25,4 +25,5 @@ position = Vector2( 0, 32 )
 position = Vector2( 0, 96 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -32, -128 )
 polygon = PoolVector2Array( 64, 256, 0, 256, 0, 0, 64, 0 )

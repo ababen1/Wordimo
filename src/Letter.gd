@@ -1,5 +1,6 @@
-tool
-extends Node2D
+#tool
+extends Area2D
+class_name Letter
 
 const FONT = preload("res://assets/LetterFont.tres")
 const VALID_LETTERS = "abcdefghijklmnopqrstuvwxyz"
@@ -18,7 +19,9 @@ export var letter: String setget set_letter
 export(COLORS) var color = COLORS.NONE setget set_color
 	
 func _ready() -> void:
-	pass
+	if not Engine.editor_hint:
+# warning-ignore:return_value_discarded
+		connect("body_entered", self, "_on_body_entered")
 
 func _enter_tree() -> void:
 	if Engine.editor_hint:
@@ -54,3 +57,6 @@ func _enum_to_filename(val: int) -> String:
 
 func _on_ToolButton_pressed() -> void:
 	print(letter)
+
+func _on_body_entered(body: Node):
+	pass

@@ -1,15 +1,15 @@
 extends Node2D
 
-export var size: = Vector2(5,5) setget set_size
+signal block_dropped(block)
 
-onready var tilemap = $TileMap
-onready var blocks = $Blocks
+onready var tilemap = $GameGrid
+onready var _blocks_node = $Blocks
 
+var blocks: Array = []
 var dragged_block: Block = null
 
 func _ready() -> void:
-	add_block(BlocksFactory.instance_block("RAND"))
-	add_block(BlocksFactory.instance_block("RAND"))
+	add_block(BlocksFactory.instance_block("L"))
 
 func _process(_delta: float) -> void:
 	if dragged_block:
@@ -20,24 +20,21 @@ func _unhandled_input(event: InputEvent) -> void:
 		if dragged_block:
 			dragged_block.rotate_shape()
 
-func set_size(val: Vector2):
-	if not is_inside_tree():
-		yield(self, "ready")
-	size = val
-	for y in size.y:
-		for x in size.x:
-			var tile_idx = 0 if (x+y) % 2 ==0 else 1
-			tilemap.set_cell(x,y, tile_idx)
-
 func add_block(block: Block) -> void:
-	blocks.add_child(block)
+	_blocks_node.add_child(block)
+	blocks.append(block)
 # warning-ignore:return_value_discarded
 	block.connect("block_pressed", self, "_on_block_pressed", [block])
-
+# warning-ignore:return_value_discarded
+	block.connect("entered_grid", tilemap, "_on_block_entered", [block])
+# warning-ignore:return_value_discarded
+	block.connect("exited_grid", tilemap, "_on_block_exited", [block])
+	
 func _on_block_pressed(block: Block):
 	if dragged_block == block:
 		dragged_block = null
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		emit_signal("block_dropped", block)
 	else:
 		dragged_block = block
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
