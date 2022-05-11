@@ -26,6 +26,8 @@ func setup():
 			var letter = LETTER.instance()
 			child.add_child(letter)
 			letter.set_random_letter()
+	_polygon.position = sprite.offset
+	sprite.position = Vector2.ZERO
 		
 func _on_pressed() -> void:
 	emit_signal("block_pressed")
@@ -34,8 +36,6 @@ func _on_rotate_pressed() -> void:
 	emit_signal("rotate_pressed")
 
 func rotate_shape() -> void:
-	sprite.rotation_degrees += 90
-	_polygon.rotation_degrees += 90
-	_polygon.position = sprite.position - sprite.offset
+	rotation_degrees += 90
 	for child in sprite.get_children():
 		child.rotation_degrees -= 90
