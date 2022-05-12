@@ -19,6 +19,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("right_click"):
 		if dragged_block:
 			dragged_block.rotate_shape()
+	elif event.is_action_pressed("left_click"):
+		if dragged_block:
+			drop_block(dragged_block)
 
 func add_block(block: Block) -> void:
 	_blocks_node.add_child(block)
@@ -31,11 +34,14 @@ func add_block(block: Block) -> void:
 	block.connect("exited_grid", tilemap, "_on_block_exited", [block])
 	
 func _on_block_pressed(block: Block):
-	if dragged_block == block:
-		dragged_block = null
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		emit_signal("block_dropped", block)
-	else:
+	if not dragged_block:
 		dragged_block = block
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
+func drop_block(block: Block) -> void:
+	assert(block == dragged_block)
+	dragged_block.locked = true
+	dragged_block = null
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
+	get_viewport().warp_mouse(block.global_position)
+	emit_signal("block_dropped", block)

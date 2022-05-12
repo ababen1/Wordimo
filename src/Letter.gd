@@ -3,20 +3,14 @@ extends Area2D
 class_name Letter
 
 const FONT = preload("res://assets/LetterFont.tres")
-const VALID_LETTERS = "abcdefghijklmnopqrstuvwxyz"
 const TEX_FOLDER = "res://assets/Tetriminos/Single Blocks/"
-enum COLORS {
-	BLUE, 
-	GREEN, 
-	CYAN, 
-	ORANGE, 
-	PURPLE, 
-	RED, 
-	YELLOW,
-	NONE}
+
+signal pressed
 
 export var letter: String setget set_letter
-export(COLORS) var color = COLORS.NONE setget set_color
+export(CONSTS.COLORS) var color = CONSTS.COLORS.NONE setget set_color
+
+var locked: = false
 	
 func _ready() -> void:
 	if not Engine.editor_hint:
@@ -27,6 +21,10 @@ func _enter_tree() -> void:
 	if Engine.editor_hint:
 		randomize()
 		set_random_letter()
+
+func _input_event(_viewport: Object, event: InputEvent, _shape_idx: int) -> void:
+	if event.is_action_pressed("left_click") and not locked:
+		emit_signal("pressed")
 	
 func set_letter(val: String) -> void:
 	if val.empty():
@@ -36,24 +34,26 @@ func set_letter(val: String) -> void:
 	letter = val.to_upper()
 	if not is_inside_tree() and not Engine.editor_hint:
 		yield(self, "ready")
-	$Container/Letter.text = letter
+	$Panel/CenterContainer/Letter.text = letter
 
 func set_random_letter() -> void:
-	set_letter(VALID_LETTERS[rand_range(0, VALID_LETTERS.length() - 1)])
+	set_letter(CONSTS.VALID_LETTERS[rand_range(
+		0, 
+		CONSTS.VALID_LETTERS.length() - 1)])
 
 func set_color(val: int) -> void:
 	color = val
 	if not is_inside_tree() and not Engine.editor_hint:
 		yield(self, "ready")
 	var stylebox: StyleBoxTexture = $Panel.get_stylebox("panel")
-	if color == COLORS.NONE:
+	if color == CONSTS.COLORS.NONE:
 		stylebox.texture = null
 	else:
 		stylebox.texture = load(
 			TEX_FOLDER.plus_file(_enum_to_filename(color)))
 
 func _enum_to_filename(val: int) -> String:
-	return COLORS.keys()[val].capitalize() + ".png"
+	return CONSTS.COLORS.keys()[val].capitalize() + ".png"
 
 func _on_ToolButton_pressed() -> void:
 	print(letter)

@@ -42,18 +42,12 @@ func is_inside_grid(block: Block) -> bool:
 			return false
 	return true
 
-func _on_block_entered(block: Block) -> void:
-	pass
-
-func _on_block_exited(block: Block) -> void:
-	pass
-
 func _on_block_dropped(block: Block) -> void:
 	if is_inside_grid(block):
 		for letter in block.letters:
-			tiles_date[world_to_map(letter.global_position)] = letter
-			_snap(block)
-			
-func _snap(block: Block) -> void:
-	var block_cell = world_to_map(block.global_position)
-	block.global_position = to_global(map_to_world(block_cell))
+			_add_letter_to_grid(letter)
+
+func _add_letter_to_grid(letter: Letter) -> void:
+	var letter_cell = world_to_map(letter.global_position)
+	tiles_date[letter_cell] = letter
+	letter.global_position = to_global(map_to_world(letter_cell)) + cell_size / 2

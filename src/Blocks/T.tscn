@@ -5,6 +5,7 @@
 
 [node name="T" type="Area2D"]
 script = ExtResource( 2 )
+color = 4
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 96, 64 )
@@ -25,4 +26,5 @@ position = Vector2( -1, 32 )
 position = Vector2( 66, 32 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PoolVector2Array( 131, 1, 132, 60, 191.8, 60, 192, 128, 0, 128, 0, 61, 1, 61, 60, 60, 60, 0, 131, 0 )
