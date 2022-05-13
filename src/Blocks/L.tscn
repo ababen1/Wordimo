@@ -1,29 +1,25 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/Tetriminos/Shape Blocks/L.png" type="Texture" id=1]
-[ext_resource path="res://src/Blocks/Block.gd" type="Script" id=2]
+[ext_resource path="res://src/Blocks/Block.tscn" type="PackedScene" id=2]
 
-[node name="Block" type="Area2D"]
-script = ExtResource( 2 )
-color = 3
+[node name="L" instance=ExtResource( 2 )]
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 95, 64 )
+[node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )
-centered = false
-offset = Vector2( -95, -64 )
+offset = Vector2( -96, -64 )
 
-[node name="Position2D" type="Position2D" parent="Sprite"]
-position = Vector2( 64, -31 )
+[node name="Position2D" parent="Letters" index="0"]
+position = Vector2( 33, -64 )
 
-[node name="Position2D2" type="Position2D" parent="Sprite"]
-position = Vector2( -66, 32 )
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2( 160, 32 )
 
-[node name="Position2D3" type="Position2D" parent="Sprite"]
-position = Vector2( -1, 32 )
+[node name="CollisionShape2D2" parent="Area2D" index="1"]
+position = Vector2( 32, 96 )
 
-[node name="Position2D4" type="Position2D" parent="Sprite"]
-position = Vector2( 64, 32 )
+[node name="CollisionShape2D3" parent="Area2D" index="2"]
+position = Vector2( 96, 96 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 192, 128, 0, 128, 0, 61, 1, 61, 124, 60, 124, 0, 192, 0 )
+[node name="CollisionShape2D4" parent="Area2D" index="3"]
+position = Vector2( 160, 96 )

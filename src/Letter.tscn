@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Letter.gd" type="Script" id=1]
 [ext_resource path="res://assets/LetterFont.tres" type="DynamicFont" id=2]
@@ -7,47 +7,32 @@
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 32, 32 )
-
-[node name="Letter" type="Area2D"]
-collision_layer = 4
-collision_mask = 2
-script = ExtResource( 1 )
-letter = "P"
-
-[node name="Panel" type="PanelContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 32.0
-margin_bottom = 32.0
+[node name="Letter" type="PanelContainer"]
+anchor_right = 0.0625
+anchor_bottom = 0.106667
 rect_min_size = Vector2( 64, 64 )
+rect_pivot_offset = Vector2( 32, 32 )
 mouse_filter = 2
 custom_styles/panel = SubResource( 8 )
+script = ExtResource( 1 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_use_anchors_": true
 }
+letter = "a"
 
-[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 margin_right = 64.0
-margin_bottom = 64.0
+margin_bottom = 64.0002
 mouse_filter = 2
 
-[node name="Letter" type="Label" parent="Panel/CenterContainer"]
-margin_left = 13.0
+[node name="Letter" type="Label" parent="CenterContainer"]
+margin_left = 11.0
 margin_top = 1.0
-margin_right = 50.0
+margin_right = 53.0
 margin_bottom = 63.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 6 )
-text = "P"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource( 7 )
+text = "O"

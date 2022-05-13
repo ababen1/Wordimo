@@ -8,16 +8,16 @@ var tiles_date: Dictionary = {}
 
 func _ready() -> void:
 # warning-ignore:return_value_discarded
-	get_parent().connect("block_dropped", self, "_on_block_dropped")
+	owner.connect("block_dropped", self, "_on_block_dropped")
 
 func _process(_delta: float) -> void:
 	cells_to_highlight = []
-	if get_parent().dragged_block and is_inside_grid(
-		get_parent().dragged_block):
-		for letter in get_parent().dragged_block.letters:
+	if owner.dragged_block and is_inside_grid(
+		owner.dragged_block):
+		for letter in owner.dragged_block.letters:
 			if letter is Letter:
 				cells_to_highlight.append(
-					world_to_map(letter.global_position))
+					world_to_map(letter.rect_global_position + cell_size / 2))
 	update()
 
 func _draw() -> void:
@@ -37,17 +37,18 @@ func set_size(val: Vector2):
 
 func is_inside_grid(block: Block) -> bool:
 	for letter in block.letters:
-		var letter_cell = world_to_map(letter.global_position)
+		var letter_cell = world_to_map(letter.rect_global_position + cell_size / 2)
 		if not get_used_rect().has_point(letter_cell):
 			return false
 	return true
 
 func _on_block_dropped(block: Block) -> void:
 	if is_inside_grid(block):
+		block.locked = true
 		for letter in block.letters:
 			_add_letter_to_grid(letter)
 
 func _add_letter_to_grid(letter: Letter) -> void:
-	var letter_cell = world_to_map(letter.global_position)
+	var letter_cell = world_to_map(letter.rect_global_position)
 	tiles_date[letter_cell] = letter
-	letter.global_position = to_global(map_to_world(letter_cell)) + cell_size / 2
+	letter.rect_global_position = to_global(map_to_world(letter_cell))
