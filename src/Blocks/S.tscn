@@ -9,22 +9,7 @@
 texture = ExtResource( 1 )
 offset = Vector2( -96, -64 )
 
-[node name="Letters" parent="." index="1"]
-position = Vector2( -96, -64 )
-
-[node name="Position2D" parent="Letters" index="0"]
-position = Vector2( 64, 0 )
-
-[node name="Position2D2" parent="Letters" index="1"]
-position = Vector2( 128, 0 )
-
-[node name="Position2D3" parent="Letters" index="2"]
-position = Vector2( 0, 64 )
-
-[node name="Position2D4" parent="Letters" index="3"]
-position = Vector2( 64, 64 )
-
-[node name="Area2D" parent="." index="2"]
+[node name="Area2D" parent="." index="1"]
 position = Vector2( -192, -128 )
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]

@@ -10,7 +10,6 @@ const LETTER = preload("res://src/Letter.tscn")
 const COLLISION_LAYER_BOARD = 2
 const COLLISION_LAYER_SHAPES = 1
 
-onready var _letters_node: = $Letters
 onready var type = name.validate_node_name().rstrip("0123456789")
 
 var is_inside_grid: = false setget set_is_inside_grid
@@ -45,10 +44,11 @@ func set_is_inside_grid(val: bool):
 
 func setup():
 	# Adding letters
-	for child in _letters_node.get_children():
-		if child is Position2D:
+	for child in $Area2D.get_children():
+		if child is CollisionShape2D:
 			var letter = LETTER.instance()
 			child.add_child(letter)
+			letter.rect_position = -letter.rect_size/2
 			letter.set_random_letter()
 			letters.append(letter)
 			letter.color = CONSTS.SHAPES[type]

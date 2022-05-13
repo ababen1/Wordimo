@@ -7,9 +7,8 @@ var cells_to_highlight: = PoolVector2Array()
 var tiles_date: Dictionary = {}
 
 func _ready() -> void:
-# warning-ignore:return_value_discarded
-	owner.connect("block_dropped", self, "_on_block_dropped")
-
+	pass
+	
 func _process(_delta: float) -> void:
 	cells_to_highlight = []
 	if owner.dragged_block and is_inside_grid(
@@ -42,13 +41,13 @@ func is_inside_grid(block: Block) -> bool:
 			return false
 	return true
 
-func _on_block_dropped(block: Block) -> void:
+func drop_block(block: Block) -> void:
 	if is_inside_grid(block):
 		block.locked = true
 		for letter in block.letters:
 			_add_letter_to_grid(letter)
 
 func _add_letter_to_grid(letter: Letter) -> void:
-	var letter_cell = world_to_map(letter.rect_global_position)
-	tiles_date[letter_cell] = letter
-	letter.rect_global_position = to_global(map_to_world(letter_cell))
+	var shape: CollisionShape2D = letter.get_parent()
+	var target_cell = world_to_map(shape.global_position)
+	shape.global_position = to_global(map_to_world(target_cell)) + cell_size / 2

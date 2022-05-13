@@ -1,7 +1,5 @@
 extends Node2D
 
-signal block_dropped(block)
-
 # adds a new block every x seconds
 export var add_block_delay: = 1.0 setget set_add_block_delay
 
@@ -48,8 +46,8 @@ func drop_block(block: Block) -> void:
 	assert(block == dragged_block)
 	dragged_block = null
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
+	tilemap.drop_block(block)
 #	get_viewport().warp_mouse(block.global_position)
-	emit_signal("block_dropped", block)
 
 func _on_BlocksTimer_timeout() -> void:
 	if add_block_delay != 0:
