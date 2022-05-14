@@ -74,5 +74,13 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 0, 0, 3, 1, 0, 4, 0, 0, 65536, 1,
 script = ExtResource( 4 )
 size = Vector2( 10, 8 )
 highlight_color = Color( 0.678431, 1, 0.180392, 0.352941 )
+camera_offset = Vector2( 135, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="GameGrid"]
+position = Vector2( 160, 160 )
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="timeout" from="BlocksTimer" to="." method="_on_BlocksTimer_timeout"]
+[connection signal="board_changed" from="GameGrid" to="." method="_on_GameGrid_board_changed"]

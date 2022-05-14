@@ -12,7 +12,6 @@ var dragged_block: Block = null
 
 func _ready() -> void:
 	add_block(BlocksFactory.instance_block("RAND"))
-	
 
 func _process(_delta: float) -> void:
 	if dragged_block:
@@ -34,7 +33,7 @@ func _on_block_pressed(block: Block):
 		dragged_block = block
 #		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	elif dragged_block == block:
-		drop_block(dragged_block)
+		drop_block()
 
 func set_add_block_delay(val: float):
 	if not is_inside_tree():
@@ -42,14 +41,16 @@ func set_add_block_delay(val: float):
 	add_block_delay = val
 	blocks_timer.wait_time = val
 
-func drop_block(block: Block) -> void:
-	assert(block == dragged_block)
+func drop_block(block: Block = dragged_block) -> void:
 	dragged_block = null
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 	tilemap.drop_block(block)
-#	get_viewport().warp_mouse(block.global_position)
 
 func _on_BlocksTimer_timeout() -> void:
 	if add_block_delay != 0:
 		add_block(BlocksFactory.instance_block("RAND"))
 		blocks_timer.start()
+
+func _on_GameGrid_board_changed() -> void:
+	tilemap._print_board()
+	print(tilemap.get_column_content(0))

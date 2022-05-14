@@ -36,6 +36,11 @@ func set_random_letter() -> void:
 		0, 
 		CONSTS.VALID_LETTERS.length() - 1)])
 
+func set_random_vowel() -> void:
+	set_letter(CONSTS.VOWELS[rand_range(
+		0, 
+		CONSTS.VOWELS.size() - 1)])
+
 func set_color(val: int) -> void:
 	color = val
 	if not is_inside_tree() and not Engine.editor_hint:

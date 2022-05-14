@@ -12,12 +12,13 @@ const COLLISION_LAYER_SHAPES = 1
 
 onready var type = name.validate_node_name().rstrip("0123456789")
 
+export var chance_for_vowel: = 0.75
+
 var is_inside_grid: = false setget set_is_inside_grid
 var locked: = false setget set_locked
 var letters = []
 
 func _ready() -> void:
-	print(type)
 	setup()
 # warning-ignore:return_value_discarded
 	$Area2D.connect("input_event", self, "_on_area2D_input_event")
@@ -31,8 +32,7 @@ func get_letters() -> Array:
 
 func set_locked(val: bool):
 	locked = val
-	for letter in letters:
-		letter.locked = val
+	$Area2D.input_pickable = not locked
 
 func set_is_inside_grid(val: bool):
 	if val != is_inside_grid:
@@ -49,7 +49,10 @@ func setup():
 			var letter = LETTER.instance()
 			child.add_child(letter)
 			letter.rect_position = -letter.rect_size/2
-			letter.set_random_letter()
+			if randf() >= chance_for_vowel:
+				letter.set_random_vowel()
+			else:
+				letter.set_random_letter()
 			letters.append(letter)
 			letter.color = CONSTS.SHAPES[type]
 	$Sprite.hide()
