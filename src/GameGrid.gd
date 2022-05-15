@@ -54,7 +54,7 @@ func drop_block(block: Block) -> void:
 
 func get_letter_at(cord: Vector2) -> String:
 	var letter = tiles_data.get(cord)
-	return letter.letter if letter else " "
+	return letter.letter if letter else ""
 
 func _add_letter_to_grid(letter: Letter) -> void:
 	var shape: CollisionShape2D = letter.get_parent()
@@ -76,17 +76,50 @@ func _print_board() -> void:
 		string += "\n"
 	print(string)
 
-func get_row_content(idx: int) -> String:
-	var content = ""
+func get_row_content(idx: int) -> Array:
+	var content: = {}
 	for x in size.x:
-		content += get_letter_at(Vector2(x,idx))
-	return content
+		content[Vector2(x,idx)] = get_letter_at(Vector2(x,idx))
+	return _arrange_content(content)
 
-func get_column_content(idx: int) -> String:
-	var content = ""
+func get_column_content(idx: int) -> Array:
+	var content: = {}
 	for y in size.y:
-		content += get_letter_at(Vector2(idx,y))
-	return content
+		content[Vector2(idx,y)] = get_letter_at(Vector2(idx,y))
+	return _arrange_content(content)
+
+# Returns an array with all the words in the given row/column content
+# including their start and end position
+func _arrange_content(content: Dictionary) -> Array:
+	# Create an array with all the words in the row,
+	# including their starting and ending position
+	var current_word = ""
+	var current_word_start = null
+	var prev_cord: Vector2 = content.keys().front()
+	var content_array = []
+	for current_cord in content.keys():
+		var current_letter = content[current_cord]
+		if current_letter:
+			if not current_word_start:
+				current_word_start = current_cord
+			current_word += current_letter
+		elif current_word:
+			content_array.append({
+				"word": current_word,
+				"from": current_word_start,
+				"to": prev_cord
+			})
+			current_word = ""
+			current_word_start = null
+		# in case we reached the last cord and a word was found
+		if current_cord == content.keys().back() and current_word:
+			content_array.append({
+				"word": current_word,
+				"from": current_word_start,
+				"to": content.keys().back()
+			})
+		prev_cord = current_cord
+	return content_array
 
 func get_rect() -> Rect2:
 	return Rect2(Vector2.ZERO, size * cell_size)
@@ -110,6 +143,13 @@ func get_columns_with_content() -> Dictionary:
 			columns[current_idx] = column_content
 	return columns
 	
-func find_words_in_board():
-	print(get_column_content(1).split(" "))
+func find_words_in_board() -> Array:
+	var all_words: = []
+	for cord in tiles_data.keys():
+		var row_words: = get_row_content(cord.y)
+		var column_words: = get_column_content(cord.x)
+		all_words.append_array(row_words)
+		all_words.append_array(column_words)
+	return all_words
+		
 	

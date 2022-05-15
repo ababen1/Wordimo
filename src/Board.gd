@@ -70,8 +70,13 @@ func _on_BlocksTimer_timeout() -> void:
 
 func _on_GameGrid_board_content_changed() -> void:
 	tilemap._print_board()
-	print(tilemap.find_words_in_board())
-		
+	var words_in_board = tilemap.find_words_in_board()
+	var valid_words = []
+	for word_data in words_in_board:
+		var valid_word_found = words_funcs.find_word(word_data["word"])
+		if valid_word_found:
+			valid_words.append(valid_word_found)
+	print(valid_words)
 
 func _on_GameGrid_board_size_changed(new_size) -> void:
 	if not tilemap:

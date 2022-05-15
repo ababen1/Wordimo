@@ -7,7 +7,7 @@ var MIN_CHARS: = 3
 
 func is_valid_word(word: String, min_chars: = MIN_CHARS) -> bool:
 	return (word.length() >= min_chars) and (
-		word.capitalize() in WordsList.WORDS.keys())
+		word.to_lower() in WordsList.WORDS.keys())
 
 func get_words_starting_with(val: String) -> Array:
 	var new_array = []
@@ -22,6 +22,10 @@ func get_words_starting_with(val: String) -> Array:
 	return new_array
 	
 func find_word(text: String, min_length: int = MIN_CHARS) -> String:
+	if text.length() < min_length:
+		return ""
+	elif text.length() == min_length and not is_valid_word(text):
+		return ""
 	var best_word: String
 	for start_idx in text.length() - 1:
 		var end_idx = min_length
