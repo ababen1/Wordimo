@@ -28,12 +28,24 @@ _global_script_classes=[ {
 "class": "Letter",
 "language": "GDScript",
 "path": "res://src/Letter.gd"
+}, {
+"base": "Resource",
+"class": "WordsFuncs",
+"language": "GDScript",
+"path": "res://src/WordsFuncs.gd"
+}, {
+"base": "Reference",
+"class": "WordsList",
+"language": "GDScript",
+"path": "res://src/WORDS.gd"
 } ]
 _global_script_class_icons={
 "Block": "",
 "BlocksFactory": "",
 "CONSTS": "",
-"Letter": ""
+"Letter": "",
+"WordsFuncs": "",
+"WordsList": ""
 }
 
 [application]

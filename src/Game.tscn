@@ -57,7 +57,13 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
 [node name="GameBoard" type="Node2D"]
 script = ExtResource( 3 )
-add_block_delay = 5.0
+add_block_delay = 7.0
+camera_offset = Vector2( 200, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 160, -160 )
+current = true
+zoom = Vector2( 1.3, 1.3 )
 
 [node name="Blocks" type="Node2D" parent="."]
 position = Vector2( 776, 120 )
@@ -74,13 +80,9 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 0, 0, 3, 1, 0, 4, 0, 0, 65536, 1,
 script = ExtResource( 4 )
 size = Vector2( 10, 8 )
 highlight_color = Color( 0.678431, 1, 0.180392, 0.352941 )
-camera_offset = Vector2( 135, 0 )
-
-[node name="Camera2D" type="Camera2D" parent="GameGrid"]
-position = Vector2( 160, 160 )
-current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="timeout" from="BlocksTimer" to="." method="_on_BlocksTimer_timeout"]
-[connection signal="board_changed" from="GameGrid" to="." method="_on_GameGrid_board_changed"]
+[connection signal="board_content_changed" from="GameGrid" to="." method="_on_GameGrid_board_content_changed"]
+[connection signal="board_size_changed" from="GameGrid" to="." method="_on_GameGrid_board_size_changed"]

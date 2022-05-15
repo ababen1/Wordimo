@@ -22,3 +22,9 @@ const SHAPES = {
 	"T": COLORS.PURPLE,
 	"Z": COLORS.RED
 }
+
+
+			
+			
+			
+			
