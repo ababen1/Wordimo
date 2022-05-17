@@ -60,24 +60,34 @@ func filter_invalid(content: Dictionary) -> Dictionary:
 		var word_in_content = words_funcs.find_word(content[idx])
 		if word_in_content:
 			new_dict[idx] = content[idx]
-	return new_dict
-	
+	return new_dict	
+
+func calculate_score(words: Array):
+	words = _validate_words(words)
+	print(words)
 
 func _on_BlocksTimer_timeout() -> void:
 	if add_block_delay != 0:
 		add_block(blocks_factory.get_random_block())
 		blocks_timer.start()
 
-func _on_GameGrid_board_content_changed() -> void:
+func _on_GameGrid_block_placed(block: Block) -> void:
 	tilemap._print_board()
-	var words_in_board = tilemap.find_words_in_board()
-	var valid_words = []
-	for word_data in words_in_board:
-		var valid_word_found = words_funcs.find_word(word_data["word"])
-		if valid_word_found:
-			valid_words.append(valid_word_found)
-	print(valid_words)
+	var cells_to_check: = []
+	for tile in block.letters:
+		var tile_cords: Vector2 = tilemap.tiles_data.keys()[
+			tilemap.tiles_data.values().find(tile)]
+		cells_to_check.append(tile_cords)
+	calculate_score(tilemap.find_words_in_board(cells_to_check))
 
+func _validate_words(words: Array) -> Array:
+	var valid_words: Array = []
+	for word_data in words:
+		var word_found = words_funcs.find_word(word_data.word)
+		if word_found:
+			valid_words.append(word_found)
+	return valid_words
+	
 func _on_GameGrid_board_size_changed(new_size) -> void:
 	if not tilemap:
 		yield(self, "ready")
@@ -87,3 +97,5 @@ func _on_GameGrid_board_size_changed(new_size) -> void:
 func _draw() -> void:
 	var rect = tilemap.get_rect()
 	draw_rect(tilemap.get_rect(), Color.whitesmoke, false, 5)
+
+

@@ -84,5 +84,5 @@ highlight_color = Color( 0.678431, 1, 0.180392, 0.352941 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="timeout" from="BlocksTimer" to="." method="_on_BlocksTimer_timeout"]
-[connection signal="board_content_changed" from="GameGrid" to="." method="_on_GameGrid_board_content_changed"]
+[connection signal="block_placed" from="GameGrid" to="." method="_on_GameGrid_block_placed"]
 [connection signal="board_size_changed" from="GameGrid" to="." method="_on_GameGrid_board_size_changed"]
