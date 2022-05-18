@@ -36,3 +36,5 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
 custom_styles/normal = SubResource( 6 )
 text = "O"
+
+[node name="Tween" type="Tween" parent="."]

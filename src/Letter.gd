@@ -10,6 +10,7 @@ export(CONSTS.COLORS) var color = CONSTS.COLORS.NONE setget set_color
 export var click_delay: = 0.1
 
 onready var letter_label: Label = $CenterContainer/Letter
+onready var tween: Tween = $Tween
 
 var locked: = false
 	
@@ -52,6 +53,18 @@ func set_color(val: int) -> void:
 		stylebox.texture = load(
 			TEX_FOLDER.plus_file(_enum_to_filename(color)))
 	add_stylebox_override("panel", stylebox)
+
+func animate_expand(expand_by: float = 0.5):
+	tween.interpolate_property(
+		self,
+		"rect_scale",
+		rect_scale,
+		rect_scale + Vector2(expand_by, expand_by),
+		0.5,
+		Tween.TRANS_BOUNCE)
+	tween.start()
+	yield(tween, "tween_completed")
+	return
 
 func _enum_to_filename(val: int) -> String:
 	return CONSTS.COLORS.keys()[val].capitalize() + ".png"

@@ -62,9 +62,11 @@ func filter_invalid(content: Dictionary) -> Dictionary:
 			new_dict[idx] = content[idx]
 	return new_dict	
 
-func calculate_score(words: Array):
-	words = _validate_words(words)
-	print(words)
+func calculate_score(words: Array) -> float:
+	var score: = 0.0
+	for word_data in words:
+		score += word_data.word.length() * 10
+	return score
 
 func _on_BlocksTimer_timeout() -> void:
 	if add_block_delay != 0:
@@ -78,24 +80,36 @@ func _on_GameGrid_block_placed(block: Block) -> void:
 		var tile_cords: Vector2 = tilemap.tiles_data.keys()[
 			tilemap.tiles_data.values().find(tile)]
 		cells_to_check.append(tile_cords)
-	calculate_score(tilemap.find_words_in_board(cells_to_check))
+	var words_found: Array = tilemap.find_words_in_board(cells_to_check)
+	words_found = _validate_words(words_found)
+	var score: = calculate_score(words_found)
+	print(words_found)
+	print(score)
+	for word_data in words_found:
+		tilemap.clear_cells(word_data.from, word_data.to)
 
 func _validate_words(words: Array) -> Array:
 	var valid_words: Array = []
 	for word_data in words:
 		var word_found = words_funcs.find_word(word_data.word)
 		if word_found:
-			valid_words.append(word_found)
+			var new_data = {
+				"word": word_found
+			}
+			var direction: Vector2 = word_data["from"].direction_to(word_data["to"])
+			new_data["from"] = word_data["from"] + (
+				direction * word_data["word"].find(word_found))
+			new_data["to"] = new_data["from"] + direction * (word_found.length() - 1)
+			valid_words.append(new_data)
 	return valid_words
 	
-func _on_GameGrid_board_size_changed(new_size) -> void:
+func _on_GameGrid_board_size_changed(_new_size) -> void:
 	if not tilemap:
 		yield(self, "ready")
 	$Camera2D.global_position = tilemap.get_rect().end / 2 + camera_offset
 	update()
 
 func _draw() -> void:
-	var rect = tilemap.get_rect()
 	draw_rect(tilemap.get_rect(), Color.whitesmoke, false, 5)
 
 

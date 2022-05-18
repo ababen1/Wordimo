@@ -60,6 +60,22 @@ func get_letter_at(cord: Vector2) -> String:
 	var letter = tiles_data.get(cord)
 	return letter.letter if letter else ""
 
+func clear_cell(cell: Vector2, animate: = true) -> void:
+	var tile: Letter = tiles_data.get(cell)
+	if tile:
+		tiles_data.erase(cell)
+		if animate:
+			yield(tile.animate_expand(), "completed")
+		tile.queue_free()
+
+func clear_cells(from: Vector2, to: Vector2) -> void:
+	var direction = from.direction_to(to)
+	var current_cell = from
+	while current_cell != to:
+		clear_cell(current_cell)
+		current_cell += direction
+	clear_cell(to)
+
 func _add_letter_to_grid(letter: Letter) -> void:
 	var shape: CollisionShape2D = letter.get_parent()
 	var target_cell = world_to_map(shape.global_position)
@@ -86,13 +102,19 @@ func get_rect() -> Rect2:
 	
 func find_words_in_board(changed_cells: Array) -> Array:
 	var all_words: = []
+	var rows_to_check: = []
+	var columns_to_check: = []
 	for cell in changed_cells:
-		var row_words: = _check_for_words(
-			Vector2(0, cell.y), Vector2.RIGHT)
-		var column_words: = _check_for_words(
-			Vector2(cell.x, 0), Vector2.DOWN)
-		all_words.append_array(row_words)
-		all_words.append_array(column_words)
+		if not cell.y in rows_to_check:
+			rows_to_check.append(cell.y)
+		if not cell.x in columns_to_check:
+			columns_to_check.append(cell.x)
+	for row in rows_to_check:
+		all_words.append_array(
+			_check_for_words(Vector2(0, row), Vector2.RIGHT))
+	for column in columns_to_check:
+		all_words.append_array(
+			_check_for_words(Vector2(column, 0), Vector2.DOWN))
 	return all_words
 
 func _check_for_words(cell: Vector2, direction: = Vector2.RIGHT) -> Array:
