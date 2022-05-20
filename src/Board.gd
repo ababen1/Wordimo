@@ -5,11 +5,12 @@ export var add_block_delay: = 1.0 setget set_add_block_delay
 export var camera_offset: = Vector2()
 
 onready var tilemap = $GameGrid
-onready var _blocks_node = $Blocks
+onready var _blocks_node = find_node("Blocks")
 onready var blocks_timer: Timer = $BlocksTimer
+onready var blocks_queue = $CanvasLayer/Queue
 
 var blocks: Array = []
-var dragged_block: Block = null
+var dragged_block: Block = null setget set_dragged_block
 var blocks_factory = BlocksFactory.new()
 var words_funcs = WordsFuncs.new()
 
@@ -25,20 +26,18 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("right_click"):
 		if dragged_block:
 			dragged_block.rotate_shape()
+	elif event.is_action_pressed("left_click") and dragged_block:
+		drop_block()
 
 func add_block(block: Block) -> void:
-	_blocks_node.add_child(block)
-	blocks.append(block)
-# warning-ignore:return_value_discarded
-	block.connect("block_pressed", self, "_on_block_pressed", [block])
+	blocks_queue.add_block(block)
 	
-func _on_block_pressed(block: Block):
-	if not dragged_block:
-		dragged_block = block
-		dragged_block.z_index += 1
-#		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	elif dragged_block == block:
-		drop_block()
+func set_dragged_block(val: Block) -> void:
+	if dragged_block:
+		dragged_block.z_index -= 1
+	dragged_block = val
+	if dragged_block:
+		dragged_block.z_index += 1	
 
 func set_add_block_delay(val: float):
 	if not is_inside_tree():
@@ -47,10 +46,12 @@ func set_add_block_delay(val: float):
 	blocks_timer.wait_time = val
 
 func drop_block(block: Block = dragged_block) -> void:
-	dragged_block.z_index -= 1
-	dragged_block = null
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
-	tilemap.drop_block(block)
+	self.dragged_block = null
+	if tilemap.cells_to_highlight.size() == 4:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
+		tilemap.drop_block(block)
+	else:
+		blocks_queue.cancel_movement(block)
 
 # gets a dictonary with rows/columns content and returns only
 # the rows/columns that have words in their cotent
@@ -106,10 +107,12 @@ func _validate_words(words: Array) -> Array:
 func _on_GameGrid_board_size_changed(_new_size) -> void:
 	if not tilemap:
 		yield(self, "ready")
-	$Camera2D.global_position = tilemap.get_rect().end / 2 + camera_offset
+#	$Camera2D.global_position = tilemap.get_rect().end / 2 + camera_offset
 	update()
 
 func _draw() -> void:
 	draw_rect(tilemap.get_rect(), Color.whitesmoke, false, 5)
 
-
+func _on_Queue_block_clicked(block: Block) -> void:
+	get_tree().current_scene.add_child(block)
+	self.dragged_block = block

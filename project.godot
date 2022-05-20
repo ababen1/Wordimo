@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Blocks/Block.gd"
 }, {
+"base": "TextureRect",
+"class": "BlockImg",
+"language": "GDScript",
+"path": "res://src/UI/BlockImg.gd"
+}, {
 "base": "Node",
 "class": "BlocksFactory",
 "language": "GDScript",
@@ -41,6 +46,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Block": "",
+"BlockImg": "",
 "BlocksFactory": "",
 "CONSTS": "",
 "Letter": "",

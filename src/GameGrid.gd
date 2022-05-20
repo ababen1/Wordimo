@@ -1,9 +1,9 @@
+tool
 extends TileMap
 
 export var size: = Vector2(5,5) setget set_size
 export var highlight_color: = Color.greenyellow
 
-signal board_content_changed
 signal block_placed(block)
 signal tile_placed(tile)
 signal board_size_changed(new_size)
@@ -17,24 +17,27 @@ func _ready() -> void:
 	pass
 	
 func _process(_delta: float) -> void:
-	cells_to_highlight = []
-	if owner.dragged_block and is_inside_grid(
-		owner.dragged_block):
-		for letter in owner.dragged_block.letters:
-			if letter is Letter:
-				cells_to_highlight.append(
-					world_to_map(letter.rect_global_position + cell_size / 2))
-	update()
+	if not Engine.editor_hint:
+		cells_to_highlight = []
+		if owner.dragged_block and is_inside_grid(
+			owner.dragged_block):
+			for letter in owner.dragged_block.letters:
+				if letter is Letter:
+					cells_to_highlight.append(
+						world_to_map(letter.rect_global_position + cell_size / 2))
+		update()
 					
 func _draw() -> void:
-	for cell in cells_to_highlight:
-		draw_rect(
-			Rect2(to_global(map_to_world(cell)), cell_size), 
-			highlight_color)
+	if not Engine.editor_hint:
+		for cell in cells_to_highlight:
+			draw_rect(
+				Rect2(to_global(map_to_world(cell)), cell_size), 
+				highlight_color)
 	
 func set_size(val: Vector2):
 	if not is_inside_tree():
 		yield(self, "ready")
+	clear()
 	size = val
 	for y in size.y:
 		for x in size.x:
@@ -63,6 +66,7 @@ func get_letter_at(cord: Vector2) -> String:
 func clear_cell(cell: Vector2, animate: = true) -> void:
 	var tile: Letter = tiles_data.get(cell)
 	if tile:
+# warning-ignore:return_value_discarded
 		tiles_data.erase(cell)
 		if animate:
 			yield(tile.animate_expand(), "completed")

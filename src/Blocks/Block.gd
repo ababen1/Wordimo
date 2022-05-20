@@ -14,6 +14,8 @@ onready var type = name.validate_node_name().rstrip("0123456789")
 
 export var chance_for_vowel: = 0.75
 
+onready var sprite: = $Sprite
+
 var is_inside_grid: = false setget set_is_inside_grid
 var locked: = false setget set_locked
 var letters = []
@@ -26,6 +28,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	self.is_inside_grid = _check_is_inside_grid()
 	update()
+
+func reset_position() -> void:
+	position = sprite.offset * -1
 
 func get_letters() -> Array:
 	return letters
@@ -55,14 +60,14 @@ func setup():
 				letter.set_random_letter()
 			letters.append(letter)
 			letter.color = CONSTS.SHAPES[type]
-	$Sprite.hide()
+	sprite.hide()
 
 func rotate_shape() -> void:
 	rotation_degrees += 90
 	for letter in letters:
 		letter.rect_rotation -= 90
 
-func _on_area2D_input_event(_viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_area2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("left_click"):
 		emit_signal("block_pressed")
 	elif event.is_action_pressed("right_click"):

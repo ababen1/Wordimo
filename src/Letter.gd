@@ -55,6 +55,7 @@ func set_color(val: int) -> void:
 	add_stylebox_override("panel", stylebox)
 
 func animate_expand(expand_by: float = 0.5):
+# warning-ignore:return_value_discarded
 	tween.interpolate_property(
 		self,
 		"rect_scale",
@@ -62,6 +63,7 @@ func animate_expand(expand_by: float = 0.5):
 		rect_scale + Vector2(expand_by, expand_by),
 		0.5,
 		Tween.TRANS_BOUNCE)
+# warning-ignore:return_value_discarded
 	tween.start()
 	yield(tween, "tween_completed")
 	return
