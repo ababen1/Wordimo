@@ -29,7 +29,36 @@ func _process(_delta: float) -> void:
 	self.is_inside_grid = _check_is_inside_grid()
 	update()
 
+func get_texture() -> Texture:
+	if Engine.editor_hint:
+		return
+	if not is_inside_tree():
+		yield(self, "ready")
+	yield(get_tree(), "idle_frame")
+	var viewport = Viewport.new()
+	viewport.transparent_bg = true
+	viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
+	viewport.size = sprite.texture.get_size()
+	var original_parent = get_parent()
+	original_parent.remove_child(self)
+	original_parent.get_tree().root.add_child(viewport)
+	viewport.add_child(self)
+	yield(get_tree(), "idle_frame")
+	var image: Image = viewport.get_texture().get_data()
+	image.flip_y()
+	image.convert(Image.FORMAT_RGBA8)
+	image.save_png("res://".plus_file("test"))
+	var texture = ImageTexture.new()
+	texture.create_from_image(image)
+	get_parent().remove_child(self)
+	original_parent.add_child(self)
+	viewport.queue_free()
+	return texture
+	
+	
 func reset_position() -> void:
+	if not is_inside_tree():
+		yield(self, "ready")
 	position = sprite.offset * -1
 
 func get_letters() -> Array:

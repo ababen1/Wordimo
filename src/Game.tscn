@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/Tetriminos/Board/BG_2.png" type="Texture" id=1]
 [ext_resource path="res://assets/Tetriminos/Board/BG_1.png" type="Texture" id=2]
 [ext_resource path="res://src/Board.gd" type="Script" id=3]
 [ext_resource path="res://src/GameGrid.gd" type="Script" id=4]
 [ext_resource path="res://src/UI/Queue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/UI/Score.gd" type="Script" id=6]
+[ext_resource path="res://src/UI/BlocksTimer.gd" type="Script" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -66,32 +68,69 @@ position = Vector2( 576, 272 )
 current = true
 zoom = Vector2( 1.3, 1.3 )
 
-[node name="BlocksTimer" type="Timer" parent="."]
-autostart = true
-
 [node name="GameGrid" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 collision_layer = 2
 collision_mask = 4
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 0, 0, 3, 1, 0, 4, 0, 0, 5, 1, 0, 6, 0, 0, 7, 1, 0, 8, 0, 0, 9, 1, 0, 65536, 1, 0, 65537, 0, 0, 65538, 1, 0, 65539, 0, 0, 65540, 1, 0, 65541, 0, 0, 65542, 1, 0, 65543, 0, 0, 65544, 1, 0, 65545, 0, 0, 131072, 0, 0, 131073, 1, 0, 131074, 0, 0, 131075, 1, 0, 131076, 0, 0, 131077, 1, 0, 131078, 0, 0, 131079, 1, 0, 131080, 0, 0, 131081, 1, 0, 196608, 1, 0, 196609, 0, 0, 196610, 1, 0, 196611, 0, 0, 196612, 1, 0, 196613, 0, 0, 196614, 1, 0, 196615, 0, 0, 196616, 1, 0, 196617, 0, 0, 262144, 0, 0, 262145, 1, 0, 262146, 0, 0, 262147, 1, 0, 262148, 0, 0, 262149, 1, 0, 262150, 0, 0, 262151, 1, 0, 262152, 0, 0, 262153, 1, 0, 327680, 1, 0, 327681, 0, 0, 327682, 1, 0, 327683, 0, 0, 327684, 1, 0, 327685, 0, 0, 327686, 1, 0, 327687, 0, 0, 327688, 1, 0, 327689, 0, 0, 393216, 0, 0, 393217, 1, 0, 393218, 0, 0, 393219, 1, 0, 393220, 0, 0, 393221, 1, 0, 393222, 0, 0, 393223, 1, 0, 393224, 0, 0, 393225, 1, 0, 458752, 1, 0, 458753, 0, 0, 458754, 1, 0, 458755, 0, 0, 458756, 1, 0, 458757, 0, 0, 458758, 1, 0, 458759, 0, 0, 458760, 1, 0, 458761, 0, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 1, 0, 2, 0, 0, 3, 1, 0, 4, 0, 0, 5, 1, 0, 6, 0, 0, 7, 1, 0, 8, 0, 0, 9, 1, 0, 10, 0, 0, 65536, 1, 0, 65537, 0, 0, 65538, 1, 0, 65539, 0, 0, 65540, 1, 0, 65541, 0, 0, 65542, 1, 0, 65543, 0, 0, 65544, 1, 0, 65545, 0, 0, 65546, 1, 0, 131072, 0, 0, 131073, 1, 0, 131074, 0, 0, 131075, 1, 0, 131076, 0, 0, 131077, 1, 0, 131078, 0, 0, 131079, 1, 0, 131080, 0, 0, 131081, 1, 0, 131082, 0, 0, 196608, 1, 0, 196609, 0, 0, 196610, 1, 0, 196611, 0, 0, 196612, 1, 0, 196613, 0, 0, 196614, 1, 0, 196615, 0, 0, 196616, 1, 0, 196617, 0, 0, 196618, 1, 0, 262144, 0, 0, 262145, 1, 0, 262146, 0, 0, 262147, 1, 0, 262148, 0, 0, 262149, 1, 0, 262150, 0, 0, 262151, 1, 0, 262152, 0, 0, 262153, 1, 0, 262154, 0, 0, 327680, 1, 0, 327681, 0, 0, 327682, 1, 0, 327683, 0, 0, 327684, 1, 0, 327685, 0, 0, 327686, 1, 0, 327687, 0, 0, 327688, 1, 0, 327689, 0, 0, 327690, 1, 0, 393216, 0, 0, 393217, 1, 0, 393218, 0, 0, 393219, 1, 0, 393220, 0, 0, 393221, 1, 0, 393222, 0, 0, 393223, 1, 0, 393224, 0, 0, 393225, 1, 0, 393226, 0, 0, 458752, 1, 0, 458753, 0, 0, 458754, 1, 0, 458755, 0, 0, 458756, 1, 0, 458757, 0, 0, 458758, 1, 0, 458759, 0, 0, 458760, 1, 0, 458761, 0, 0, 458762, 1, 0, 524288, 0, 0, 524289, 1, 0, 524290, 0, 0, 524291, 1, 0, 524292, 0, 0, 524293, 1, 0, 524294, 0, 0, 524295, 1, 0, 524296, 0, 0, 524297, 1, 0, 524298, 0, 0 )
 script = ExtResource( 4 )
-size = Vector2( 10, 8 )
+size = Vector2( 11, 9 )
 highlight_color = Color( 0.678431, 1, 0.180392, 0.352941 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
 [node name="Queue" parent="CanvasLayer" instance=ExtResource( 5 )]
-margin_left = -177.0
-margin_top = 24.0
-margin_right = -7.0
+margin_left = -208.0
+margin_top = 31.0
+margin_right = -28.0
 margin_bottom = 576.0
 
 [node name="Blocks" type="Node2D" parent="."]
-position = Vector2( 848, 16 )
+position = Vector2( 1368, 736 )
 
-[connection signal="timeout" from="BlocksTimer" to="." method="_on_BlocksTimer_timeout"]
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="HUD"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 59.0
+margin_bottom = 22.0
+text = "Score: 0"
+script = ExtResource( 6 )
+
+[node name="BlocksTimer" type="HBoxContainer" parent="HUD"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -208.0
+margin_right = -28.0
+margin_bottom = 24.0
+script = ExtResource( 7 )
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD/BlocksTimer"]
+margin_right = 156.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 7.0
+percent_visible = false
+
+[node name="Button" type="Button" parent="HUD/BlocksTimer"]
+margin_left = 160.0
+margin_right = 180.0
+margin_bottom = 24.0
+text = "+"
+
+[node name="Timer" type="Timer" parent="HUD/BlocksTimer"]
+one_shot = true
+
+[connection signal="add_score" from="." to="HUD/Score" method="_on_GameBoard_add_score"]
 [connection signal="block_placed" from="GameGrid" to="." method="_on_GameGrid_block_placed"]
 [connection signal="board_size_changed" from="GameGrid" to="." method="_on_GameGrid_board_size_changed"]
 [connection signal="block_clicked" from="CanvasLayer/Queue" to="." method="_on_Queue_block_clicked"]
+[connection signal="panel_clicked" from="CanvasLayer/Queue" to="." method="_on_Queue_panel_clicked"]
+[connection signal="pressed" from="HUD/BlocksTimer/Button" to="HUD/Score" method="_on_Button_pressed"]
+[connection signal="pressed" from="HUD/BlocksTimer/Button" to="HUD/BlocksTimer" method="_on_Button_pressed"]
+[connection signal="timeout" from="HUD/BlocksTimer/Timer" to="." method="_on_BlocksTimer_timeout"]
+[connection signal="timeout" from="HUD/BlocksTimer/Timer" to="HUD/BlocksTimer" method="_on_timeout"]

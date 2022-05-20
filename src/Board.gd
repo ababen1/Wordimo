@@ -4,15 +4,18 @@ extends Node2D
 export var add_block_delay: = 1.0 setget set_add_block_delay
 export var camera_offset: = Vector2()
 
+signal add_score(score)
+
 onready var tilemap = $GameGrid
 onready var _blocks_node = find_node("Blocks")
-onready var blocks_timer: Timer = $BlocksTimer
+onready var blocks_timer: Timer = $HUD/BlocksTimer/Timer
 onready var blocks_queue = $CanvasLayer/Queue
 
 var blocks: Array = []
 var dragged_block: Block = null setget set_dragged_block
 var blocks_factory = BlocksFactory.new()
 var words_funcs = WordsFuncs.new()
+var combo: int = 0
 
 func _ready() -> void:
 	add_block(blocks_factory.get_random_block())
@@ -30,6 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		drop_block()
 
 func add_block(block: Block) -> void:
+	_blocks_node.add_child(block)
 	blocks_queue.add_block(block)
 	
 func set_dragged_block(val: Block) -> void:
@@ -44,6 +48,7 @@ func set_add_block_delay(val: float):
 		yield(self, "ready")
 	add_block_delay = val
 	blocks_timer.wait_time = val
+	blocks_timer.start()
 
 func drop_block(block: Block = dragged_block) -> void:
 	self.dragged_block = null
@@ -51,6 +56,8 @@ func drop_block(block: Block = dragged_block) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 		tilemap.drop_block(block)
 	else:
+		block.get_parent().remove_child(block)
+		_blocks_node.add_child(block)
 		blocks_queue.cancel_movement(block)
 
 # gets a dictonary with rows/columns content and returns only
@@ -67,6 +74,8 @@ func calculate_score(words: Array) -> float:
 	var score: = 0.0
 	for word_data in words:
 		score += word_data.word.length() * 10
+	# bonus for having multiple words in one move
+	score *= words.size()
 	return score
 
 func _on_BlocksTimer_timeout() -> void:
@@ -84,8 +93,8 @@ func _on_GameGrid_block_placed(block: Block) -> void:
 	var words_found: Array = tilemap.find_words_in_board(cells_to_check)
 	words_found = _validate_words(words_found)
 	var score: = calculate_score(words_found)
+	emit_signal("add_score", score)
 	print(words_found)
-	print(score)
 	for word_data in words_found:
 		tilemap.clear_cells(word_data.from, word_data.to)
 
@@ -107,12 +116,19 @@ func _validate_words(words: Array) -> Array:
 func _on_GameGrid_board_size_changed(_new_size) -> void:
 	if not tilemap:
 		yield(self, "ready")
-#	$Camera2D.global_position = tilemap.get_rect().end / 2 + camera_offset
 	update()
 
 func _draw() -> void:
 	draw_rect(tilemap.get_rect(), Color.whitesmoke, false, 5)
 
 func _on_Queue_block_clicked(block: Block) -> void:
-	get_tree().current_scene.add_child(block)
+	block.get_parent().remove_child(block)
+	add_child(block)
+	block.visible = true
+	if dragged_block:
+		drop_block()
 	self.dragged_block = block
+
+func _on_Queue_panel_clicked() -> void:
+	if dragged_block:
+		drop_block()

@@ -1,20 +1,22 @@
 extends PanelContainer
 
 signal block_clicked(block)
+signal panel_clicked
 
 var blocks: = {}
 
 func _ready() -> void:
 	$VBox/BlockImg.queue_free()
 
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("left_click"):
+		emit_signal("panel_clicked")
+
 func add_block(block: Block) -> void:
-	var new_viewport = $Viewport.duplicate()
-	add_child(new_viewport)
-	new_viewport.add_child(block)
 	block.reset_position()
 	var block_img = BlockImg.new()
 	$VBox.add_child(block_img)
-	block_img.texture = new_viewport.get_texture()
+	block_img.texture = yield(block.get_texture(), "completed")
 	blocks[block] = block_img
 	block_img.connect(
 		"clicked", 
@@ -23,15 +25,8 @@ func add_block(block: Block) -> void:
 		[block])
 
 func cancel_movement(block: Block) -> void:
-	block.get_parent().call_deferred("remove_child", block)
-	call_deferred("add_block", block)
-	
+	blocks[block].show()
+		
 func _on_block_clicked(block: Block):
-	yield(get_tree(), "idle_frame")
-	var viewport = block.get_parent()
-	block.get_parent().remove_child(block)
-	viewport.queue_free()
-	blocks[block].queue_free()
-# warning-ignore:return_value_discarded
-	blocks.erase(block)
+	blocks[block].hide()
 	emit_signal("block_clicked", block)
