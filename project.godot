@@ -38,11 +38,6 @@ _global_script_classes=[ {
 "class": "WordsFuncs",
 "language": "GDScript",
 "path": "res://src/WordsFuncs.gd"
-}, {
-"base": "Reference",
-"class": "WordsList",
-"language": "GDScript",
-"path": "res://src/WORDS.gd"
 } ]
 _global_script_class_icons={
 "Block": "",
@@ -50,8 +45,7 @@ _global_script_class_icons={
 "BlocksFactory": "",
 "CONSTS": "",
 "Letter": "",
-"WordsFuncs": "",
-"WordsList": ""
+"WordsFuncs": ""
 }
 
 [application]
@@ -59,6 +53,10 @@ _global_script_class_icons={
 config/name="WordTetris"
 run/main_scene="res://src/Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+WordsDatabase="*res://src/WordsDatabase/DictonaryCreator.gd"
 
 [display]
 
