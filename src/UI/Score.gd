@@ -15,7 +15,7 @@ func calculate_score(words: Array) -> float:
 		_score += word_data.word.length() * 10
 	# bonus for having multiple words in one move
 	_score *= words.size()
-	return score
+	return _score
 
 #func _on_Button_pressed() -> void:
 #	# Bonus for spawning a block earlier then usual

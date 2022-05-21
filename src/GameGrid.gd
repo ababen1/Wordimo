@@ -43,7 +43,8 @@ func set_size(val: Vector2):
 		for x in size.x:
 			var tile_idx = 0 if (x+y) % 2 ==0 else 1
 			set_cell(x,y, tile_idx)
-	emit_signal("board_size_changed", size)
+	if not Engine.editor_hint:
+		emit_signal("board_size_changed", size)
 
 func is_inside_grid(block: Block) -> bool:
 	for letter in block.letters:

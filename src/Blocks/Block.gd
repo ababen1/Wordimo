@@ -47,7 +47,6 @@ func get_texture() -> Texture:
 	var image: Image = viewport.get_texture().get_data()
 	image.flip_y()
 	image.convert(Image.FORMAT_RGBA8)
-	image.save_png("res://".plus_file("test"))
 	var texture = ImageTexture.new()
 	texture.create_from_image(image)
 	get_parent().remove_child(self)

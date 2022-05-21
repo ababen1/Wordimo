@@ -7,14 +7,14 @@ var MIN_CHARS: = 3
 
 func is_valid_word(word: String, min_chars: = MIN_CHARS) -> bool:
 	return (word.length() >= min_chars) and (
-		word.to_lower() in WordsList.WORDS.keys())
+		word.to_lower() in WordsDatabase.get_words_of(word[0]))
 
 # start_found is useful for preveting the program from continuing to search
 # after no results can be found (the dictonary is sorted alphabetically)
 func get_words_starting_with(val: String) -> Array:
 	var new_array = []
 	var start_found: = false
-	for word in WordsList.WORDS.keys():
+	for word in WordsDatabase.get_words_of(val[0]):
 		if word.begins_with(val.to_lower()):
 			if not start_found:
 				start_found = true
