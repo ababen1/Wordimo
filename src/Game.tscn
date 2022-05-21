@@ -125,7 +125,7 @@ text = "+"
 [node name="Timer" type="Timer" parent="HUD/BlocksTimer"]
 one_shot = true
 
-[connection signal="add_score" from="." to="HUD/Score" method="_on_GameBoard_add_score"]
+[connection signal="turn_completed" from="." to="HUD/Score" method="_on_GameBoard_turn_completed"]
 [connection signal="block_placed" from="GameGrid" to="." method="_on_GameGrid_block_placed"]
 [connection signal="board_size_changed" from="GameGrid" to="." method="_on_GameGrid_board_size_changed"]
 [connection signal="block_clicked" from="CanvasLayer/Queue" to="." method="_on_Queue_block_clicked"]

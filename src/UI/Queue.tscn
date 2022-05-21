@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Blocks/J.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/Queue.gd" type="Script" id=2]
-[ext_resource path="res://src/UI/BlockImg.gd" type="Script" id=3]
-
-[sub_resource type="ViewportTexture" id=1]
-viewport_path = NodePath("Viewport")
 
 [node name="Queue" type="PanelContainer"]
 anchor_left = 1.0
@@ -15,23 +11,19 @@ margin_bottom = 600.0
 mouse_filter = 1
 script = ExtResource( 2 )
 
-[node name="VBox" type="GridContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 177.0
 margin_bottom = 593.0
-columns = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
 
-[node name="BlockImg" type="TextureRect" parent="VBox"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = SubResource( 1 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 3 )
+[node name="VBox" type="GridContainer" parent="ScrollContainer"]
+margin_left = 85.0
+margin_right = 85.0
+size_flags_horizontal = 6
 
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 256, 256 )

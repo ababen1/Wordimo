@@ -4,7 +4,7 @@ extends Node2D
 export var add_block_delay: = 1.0 setget set_add_block_delay
 export var camera_offset: = Vector2()
 
-signal add_score(score)
+signal turn_completed(words_found)
 
 onready var tilemap = $GameGrid
 onready var _blocks_node = find_node("Blocks")
@@ -70,14 +70,6 @@ func filter_invalid(content: Dictionary) -> Dictionary:
 			new_dict[idx] = content[idx]
 	return new_dict	
 
-func calculate_score(words: Array) -> float:
-	var score: = 0.0
-	for word_data in words:
-		score += word_data.word.length() * 10
-	# bonus for having multiple words in one move
-	score *= words.size()
-	return score
-
 func _on_BlocksTimer_timeout() -> void:
 	if add_block_delay != 0:
 		add_block(blocks_factory.get_random_block())
@@ -92,11 +84,10 @@ func _on_GameGrid_block_placed(block: Block) -> void:
 		cells_to_check.append(tile_cords)
 	var words_found: Array = tilemap.find_words_in_board(cells_to_check)
 	words_found = _validate_words(words_found)
-	var score: = calculate_score(words_found)
-	emit_signal("add_score", score)
 	print(words_found)
 	for word_data in words_found:
 		tilemap.clear_cells(word_data.from, word_data.to)
+	emit_signal("turn_completed", words_found)
 
 func _validate_words(words: Array) -> Array:
 	var valid_words: Array = []
