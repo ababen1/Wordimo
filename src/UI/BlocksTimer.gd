@@ -16,3 +16,6 @@ func _on_timeout() -> void:
 
 func _on_Button_pressed() -> void:
 	timer.emit_signal("timeout")
+
+func _on_GameBoard_game_started() -> void:
+	timer.start()

@@ -33,6 +33,10 @@ func _draw() -> void:
 			draw_rect(
 				Rect2(to_global(map_to_world(cell)), cell_size), 
 				highlight_color)
+
+func reset_board() -> void:
+	for cord in tiles_data.keys():
+		clear_cell(cord, false)
 	
 func set_size(val: Vector2):
 	if not is_inside_tree():

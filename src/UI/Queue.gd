@@ -14,6 +14,11 @@ func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		emit_signal("panel_clicked")
 
+func clear() -> void:
+	for block_img in _images_container.get_children():
+		block_img.queue_free()
+	blocks = {}
+
 func set_can_scroll(val: bool) -> void:
 	can_scroll = val
 	_scroll_container.scroll_vertical_enabled = val

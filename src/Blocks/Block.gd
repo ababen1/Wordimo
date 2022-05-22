@@ -20,6 +20,9 @@ var is_inside_grid: = false setget set_is_inside_grid
 var locked: = false setget set_locked
 var letters = []
 
+func _enter_tree() -> void:
+	add_to_group("blocks")
+
 func _ready() -> void:
 	setup()
 # warning-ignore:return_value_discarded

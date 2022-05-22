@@ -5,6 +5,7 @@ export var add_block_delay: = 1.0 setget set_add_block_delay
 export var camera_offset: = Vector2()
 
 signal turn_completed(words_found)
+signal game_started
 
 onready var tilemap = $GameGrid
 onready var _blocks_node = find_node("Blocks")
@@ -18,7 +19,7 @@ var words_funcs = WordsFuncs.new()
 var combo: int = 0
 
 func _ready() -> void:
-	add_block(blocks_factory.get_random_block())
+	start_new_game()
 
 func _process(_delta: float) -> void:
 	update()
@@ -31,6 +32,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			dragged_block.rotate_shape()
 	elif event.is_action_pressed("left_click") and dragged_block:
 		drop_block()
+
+func start_new_game() -> void:
+	randomize()
+	for prev_game_block in get_tree().get_nodes_in_group("blocks"):
+		prev_game_block.queue_free()
+	tilemap.reset_board()
+	$CanvasLayer/Queue.clear()
+	add_block(blocks_factory.get_random_block())
+	emit_signal("game_started")
 
 func add_block(block: Block) -> void:
 	_blocks_node.add_child(block)
@@ -123,3 +133,7 @@ func _on_Queue_block_clicked(block: Block) -> void:
 func _on_Queue_panel_clicked() -> void:
 	if dragged_block:
 		drop_block()
+
+
+func _on_NewGame_pressed() -> void:
+	start_new_game()

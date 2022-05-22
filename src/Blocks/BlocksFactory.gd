@@ -9,6 +9,7 @@ var blocks_beanbag = BLOCKS.duplicate()
 func get_random_block() -> Block:
 	if blocks_beanbag.empty():
 		blocks_beanbag = BLOCKS.duplicate()
+		blocks_beanbag.shuffle()
 	var block_type = blocks_beanbag.pop_at(
 		rand_range(0, blocks_beanbag.size() - 1))
 	return instance_block(block_type)

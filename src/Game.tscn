@@ -125,11 +125,24 @@ text = "+"
 [node name="Timer" type="Timer" parent="HUD/BlocksTimer"]
 one_shot = true
 
+[node name="NewGame" type="Button" parent="HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -24.0
+margin_right = 48.0
+margin_bottom = -4.0
+text = "New"
+
+[connection signal="game_started" from="." to="HUD/Score" method="_on_GameBoard_game_started"]
+[connection signal="game_started" from="." to="HUD/BlocksTimer" method="_on_GameBoard_game_started"]
 [connection signal="turn_completed" from="." to="HUD/Score" method="_on_GameBoard_turn_completed"]
 [connection signal="block_placed" from="GameGrid" to="." method="_on_GameGrid_block_placed"]
 [connection signal="board_size_changed" from="GameGrid" to="." method="_on_GameGrid_board_size_changed"]
 [connection signal="block_clicked" from="CanvasLayer/Queue" to="." method="_on_Queue_block_clicked"]
 [connection signal="panel_clicked" from="CanvasLayer/Queue" to="." method="_on_Queue_panel_clicked"]
+[connection signal="pressed" from="HUD/BlocksTimer/Button" to="HUD/Score" method="_on_Button_pressed"]
 [connection signal="pressed" from="HUD/BlocksTimer/Button" to="HUD/BlocksTimer" method="_on_Button_pressed"]
 [connection signal="timeout" from="HUD/BlocksTimer/Timer" to="." method="_on_BlocksTimer_timeout"]
 [connection signal="timeout" from="HUD/BlocksTimer/Timer" to="HUD/BlocksTimer" method="_on_timeout"]
+[connection signal="pressed" from="HUD/NewGame" to="." method="_on_NewGame_pressed"]
