@@ -58,17 +58,16 @@ func drop_block(block: Block = dragged_block) -> void:
 	else:
 		block.get_parent().remove_child(block)
 		_blocks_node.add_child(block)
-		blocks_queue.cancel_movement(block)
+		blocks_queue.cancel_movement(block)	
 
-# gets a dictonary with rows/columns content and returns only
-# the rows/columns that have words in their cotent
-func filter_invalid(content: Dictionary) -> Dictionary:
-	var new_dict = {}
-	for idx in content:
-		var word_in_content = words_funcs.find_word(content[idx])
-		if word_in_content:
-			new_dict[idx] = content[idx]
-	return new_dict	
+func popup_word(
+	word: String, 
+	global_pos: Vector2,
+	color: = Color.royalblue,
+	font: DynamicFont = null):
+		var label = preload("res://src/UI/WordLabel.tscn").instance()
+		get_tree().root.add_child(label)
+		label.setup(word, global_pos, color, font)
 
 func _on_BlocksTimer_timeout() -> void:
 	if add_block_delay != 0:
@@ -87,6 +86,7 @@ func _on_GameGrid_block_placed(block: Block) -> void:
 	print(words_found)
 	for word_data in words_found:
 		tilemap.clear_cells(word_data.from, word_data.to)
+		popup_word(word_data.word, block.global_position, Color.white)
 	emit_signal("turn_completed", words_found)
 
 func _validate_words(words: Array) -> Array:

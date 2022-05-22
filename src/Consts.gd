@@ -11,6 +11,7 @@ enum COLORS {
 	YELLOW,
 	NONE}
 
+const DEFAULT_FONT = preload("res://assets/LetterFont.tres")
 const VALID_LETTERS = "abcdefghijklmnopqrstuvwxyz"
 const VOWELS: = ["a", "e", "o", "i", "u"]
 const SHAPES = {

@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Letter.gd"
 }, {
+"base": "Label",
+"class": "WordLabel",
+"language": "GDScript",
+"path": "res://src/UI/WordLabel.gd"
+}, {
 "base": "Resource",
 "class": "WordsFuncs",
 "language": "GDScript",
@@ -45,6 +50,7 @@ _global_script_class_icons={
 "BlocksFactory": "",
 "CONSTS": "",
 "Letter": "",
+"WordLabel": "",
 "WordsFuncs": ""
 }
 
