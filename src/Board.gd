@@ -23,6 +23,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	update()
+	if not is_instance_valid(dragged_block):
+		dragged_block = null
 	if dragged_block:
 		dragged_block.global_position = get_global_mouse_position()
 	
@@ -91,6 +93,7 @@ func _on_BlocksTimer_timeout() -> void:
 func _on_GameGrid_block_placed(block: Block) -> void:
 	tilemap._print_board()
 	var cells_to_check: = []
+	# Mark all the cells in the placed block as cells to check
 	for tile in block.letters:
 		var tile_cords: Vector2 = tilemap.tiles_data.keys()[
 			tilemap.tiles_data.values().find(tile)]
@@ -141,7 +144,6 @@ func _on_Queue_block_clicked(block: Block) -> void:
 func _on_Queue_panel_clicked() -> void:
 	if dragged_block:
 		drop_block()
-
 
 func _on_NewGame_pressed() -> void:
 	start_new_game()

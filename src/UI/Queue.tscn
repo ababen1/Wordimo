@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/Blocks/J.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/Queue.gd" type="Script" id=2]
-[ext_resource path="res://src/Blocks/Block.gd" type="Script" id=3]
 
 [node name="Queue" type="PanelContainer"]
 anchor_left = 1.0
@@ -17,6 +16,7 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 177.0
 margin_bottom = 593.0
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
@@ -34,4 +34,3 @@ render_target_v_flip = true
 gui_disable_input = true
 
 [node name="J" parent="Viewport" instance=ExtResource( 1 )]
-script = ExtResource( 3 )

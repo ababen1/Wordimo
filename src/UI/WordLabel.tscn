@@ -105,14 +105,8 @@ tracks/1/keys = {
 }
 
 [node name="WordLabel" type="Label"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 1456.0
-margin_top = 877.0
-margin_right = 1616.0
-margin_bottom = 923.0
+margin_right = 160.0
+margin_bottom = 46.0
 rect_pivot_offset = Vector2( 80, 23 )
 custom_fonts/font = SubResource( 4 )
 text = "Word"

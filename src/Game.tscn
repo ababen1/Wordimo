@@ -80,16 +80,6 @@ highlight_color = Color( 0.678431, 1, 0.180392, 0.666667 )
 [node name="Blocks" type="Node2D" parent="."]
 position = Vector2( 1368, 736 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="Queue" parent="CanvasLayer" instance=ExtResource( 5 )]
-margin_left = -208.0
-margin_top = 31.0
-margin_right = -28.0
-margin_bottom = 576.0
-mouse_filter = 2
-
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Score" type="Label" parent="HUD"]
@@ -132,17 +122,26 @@ margin_left = 8.0
 margin_top = -24.0
 margin_right = 48.0
 margin_bottom = -4.0
-text = "New"
+text = "Restart"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Queue" parent="CanvasLayer" instance=ExtResource( 5 )]
+margin_left = -208.0
+margin_top = 31.0
+margin_right = -28.0
+margin_bottom = 576.0
 
 [connection signal="game_started" from="." to="HUD/Score" method="_on_GameBoard_game_started"]
 [connection signal="game_started" from="." to="HUD/BlocksTimer" method="_on_GameBoard_game_started"]
 [connection signal="turn_completed" from="." to="HUD/Score" method="_on_GameBoard_turn_completed"]
 [connection signal="block_placed" from="GameGrid" to="." method="_on_GameGrid_block_placed"]
 [connection signal="board_size_changed" from="GameGrid" to="." method="_on_GameGrid_board_size_changed"]
-[connection signal="block_clicked" from="CanvasLayer/Queue" to="." method="_on_Queue_block_clicked"]
-[connection signal="panel_clicked" from="CanvasLayer/Queue" to="." method="_on_Queue_panel_clicked"]
 [connection signal="pressed" from="HUD/BlocksTimer/Button" to="HUD/Score" method="_on_Button_pressed"]
 [connection signal="pressed" from="HUD/BlocksTimer/Button" to="HUD/BlocksTimer" method="_on_Button_pressed"]
 [connection signal="timeout" from="HUD/BlocksTimer/Timer" to="." method="_on_BlocksTimer_timeout"]
 [connection signal="timeout" from="HUD/BlocksTimer/Timer" to="HUD/BlocksTimer" method="_on_timeout"]
 [connection signal="pressed" from="HUD/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="block_clicked" from="CanvasLayer/Queue" to="." method="_on_Queue_block_clicked"]
+[connection signal="panel_clicked" from="CanvasLayer/Queue" to="." method="_on_Queue_panel_clicked"]
