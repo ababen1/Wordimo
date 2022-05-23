@@ -11,7 +11,15 @@ func _enter_tree() -> void:
 	size_flags_horizontal = SIZE_SHRINK_CENTER
 	size_flags_vertical = 0
 
+func _ready() -> void:
+	if not Engine.editor_hint:
+# warning-ignore:return_value_discarded
+		connect("mouse_entered", self, "_on_mouse_entered")
+
 func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		accept_event()
 		emit_signal("clicked")
+
+func _on_mouse_entered() -> void:
+	SFX.play_sound_effect(SFX.SOUNDS.hover)

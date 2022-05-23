@@ -15,6 +15,7 @@ func _on_timeout() -> void:
 	time_bar.value = 0
 
 func _on_Button_pressed() -> void:
+	SFX.play_sound_effect(SFX.SOUNDS.add_block)
 	timer.emit_signal("timeout")
 
 func _on_GameBoard_game_started() -> void:

@@ -63,6 +63,7 @@ config/icon="res://icon.png"
 [autoload]
 
 WordsDatabase="*res://src/WordsDatabase/DictonaryCreator.gd"
+SFX="*res://src/SFX.gd"
 
 [display]
 

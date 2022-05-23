@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Rotate.wav-62dccb1fe4be35cc1eea9ff374e93f81.sample"
+
+[deps]
+
+source_file="res://assets/SFX/Rotate.wav"
+dest_files=[ "res://.import/Rotate.wav-62dccb1fe4be35cc1eea9ff374e93f81.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

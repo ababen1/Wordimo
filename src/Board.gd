@@ -2,7 +2,6 @@ extends Node2D
 
 # add a new block every x seconds
 export var add_block_delay: = 1.0 setget set_add_block_delay
-export var camera_offset: = Vector2()
 
 signal turn_completed(words_found)
 signal game_started
@@ -11,6 +10,7 @@ onready var tilemap = $GameGrid
 onready var _blocks_node = find_node("Blocks")
 onready var blocks_timer: Timer = $HUD/BlocksTimer/Timer
 onready var blocks_queue = $CanvasLayer/Queue
+onready var audio_stream: = $AudioStreamPlayer
 
 var blocks: Array = []
 var dragged_block: Block = null setget set_dragged_block
@@ -38,7 +38,7 @@ func start_new_game() -> void:
 	for prev_game_block in get_tree().get_nodes_in_group("blocks"):
 		prev_game_block.queue_free()
 	tilemap.reset_board()
-	$CanvasLayer/Queue.clear()
+	blocks_queue.clear()
 	add_block(blocks_factory.get_random_block())
 	emit_signal("game_started")
 
@@ -79,6 +79,10 @@ func popup_word(
 		get_tree().root.add_child(label)
 		label.setup(word, global_pos, color, font)
 
+func play_sound(sound: AudioStream) -> void:
+	audio_stream.stream = sound
+	audio_stream.play()
+
 func _on_BlocksTimer_timeout() -> void:
 	if add_block_delay != 0:
 		add_block(blocks_factory.get_random_block())
@@ -93,6 +97,10 @@ func _on_GameGrid_block_placed(block: Block) -> void:
 		cells_to_check.append(tile_cords)
 	var words_found: Array = tilemap.find_words_in_board(cells_to_check)
 	words_found = _validate_words(words_found)
+	if not words_found.empty():
+		SFX.play_sound_effect(SFX.SOUNDS.clear_word)
+	else:
+		SFX.play_sound_effect(SFX.SOUNDS.place_block)
 	print(words_found)
 	for word_data in words_found:
 		tilemap.clear_cells(word_data.from, word_data.to)

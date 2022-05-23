@@ -68,7 +68,7 @@ func get_letter_at(cord: Vector2) -> String:
 	var letter = tiles_data.get(cord)
 	return letter.letter if letter else ""
 
-func clear_cell(cell: Vector2, animate: = true) -> void:
+func clear_cell(cell: Vector2, animate: = true, sfx:= true) -> void:
 	var tile: Letter = tiles_data.get(cell)
 	if tile:
 # warning-ignore:return_value_discarded

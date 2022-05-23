@@ -61,7 +61,6 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 [node name="GameBoard" type="Node2D"]
 script = ExtResource( 3 )
 add_block_delay = 7.0
-camera_offset = Vector2( 200, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 576, 272 )
@@ -78,6 +77,9 @@ script = ExtResource( 4 )
 size = Vector2( 11, 9 )
 highlight_color = Color( 0.678431, 1, 0.180392, 0.666667 )
 
+[node name="Blocks" type="Node2D" parent="."]
+position = Vector2( 1368, 736 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -86,9 +88,7 @@ margin_left = -208.0
 margin_top = 31.0
 margin_right = -28.0
 margin_bottom = 576.0
-
-[node name="Blocks" type="Node2D" parent="."]
-position = Vector2( 1368, 736 )
+mouse_filter = 2
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

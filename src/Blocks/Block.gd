@@ -10,11 +10,11 @@ const LETTER = preload("res://src/Letter.tscn")
 const COLLISION_LAYER_BOARD = 2
 const COLLISION_LAYER_SHAPES = 1
 
-onready var type = name.validate_node_name().rstrip("0123456789")
-
 export var chance_for_vowel: = 0.75
 
+onready var type = name.validate_node_name().rstrip("0123456789")
 onready var sprite: = $Sprite
+onready var area: Area2D = $Area2D
 
 var is_inside_grid: = false setget set_is_inside_grid
 var locked: = false setget set_locked
@@ -26,10 +26,9 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	setup()
 # warning-ignore:return_value_discarded
-	$Area2D.connect("input_event", self, "_on_area2D_input_event")
-
+	area.connect("input_event", self, "_on_area2D_input_event")
+	
 func _process(_delta: float) -> void:
-	self.is_inside_grid = _check_is_inside_grid()
 	update()
 
 func get_texture() -> Texture:
@@ -68,7 +67,7 @@ func get_letters() -> Array:
 
 func set_locked(val: bool):
 	locked = val
-	$Area2D.input_pickable = not locked
+	area.input_pickable = not locked
 
 func set_is_inside_grid(val: bool):
 	if val != is_inside_grid:
@@ -80,7 +79,7 @@ func set_is_inside_grid(val: bool):
 
 func setup():
 	# Adding letters
-	for child in $Area2D.get_children():
+	for child in area.get_children():
 		if child is CollisionShape2D:
 			var letter = LETTER.instance()
 			child.add_child(letter)
@@ -93,16 +92,15 @@ func setup():
 			letter.color = CONSTS.SHAPES[type]
 	sprite.hide()
 
-func rotate_shape() -> void:
+func rotate_shape(with_sound: = true) -> void:
 	rotation_degrees += 90
 	for letter in letters:
 		letter.rect_rotation -= 90
+	if with_sound:
+		SFX.play_sound_effect(SFX.SOUNDS.rotate)
 
 func _on_area2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("left_click"):
 		emit_signal("block_pressed")
 	elif event.is_action_pressed("right_click"):
 		emit_signal("rotate_pressed")
-
-func _check_is_inside_grid() -> bool:
-	return true
