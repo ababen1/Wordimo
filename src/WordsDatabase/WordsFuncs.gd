@@ -3,7 +3,7 @@ class_name WordsFuncs
 
 # minimum amount of characters a word should have in order
 # to be considered a word. can be raised for higher difficulty
-var MIN_CHARS: = 3
+var MIN_CHARS: = 4
 
 func is_valid_word(word: String, min_chars: = MIN_CHARS) -> bool:
 	return (word.length() >= min_chars) and (

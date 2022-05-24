@@ -6,7 +6,7 @@ signal rotate_pressed
 signal entered_grid
 signal exited_grid
 
-const LETTER = preload("res://src/Letter.tscn")
+const LETTER = preload("Letter.tscn")
 const COLLISION_LAYER_BOARD = 2
 const COLLISION_LAYER_SHAPES = 1
 

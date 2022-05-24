@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "PanelContainer",
 "class": "Letter",
 "language": "GDScript",
-"path": "res://src/Letter.gd"
+"path": "res://src/Blocks/Letter.gd"
 }, {
 "base": "Label",
 "class": "WordLabel",
@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "WordsFuncs",
 "language": "GDScript",
-"path": "res://src/WordsFuncs.gd"
+"path": "res://src/WordsDatabase/WordsFuncs.gd"
 } ]
 _global_script_class_icons={
 "Block": "",
@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="WordTetris"
-run/main_scene="res://src/Game.tscn"
+run/main_scene="res://src/GameBoard/Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -69,6 +69,10 @@ SFX="*res://src/SFX.gd"
 
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/build-and-deploy/plugin.cfg" )
 
 [importer_defaults]
 

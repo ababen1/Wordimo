@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/Letter.gd" type="Script" id=1]
-[ext_resource path="res://assets/LetterFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/LetterFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/Blocks/Letter.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxTexture" id=8]
 
@@ -14,7 +14,7 @@ rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 32, 32 )
 mouse_filter = 2
 custom_styles/panel = SubResource( 8 )
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": true
@@ -33,7 +33,7 @@ margin_right = 53.0
 margin_bottom = 63.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 6 )
 text = "O"
 
