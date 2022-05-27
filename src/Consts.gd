@@ -9,7 +9,13 @@ enum COLORS {
 	PURPLE, 
 	RED, 
 	YELLOW,
-	NONE}
+	NONE
+}
+enum LETTER_TYPE {
+	ANY,
+	VOWEL,
+	JOCKER
+}
 
 const DEFAULT_FONT = preload("res://assets/LetterFont.tres")
 const VALID_LETTERS = "abcdefghijklmnopqrstuvwxyz"

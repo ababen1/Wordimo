@@ -18,7 +18,7 @@ onready var area: Area2D = $Area2D
 
 var is_inside_grid: = false setget set_is_inside_grid
 var locked: = false setget set_locked
-var letters = []
+var letters: Array = []
 
 func _enter_tree() -> void:
 	add_to_group("blocks")
@@ -61,9 +61,6 @@ func reset_position() -> void:
 	if not is_inside_tree():
 		yield(self, "ready")
 	position = sprite.offset * -1
-
-func get_letters() -> Array:
-	return letters
 
 func set_locked(val: bool):
 	locked = val

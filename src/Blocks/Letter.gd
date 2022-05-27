@@ -1,4 +1,4 @@
-#tool
+tool
 extends PanelContainer
 class_name Letter
 

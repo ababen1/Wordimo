@@ -3,9 +3,9 @@
 [ext_resource path="res://assets/LetterFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/Blocks/Letter.gd" type="Script" id=2]
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=10]
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id=9]
 
 [node name="Letter" type="PanelContainer"]
 anchor_right = 0.0625
@@ -13,13 +13,13 @@ anchor_bottom = 0.106667
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 32, 32 )
 mouse_filter = 2
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 10 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": true
 }
-letter = "a"
+letter = "J"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_right = 64.0
@@ -27,14 +27,14 @@ margin_bottom = 64.0002
 mouse_filter = 2
 
 [node name="Letter" type="Label" parent="CenterContainer"]
-margin_left = 11.0
+margin_left = 18.0
 margin_top = 1.0
-margin_right = 53.0
+margin_right = 45.0
 margin_bottom = 63.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
-custom_styles/normal = SubResource( 6 )
-text = "O"
+custom_styles/normal = SubResource( 9 )
+text = "J"
 
 [node name="Tween" type="Tween" parent="."]

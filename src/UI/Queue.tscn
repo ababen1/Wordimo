@@ -9,6 +9,7 @@ anchor_right = 1.0
 margin_left = -184.0
 margin_bottom = 600.0
 mouse_filter = 1
+size_flags_vertical = 3
 script = ExtResource( 2 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]

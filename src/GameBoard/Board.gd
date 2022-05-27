@@ -1,4 +1,5 @@
 extends Node2D
+class_name WordTetrisGame
 
 # add a new block every x seconds
 export var add_block_delay: = 1.0 setget set_add_block_delay
@@ -8,8 +9,8 @@ signal game_started
 
 onready var tilemap = $GameGrid
 onready var _blocks_node = find_node("Blocks")
-onready var blocks_timer: Timer = $HUD/BlocksTimer/Timer
-onready var blocks_queue = $CanvasLayer/Queue
+onready var blocks_timer: Timer = $Queue/VBox/BlocksTimer/Timer
+onready var blocks_queue = $Queue/VBox/Queue
 onready var audio_stream: = $AudioStreamPlayer
 
 var blocks: Array = []
@@ -145,5 +146,5 @@ func _on_Queue_panel_clicked() -> void:
 	if dragged_block:
 		drop_block()
 
-func _on_NewGame_pressed() -> void:
+func _on_HUD_start_new_game() -> void:
 	start_new_game()

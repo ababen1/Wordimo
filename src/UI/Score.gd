@@ -22,7 +22,7 @@ func _on_Button_pressed() -> void:
 	# Bonus for spawning a block earlier then usual
 	self.score += manual_block_spawn_bonus
 
-func _on_GameBoard_turn_completed(words_found: Array) -> void:
+func _on_turn_completed(words_found: Array) -> void:
 	var points_earned: float = calculate_score(words_found)
 	if points_earned == 0:
 		self.combo = 0
@@ -33,6 +33,6 @@ func _on_GameBoard_turn_completed(words_found: Array) -> void:
 		self.score += pow(10, combo)
 	
 
-func _on_GameBoard_game_started() -> void:
+func _on_game_started() -> void:
 	self.score = 0
 	self.combo = 0

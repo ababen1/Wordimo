@@ -14,6 +14,9 @@ func get_random_block() -> Block:
 		rand_range(0, blocks_beanbag.size() - 1))
 	return instance_block(block_type)
 
+func create_custom_block(type: String, letters: Array) -> Block:
+	return instance_block(type)
+
 static func instance_block(type: String) -> Block:
 	type = type.to_upper()
 	if type in BLOCKS:
