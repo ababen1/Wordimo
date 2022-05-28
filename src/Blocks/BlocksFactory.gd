@@ -25,9 +25,6 @@ static func create_letter_block(letter = null) -> Letter:
 		new_letter.set_random_letter()
 	return new_letter
 
-func create_custom_block(type: String, letters: Array):
-	return instance_block(type)
-
 static func instance_block(type: String):
 	type = type.to_upper()
 	if type in BLOCKS:

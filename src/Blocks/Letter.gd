@@ -24,7 +24,11 @@ func _enter_tree() -> void:
 		set_random_letter()
 
 func set_letter_type(val: int) -> void:
+	if not is_inside_tree():
+		yield(self, "ready")
 	letter_type = val
+	$CenterContainer/Letter.visible = not(letter_type == CONSTS.LETTER_TYPE.JOCKER)
+	$Star.visible = (letter_type == CONSTS.LETTER_TYPE.JOCKER)
 	set_random_letter()
 	
 func set_letter(val: String) -> void:
@@ -78,4 +82,3 @@ static func get_random_array_element(array: Array):
 
 func _enum_to_filename(val: int) -> String:
 	return CONSTS.COLORS.keys()[val].capitalize() + ".png"
-
