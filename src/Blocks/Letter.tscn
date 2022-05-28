@@ -19,7 +19,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": true
 }
-letter = "J"
+letter = "L"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_right = 64.0
@@ -27,14 +27,14 @@ margin_bottom = 64.0002
 mouse_filter = 2
 
 [node name="Letter" type="Label" parent="CenterContainer"]
-margin_left = 18.0
+margin_left = 17.0
 margin_top = 1.0
-margin_right = 45.0
+margin_right = 47.0
 margin_bottom = 63.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 9 )
-text = "J"
+text = "L"
 
 [node name="Tween" type="Tween" parent="."]

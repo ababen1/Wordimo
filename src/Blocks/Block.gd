@@ -6,11 +6,8 @@ signal rotate_pressed
 signal entered_grid
 signal exited_grid
 
-const LETTER = preload("Letter.tscn")
 const COLLISION_LAYER_BOARD = 2
 const COLLISION_LAYER_SHAPES = 1
-
-export var chance_for_vowel: = 0.75
 
 onready var type = name.validate_node_name().rstrip("0123456789")
 onready var sprite: = $Sprite
@@ -18,7 +15,7 @@ onready var area: Area2D = $Area2D
 
 var is_inside_grid: = false setget set_is_inside_grid
 var locked: = false setget set_locked
-var letters: Array = []
+var letters: Array = [] setget set_letters
 
 func _enter_tree() -> void:
 	add_to_group("blocks")
@@ -56,7 +53,6 @@ func get_texture() -> Texture:
 	viewport.queue_free()
 	return texture
 	
-	
 func reset_position() -> void:
 	if not is_inside_tree():
 		yield(self, "ready")
@@ -78,16 +74,29 @@ func setup():
 	# Adding letters
 	for child in area.get_children():
 		if child is CollisionShape2D:
-			var letter = LETTER.instance()
+			var letter = BlocksFactory.create_letter_block()
 			child.add_child(letter)
 			letter.rect_position = -letter.rect_size/2
-			if randf() >= chance_for_vowel:
-				letter.set_random_vowel()
-			else:
-				letter.set_random_letter()
 			letters.append(letter)
 			letter.color = CONSTS.SHAPES[type]
 	sprite.hide()
+
+func set_letters(val: Array):
+	for variant in val:
+		assert(variant is Letter)
+	for i in letters.size():
+		letters[i].get_parent().add_child(val[i])
+		letters[i].queue_free()
+	letters = val
+
+func set_letter(index: int, new_letter: Letter) -> void:
+	if index >= 0 and index < letters.size():
+		letters[index].get_parent().add_child(new_letter)
+		letters[index].queue_free()
+		letters[index] = new_letter
+		
+func get_letter(index: int) -> Letter:
+	return letters[index] if index >= 0 and index < letters.size() else null
 
 func rotate_shape(with_sound: = true) -> void:
 	rotation_degrees += 90

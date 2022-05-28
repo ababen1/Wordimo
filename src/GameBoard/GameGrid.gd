@@ -26,13 +26,14 @@ func _process(_delta: float) -> void:
 					cells_to_highlight.append(
 						world_to_map(letter.rect_global_position + cell_size / 2))
 		update()
-					
+	
 func _draw() -> void:
 	if not Engine.editor_hint:
 		for cell in cells_to_highlight:
 			draw_rect(
 				Rect2(to_global(map_to_world(cell)), cell_size), 
 				highlight_color)
+		draw_rect(get_rect(), Color.whitesmoke, false, 5)			
 
 func reset_board() -> void:
 	for cord in tiles_data.keys():

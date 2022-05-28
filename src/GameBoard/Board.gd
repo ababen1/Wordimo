@@ -3,6 +3,7 @@ class_name WordTetrisGame
 
 # add a new block every x seconds
 export var add_block_delay: = 1.0 setget set_add_block_delay
+export var chance_for_vowel: = 0.75
 
 signal turn_completed(words_found)
 signal game_started
@@ -20,6 +21,9 @@ var words_funcs = WordsFuncs.new()
 var combo: int = 0
 
 func _ready() -> void:
+	blocks_queue.connect("block_clicked", self, "_on_queue_block_clicked")
+	blocks_queue.connect("panel_clicked", self, "_on_queue_panel_clicked")
+	tilemap.connect("block_placed", self, "_on_block_placed")
 	start_new_game()
 
 func _process(_delta: float) -> void:
@@ -47,6 +51,12 @@ func start_new_game() -> void:
 
 func add_block(block: Block) -> void:
 	_blocks_node.add_child(block)
+	for letter in block.letters:
+		if randf() >= chance_for_vowel:
+			letter.letter_type = CONSTS.LETTER_TYPE.VOWEL
+		else:
+			letter.letter_type = CONSTS.LETTER_TYPE.NON_VOWEL
+		letter.set_random_letter()
 	blocks_queue.add_block(block)
 	
 func set_dragged_block(val: Block) -> void:
@@ -91,7 +101,7 @@ func _on_BlocksTimer_timeout() -> void:
 		add_block(blocks_factory.get_random_block())
 		blocks_timer.start()
 
-func _on_GameGrid_block_placed(block: Block) -> void:
+func _on_block_placed(block: Block) -> void:
 	tilemap._print_board()
 	var cells_to_check: = []
 	# Mark all the cells in the placed block as cells to check
@@ -125,16 +135,8 @@ func _validate_words(words: Array) -> Array:
 			new_data["to"] = new_data["from"] + direction * (word_found.length() - 1)
 			valid_words.append(new_data)
 	return valid_words
-	
-func _on_GameGrid_board_size_changed(_new_size) -> void:
-	if not tilemap:
-		yield(self, "ready")
-	update()
 
-func _draw() -> void:
-	draw_rect(tilemap.get_rect(), Color.whitesmoke, false, 5)
-
-func _on_Queue_block_clicked(block: Block) -> void:
+func _on_queue_block_clicked(block: Block) -> void:
 	block.get_parent().remove_child(block)
 	add_child(block)
 	block.visible = true
@@ -142,7 +144,7 @@ func _on_Queue_block_clicked(block: Block) -> void:
 		drop_block()
 	self.dragged_block = block
 
-func _on_Queue_panel_clicked() -> void:
+func _on_queue_panel_clicked() -> void:
 	if dragged_block:
 		drop_block()
 

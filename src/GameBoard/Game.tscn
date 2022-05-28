@@ -126,12 +126,6 @@ margin_top = 24.0
 margin_right = 248.0
 margin_bottom = 568.0
 
-[connection signal="game_started" from="." to="Queue/VBox/BlocksTimer" method="_on_GameBoard_game_started"]
-[connection signal="block_placed" from="GameGrid" to="." method="_on_GameGrid_block_placed"]
-[connection signal="board_size_changed" from="GameGrid" to="." method="_on_GameGrid_board_size_changed"]
-[connection signal="start_new_game" from="HUD" to="." method="_on_HUD_start_new_game"]
 [connection signal="pressed" from="Queue/VBox/BlocksTimer/Button" to="Queue/VBox/BlocksTimer" method="_on_Button_pressed"]
 [connection signal="timeout" from="Queue/VBox/BlocksTimer/Timer" to="." method="_on_BlocksTimer_timeout"]
 [connection signal="timeout" from="Queue/VBox/BlocksTimer/Timer" to="Queue/VBox/BlocksTimer" method="_on_timeout"]
-[connection signal="block_clicked" from="Queue/VBox/Queue" to="." method="_on_Queue_block_clicked"]
-[connection signal="panel_clicked" from="Queue/VBox/Queue" to="." method="_on_Queue_panel_clicked"]

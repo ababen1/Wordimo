@@ -12,15 +12,18 @@ enum COLORS {
 	NONE
 }
 enum LETTER_TYPE {
-	ANY,
-	VOWEL,
-	JOCKER
+	ANY, # can be any letter, from A to Z
+	VOWEL, # can only be a vowel letter (a, e, o, i, u)
+	NON_VOWEL, # can be any letter except vowels
+	JOCKER # a letter used to complete words, like a blank tile in scrabble
 }
 
-const DEFAULT_FONT = preload("res://assets/LetterFont.tres")
-const VALID_LETTERS = "abcdefghijklmnopqrstuvwxyz"
+const DEFAULT_FONT: = preload("res://assets/LetterFont.tres")
+const VALID_LETTERS: = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 const VOWELS: = ["a", "e", "o", "i", "u"]
-const SHAPES = {
+const NON_VOWELS: = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
+const JOKER = "★"
+const SHAPES: = {
 	"I": COLORS.CYAN,
 	"J": COLORS.BLUE,
 	"L": COLORS.ORANGE,
@@ -30,8 +33,4 @@ const SHAPES = {
 	"Z": COLORS.RED
 }
 
-
-			
-			
-			
 			
