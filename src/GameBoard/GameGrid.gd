@@ -119,6 +119,8 @@ func find_words_in_board(changed_cells: Array) -> Array:
 			rows_to_check.append(cell.y)
 		if not cell.x in columns_to_check:
 			columns_to_check.append(cell.x)
+	print("checking rows: ", rows_to_check)
+	print("checking columns: ", columns_to_check)
 	for row in rows_to_check:
 		all_words.append_array(
 			_check_for_words(Vector2(0, row), Vector2.RIGHT))
@@ -131,19 +133,24 @@ func _check_for_words(cell: Vector2, direction: = Vector2.RIGHT) -> Array:
 	var current_cell = cell
 	var current_word = ""
 	var words: = []
+	print("searching from " + str(cell), "direction: " + str(direction))
 	while Rect2(Vector2.ZERO, size).has_point(current_cell):
 		var current_letter: Letter = tiles_data.get(current_cell)
 		if current_letter:
 			current_word += current_letter.letter
 		else:
-			if current_word and current_word.length() >= words_funcs.MIN_CHARS:
-				words.append({
-					"word": current_word,
-					"from": current_cell - direction * current_word.length(),
-					"to": current_cell - direction})
+			_append_word(current_word, words, current_cell, direction)
 			current_word = ""
 		current_cell += direction
+	_append_word(current_word, words, current_cell, direction)
 	return words
+
+func _append_word(word: String, array: Array, cell: Vector2, direction: Vector2) -> void:
+	if word and word.length() >= words_funcs.MIN_CHARS:
+		array.append({
+			"word": word,
+			"from": cell - direction * word.length(),
+			"to": cell - direction})
 
 func get_letters_between(start: Vector2, end: Vector2) -> Array:
 	var direction = start.direction_to(end)

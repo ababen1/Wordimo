@@ -11,8 +11,9 @@ signal game_started
 onready var tilemap = $GameGrid
 onready var _blocks_node = find_node("Blocks")
 onready var blocks_timer: Timer = $Queue/VBox/BlocksTimer/Timer
-onready var blocks_queue = $Queue/VBox/Queue
+onready var blocks_queue_panel = $Queue/VBox/QueuePanel
 onready var audio_stream: = $AudioStreamPlayer
+onready var HUD = $HUD
 
 var blocks: Array = []
 var dragged_block: Block = null setget set_dragged_block
@@ -21,9 +22,12 @@ var words_funcs = WordsFuncs.new()
 var combo: int = 0
 
 func _ready() -> void:
-	blocks_queue.connect("block_clicked", self, "_on_queue_block_clicked")
-	blocks_queue.connect("panel_clicked", self, "_on_queue_panel_clicked")
+	blocks_queue_panel.connect("block_clicked", self, "_on_queue_block_clicked")
+	blocks_queue_panel.connect("panel_clicked", self, "_on_queue_panel_clicked")
+# warning-ignore:return_value_discarded
+	blocks_timer.connect("timeout", self, "_on_BlocksTimer_timeout")
 	tilemap.connect("block_placed", self, "_on_block_placed")
+	HUD.connect("start_new_game", self, "start_new_game")
 	start_new_game()
 
 func _process(_delta: float) -> void:
@@ -45,7 +49,7 @@ func start_new_game() -> void:
 	for prev_game_block in get_tree().get_nodes_in_group("blocks"):
 		prev_game_block.queue_free()
 	tilemap.reset_board()
-	blocks_queue.clear()
+	blocks_queue_panel.clear()
 	add_block(blocks_factory.get_random_block())
 	emit_signal("game_started")
 
@@ -57,7 +61,7 @@ func add_block(block: Block) -> void:
 		else:
 			letter.letter_type = CONSTS.LETTER_TYPE.NON_VOWEL
 		letter.set_random_letter()
-	blocks_queue.add_block(block)
+	blocks_queue_panel.add_block(block)
 	
 func set_dragged_block(val: Block) -> void:
 	if dragged_block:
@@ -81,7 +85,7 @@ func drop_block(block: Block = dragged_block) -> void:
 	else:
 		block.get_parent().remove_child(block)
 		_blocks_node.add_child(block)
-		blocks_queue.cancel_movement(block)	
+		blocks_queue_panel.cancel_movement(block)	
 
 func popup_word(
 	word: String, 
