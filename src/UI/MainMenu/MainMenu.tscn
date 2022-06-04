@@ -67,3 +67,19 @@ margin_bottom = 255.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 text = "HOW TO PLAY"
+
+[node name="TutorialPopup" type="AcceptDialog" parent="."]
+visible = true
+margin_left = 152.0
+margin_top = 88.0
+margin_right = 663.0
+margin_bottom = 360.0
+window_title = "How to play"
+dialog_text = "Use blocks to write as many words as you can!
+
+Click a block to pick it up
+Right click a block to rotate it
+"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Tutorial" to="." method="_on_Tutorial_pressed"]

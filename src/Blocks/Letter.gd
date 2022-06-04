@@ -41,15 +41,7 @@ func set_letter(val: String) -> void:
 	$CenterContainer/Letter.text = letter
 
 func set_random_letter() -> void:
-	match letter_type:
-		CONSTS.LETTER_TYPE.ANY:
-			set_letter(get_random_array_element(CONSTS.VALID_LETTERS))
-		CONSTS.LETTER_TYPE.VOWEL:
-			set_letter(get_random_array_element(CONSTS.VOWELS))
-		CONSTS.LETTER_TYPE.NON_VOWEL:
-			set_letter(get_random_array_element(CONSTS.NON_VOWELS))
-		CONSTS.LETTER_TYPE.JOCKER:
-			set_letter(CONSTS.JOKER)
+	set_letter(CONSTS.pick_random_letter())
 			
 func set_color(val: int) -> void:
 	color = val

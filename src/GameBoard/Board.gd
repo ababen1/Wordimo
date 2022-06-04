@@ -58,10 +58,6 @@ func add_block(block: Block, auto_set_letters: = true) -> void:
 	_blocks_node.add_child(block)
 	if auto_set_letters:
 		for letter in block.letters:
-			if randf() >= chance_for_vowel:
-				letter.letter_type = CONSTS.LETTER_TYPE.VOWEL
-			else:
-				letter.letter_type = CONSTS.LETTER_TYPE.NON_VOWEL
 			letter.set_random_letter()
 	blocks_queue_panel.add_block(block)
 	
