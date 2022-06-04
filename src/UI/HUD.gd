@@ -10,7 +10,9 @@ func _ready() -> void:
 	setup(owner)
 
 func setup(game: WordTetrisGame) -> void:
+# warning-ignore:return_value_discarded
 	game.connect("game_started", score, "_on_game_started")
+# warning-ignore:return_value_discarded
 	game.connect("turn_completed", score, "_on_turn_completed")
 
 func _on_NewGame_pressed() -> void:

@@ -133,7 +133,6 @@ func _check_for_words(cell: Vector2, direction: = Vector2.RIGHT) -> Array:
 	var current_cell = cell
 	var current_word = ""
 	var words: = []
-	print("searching from " + str(cell), "direction: " + str(direction))
 	while Rect2(Vector2.ZERO, size).has_point(current_cell):
 		var current_letter: Letter = tiles_data.get(current_cell)
 		if current_letter:

@@ -17,7 +17,7 @@ onready var HUD = $HUD
 
 var blocks: Array = []
 var dragged_block: Block = null setget set_dragged_block
-var blocks_factory = BlocksFactory.new()
+var blocks_factory: = BlocksFactory.new()
 var words_funcs = WordsFuncs.new()
 var combo: int = 0
 
@@ -51,16 +51,18 @@ func start_new_game() -> void:
 	tilemap.reset_board()
 	blocks_queue_panel.clear()
 	add_block(blocks_factory.get_random_block())
+	blocks_timer.start(add_block_delay)
 	emit_signal("game_started")
 
-func add_block(block: Block) -> void:
+func add_block(block: Block, auto_set_letters: = true) -> void:
 	_blocks_node.add_child(block)
-	for letter in block.letters:
-		if randf() >= chance_for_vowel:
-			letter.letter_type = CONSTS.LETTER_TYPE.VOWEL
-		else:
-			letter.letter_type = CONSTS.LETTER_TYPE.NON_VOWEL
-		letter.set_random_letter()
+	if auto_set_letters:
+		for letter in block.letters:
+			if randf() >= chance_for_vowel:
+				letter.letter_type = CONSTS.LETTER_TYPE.VOWEL
+			else:
+				letter.letter_type = CONSTS.LETTER_TYPE.NON_VOWEL
+			letter.set_random_letter()
 	blocks_queue_panel.add_block(block)
 	
 func set_dragged_block(val: Block) -> void:

@@ -64,12 +64,13 @@ _global_script_class_icons={
 
 config/name="WordTetris"
 run/main_scene="res://src/GameBoard/Game.tscn"
-config/icon="res://icon.png"
+config/icon="res://Icon.png"
 
 [autoload]
 
 WordsDatabase="*res://src/WordsDatabase/DictonaryCreator.gd"
 SFX="*res://src/SFX.gd"
+ThemeManger="*res://src/ThemeManger.gd"
 
 [display]
 

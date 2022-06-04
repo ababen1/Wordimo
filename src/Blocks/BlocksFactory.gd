@@ -7,7 +7,7 @@ const LETTER = preload("Letter.tscn")
 
 var blocks_beanbag = BLOCKS.duplicate()
 
-func get_random_block():
+func get_random_block() -> Block:
 	if blocks_beanbag.empty():
 		blocks_beanbag = BLOCKS.duplicate()
 		blocks_beanbag.shuffle()
@@ -15,17 +15,25 @@ func get_random_block():
 		rand_range(0, blocks_beanbag.size() - 1))
 	return instance_block(block_type)
 
-static func create_letter_block(letter = null) -> Letter:
+static func create_custom_block(type: String, letters: Array) -> Block:
+	var new_block: Block = instance_block(type)
+	for i in letters.size():
+		var new_letter: = create_letter_block(type, letters[i])
+		new_block.set_letter(i, new_letter)
+	return new_block
+
+static func create_letter_block(type: String, letter = null) -> Letter:
 	var new_letter = LETTER.instance()
+	new_letter.color = CONSTS.SHAPES[type]
 	if letter is String:
 		new_letter.letter_type = CONSTS.LETTER_TYPE.ANY
 		new_letter.letter = letter
-	elif letter is int and letter in CONSTS.LETTER_TYPE:
+	elif letter is int and letter in CONSTS.LETTER_TYPE.values():
 		new_letter.letter_type = letter
 		new_letter.set_random_letter()
 	return new_letter
 
-static func instance_block(type: String):
+static func instance_block(type: String) -> Block:
 	type = type.to_upper()
 	if type in BLOCKS:
 		var block_scene: PackedScene = load(

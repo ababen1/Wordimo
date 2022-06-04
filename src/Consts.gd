@@ -18,7 +18,6 @@ enum LETTER_TYPE {
 	JOCKER # a letter used to complete words, like a blank tile in scrabble
 }
 
-const DEFAULT_FONT: = preload("res://assets/LetterFont.tres")
 const VALID_LETTERS: = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 const VOWELS: = ["a", "e", "o", "i", "u"]
 const NON_VOWELS: = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]

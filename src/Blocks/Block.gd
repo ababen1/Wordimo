@@ -6,8 +6,7 @@ signal rotate_pressed
 signal entered_grid
 signal exited_grid
 
-const COLLISION_LAYER_BOARD = 2
-const COLLISION_LAYER_SHAPES = 1
+const LETTER_SCENE = preload("Letter.tscn")
 
 onready var type = name.validate_node_name().rstrip("0123456789")
 onready var sprite: = $Sprite
@@ -74,7 +73,7 @@ func setup():
 	# Adding letters
 	for child in area.get_children():
 		if child is CollisionShape2D:
-			var letter = BlocksFactory.create_letter_block()
+			var letter = LETTER_SCENE.instance()
 			child.add_child(letter)
 			letter.rect_position = -letter.rect_size/2
 			letters.append(letter)
@@ -90,8 +89,11 @@ func set_letters(val: Array):
 	letters = val
 
 func set_letter(index: int, new_letter: Letter) -> void:
+	if not is_inside_tree():
+		yield(self, "ready")
 	if index >= 0 and index < letters.size():
 		letters[index].get_parent().add_child(new_letter)
+		new_letter.rect_position = letters[index].rect_position
 		letters[index].queue_free()
 		letters[index] = new_letter
 		

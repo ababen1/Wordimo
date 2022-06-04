@@ -2,7 +2,6 @@ tool
 extends PanelContainer
 class_name Letter
 
-const FONT = preload("res://assets/LetterFont.tres")
 const TEX_FOLDER = "res://assets/Tetriminos/Single Blocks/"
 
 export(CONSTS.LETTER_TYPE) var letter_type setget set_letter_type
@@ -24,12 +23,13 @@ func _enter_tree() -> void:
 		set_random_letter()
 
 func set_letter_type(val: int) -> void:
+	letter_type = val
 	if not is_inside_tree():
 		yield(self, "ready")
-	letter_type = val
 	$CenterContainer/Letter.visible = not(letter_type == CONSTS.LETTER_TYPE.JOCKER)
 	$Star.visible = (letter_type == CONSTS.LETTER_TYPE.JOCKER)
-	set_random_letter()
+	if Engine.editor_hint:
+		set_random_letter()
 	
 func set_letter(val: String) -> void:
 	if val.empty() and Engine.editor_hint:
