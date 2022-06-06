@@ -23,19 +23,18 @@ var blocks: Array = []
 var dragged_block: Block = null setget set_dragged_block
 var blocks_factory: = BlocksFactory.new()
 var words_funcs = WordsFuncs.new()
-var combo: int = 0
-var total_score: = 0
+var combo: = 0
+var total_score: = 0.0
 
 func _ready() -> void:
 	blocks_queue_panel.connect("block_clicked", self, "_on_queue_block_clicked")
 	blocks_queue_panel.connect("panel_clicked", self, "_on_queue_panel_clicked")
-# warning-ignore:return_value_discarded
 	blocks_timer.connect("timeout", self, "_on_BlocksTimer_timeout")
 	tilemap.connect("block_placed", self, "_on_block_placed")
 	HUD.connect("start_new_game", self, "start_new_game")
+	timer.connect("timeout", self, "_on_timeout")
 	connect("times_up", HUD, "_on_times_up")
 	connect("total_score_changed", HUD.score, "set_score")
-	timer.connect("timeout", self, "_on_timeout")
 	start_new_game()
 
 func _process(_delta: float) -> void:
