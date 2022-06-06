@@ -82,3 +82,6 @@ position = Vector2( 1368, 736 )
 [node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="Queue" parent="." instance=ExtResource( 4 )]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
