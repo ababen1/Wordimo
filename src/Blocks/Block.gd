@@ -5,6 +5,7 @@ signal block_pressed
 signal rotate_pressed
 signal entered_grid
 signal exited_grid
+signal block_touchscreen_press
 
 const LETTER_SCENE = preload("Letter.tscn")
 
@@ -108,7 +109,10 @@ func rotate_shape(with_sound: = true) -> void:
 		SFX.play_sound_effect(SFX.SOUNDS.rotate)
 
 func _on_area2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_action_pressed("left_click"):
-		emit_signal("block_pressed")
-	elif event.is_action_pressed("right_click"):
-		emit_signal("rotate_pressed")
+	if event is InputEventMouse:
+		if event.is_action_pressed("left_click"):
+			emit_signal("block_pressed")
+		elif event.is_action_pressed("right_click"):
+			emit_signal("rotate_pressed")
+	elif event is InputEventScreenTouch and event.is_pressed():
+		emit_signal("block_touchscreen_press")

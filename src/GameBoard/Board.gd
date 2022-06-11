@@ -5,6 +5,7 @@ class_name WordTetrisGame
 export var add_block_delay: = 1.0 setget set_add_block_delay
 export var word_length_multiplier: = 10.0
 export var time_limit: = 0.0
+export var drag_input: = false 
 
 signal turn_completed(words_found)
 signal game_started
@@ -25,6 +26,7 @@ var blocks_factory: = BlocksFactory.new()
 var words_funcs = WordsFuncs.new()
 var combo: = 0
 var total_score: = 0.0
+var block_last_pressed: Block
 
 func _ready() -> void:
 	blocks_queue_panel.connect("block_clicked", self, "_on_queue_block_clicked")
@@ -35,6 +37,8 @@ func _ready() -> void:
 	timer.connect("timeout", self, "_on_timeout")
 	connect("times_up", HUD, "_on_times_up")
 	connect("total_score_changed", HUD.score, "set_score")
+	if OS.get_name() == "Android" or OS.get_name() == "iOS":
+		drag_input = true
 	start_new_game()
 
 func _process(_delta: float) -> void:
@@ -46,12 +50,20 @@ func _process(_delta: float) -> void:
 	HUD.set_time_left(timer.time_left)
 	
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("right_click"):
-		if dragged_block:
-			dragged_block.rotate_shape()
-	elif event.is_action_pressed("left_click") and dragged_block:
+	$TEST.text = event.as_text()
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_RIGHT and event.pressed:
+			if dragged_block:
+				dragged_block.rotate_shape()
+		elif event.button_index == BUTTON_LEFT and dragged_block:
+			if not event.pressed and drag_input or (event.pressed and not drag_input):
+				drop_block()
+	elif event is InputEventScreenDrag and dragged_block:
+		if event.is_pressed():
+			dragged_block.position = event.position
+	elif event is InputEventScreenTouch and not event.pressed:
 		drop_block()
-
+	
 func start_new_game() -> void:
 	randomize()
 	for prev_game_block in get_tree().get_nodes_in_group("blocks"):
@@ -69,6 +81,7 @@ func add_block(block: Block, auto_set_letters: = true) -> void:
 	if auto_set_letters:
 		for letter in block.letters:
 			letter.set_random_letter()
+	block.connect("block_touchscreen_press", self, "_on_block_touchscreen_press", [block])
 	blocks_queue_panel.add_block(block)
 	
 func set_dragged_block(val: Block) -> void:
