@@ -50,19 +50,28 @@ func _process(_delta: float) -> void:
 	HUD.set_time_left(timer.time_left)
 	
 func _unhandled_input(event: InputEvent) -> void:
-	$TEST.text = event.as_text()
 	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT and event.pressed:
-			if dragged_block:
-				dragged_block.rotate_shape()
-		elif event.button_index == BUTTON_LEFT and dragged_block:
-			if not event.pressed and drag_input or (event.pressed and not drag_input):
-				drop_block()
-	elif event is InputEventScreenDrag and dragged_block:
+		_handle_mouse_input(event)
+	elif event is InputEventScreenDrag or event is InputEventScreenTouch:
+		_handle_touch_input(event)
+
+func _handle_touch_input(event: InputEvent) -> void:
+	if event is InputEventScreenDrag and dragged_block:
 		if event.is_pressed():
 			dragged_block.position = event.position
 	elif event is InputEventScreenTouch and not event.pressed:
-		drop_block()
+		if event.index > 0:
+			dragged_block.rotate_shape()
+		else:
+			drop_block()
+
+func _handle_mouse_input(event: InputEventMouseButton) -> void:
+	if event.button_index == BUTTON_RIGHT and event.pressed:
+		if dragged_block:
+			dragged_block.rotate_shape()
+	elif event.button_index == BUTTON_LEFT and dragged_block:
+		if not event.pressed and drag_input or (event.pressed and not drag_input):
+			drop_block()
 	
 func start_new_game() -> void:
 	randomize()
