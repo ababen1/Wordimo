@@ -1,14 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://assets/Themes/Gray.tres" type="Theme" id=1]
 [ext_resource path="res://assets/Themes/Resources/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/UI/MainMenu/MainMenu.gd" type="Script" id=3]
-
-[sub_resource type="DynamicFont" id=2]
-size = 20
-font_data = ExtResource( 2 )
-
-[sub_resource type="Theme" id=3]
-default_font = SubResource( 2 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -17,7 +11,7 @@ font_data = ExtResource( 2 )
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 3 )
+theme = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -51,9 +45,9 @@ custom_constants/separation = 30
 alignment = 1
 
 [node name="Start" type="Button" parent="VBoxContainer/VBoxContainer"]
-margin_left = 392.0
-margin_top = 161.0
-margin_right = 471.0
+margin_left = 385.0
+margin_top = 132.0
+margin_right = 479.0
 margin_bottom = 193.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
@@ -63,13 +57,12 @@ text = "START"
 margin_left = 349.0
 margin_top = 223.0
 margin_right = 514.0
-margin_bottom = 255.0
+margin_bottom = 284.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 text = "HOW TO PLAY"
 
 [node name="TutorialPopup" type="AcceptDialog" parent="."]
-visible = true
 margin_left = 152.0
 margin_top = 88.0
 margin_right = 663.0

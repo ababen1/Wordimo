@@ -2,6 +2,8 @@ extends CanvasLayer
 
 signal start_new_game
 
+const BACKGROUNDS_FOLDER = "res://assets/Themes/Backgrounds/"
+
 onready var score = $Control/HBox/Score
 onready var new_game_btn = $Control/NewGame
 onready var _time_left_label: Label = $Control/HBox/TimeLeft

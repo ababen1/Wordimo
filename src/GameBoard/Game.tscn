@@ -85,13 +85,3 @@ position = Vector2( 1368, 736 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-
-[node name="TEST" type="Label" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 584.0
-margin_right = 144.0
-margin_bottom = 615.0
