@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/UI/Queue/QueuePanel.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/Queue/Queue.gd" type="Script" id=2]
+[ext_resource path="res://assets/Themes/Gray.tres" type="Theme" id=3]
 [ext_resource path="res://src/UI/Queue/BlocksTimer.gd" type="Script" id=4]
 
 [node name="Queue" type="CanvasLayer"]
@@ -12,21 +13,23 @@ script = ExtResource( 2 )
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -272.0
-margin_top = 56.0
+margin_top = 16.0
 margin_right = -24.0
 margin_bottom = 576.0
+theme = ExtResource( 3 )
+custom_constants/separation = 30
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="BlocksTimer" type="HBoxContainer" parent="VBox"]
 margin_right = 248.0
-margin_bottom = 20.0
+margin_bottom = 41.0
 script = ExtResource( 4 )
 
 [node name="ProgressBar" type="ProgressBar" parent="VBox/BlocksTimer"]
 margin_right = 224.0
-margin_bottom = 20.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 7.0
@@ -35,31 +38,31 @@ percent_visible = false
 [node name="Button" type="Button" parent="VBox/BlocksTimer"]
 margin_left = 228.0
 margin_right = 248.0
-margin_bottom = 20.0
+margin_bottom = 41.0
 text = "+"
 
 [node name="Timer" type="Timer" parent="VBox/BlocksTimer"]
 one_shot = true
 
 [node name="QueuePanel" type="PanelContainer" parent="VBox"]
-margin_top = 24.0
+margin_top = 71.0
 margin_right = 248.0
-margin_bottom = 520.0
+margin_bottom = 560.0
 mouse_filter = 1
 size_flags_vertical = 3
 script = ExtResource( 1 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBox/QueuePanel"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 241.0
-margin_bottom = 489.0
+margin_left = 33.0
+margin_top = 43.0
+margin_right = 199.0
+margin_bottom = 453.0
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="VBox" type="GridContainer" parent="VBox/QueuePanel/ScrollContainer"]
-margin_left = 117.0
-margin_right = 117.0
+margin_left = 83.0
+margin_right = 83.0
 size_flags_horizontal = 6
