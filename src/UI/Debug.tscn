@@ -7,6 +7,7 @@
 [node name="Debug" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 3 )
 script = ExtResource( 1 )
 
 [node name="LineEdit" type="LineEdit" parent="."]
@@ -21,10 +22,5 @@ margin_right = 160.0
 margin_bottom = 56.0
 
 [node name="GameBoard" parent="." instance=ExtResource( 2 )]
-
-[node name="Button" type="Button" parent="."]
-margin_right = 120.0
-margin_bottom = 35.0
-theme = ExtResource( 3 )
 
 [connection signal="text_entered" from="LineEdit" to="." method="_on_LineEdit_text_entered"]

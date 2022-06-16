@@ -5,6 +5,8 @@ onready var game = $GameBoard
 
 func _ready() -> void:
 	ThemeManger.current_theme = preload("res://assets/Themes/Gray.tres")
-
+	ThemeManger.set_theme_color(Color.yellowgreen)
+				
+	
 func _on_LineEdit_text_entered(new_text: String) -> void:
 	print(words_funcs.find_word(new_text))

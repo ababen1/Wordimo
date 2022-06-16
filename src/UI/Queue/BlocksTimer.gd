@@ -1,8 +1,8 @@
-extends HBoxContainer
+extends Control
 
 onready var timer: = $Timer
-onready var spawn_block_btn = $Button
-onready var time_bar: ProgressBar = $ProgressBar
+onready var spawn_block_btn = $HBox/Button
+onready var time_bar: ProgressBar = $HBox/ProgressBar
 
 signal spawn_block
 

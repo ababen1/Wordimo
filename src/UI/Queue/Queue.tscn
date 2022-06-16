@@ -12,57 +12,71 @@ script = ExtResource( 2 )
 [node name="VBox" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -272.0
+margin_left = -264.0
 margin_top = 16.0
-margin_right = -24.0
+margin_right = -16.0
 margin_bottom = 576.0
 theme = ExtResource( 3 )
-custom_constants/separation = 30
+custom_constants/separation = 5
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="BlocksTimer" type="HBoxContainer" parent="VBox"]
+[node name="BlocksTimer" type="Panel" parent="VBox"]
 margin_right = 248.0
-margin_bottom = 41.0
+margin_bottom = 42.0
+size_flags_vertical = 3
 script = ExtResource( 4 )
 
-[node name="ProgressBar" type="ProgressBar" parent="VBox/BlocksTimer"]
-margin_right = 224.0
-margin_bottom = 41.0
+[node name="HBox" type="HBoxContainer" parent="VBox/BlocksTimer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 2.0
+margin_right = -5.0
+margin_bottom = -2.0
+
+[node name="ProgressBar" type="ProgressBar" parent="VBox/BlocksTimer/HBox"]
+margin_right = 208.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 7.0
 percent_visible = false
 
-[node name="Button" type="Button" parent="VBox/BlocksTimer"]
-margin_left = 228.0
-margin_right = 248.0
-margin_bottom = 41.0
+[node name="Button" type="Button" parent="VBox/BlocksTimer/HBox"]
+margin_left = 212.0
+margin_top = 3.0
+margin_right = 238.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 16, 16 )
+size_flags_horizontal = 0
+size_flags_vertical = 6
 text = "+"
 
 [node name="Timer" type="Timer" parent="VBox/BlocksTimer"]
 one_shot = true
 
 [node name="QueuePanel" type="PanelContainer" parent="VBox"]
-margin_top = 71.0
+margin_top = 47.0
 margin_right = 248.0
 margin_bottom = 560.0
 mouse_filter = 1
 size_flags_vertical = 3
+size_flags_stretch_ratio = 12.0
 script = ExtResource( 1 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBox/QueuePanel"]
-margin_left = 33.0
-margin_top = 43.0
-margin_right = 199.0
-margin_bottom = 453.0
+margin_left = 12.0
+margin_top = 18.0
+margin_right = 235.0
+margin_bottom = 491.0
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="VBox" type="GridContainer" parent="VBox/QueuePanel/ScrollContainer"]
-margin_left = 83.0
-margin_right = 83.0
+margin_left = 111.0
+margin_right = 111.0
 size_flags_horizontal = 6
