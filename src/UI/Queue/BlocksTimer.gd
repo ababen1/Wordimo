@@ -4,6 +4,8 @@ onready var timer: = $Timer
 onready var spawn_block_btn = $HBox/Button
 onready var time_bar: ProgressBar = $HBox/ProgressBar
 
+var wait_time: float = 1 setget set_wait_time
+
 signal spawn_block
 
 func _ready() -> void:
@@ -13,6 +15,14 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	time_bar.value = (timer.wait_time - timer.time_left)
+
+func set_wait_time(val: float) -> void:
+	wait_time = val
+	timer.wait_time = val
+	time_bar.max_value = val
+
+func start() -> void:
+	timer.start(wait_time)
 
 func _on_timeout() -> void:
 	time_bar.value = 0

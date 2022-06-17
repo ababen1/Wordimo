@@ -14,7 +14,7 @@ signal total_score_changed()
 
 onready var tilemap = $GameGrid
 onready var _blocks_node = find_node("Blocks")
-onready var blocks_timer: Timer = $Queue/VBox/BlocksTimer/Timer
+onready var blocks_timer = $Queue/VBox/BlocksTimer
 onready var blocks_queue_panel = $Queue/VBox/QueuePanel
 onready var audio_stream: = $AudioStreamPlayer
 onready var HUD = $HUD
@@ -31,7 +31,7 @@ var block_last_pressed: Block
 func _ready() -> void:
 	blocks_queue_panel.connect("block_clicked", self, "_on_queue_block_clicked")
 	blocks_queue_panel.connect("panel_clicked", self, "_on_queue_panel_clicked")
-	blocks_timer.connect("timeout", self, "_on_BlocksTimer_timeout")
+	blocks_timer.timer.connect("timeout", self, "_on_BlocksTimer_timeout")
 	tilemap.connect("block_placed", self, "_on_block_placed")
 	HUD.connect("start_new_game", self, "start_new_game")
 	timer.connect("timeout", self, "_on_timeout")
@@ -80,7 +80,8 @@ func start_new_game() -> void:
 	tilemap.reset_board()
 	blocks_queue_panel.clear()
 	add_block(blocks_factory.get_random_block())
-	blocks_timer.start(add_block_delay)
+	blocks_timer.wait_time = add_block_delay
+	blocks_timer.start()
 	if time_limit != 0:
 		timer.start(time_limit)
 	emit_signal("game_started")

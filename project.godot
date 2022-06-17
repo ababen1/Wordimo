@@ -87,7 +87,7 @@ _global_script_class_icons={
 [application]
 
 config/name="WordTetris"
-run/main_scene="res://src/GameBoard/Game.tscn"
+run/main_scene="res://src/UI/MainMenu/MainMenu.tscn"
 config/icon="res://Icon.png"
 
 [autoload]
@@ -95,6 +95,7 @@ config/icon="res://Icon.png"
 WordsDatabase="*res://src/WordsDatabase/DictonaryCreator.gd"
 SFX="*res://src/SFX.gd"
 ThemeManger="*res://src/ThemeManger.gd"
+SceneChanger="*res://src/SceneChanger.tscn"
 
 [display]
 

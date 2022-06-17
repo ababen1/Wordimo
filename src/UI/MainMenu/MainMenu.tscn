@@ -61,7 +61,6 @@ size_flags_vertical = 4
 text = "HOW TO PLAY"
 
 [node name="TutorialPopup" type="AcceptDialog" parent="."]
-visible = true
 margin_left = 152.0
 margin_top = 88.0
 margin_right = 648.0
