@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/UI/Score.gd" type="Script" id=1]
 [ext_resource path="res://assets/Icons/Reload.svg" type="Texture" id=2]
 [ext_resource path="res://src/UI/HUD.gd" type="Script" id=3]
 [ext_resource path="res://src/UI/TimesUpDialog.gd" type="Script" id=4]
 [ext_resource path="res://assets/Themes/Backgrounds/abstractbackground (42).png" type="Texture" id=5]
+[ext_resource path="res://assets/Icons/Pause.svg" type="Texture" id=6]
+[ext_resource path="res://src/UI/PauseScreen.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -38,28 +40,33 @@ margin_bottom = 23.0
 size_flags_horizontal = 10
 text = "00:00:00"
 
-[node name="NewGame" type="Button" parent="Control"]
+[node name="VBox" type="VBoxContainer" parent="Control"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = -40.0
-margin_right = 44.0
-margin_bottom = -18.0
+margin_left = 8.0
+margin_top = -120.0
+margin_right = 40.0
+margin_bottom = -8.0
+custom_constants/separation = 10
+alignment = 2
+
+[node name="NewGame" type="Button" parent="Control/VBox"]
+margin_top = 58.0
+margin_right = 28.0
+margin_bottom = 80.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
 icon = ExtResource( 2 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Control"]
+[node name="Pause" type="Button" parent="Control/VBox"]
+margin_top = 90.0
+margin_right = 28.0
+margin_bottom = 112.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+icon = ExtResource( 6 )
 
-[node name="Panel" type="Panel" parent="Control/ParallaxBackground"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -392.0
-margin_top = -224.0
-margin_right = 392.0
-margin_bottom = 224.0
-mouse_filter = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="PauseScreen" parent="Control" instance=ExtResource( 7 )]
 
 [node name="TimesUpDialog" type="ConfirmationDialog" parent="."]
 anchor_left = 0.5
@@ -84,4 +91,4 @@ texture = ExtResource( 5 )
 expand = true
 stretch_mode = 1
 
-[connection signal="pressed" from="Control/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="Control/VBox/NewGame" to="." method="_on_NewGame_pressed"]
