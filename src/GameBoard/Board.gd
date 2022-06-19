@@ -9,14 +9,13 @@ export var drag_input: = false
 
 signal turn_completed(words_found)
 signal game_started
-signal times_up(game_results)
+signal game_over(score, stats)
 signal total_score_changed()
 
 onready var tilemap = $GameGrid
 onready var _blocks_node = find_node("Blocks")
 onready var blocks_timer = $Queue/VBox/BlocksTimer
 onready var blocks_queue_panel = $Queue/VBox/QueuePanel
-onready var audio_stream: = $AudioStreamPlayer
 onready var HUD = $HUD
 onready var timer = $Timer
 
@@ -24,22 +23,30 @@ var blocks: Array = []
 var dragged_block: Block = null setget set_dragged_block
 var blocks_factory: = BlocksFactory.new()
 var words_funcs = WordsFuncs.new()
-var combo: = 0
+var combo: int = 0 setget set_combo
+var stats: = GameStats.new()
 var total_score: = 0.0
-var block_last_pressed: Block
 
 func _ready() -> void:
+	_setup_game_stats()
 	blocks_queue_panel.connect("block_clicked", self, "_on_queue_block_clicked")
 	blocks_queue_panel.connect("panel_clicked", self, "_on_queue_panel_clicked")
 	blocks_timer.timer.connect("timeout", self, "_on_BlocksTimer_timeout")
 	tilemap.connect("block_placed", self, "_on_block_placed")
 	HUD.connect("start_new_game", self, "start_new_game")
 	timer.connect("timeout", self, "_on_timeout")
-	connect("times_up", HUD, "_on_times_up")
+	connect("game_over", HUD, "_on_game_over")
 	connect("total_score_changed", HUD.score, "set_score")
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		drag_input = true
 	start_new_game()
+
+func _setup_game_stats() -> void:
+	stats.add_numeric_stat("highest_combo", 0)
+	stats.add_numeric_stat("blocks_placed", 0)
+	stats.add_numeric_stat("highest_score_in_one_move", 0)
+	stats.add_stat("words_written", [], [])
+	
 
 func _process(_delta: float) -> void:
 	update()
@@ -75,6 +82,7 @@ func _handle_mouse_input(event: InputEventMouseButton) -> void:
 	
 func start_new_game() -> void:
 	randomize()
+	stats.reset_all()
 	for prev_game_block in get_tree().get_nodes_in_group("blocks"):
 		prev_game_block.queue_free()
 	tilemap.reset_board()
@@ -84,7 +92,7 @@ func start_new_game() -> void:
 	blocks_timer.start()
 	if time_limit != 0:
 		timer.start(time_limit)
-	emit_signal("game_started")
+	emit_signal("game_started", self)
 
 func add_block(block: Block, auto_set_letters: = true) -> void:
 	_blocks_node.add_child(block)
@@ -100,6 +108,12 @@ func set_dragged_block(val: Block) -> void:
 	dragged_block = val
 	if dragged_block:
 		dragged_block.z_index += 1	
+
+func set_combo(val: int) -> void:
+	combo = val
+	stats.update_stat(
+		"highest_combo", 
+		max(stats.get_value("highest_combo"), combo))
 
 func set_add_block_delay(val: float):
 	if not is_inside_tree():
@@ -127,10 +141,6 @@ func popup_word(
 		get_tree().root.add_child(label)
 		label.setup(word, global_pos, color, font)
 
-func play_sound(sound: AudioStream) -> void:
-	audio_stream.stream = sound
-	audio_stream.play()
-
 func calculate_score(words):
 	var _score: = 0.0
 	for word_data in words:
@@ -152,6 +162,7 @@ func _on_BlocksTimer_timeout() -> void:
 		blocks_timer.start()
 
 func _on_block_placed(block: Block) -> void:
+	stats.add_to_stat("blocks_placed", 1)
 	tilemap._print_board()
 	var cells_to_check: = []
 	# Mark all the cells in the placed block as cells to check
@@ -170,6 +181,9 @@ func _on_block_placed(block: Block) -> void:
 	for word_data in words_found:
 		tilemap.clear_cells(word_data.from, word_data.to)
 		popup_word(word_data.word, block.global_position, Color.white)
+		stats.add_to_array_stat("words_written", word_data.word)
+	if tilemap.is_full():
+		emit_signal("game_over", total_score, stats.values)
 	emit_signal("turn_completed", words_found)
 
 func _validate_words(words: Array) -> Array:
@@ -203,7 +217,4 @@ func _on_HUD_start_new_game() -> void:
 	start_new_game()
 
 func _on_timeout() -> void:
-	var game_results = {
-		"score": self.total_score
-	}
-	emit_signal("times_up", game_results)
+	emit_signal("game_over", total_score, stats.values)

@@ -1,6 +1,8 @@
 tool
 extends TileMap
 
+const MAX_SIZE = Vector2(13,10)
+
 export var size: = Vector2(5,5) setget set_size
 export var highlight_color: = Color.greenyellow
 
@@ -43,7 +45,8 @@ func set_size(val: Vector2):
 	if not is_inside_tree():
 		yield(self, "ready")
 	clear()
-	size = val
+	size.x = clamp(val.x, 1, MAX_SIZE.x)
+	size.y = clamp(val.y, 1, MAX_SIZE.y)
 	for y in size.y:
 		for x in size.x:
 			var tile_idx = 0 if (x+y) % 2 ==0 else 1
@@ -69,7 +72,14 @@ func get_letter_at(cord: Vector2) -> String:
 	var letter = tiles_data.get(cord)
 	return letter.letter if letter else ""
 
-func clear_cell(cell: Vector2, animate: = true, sfx:= true) -> void:
+func is_full() -> bool:
+	for y in size.y:
+		for x in size.x:
+			if not get_letter_at(Vector2(x,y)):
+				return false
+	return true
+
+func clear_cell(cell: Vector2, animate: = true) -> void:
 	var tile: Letter = tiles_data.get(cell)
 	if tile:
 # warning-ignore:return_value_discarded

@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/color-palette/utilities/FlexGridContainer.gd"
 }, {
+"base": "Reference",
+"class": "GameStats",
+"language": "GDScript",
+"path": "res://src/GameBoard/GameStats.gd"
+}, {
 "base": "PanelContainer",
 "class": "Letter",
 "language": "GDScript",
@@ -53,6 +58,11 @@ _global_script_classes=[ {
 "class": "PaletteImporter",
 "language": "GDScript",
 "path": "res://addons/color-palette/PaletteImporter.gd"
+}, {
+"base": "GridContainer",
+"class": "StatsGrid",
+"language": "GDScript",
+"path": "res://src/UI/Components/StatsGrid.gd"
 }, {
 "base": "Label",
 "class": "WordLabel",
@@ -76,9 +86,11 @@ _global_script_class_icons={
 "CONSTS": "",
 "ColorTile": "",
 "FlexGridContainer": "res://addons/color-palette/utilities/FlexGridContainerIcon.png",
+"GameStats": "",
 "Letter": "",
 "Palette": "",
 "PaletteImporter": "",
+"StatsGrid": "",
 "WordLabel": "",
 "WordTetrisGame": "",
 "WordsFuncs": ""
@@ -105,6 +117,10 @@ window/stretch/aspect="keep"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/build-and-deploy/plugin.cfg", "res://addons/color-palette/plugin.cfg" )
+
+[gui]
+
+theme/custom_font="res://assets/Themes/Resources/RegularFont.tres"
 
 [importer_defaults]
 

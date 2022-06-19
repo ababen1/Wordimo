@@ -35,7 +35,7 @@ margin_right = -5.0
 margin_bottom = -2.0
 
 [node name="ProgressBar" type="ProgressBar" parent="VBox/BlocksTimer/HBox"]
-margin_right = 214.0
+margin_right = 212.0
 margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -43,10 +43,10 @@ max_value = 7.0
 percent_visible = false
 
 [node name="Button" type="Button" parent="VBox/BlocksTimer/HBox"]
-margin_left = 218.0
-margin_top = 9.0
+margin_left = 216.0
+margin_top = 5.0
 margin_right = 238.0
-margin_bottom = 29.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 16, 16 )
 size_flags_horizontal = 0
 size_flags_vertical = 6

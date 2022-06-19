@@ -1,11 +1,11 @@
-extends Control
+extends PopupPanel
 
 signal quit_game
 
 var is_active: bool setget set_is_active
 
-onready var _continue_btn = $Panel/VBox/HBoxContainer/Continue
-onready var _quit_btn = $Panel/VBox/HBoxContainer/Quit
+onready var _continue_btn = $VBox/Vbox/Continue
+onready var _quit_btn = $VBox/Vbox/Quit
 
 func _ready() -> void:
 	self.is_active = false
@@ -20,7 +20,10 @@ func set_is_active(val: bool) -> void:
 		yield(self, "ready")
 	is_active = val
 	get_tree().paused = is_active
-	visible = is_active
+	if is_active:
+		popup()
+	else:
+		hide()
 
 func _on_quit_pressed() -> void:
 	emit_signal("quit_game")
