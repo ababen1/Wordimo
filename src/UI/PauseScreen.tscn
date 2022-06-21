@@ -24,43 +24,45 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="CenterContainer" type="CenterContainer" parent="VBox"]
-margin_right = 944.0
-margin_bottom = 336.0
+margin_right = 1016.0
+margin_bottom = 371.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 6.0
 
 [node name="Label" type="Label" parent="VBox/CenterContainer"]
-margin_left = 361.0
-margin_top = 137.0
-margin_right = 582.0
-margin_bottom = 199.0
+margin_left = 397.0
+margin_top = 154.0
+margin_right = 618.0
+margin_bottom = 216.0
 custom_fonts/font = ExtResource( 2 )
 text = "paused"
 uppercase = true
 
 [node name="Vbox" type="VBoxContainer" parent="VBox"]
-margin_top = 340.0
-margin_right = 944.0
-margin_bottom = 536.0
+margin_top = 375.0
+margin_right = 1016.0
+margin_bottom = 592.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.5
 
 [node name="Continue" type="Button" parent="VBox/Vbox"]
-margin_left = 406.0
-margin_top = 29.0
-margin_right = 538.0
-margin_bottom = 67.0
+margin_left = 442.0
+margin_top = 34.0
+margin_right = 574.0
+margin_bottom = 72.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 custom_fonts/font = SubResource( 1 )
 text = "Continue"
 
 [node name="Quit" type="Button" parent="VBox/Vbox"]
-margin_left = 437.0
-margin_top = 129.0
-margin_right = 506.0
-margin_bottom = 167.0
+margin_left = 473.0
+margin_top = 144.0
+margin_right = 542.0
+margin_bottom = 182.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 custom_fonts/font = SubResource( 1 )
 text = "Quit"
+
+[connection signal="pressed" from="VBox/Vbox/Quit" to="." method="_on_Quit_pressed"]

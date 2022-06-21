@@ -1,8 +1,6 @@
 tool
 extends TileMap
 
-const MAX_SIZE = Vector2(13,10)
-
 export var size: = Vector2(5,5) setget set_size
 export var highlight_color: = Color.greenyellow
 
@@ -45,8 +43,8 @@ func set_size(val: Vector2):
 	if not is_inside_tree():
 		yield(self, "ready")
 	clear()
-	size.x = clamp(val.x, 1, MAX_SIZE.x)
-	size.y = clamp(val.y, 1, MAX_SIZE.y)
+	size.x = clamp(val.x, 1, DifficultyResource.MAX_BOARD_SIZE.x)
+	size.y = clamp(val.y, 1, DifficultyResource.MAX_BOARD_SIZE.y)
 	for y in size.y:
 		for x in size.x:
 			var tile_idx = 0 if (x+y) % 2 ==0 else 1

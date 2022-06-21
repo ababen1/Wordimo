@@ -73,7 +73,8 @@ dialog_text = "Use blocks to write as many words as you can!
 {controls_tutorial}
 
 Writing a valid word will clear up tiles in your board.
-The game is over when your board is full."
+The game is over when your board is full, or when your
+block queue is full."
 script = ExtResource( 1 )
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]

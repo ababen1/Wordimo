@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/SceneChanger.gd" type="Script" id=1]
+[ext_resource path="res://src/GameBoard/Game.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UI/MainMenu/MainMenu.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=4]
 resource_name = "fade_in"
@@ -145,3 +147,6 @@ anchor_bottom = 1.0
 rect_min_size = Vector2( 1024, 600 )
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [ PoolStringArray( "GameScreen", "MainMenu" ), [ ExtResource( 2 ), ExtResource( 3 ) ] ]

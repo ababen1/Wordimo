@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/GameBoard/Difficulty.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Normal"
+description = "Your queue is limited to 10 blocks."
+time_limit = 0.0
+stack_size = 10
+lose_when_board_full = true
+board_size = Vector2( 9, 7 )
+speed = 7.0
+increase_speed = true

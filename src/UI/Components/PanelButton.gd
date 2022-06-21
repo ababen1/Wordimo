@@ -1,11 +1,12 @@
 tool
 extends Button
+class_name PanelButton
 
 export var title: String setget set_title
 export var description: String setget set_description
 export var animate: = true
 export var animation_duration: = 0.2
-export var focused_rect_scale: = Vector2(1.2, 1.2)
+export var focused_rect_scale: = Vector2(1.1, 1.1)
 
 onready var tween = $Tween
 

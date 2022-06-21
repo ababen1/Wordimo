@@ -1,17 +1,17 @@
-extends WindowDialog
-
-enum GAMEMODE {
-	CHILL,
-	TIMED
-}
+tool
+extends Control
 
 signal mode_selected(mode)
 
 func _ready() -> void:
-	for child in $VBox.get_children():
-		if child is Button:
-			child.connect("pressed", self, "_on_mode_pressed", [child])
+	if Engine.editor_hint:
+		return
+	if get_parent() == get_tree().root:
+		visible = true
+	for child in get_children():
+		if child is DifficultyBtn:
+			child.connect(
+				"pressed", self, "_on_mode_pressed", [child.difficulty])
 
-func _on_mode_pressed(btn: Button) -> void:
-	emit_signal("mode_selected", GAMEMODE.keys()[btn.get_position_in_parent()])
-
+func _on_mode_pressed(diffculty: DifficultyResource) -> void:
+	emit_signal("mode_selected", diffculty)

@@ -27,3 +27,8 @@ func set_is_active(val: bool) -> void:
 
 func _on_quit_pressed() -> void:
 	emit_signal("quit_game")
+
+
+func _on_Quit_pressed() -> void:
+	get_tree().paused = false
+	SceneChanger.change_scene("MainMenu")
