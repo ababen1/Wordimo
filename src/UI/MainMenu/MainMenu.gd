@@ -1,7 +1,10 @@
 extends Control
 
+onready var _game_mode_selection = $GameModeSelection
+onready var _tutorial_popup = $TutorialPopup
+
 func _on_Start_pressed() -> void:
-	SceneChanger.change_scene("GameScreen")
+	_game_mode_selection.popup()
 
 func _on_Tutorial_pressed() -> void:
-	$TutorialPopup.popup_centered()
+	_tutorial_popup.popup_centered()

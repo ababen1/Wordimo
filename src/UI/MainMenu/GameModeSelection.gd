@@ -1,5 +1,5 @@
 tool
-extends Control
+extends PopupPanel
 
 signal mode_selected(mode)
 
@@ -8,10 +8,10 @@ func _ready() -> void:
 		return
 	if get_parent() == get_tree().root:
 		visible = true
-	for child in get_children():
+	for child in find_node("GridContainer").get_children():
 		if child is DifficultyBtn:
 			child.connect(
 				"pressed", self, "_on_mode_pressed", [child.difficulty])
 
 func _on_mode_pressed(diffculty: DifficultyResource) -> void:
-	emit_signal("mode_selected", diffculty)
+	SceneChanger.change_scene("GameScreen", true, {"difficulty": diffculty})

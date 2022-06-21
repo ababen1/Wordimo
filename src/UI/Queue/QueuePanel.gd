@@ -7,6 +7,7 @@ export var can_scroll: = true setget set_can_scroll
 
 onready var _images_container = $ScrollContainer/VBox
 onready var _scroll_container = $ScrollContainer
+onready var _blocks_limit = $ScrollContainer/VBox/BlocksLimit
 
 var blocks: = {}
 
@@ -16,12 +17,19 @@ func _gui_input(event: InputEvent) -> void:
 
 func clear() -> void:
 	for block_img in _images_container.get_children():
-		block_img.queue_free()
+		if block_img is BlockImg:
+			block_img.queue_free()
 	blocks = {}
+	_blocks_limit.blocks_in_queue = 0
 
 func set_can_scroll(val: bool) -> void:
 	can_scroll = val
 	_scroll_container.scroll_vertical_enabled = val
+
+func set_queue_size(max_blocks: int):
+	if not is_inside_tree():
+		yield(self, "ready")
+	_blocks_limit.max_blocks = max_blocks
 
 func add_block(block: Block) -> void:
 	block.reset_position()
@@ -34,6 +42,7 @@ func add_block(block: Block) -> void:
 		self, 
 		"_on_block_clicked", 
 		[block])
+	_blocks_limit.blocks_in_queue += 1
 
 func cancel_movement(block: Block) -> void:
 	blocks[block].show()

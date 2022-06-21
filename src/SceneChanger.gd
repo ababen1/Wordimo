@@ -17,10 +17,12 @@ var message: Dictionary = {}
 func change_scene(
 	new_scene, 
 	free_prev_scene: = true,
+	message: = {},
 	fade_out: = true,
 	fade_in: = true):
 		if new_scene is String:
 			new_scene = res_preloader.get_resource(new_scene)
+		self.message = message
 		if fade_out:
 			yield(play_transition_animation(fade_out_anim_name), "completed")
 			emit_signal("fade_out_finished")
@@ -33,6 +35,11 @@ func change_scene(
 		if fade_in:
 			yield(play_transition_animation(fade_in_anim_name), "completed")
 			emit_signal("fade_in_finished")
+
+func pop_message() -> Dictionary:
+	var temp = message.duplicate(true)
+	message = {}
+	return temp
 
 func goto_scene(path: String, msg: = {}):
 	call_deferred("_deferred_goto_scene", path, msg)

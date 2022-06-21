@@ -2,7 +2,7 @@ extends Node2D
 class_name WordTetrisGame
 
 # add a new block every x seconds
-export var add_block_delay: = 1.0 setget set_add_block_delay
+export var add_block_delay: = 7.0 setget set_add_block_delay
 export var word_length_multiplier: = 10.0
 export var time_limit: = 0.0
 export var drag_input: = false 
@@ -26,6 +26,7 @@ var words_funcs = WordsFuncs.new()
 var combo: int = 0 setget set_combo
 var stats: = GameStats.new()
 var total_score: = 0.0
+var difficulty: DifficultyResource setget set_difficulty
 
 func _ready() -> void:
 	_setup_game_stats()
@@ -39,6 +40,7 @@ func _ready() -> void:
 	connect("total_score_changed", HUD.score, "set_score")
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		drag_input = true
+	set_difficulty(SceneChanger.message.get("difficulty", DifficultyResource.new()))
 	start_new_game()
 
 func _setup_game_stats() -> void:
@@ -47,7 +49,6 @@ func _setup_game_stats() -> void:
 	stats.add_numeric_stat("highest_score_in_one_move", 0)
 	stats.add_stat("words_written", [], [])
 	
-
 func _process(_delta: float) -> void:
 	update()
 	if not is_instance_valid(dragged_block):
@@ -79,8 +80,15 @@ func _handle_mouse_input(event: InputEventMouseButton) -> void:
 	elif event.button_index == BUTTON_LEFT and dragged_block:
 		if not event.pressed and drag_input or (event.pressed and not drag_input):
 			drop_block()
+
+func set_difficulty(val: DifficultyResource):
+	difficulty = val
+	tilemap.size = difficulty.board_size
+	self.time_limit = difficulty.time_limit
+	blocks_queue_panel.set_queue_size(difficulty.queue_size)
+	self.add_block_delay = difficulty.speed
 	
-func start_new_game() -> void:
+func start_new_game(difficulty:= self.difficulty) -> void:
 	randomize()
 	stats.reset_all()
 	for prev_game_block in get_tree().get_nodes_in_group("blocks"):
@@ -92,6 +100,7 @@ func start_new_game() -> void:
 	blocks_timer.start()
 	if time_limit != 0:
 		timer.start(time_limit)
+	set_difficulty(difficulty)
 	emit_signal("game_started", self)
 
 func add_block(block: Block, auto_set_letters: = true) -> void:
