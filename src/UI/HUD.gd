@@ -50,3 +50,9 @@ func _on_game_over(score: float, stats: Dictionary) -> void:
 	var game_over_dialog = resource_preloader.get_resource("GameOverDialog").instance()
 	add_child(game_over_dialog)
 	game_over_dialog.show_results(score, stats)
+	game_over_dialog.connect("replay", self, "_on_game_over_dialog_replay", [game_over_dialog])
+
+func _on_game_over_dialog_replay(dialog: Control):
+	dialog.queue_free()
+	get_tree().paused = false
+	emit_signal("start_new_game")

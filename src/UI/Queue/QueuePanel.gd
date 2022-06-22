@@ -2,6 +2,7 @@ extends PanelContainer
 
 signal block_clicked(block)
 signal panel_clicked
+signal queue_full
 
 export var can_scroll: = true setget set_can_scroll
 
@@ -42,10 +43,20 @@ func add_block(block: Block) -> void:
 		self, 
 		"_on_block_clicked", 
 		[block])
-	_blocks_limit.blocks_in_queue += 1
+	_blocks_limit.blocks_in_queue = blocks.size()
+	if _blocks_limit.is_full():
+		emit_signal("queue_full")
+
+func remove_block(block: Block) -> void:
+# warning-ignore:return_value_discarded
+	blocks.erase(block)
+	_blocks_limit.blocks_in_queue = blocks.size()
 
 func cancel_movement(block: Block) -> void:
 	blocks[block].show()
+
+func _on_block_placed(block: Block) -> void:
+	remove_block(block)
 		
 func _on_block_clicked(block: Block):
 	blocks[block].hide()

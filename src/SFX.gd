@@ -8,6 +8,9 @@ const SOUNDS = {
 	"add_block": preload("res://assets/SFX/AddBlock.wav")
 }
 
+func _enter_tree() -> void:
+	pause_mode = Node.PAUSE_MODE_PROCESS
+
 func play_sound_effect(sfx: AudioStream):
 	var audio_player: = AudioStreamPlayer.new()
 	get_tree().root.add_child(audio_player)

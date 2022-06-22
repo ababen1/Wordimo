@@ -15,6 +15,9 @@ func set_blocks_in_queue(val: int):
 	blocks_in_queue = val
 	_update_text()
 
+func is_full() -> bool:
+	return (max_blocks >= 1) and (blocks_in_queue > max_blocks)
+
 func _update_text():
 	bbcode_text = TEMPLATE.format({
 		"max": max_blocks, 

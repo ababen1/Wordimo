@@ -4,7 +4,7 @@ class_name GameStats
 var values: Dictionary = {}
 var defaults: Dictionary = {}
 
-func add_stat(stat_name: String, value, default_value):
+func add_stat(stat_name: String, value, default_value = null):
 	values[stat_name] = value
 	defaults[stat_name] = default_value
 
@@ -13,6 +13,10 @@ func add_numeric_stat(stat_name: String, value):
 
 func update_stat(stat_name: String, new_val):
 	values[stat_name] = new_val
+
+func update_if_bigger(stat_name: String, new_val):
+	if new_val > get_value(stat_name):
+		update_stat(stat_name, new_val)
 
 func get_value(stat_name: String):
 	return values.get(stat_name)

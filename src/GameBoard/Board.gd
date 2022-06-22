@@ -32,8 +32,10 @@ func _ready() -> void:
 	_setup_game_stats()
 	blocks_queue_panel.connect("block_clicked", self, "_on_queue_block_clicked")
 	blocks_queue_panel.connect("panel_clicked", self, "_on_queue_panel_clicked")
+	blocks_queue_panel.connect("queue_full", self, "end_game")
 	blocks_timer.timer.connect("timeout", self, "_on_BlocksTimer_timeout")
 	tilemap.connect("block_placed", self, "_on_block_placed")
+	tilemap.connect("block_placed", blocks_queue_panel, "_on_block_placed")
 	HUD.connect("start_new_game", self, "start_new_game")
 	timer.connect("timeout", self, "_on_timeout")
 	connect("game_over", HUD, "_on_game_over")
@@ -44,6 +46,7 @@ func _ready() -> void:
 	start_new_game()
 
 func _setup_game_stats() -> void:
+	stats.add_stat("difficulty", "", "")
 	stats.add_numeric_stat("highest_combo", 0)
 	stats.add_numeric_stat("blocks_placed", 0)
 	stats.add_numeric_stat("highest_score_in_one_move", 0)
@@ -83,6 +86,7 @@ func _handle_mouse_input(event: InputEventMouseButton) -> void:
 
 func set_difficulty(val: DifficultyResource):
 	difficulty = val
+	stats.update_stat("difficulty", self.difficulty.name)
 	tilemap.size = difficulty.board_size
 	self.time_limit = difficulty.time_limit
 	blocks_queue_panel.set_queue_size(difficulty.queue_size)
@@ -120,9 +124,7 @@ func set_dragged_block(val: Block) -> void:
 
 func set_combo(val: int) -> void:
 	combo = val
-	stats.update_stat(
-		"highest_combo", 
-		max(stats.get_value("highest_combo"), combo))
+	stats.update_if_bigger("highest_combo", combo)
 
 func set_add_block_delay(val: float):
 	if not is_inside_tree():
@@ -151,19 +153,23 @@ func popup_word(
 		label.setup(word, global_pos, color, font)
 
 func calculate_score(words):
-	var _score: = 0.0
+	var score_this_move: = 0.0
 	for word_data in words:
-		_score += word_data.word.length() * word_length_multiplier
+		score_this_move += word_data.word.length() * word_length_multiplier
 	# bonus for having multiple words in one move
-	_score *= words.size()
-	if _score == 0:
+	score_this_move *= words.size()
+	if score_this_move == 0:
 		self.combo = 0
 	else:
 		self.combo += 1
-	self.total_score += _score
+	self.total_score += score_this_move
+	stats.update_if_bigger("highest_score_in_one_move", score_this_move)
 	if combo > 1:
 		self.total_score += pow(10, combo)
 	emit_signal("total_score_changed", total_score)
+
+func end_game() -> void:
+	emit_signal("game_over", total_score, stats.values)
 
 func _on_BlocksTimer_timeout() -> void:
 	if add_block_delay != 0:
@@ -192,7 +198,7 @@ func _on_block_placed(block: Block) -> void:
 		popup_word(word_data.word, block.global_position, Color.white)
 		stats.add_to_array_stat("words_written", word_data.word)
 	if tilemap.is_full():
-		emit_signal("game_over", total_score, stats.values)
+		end_game()
 	emit_signal("turn_completed", words_found)
 
 func _validate_words(words: Array) -> Array:
@@ -226,4 +232,4 @@ func _on_HUD_start_new_game() -> void:
 	start_new_game()
 
 func _on_timeout() -> void:
-	emit_signal("game_over", total_score, stats.values)
+	end_game()
