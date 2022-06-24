@@ -71,7 +71,7 @@ func _handle_touch_input(event: InputEvent) -> void:
 		if event.is_pressed():
 			dragged_block.position = event.position
 	elif event is InputEventScreenTouch and not event.pressed:
-		if event.index > 0:
+		if event.index > 0 and dragged_block:
 			dragged_block.rotate_shape()
 		else:
 			drop_block()
@@ -134,6 +134,8 @@ func set_add_block_delay(val: float):
 	blocks_timer.start()
 
 func drop_block(block: Block = dragged_block) -> void:
+	if not block:
+		return
 	self.dragged_block = null
 	if tilemap.cells_to_highlight.size() == 4:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
