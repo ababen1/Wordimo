@@ -5,10 +5,11 @@
 [resource]
 script = ExtResource( 1 )
 name = "Chill"
-description = "No queue limit, the game doesn't end when your board is full, and the speed doesn't change"
+description = "No queue limit, the game doesn't end when your board is full, and the speed doesn't change. Can override blocks."
 time_limit = 0.0
 queue_size = 10
 lose_when_board_full = false
 board_size = Vector2( 9, 7 )
 speed = 7.0
 increase_speed = false
+can_override = true

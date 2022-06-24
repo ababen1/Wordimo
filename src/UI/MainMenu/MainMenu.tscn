@@ -78,7 +78,6 @@ block queue is full."
 script = ExtResource( 1 )
 
 [node name="GameModeSelection" parent="." instance=ExtResource( 4 )]
-visible = false
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Tutorial" to="." method="_on_Tutorial_pressed"]

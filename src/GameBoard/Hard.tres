@@ -12,3 +12,4 @@ lose_when_board_full = true
 board_size = Vector2( 7, 5 )
 speed = 5.0
 increase_speed = true
+can_override = false

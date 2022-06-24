@@ -11,14 +11,19 @@ export var lose_when_board_full: = true
 export var board_size: = Vector2(9,7)
 export var speed: float = 7
 export var increase_speed: = true
+export var can_override: = true
 
 func get_description() -> String:
 	if not description:
 		return """
-		Time limit: {time}, Stack size: {stack}, Board size: {board}
+		Time limit: {time}, 
+		Stack size: {stack}, 
+		Board size: {board}, 
+		Override: {override}
 		""".format(
 			{"time": time_limit, 
 			"queue_size": queue_size,
-			"board": board_size})
+			"board": board_size,
+			"override": "On" if can_override else "Off"})
 	else:
 		return description

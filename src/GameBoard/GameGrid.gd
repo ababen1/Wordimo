@@ -3,14 +3,15 @@ extends TileMap
 
 export var size: = Vector2(5,5) setget set_size
 export var highlight_color: = Color.greenyellow
+export var error_color: = Color.red
 
 signal block_placed(block)
 signal tile_placed(tile)
 signal board_size_changed(new_size)
 
 onready var words_funcs: WordsFuncs = get_parent().words_funcs
+onready var highlight_layer = $HighlightLayer
 
-var cells_to_highlight: = PoolVector2Array()
 var tiles_data: Dictionary = {}
 
 func _ready() -> void:
@@ -18,21 +19,20 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	if not Engine.editor_hint:
-		cells_to_highlight = []
-		if owner.dragged_block and is_inside_grid(
-			owner.dragged_block):
+		highlight_layer.cells = {}
+		if owner.dragged_block and is_inside_grid(owner.dragged_block):
 			for letter in owner.dragged_block.letters:
 				if letter is Letter:
-					cells_to_highlight.append(
-						world_to_map(letter.rect_global_position + cell_size / 2))
+					var cell = world_to_map(letter.rect_global_position + cell_size / 2)
+					if not get_parent().difficulty.get("can_override"):
+						highlight_layer.cells[cell] = error_color if get_letter_at(cell) else highlight_color
+					else:
+						highlight_layer.cells[cell] = highlight_color
 		update()
 	
 func _draw() -> void:
 	if not Engine.editor_hint:
-		for cell in cells_to_highlight:
-			draw_rect(
-				Rect2(to_global(map_to_world(cell)), cell_size), 
-				highlight_color)
+		highlight_layer.update()
 		draw_rect(get_rect(), Color.whitesmoke, false, 5)			
 
 func reset_board() -> void:
@@ -58,6 +58,17 @@ func is_inside_grid(block: Block) -> bool:
 		if not get_used_rect().has_point(letter_cell):
 			return false
 	return true
+
+func can_drop_block(block: Block) -> bool:
+	if highlight_layer.cells.empty():
+		return false
+	elif get_parent().difficulty.get("can_override"):
+		return true
+	else:
+		for cell in highlight_layer.cells:
+			if get_letter_at(cell):
+				return false
+		return true
 
 func drop_block(block: Block) -> void:
 	if is_inside_grid(block):

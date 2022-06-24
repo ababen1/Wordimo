@@ -137,7 +137,7 @@ func drop_block(block: Block = dragged_block) -> void:
 	if not block:
 		return
 	self.dragged_block = null
-	if tilemap.cells_to_highlight.size() == 4:
+	if tilemap.can_drop_block(block):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)	
 		tilemap.drop_block(block)
 	else:
@@ -189,15 +189,16 @@ func _on_block_placed(block: Block) -> void:
 		cells_to_check.append(tile_cords)
 	var words_found: Array = tilemap.find_words_in_board(cells_to_check)
 	words_found = _validate_words(words_found)
-	if not words_found.empty():
-		SFX.play_sound_effect(SFX.SOUNDS.clear_word)
-	else:
+	if words_found.empty():
 		SFX.play_sound_effect(SFX.SOUNDS.place_block)
 	calculate_score(words_found)
 	print(words_found)
 	for word_data in words_found:
 		tilemap.clear_cells(word_data.from, word_data.to)
-		popup_word(word_data.word, block.global_position, Color.white)
+		popup_word(
+			word_data.word, 
+			block.global_position, 
+			Color(randf(),randf(),randf()))
 		stats.add_to_array_stat("words_written", word_data.word)
 	if tilemap.is_full():
 		end_game()
