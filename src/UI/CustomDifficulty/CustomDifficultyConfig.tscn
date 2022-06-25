@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/UI/CustomDifficulty/CustomDifficultyConfig.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/CustomDifficulty/TimeLimit.gd" type="Script" id=2]
@@ -7,10 +7,13 @@
 [ext_resource path="res://assets/Icons/Reload.svg" type="Texture" id=5]
 [ext_resource path="res://src/UI/CustomDifficulty/BoardSize.gd" type="Script" id=6]
 [ext_resource path="res://src/UI/Components/BoardExample.gd" type="Script" id=7]
+[ext_resource path="res://src/UI/CustomDifficulty/SaveDifficultyDialog.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/UI/CustomDifficulty/SavedDifficulties.gd" type="Script" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="CustomDifficultyConfig" type="WindowDialog"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 72.0
@@ -96,6 +99,8 @@ rect_min_size = Vector2( 300, 0 )
 custom_constants/hseparation = 10
 columns = 2
 script = ExtResource( 3 )
+deactivated_fields = [ NodePath("Unlimited") ]
+activated_fields = [ NodePath("SpinBox") ]
 
 [node name="CheckBox" type="CheckBox" parent="HSplit/PanelContainer/VBox/QueueSize"]
 margin_right = 127.0
@@ -288,20 +293,24 @@ margin_right = 449.0
 margin_bottom = 27.0
 text = "Save Difficulty"
 
-[node name="VBox" type="VBoxContainer" parent="HSplit"]
+[node name="SavedDifficulties" type="VBoxContainer" parent="HSplit"]
 margin_left = 658.0
 margin_right = 848.0
 margin_bottom = 488.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
+script = ExtResource( 9 )
 
-[node name="Label" type="Label" parent="HSplit/VBox"]
+[node name="Label" type="Label" parent="HSplit/SavedDifficulties"]
 margin_right = 190.0
 margin_bottom = 21.0
 text = "Saved Difficulties"
 align = 1
 
+[node name="SaveDifficultyDialog" parent="." instance=ExtResource( 8 )]
+
 [connection signal="value_changed" from="HSplit/PanelContainer/VBox/TimeLimit/Seconds" to="HSplit/PanelContainer/VBox/TimeLimit" method="_on_Seconds_value_changed"]
 [connection signal="value_changed" from="HSplit/PanelContainer/VBox/BoardSize/GridContainer/X" to="HSplit/PanelContainer/VBox/BoardSize" method="_on_X_value_changed"]
 [connection signal="value_changed" from="HSplit/PanelContainer/VBox/BoardSize/GridContainer/Y" to="HSplit/PanelContainer/VBox/BoardSize" method="_on_Y_value_changed"]
+[connection signal="confirmed" from="SaveDifficultyDialog" to="." method="_on_SaveDifficultyDialog_confirmed"]

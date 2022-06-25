@@ -1,5 +1,5 @@
 tool
-extends PopupPanel
+extends Control
 
 signal mode_selected(mode)
 
@@ -7,7 +7,9 @@ func _ready() -> void:
 	if Engine.editor_hint:
 		return
 	if get_parent() == get_tree().root:
-		visible = true
+		show()
+	else:
+		hide()
 	for child in find_node("GridContainer").get_children():
 		if child is DifficultyBtn:
 			child.connect(
@@ -21,3 +23,14 @@ func _on_Custom_pressed() -> void:
 		"CustomDifficulty").instance()
 	add_child(custom_difficulty)
 	custom_difficulty.popup()
+
+func show():
+	$AnimationPlayer.play("show")
+	.show()
+
+func hide():
+	$AnimationPlayer.play("hide")
+	.hide()
+
+func _on_Close_pressed() -> void:
+	hide()

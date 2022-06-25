@@ -12,6 +12,7 @@ func _ready() -> void:
 	if get_parent() == get_tree().root:
 		visible = true
 	_start_btn.connect("pressed", self, "_on_start_pressed")
+	_save_btn.connect("pressed", self, "_on_save_pressed")
 
 func get_time_limit() -> float:
 	var minutes = $VBox/TimeLimit/Minutes.value
@@ -47,4 +48,16 @@ func _on_start_pressed() -> void:
 		return
 	SceneChanger.change_scene("GameScreen", true, {"difficulty": create_difficulty()})
 	
-	
+func _on_save_pressed() -> void:
+	$SaveDifficultyDialog.popup()
+
+func _on_SaveDifficultyDialog_confirmed(
+	difficulty_name: String, 
+	difficulty_description: String) -> void:
+		var difficulty: = create_difficulty()
+		difficulty.name = difficulty_name
+		difficulty.description = difficulty_description
+		var data_dir = OS.get_user_data_dir()
+		ResourceSaver.save(
+			data_dir.plus_file(difficulty_name + ".tres"), 
+			difficulty)
