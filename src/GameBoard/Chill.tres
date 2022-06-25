@@ -9,6 +9,7 @@ description = "No queue limit, the game doesn't end when your board is full, and
 time_limit = 0.0
 queue_size = 10
 lose_when_board_full = false
+lose_when_queue_full = true
 board_size = Vector2( 9, 7 )
 speed = 7.0
 increase_speed = false

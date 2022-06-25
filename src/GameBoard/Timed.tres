@@ -9,6 +9,7 @@ description = "Make as many words as you can in 2 minutes. Can override blocks."
 time_limit = 120.0
 queue_size = 0
 lose_when_board_full = false
+lose_when_queue_full = true
 board_size = Vector2( 9, 7 )
 speed = 7.0
 increase_speed = false

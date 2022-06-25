@@ -1,14 +1,14 @@
-tool
-extends GridContainer
+extends OptionalField
 
-func _enter_tree() -> void:
-	_update()
+func get_time_limit() -> float:
+	if not is_activated:
+		return 0.0
+	return $Seconds.value + ($Minutes.value * 60)
 
-func _on_CheckBox_pressed() -> void:
-	_update()
+func is_valid() -> bool:
+	return get_time_limit() >= 0
 
-func _update():
-	var line_edit = $LineEdit
-	var checkbox = $CheckBox
-	line_edit.editable = checkbox.pressed
-	line_edit.text = "Unlimited" if not checkbox.pressed else ""
+func _on_Seconds_value_changed(value: float) -> void:
+	if value == 60:
+		$Seconds.value = 0
+		$Minutes.value += 1

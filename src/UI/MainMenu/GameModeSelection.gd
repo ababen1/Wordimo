@@ -15,3 +15,9 @@ func _ready() -> void:
 
 func _on_mode_pressed(diffculty: DifficultyResource) -> void:
 	SceneChanger.change_scene("GameScreen", true, {"difficulty": diffculty})
+
+func _on_Custom_pressed() -> void:
+	var custom_difficulty = $ResourcePreloader.get_resource(
+		"CustomDifficulty").instance()
+	add_child(custom_difficulty)
+	custom_difficulty.popup()

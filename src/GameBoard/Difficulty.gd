@@ -8,6 +8,7 @@ export var description: = "" setget ,get_description
 export var time_limit: = 0.0
 export var queue_size: = 10 # max amount of blocks in the queue
 export var lose_when_board_full: = true
+export var lose_when_queue_full: = true
 export var board_size: = Vector2(9,7)
 export var speed: float = 7
 export var increase_speed: = true
