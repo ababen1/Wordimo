@@ -9,4 +9,6 @@ func _ready() -> void:
 	
 func _on_save_pressed() -> void:
 	emit_signal("confirmed", $VBox/HBox/Name.text, $VBox/Description.text)
+	queue_free()
+	
 	
