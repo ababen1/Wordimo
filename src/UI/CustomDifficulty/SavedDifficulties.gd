@@ -23,6 +23,6 @@ func clear() -> void:
 func _on_delete(ui_node: UISavedDifficulty) -> void:
 	var dir = Directory.new()
 	dir.open(OS.get_user_data_dir())
-	if dir.remove(ui_node.difficulty.name) == OK:
+	if dir.remove(ui_node.difficulty.name + ".res") == OK:
 		ui_node.queue_free()
 	
