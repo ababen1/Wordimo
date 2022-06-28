@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/Icons/Play.svg" type="Texture" id=1]
 [ext_resource path="res://assets/Icons/Remove.svg" type="Texture" id=2]
 [ext_resource path="res://assets/Icons/ArrowDown.svg" type="Texture" id=3]
-[ext_resource path="res://assets/Icons/Save.svg" type="Texture" id=4]
+[ext_resource path="res://assets/Icons/Favorites.svg" type="Texture" id=4]
 [ext_resource path="res://src/UI/CustomDifficulty/SavedDifficulty.gd" type="Script" id=5]
 
 [node name="SavedDifficulty" type="HBoxContainer"]
@@ -35,18 +35,19 @@ hint_tooltip = "Load"
 size_flags_horizontal = 0
 icon = ExtResource( 3 )
 
-[node name="Save" type="Button" parent="."]
+[node name="Delete" type="Button" parent="."]
 margin_left = 388.0
 margin_right = 416.0
 margin_bottom = 27.0
-hint_tooltip = "Export"
+hint_tooltip = "Delete"
 size_flags_horizontal = 0
-icon = ExtResource( 4 )
+icon = ExtResource( 2 )
 
-[node name="Delete" type="Button" parent="."]
+[node name="Favorite" type="Button" parent="."]
 margin_left = 420.0
 margin_right = 448.0
 margin_bottom = 27.0
 hint_tooltip = "Delete"
 size_flags_horizontal = 0
-icon = ExtResource( 2 )
+toggle_mode = true
+icon = ExtResource( 4 )

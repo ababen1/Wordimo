@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/UI/CustomDifficulty/CustomDifficultyConfig.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/CustomDifficulty/TimeLimit.gd" type="Script" id=2]
@@ -10,10 +10,12 @@
 [ext_resource path="res://src/UI/CustomDifficulty/SaveDifficultyDialog.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/UI/CustomDifficulty/SavedDifficulties.gd" type="Script" id=9]
 [ext_resource path="res://src/UI/CustomDifficulty/SavedDifficulty.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/Icons/Load.svg" type="Texture" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="CustomDifficultyConfig" type="WindowDialog"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 72.0
@@ -303,18 +305,31 @@ margin_bottom = 488.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
+custom_constants/separation = 15
 script = ExtResource( 9 )
 
-[node name="Label" type="Label" parent="HSplit/SavedDifficulties"]
+[node name="HBox" type="HBoxContainer" parent="HSplit/SavedDifficulties"]
 margin_right = 190.0
-margin_bottom = 21.0
+margin_bottom = 27.0
+alignment = 1
+
+[node name="Label" type="Label" parent="HSplit/SavedDifficulties/HBox"]
+margin_left = 5.0
+margin_top = 3.0
+margin_right = 152.0
+margin_bottom = 24.0
 text = "Saved Difficulties"
-align = 1
+
+[node name="OpenFolder" type="Button" parent="HSplit/SavedDifficulties/HBox"]
+margin_left = 156.0
+margin_right = 184.0
+margin_bottom = 27.0
+icon = ExtResource( 11 )
 
 [node name="SavedDifficulty" parent="HSplit/SavedDifficulties" instance_placeholder="res://src/UI/CustomDifficulty/SavedDifficulty.tscn"]
-margin_top = 25.0
+margin_top = 42.0
 margin_right = 190.0
-margin_bottom = 52.0
+margin_bottom = 69.0
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="HSplit/SavedDifficulties"]
 resources = [ PoolStringArray( "SavedDifficulty" ), [ ExtResource( 10 ) ] ]
@@ -322,3 +337,6 @@ resources = [ PoolStringArray( "SavedDifficulty" ), [ ExtResource( 10 ) ] ]
 [connection signal="value_changed" from="HSplit/PanelContainer/VBox/TimeLimit/Seconds" to="HSplit/PanelContainer/VBox/TimeLimit" method="_on_Seconds_value_changed"]
 [connection signal="value_changed" from="HSplit/PanelContainer/VBox/BoardSize/GridContainer/X" to="HSplit/PanelContainer/VBox/BoardSize" method="_on_X_value_changed"]
 [connection signal="value_changed" from="HSplit/PanelContainer/VBox/BoardSize/GridContainer/Y" to="HSplit/PanelContainer/VBox/BoardSize" method="_on_Y_value_changed"]
+[connection signal="delete_difficulty" from="HSplit/SavedDifficulties" to="." method="_on_SavedDifficulties_delete_difficulty"]
+[connection signal="load_to_editor" from="HSplit/SavedDifficulties" to="." method="_on_SavedDifficulties_load_to_editor"]
+[connection signal="pressed" from="HSplit/SavedDifficulties/HBox/OpenFolder" to="." method="_on_OpenFolder_pressed"]

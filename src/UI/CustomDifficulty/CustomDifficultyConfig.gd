@@ -15,7 +15,7 @@ func _ready() -> void:
 		visible = true
 	_start_btn.connect("pressed", self, "_on_start_pressed")
 	_save_btn.connect("pressed", self, "_on_save_pressed")
-	load_difficulties()
+	load_saved_difficulties()
 	
 func get_time_limit() -> float:
 	var minutes = $VBox/TimeLimit/Minutes.value
@@ -46,15 +46,32 @@ func create_difficulty() -> DifficultyResource:
 		"HSplit/PanelContainer/VBox/GameOver/VBox/QueueFull").pressed
 	return difficulty
 
-func load_difficulties(path: String = OS.get_user_data_dir()):
+func set_difficulty(difficulty: DifficultyResource) -> void:
+	_time_limit_field.set_time_limit(difficulty.time_limit)
+	_queue_size.set_queue_size(difficulty.queue_size)
+	_override.get_node("CheckBox").set_pressed(difficulty.can_override)
+	_speed.set_speed(difficulty.speed)
+	_board_size_field.set_board_size(difficulty.board_size)
+	get_node(
+		"HSplit/PanelContainer/VBox/GameOver/VBox/BoardFull").set_pressed(
+			difficulty.lose_when_board_full)
+	get_node(
+		"HSplit/PanelContainer/VBox/GameOver/VBox/QueueFull").set_pressed(
+			difficulty.lose_when_queue_full)
+
+func load_saved_difficulties(path: String = OS.get_user_data_dir()):
 	var difficulties: = []
+	saved_difficulties = []
 	var dir = Directory.new()
 	if dir.open(path) == OK:
 		dir.list_dir_begin()
 		var file_name: String = dir.get_next()
 		while file_name != "":
 			if ResourceLoader.exists(path.plus_file(file_name)):
-				var difficulty = load(path.plus_file(file_name))
+				var difficulty = ResourceLoader.load(
+					path.plus_file(file_name),
+					"",
+					true)
 				if difficulty is DifficultyResource:
 					difficulties.append(difficulty)
 			file_name = dir.get_next()
@@ -65,9 +82,9 @@ func save_difficulty(_name, description):
 	difficulty.name = _name
 	difficulty.description = description
 	var data_dir = OS.get_user_data_dir()
-	ResourceSaver.save(
-		data_dir.plus_file(_name + ".res"), 
-		difficulty)
+	print(ResourceSaver.save(
+		data_dir.plus_file(_name + ".tres"), 
+		difficulty))
 
 func _on_start_pressed() -> void:
 	if not _time_limit_field.is_valid():
@@ -82,10 +99,22 @@ func _on_save_pressed() -> void:
 	var dialog = $ResourcePreloader.get_resource("SaveDifficultyDialog").instance()
 	add_child(dialog)
 	dialog.connect("confirmed", self, "_on_save_dialog_confirmed")
+	dialog.existing_difficulties = saved_difficulties
 	dialog.popup()
 
 func _on_save_dialog_confirmed(
 	difficulty_name: String, 
 	difficulty_description: String) -> void:
 		save_difficulty(difficulty_name, difficulty_description)
-		load_difficulties()
+		load_saved_difficulties()
+
+func _on_SavedDifficulties_load_to_editor(difficulty) -> void:
+	set_difficulty(difficulty)
+
+func _on_SavedDifficulties_delete_difficulty(difficulty) -> void:
+	var dir = Directory.new()
+	dir.remove(OS.get_user_data_dir().plus_file(difficulty.name + ".tres"))
+	load_saved_difficulties()
+
+func _on_OpenFolder_pressed() -> void:
+	OS.shell_open(OS.get_user_data_dir())

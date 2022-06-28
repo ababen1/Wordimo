@@ -9,6 +9,9 @@ func _ready() -> void:
 
 func get_speed() -> float:
 	return $SpinBox.value
+
+func set_speed(speed) -> void:
+	$SpinBox.value = speed
 	
 func _update_text(new_val: float = $SpinBox.value):
 	$SpinBox.hint_tooltip = "A new block will spawn every {x} seconds".format({

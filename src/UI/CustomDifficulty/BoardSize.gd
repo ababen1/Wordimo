@@ -2,6 +2,9 @@ extends GridContainer
 
 func get_board_size() -> Vector2:
 	return Vector2($GridContainer/X.value, $GridContainer/Y.value)
+func set_board_size(size: Vector2) -> void:
+	$GridContainer/X.value = size.x
+	$GridContainer/Y.value = size.y
 
 func is_valid() -> bool:
 	var _board_size = get_board_size()
