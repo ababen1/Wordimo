@@ -13,6 +13,7 @@ export var board_size: = Vector2(9,7)
 export var speed: float = 7
 export var increase_speed: = true
 export var can_override: = true
+export var is_favorite: = false
 
 func get_description() -> String:
 	if not description:

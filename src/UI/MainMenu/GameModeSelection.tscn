@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/UI/MainMenu/GameModeSelection.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes/Resources/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/GameBoard/Timed.tres" type="Resource" id=8]
 [ext_resource path="res://src/UI/CustomDifficulty/CustomDifficultyConfig.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/Icons/GuiClose.svg" type="Texture" id=10]
+[ext_resource path="res://src/UI/Components/GameModeButton.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -18,24 +19,12 @@ font_data = ExtResource( 2 )
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_position")
+tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 56, 27 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -104,10 +93,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 56.0
-margin_top = 27.0
-margin_right = 968.001
-margin_bottom = 573.0
+margin_left = -456.0
+margin_top = -273.0
+margin_right = 456.001
+margin_bottom = 273.0
 rect_clip_content = true
 script = ExtResource( 1 )
 
@@ -249,7 +238,7 @@ icon = ExtResource( 10 )
 flat = true
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "CustomDifficulty" ), [ ExtResource( 9 ) ] ]
+resources = [ PoolStringArray( "CustomDifficulty", "GameModeButton" ), [ ExtResource( 9 ), ExtResource( 11 ) ] ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"

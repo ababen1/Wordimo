@@ -14,3 +14,4 @@ board_size = Vector2( 9, 7 )
 speed = 7.0
 increase_speed = false
 can_override = true
+is_favorite = false

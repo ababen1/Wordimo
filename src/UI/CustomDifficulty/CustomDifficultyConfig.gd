@@ -15,7 +15,7 @@ func _ready() -> void:
 		visible = true
 	_start_btn.connect("pressed", self, "_on_start_pressed")
 	_save_btn.connect("pressed", self, "_on_save_pressed")
-	load_saved_difficulties()
+	self.saved_difficulties = GameModeSelection.load_saved_difficulties()
 	
 func get_time_limit() -> float:
 	var minutes = $VBox/TimeLimit/Minutes.value
@@ -59,24 +59,6 @@ func set_difficulty(difficulty: DifficultyResource) -> void:
 		"HSplit/PanelContainer/VBox/GameOver/VBox/QueueFull").set_pressed(
 			difficulty.lose_when_queue_full)
 
-func load_saved_difficulties(path: String = OS.get_user_data_dir()):
-	var difficulties: = []
-	saved_difficulties = []
-	var dir = Directory.new()
-	if dir.open(path) == OK:
-		dir.list_dir_begin()
-		var file_name: String = dir.get_next()
-		while file_name != "":
-			if ResourceLoader.exists(path.plus_file(file_name)):
-				var difficulty = ResourceLoader.load(
-					path.plus_file(file_name),
-					"",
-					true)
-				if difficulty is DifficultyResource:
-					difficulties.append(difficulty)
-			file_name = dir.get_next()
-	self.saved_difficulties = difficulties
-
 func save_difficulty(_name, description):
 	var difficulty: = create_difficulty()
 	difficulty.name = _name
@@ -106,7 +88,7 @@ func _on_save_dialog_confirmed(
 	difficulty_name: String, 
 	difficulty_description: String) -> void:
 		save_difficulty(difficulty_name, difficulty_description)
-		load_saved_difficulties()
+		self.saved_difficulties = GameModeSelection.load_saved_difficulties()
 
 func _on_SavedDifficulties_load_to_editor(difficulty) -> void:
 	set_difficulty(difficulty)
@@ -114,7 +96,7 @@ func _on_SavedDifficulties_load_to_editor(difficulty) -> void:
 func _on_SavedDifficulties_delete_difficulty(difficulty) -> void:
 	var dir = Directory.new()
 	dir.remove(OS.get_user_data_dir().plus_file(difficulty.name + ".tres"))
-	load_saved_difficulties()
+	self.saved_difficulties = GameModeSelection.load_saved_difficulties()
 
 func _on_OpenFolder_pressed() -> void:
 	OS.shell_open(OS.get_user_data_dir())

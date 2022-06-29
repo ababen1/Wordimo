@@ -4,6 +4,7 @@ class_name PanelButton
 
 export var title: String setget set_title
 export var description: String setget set_description
+export var panel_icon: Texture setget set_panel_icon
 export var animate: = true
 export var animation_duration: = 0.2
 export var focused_rect_scale: = Vector2(1.1, 1.1)
@@ -33,6 +34,10 @@ func set_description(val: String):
 	$VBoxContainer/Description.bbcode_text = "[center]{text}[/center]".format({
 		"text": val
 	})
+
+func set_panel_icon(val: Texture):
+	panel_icon = val
+	$TextureRect.texture = val
 
 func _on_focus_entered() -> void:
 	if tween.is_active():

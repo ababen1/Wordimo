@@ -1,7 +1,10 @@
 tool
 extends Control
+class_name GameModeSelection
 
-signal mode_selected(mode)
+export var add_favs_to_grid: = false
+
+onready var _grid = $VBoxContainer/ScrollContainer/VBox/GridContainer
 
 func _ready() -> void:
 	if Engine.editor_hint:
@@ -10,7 +13,9 @@ func _ready() -> void:
 		show()
 	else:
 		hide()
-	for child in find_node("GridContainer").get_children():
+	if add_favs_to_grid:
+		add_fav_difficulties_to_grid()
+	for child in _grid.get_children():
 		if child is DifficultyBtn:
 			child.connect(
 				"pressed", self, "_on_mode_pressed", [child.difficulty])
@@ -24,6 +29,13 @@ func _on_Custom_pressed() -> void:
 	add_child(custom_difficulty)
 	custom_difficulty.popup()
 
+func add_fav_difficulties_to_grid() -> void:
+	for difficulty in load_saved_difficulties():
+		if difficulty.is_favorite:
+			var btn = $ResourcePreloader.get_resource("GameModeButton").instance()
+			btn.difficulty = difficulty
+			_grid.add_child(btn)
+
 func show():
 	$AnimationPlayer.play("show")
 	.show()
@@ -34,3 +46,20 @@ func hide():
 
 func _on_Close_pressed() -> void:
 	hide()
+
+static func load_saved_difficulties(save_path: String = OS.get_user_data_dir()) -> Array:
+	var saved_difficulties: = []
+	var dir = Directory.new()
+	if dir.open(save_path) == OK:
+		dir.list_dir_begin()
+		var file_name: String = dir.get_next()
+		while file_name != "":
+			if ResourceLoader.exists(save_path.plus_file(file_name)):
+				var difficulty = ResourceLoader.load(
+					save_path.plus_file(file_name),
+					"",
+					true)
+				if difficulty is DifficultyResource:
+					saved_difficulties.append(difficulty)
+			file_name = dir.get_next()
+	return saved_difficulties

@@ -8,16 +8,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 183.0
-margin_bottom = 83.0
+margin_left = -107.5
+margin_top = -57.5
+margin_right = 107.5
+margin_bottom = 57.5
 rect_min_size = Vector2( 215, 115 )
 rect_pivot_offset = Vector2( 107.5, 57.5 )
 size_flags_horizontal = 4
 theme = ExtResource( 3 )
 script = ExtResource( 2 )
 animation_duration = 0.1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 24.0
+margin_bottom = 20.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0

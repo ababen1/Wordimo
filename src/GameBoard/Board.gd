@@ -32,7 +32,7 @@ func _ready() -> void:
 	_setup_game_stats()
 	blocks_queue_panel.connect("block_clicked", self, "_on_queue_block_clicked")
 	blocks_queue_panel.connect("panel_clicked", self, "_on_queue_panel_clicked")
-	blocks_queue_panel.connect("queue_full", self, "end_game")
+	blocks_queue_panel.connect("queue_full", self, "_on_queue_full")
 	blocks_timer.timer.connect("timeout", self, "_on_BlocksTimer_timeout")
 	tilemap.connect("block_placed", self, "_on_block_placed")
 	tilemap.connect("block_placed", blocks_queue_panel, "_on_block_placed")
@@ -226,6 +226,10 @@ func _on_queue_block_clicked(block: Block) -> void:
 	if dragged_block:
 		drop_block()
 	self.dragged_block = block
+
+func _on_queue_full() -> void:
+	if difficulty.lose_when_queue_full:
+		end_game()
 
 func _on_queue_panel_clicked() -> void:
 	if dragged_block:

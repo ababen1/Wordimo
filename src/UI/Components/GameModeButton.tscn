@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/UI/Components/PanelButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/UI/Components/GameModeBtn.gd" type="Script" id=2]
+[ext_resource path="res://assets/Icons/Favorites.svg" type="Texture" id=3]
+
+[node name="GameModeButton" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+animation_duration = 0.2
+
+[node name="TextureRect" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="Title" parent="VBoxContainer" index="0"]
+margin_left = 99.0
+margin_right = 99.0
+text = ""
