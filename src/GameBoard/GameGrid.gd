@@ -23,11 +23,10 @@ func _process(_delta: float) -> void:
 		if owner.dragged_block and is_inside_grid(owner.dragged_block):
 			for letter in owner.dragged_block.letters:
 				if letter is Letter:
-					var cell = world_to_map(letter.rect_global_position + cell_size / 2)
-					if not get_parent().difficulty.get("can_override"):
-						highlight_layer.cells[cell] = error_color if get_letter_at(cell) else highlight_color
+					if can_place_letter_tile(letter, get_letter_cell(letter)):
+						highlight_layer.cells[get_letter_cell(letter)] = highlight_color
 					else:
-						highlight_layer.cells[cell] = highlight_color
+						highlight_layer.cells[get_letter_cell(letter)] = error_color
 		update()
 	
 func _draw() -> void:
@@ -54,20 +53,21 @@ func set_size(val: Vector2):
 
 func is_inside_grid(block: Block) -> bool:
 	for letter in block.letters:
-		var letter_cell = world_to_map(letter.rect_global_position + cell_size / 2)
-		if not get_used_rect().has_point(letter_cell):
+		if not get_used_rect().has_point(get_letter_cell(letter)):
 			return false
 	return true
+
+func get_letter_cell(letter: Letter) -> Vector2:
+	return world_to_map(letter.rect_global_position + cell_size / 2)
 
 func can_drop_block(block: Block) -> bool:
 	if highlight_layer.cells.empty():
 		return false
-	elif get_parent().difficulty.get("can_override"):
-		return true
 	else:
-		for cell in highlight_layer.cells:
-			if get_letter_at(cell):
-				return false
+		for letter in block.letters:
+			if letter is Letter:
+				if not can_place_letter_tile(letter, get_letter_cell(letter)):
+					return false
 		return true
 
 func drop_block(block: Block) -> void:
@@ -77,14 +77,24 @@ func drop_block(block: Block) -> void:
 			_add_letter_to_grid(letter)
 		emit_signal("block_placed", block)
 
-func get_letter_at(cord: Vector2) -> String:
+func get_letter_str_at_cell(cord: Vector2) -> String:
 	var letter = tiles_data.get(cord)
 	return letter.letter if letter else ""
+
+func get_letter_str_at_position(global_pos: Vector2) -> String:
+	var cell = world_to_map(global_pos + cell_size / 2)
+	return get_letter_str_at_cell(cell)
+
+func can_place_letter_tile(tile: Letter, cell: Vector2) -> bool:
+	if get_parent().difficulty.can_override:
+		return true
+	else:
+		return !get_letter_str_at_cell(cell) or get_letter_str_at_cell(cell) == tile.letter
 
 func is_full() -> bool:
 	for y in size.y:
 		for x in size.x:
-			if not get_letter_at(Vector2(x,y)):
+			if not get_letter_str_at_cell(Vector2(x,y)):
 				return false
 	return true
 
@@ -104,27 +114,6 @@ func clear_cells(from: Vector2, to: Vector2) -> void:
 		clear_cell(current_cell)
 		current_cell += direction
 	clear_cell(to)
-
-func _add_letter_to_grid(letter: Letter) -> void:
-	var shape: CollisionShape2D = letter.get_parent()
-	var target_cell = world_to_map(shape.global_position)
-	if tiles_data.has(target_cell):
-		tiles_data[target_cell].queue_free()
-	tiles_data[target_cell] = letter
-	shape.global_position = to_global(map_to_world(target_cell)) + cell_size / 2
-	emit_signal("tile_placed", letter)
-	
-func _print_board() -> void:
-	var string = ""
-	for y in size.y:
-		for x in size.x:
-			var value = tiles_data.get(Vector2(x,y))
-			if value:
-				string += (value.letter) + "\t"
-			else:
-				string += ("□") + "\t"
-		string += "\n"
-	print(string)
 
 func get_rect() -> Rect2:
 	return Rect2(Vector2.ZERO, size * cell_size)
@@ -148,6 +137,25 @@ func find_words_in_board(changed_cells: Array) -> Array:
 			_check_for_words(Vector2(column, 0), Vector2.DOWN))
 	return all_words
 
+func get_letters_between(start: Vector2, end: Vector2) -> Array:
+	var direction = start.direction_to(end)
+	var current_cell = start
+	var letters: = []
+	while current_cell != end:
+		letters.append(get_letter_str_at_cell(current_cell))
+		current_cell += direction
+	letters.append(get_letter_str_at_cell(end))
+	return letters
+
+func _add_letter_to_grid(letter: Letter) -> void:
+	var shape: CollisionShape2D = letter.get_parent()
+	var target_cell = world_to_map(shape.global_position)
+	if tiles_data.has(target_cell):
+		tiles_data[target_cell].queue_free()
+	tiles_data[target_cell] = letter
+	shape.global_position = to_global(map_to_world(target_cell)) + cell_size / 2
+	emit_signal("tile_placed", letter)
+
 func _check_for_words(cell: Vector2, direction: = Vector2.RIGHT) -> Array:
 	var current_cell = cell
 	var current_word = ""
@@ -170,12 +178,14 @@ func _append_word(word: String, array: Array, cell: Vector2, direction: Vector2)
 			"from": cell - direction * word.length(),
 			"to": cell - direction})
 
-func get_letters_between(start: Vector2, end: Vector2) -> Array:
-	var direction = start.direction_to(end)
-	var current_cell = start
-	var letters: = []
-	while current_cell != end:
-		letters.append(get_letter_at(current_cell))
-		current_cell += direction
-	letters.append(get_letter_at(end))
-	return letters
+func _print_board() -> void:
+	var string = ""
+	for y in size.y:
+		for x in size.x:
+			var value = tiles_data.get(Vector2(x,y))
+			if value:
+				string += (value.letter) + "\t"
+			else:
+				string += ("□") + "\t"
+		string += "\n"
+	print(string)
