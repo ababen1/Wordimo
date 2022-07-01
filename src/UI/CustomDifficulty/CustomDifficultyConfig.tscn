@@ -15,7 +15,6 @@
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="CustomDifficultyConfig" type="WindowDialog"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 72.0
@@ -38,7 +37,7 @@ margin_bottom = -24.0
 custom_styles/bg = SubResource( 1 )
 
 [node name="PanelContainer" type="PanelContainer" parent="HSplit"]
-margin_right = 594.0
+margin_right = 643.0
 margin_bottom = 488.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -299,7 +298,7 @@ margin_bottom = 27.0
 text = "Save Difficulty"
 
 [node name="SavedDifficulties" type="VBoxContainer" parent="HSplit"]
-margin_left = 606.0
+margin_left = 655.0
 margin_right = 848.0
 margin_bottom = 488.0
 size_flags_horizontal = 3

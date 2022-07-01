@@ -47,22 +47,33 @@ size_flags_stretch_ratio = 3.5
 
 [node name="Continue" type="Button" parent="VBox/Vbox"]
 margin_left = 442.0
-margin_top = 34.0
+margin_top = 15.0
 margin_right = 574.0
-margin_bottom = 72.0
+margin_bottom = 53.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 custom_fonts/font = SubResource( 1 )
 text = "Continue"
 
+[node name="GiveUp" type="Button" parent="VBox/Vbox"]
+margin_left = 451.0
+margin_top = 89.0
+margin_right = 565.0
+margin_bottom = 127.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 1 )
+text = "Give Up"
+
 [node name="Quit" type="Button" parent="VBox/Vbox"]
 margin_left = 473.0
-margin_top = 144.0
+margin_top = 163.0
 margin_right = 542.0
-margin_bottom = 182.0
+margin_bottom = 201.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 custom_fonts/font = SubResource( 1 )
 text = "Quit"
 
+[connection signal="pressed" from="VBox/Vbox/GiveUp" to="." method="_on_GiveUp_pressed"]
 [connection signal="pressed" from="VBox/Vbox/Quit" to="." method="_on_Quit_pressed"]

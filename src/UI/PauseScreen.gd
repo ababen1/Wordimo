@@ -1,6 +1,6 @@
 extends PopupPanel
 
-signal quit_game
+signal end_game
 
 var is_active: bool setget set_is_active
 
@@ -25,10 +25,12 @@ func set_is_active(val: bool) -> void:
 	else:
 		hide()
 
-func _on_quit_pressed() -> void:
-	emit_signal("quit_game")
-
 
 func _on_Quit_pressed() -> void:
 	get_tree().paused = false
 	SceneChanger.change_scene("MainMenu")
+
+
+func _on_GiveUp_pressed() -> void:
+	self.is_active = false
+	emit_signal("end_game")

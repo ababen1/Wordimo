@@ -37,9 +37,10 @@ func _ready() -> void:
 	tilemap.connect("block_placed", self, "_on_block_placed")
 	tilemap.connect("block_placed", blocks_queue_panel, "_on_block_placed")
 	HUD.connect("start_new_game", self, "start_new_game")
+	HUD.pause_screen.connect("end_game", self, "end_game")
 	timer.connect("timeout", self, "_on_timeout")
 	connect("game_over", HUD, "_on_game_over")
-	connect("total_score_changed", HUD.score, "set_score")
+	connect("total_score_changed", HUD.score_label, "set_score")
 	if OS.get_name() == "Android" or OS.get_name() == "iOS":
 		drag_input = true
 	set_difficulty(SceneChanger.message.get("difficulty", DifficultyResource.new()))
