@@ -3,10 +3,9 @@
 [resource]
 bg_color = Color( 0, 0, 0, 1 )
 draw_center = false
-border_color = Color( 0, 0, 0, 0.611765 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 5
-shadow_color = Color( 0.756863, 0.756863, 0.709804, 0.6 )
-shadow_size = 9
+shadow_color = Color( 0.709804, 0.741176, 0.756863, 0.505882 )
+shadow_size = 3

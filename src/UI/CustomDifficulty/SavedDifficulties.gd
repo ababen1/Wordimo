@@ -3,6 +3,9 @@ extends VBoxContainer
 signal load_to_editor(difficulty)
 signal delete_difficulty(difficulty)
 
+func _ready() -> void:
+	$HBox/OpenFolder.visible = !(OS.get_name() in ["Android", "iOS"])
+
 func setup(difficulties: Array) -> void:
 	clear()
 	for difficulty in difficulties:
