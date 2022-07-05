@@ -99,6 +99,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/UI/CustomDifficulty/SavedDifficulty.gd"
 }, {
+"base": "Control",
+"class": "UISettingCheckbox",
+"language": "GDScript",
+"path": "res://src/UI/Components/UISettingCheckbox.gd"
+}, {
+"base": "HSlider",
+"class": "VolumeSlider",
+"language": "GDScript",
+"path": "res://src/UI/Settings/VolumeSlider.gd"
+}, {
 "base": "Label",
 "class": "WordLabel",
 "language": "GDScript",
@@ -133,6 +143,8 @@ _global_script_class_icons={
 "PanelButton": "",
 "StatsGrid": "",
 "UISavedDifficulty": "",
+"UISettingCheckbox": "",
+"VolumeSlider": "",
 "WordLabel": "",
 "WordTetrisGame": "",
 "WordsFuncs": ""

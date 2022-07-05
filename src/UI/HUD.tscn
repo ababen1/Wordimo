@@ -53,22 +53,27 @@ margin_right = 40.0
 margin_bottom = -8.0
 custom_constants/separation = 10
 alignment = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NewGame" type="Button" parent="Control/VBox"]
 margin_top = 48.0
-margin_right = 28.0
+margin_right = 32.0
 margin_bottom = 75.0
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 size_flags_vertical = 4
 icon = ExtResource( 2 )
+expand_icon = true
 
 [node name="Pause" type="Button" parent="Control/VBox"]
 margin_top = 85.0
-margin_right = 28.0
+margin_right = 32.0
 margin_bottom = 112.0
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 size_flags_vertical = 4
 icon = ExtResource( 6 )
+expand_icon = true
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -100
@@ -80,6 +85,9 @@ mouse_filter = 2
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 

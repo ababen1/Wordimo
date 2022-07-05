@@ -14,8 +14,8 @@ signal total_score_changed()
 
 onready var tilemap = $GameGrid
 onready var _blocks_node = find_node("Blocks")
-onready var blocks_timer = $Queue/VBox/BlocksTimer
-onready var blocks_queue_panel = $Queue/VBox/QueuePanel
+onready var blocks_timer = $Queue/BlocksTimer
+onready var blocks_queue_panel = $Queue/QueuePanel
 onready var HUD = $HUD
 onready var timer = $Timer
 
