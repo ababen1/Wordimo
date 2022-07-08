@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/UI/Settings/Components/BackgroundBtn.gd" type="Script" id=2]
+[ext_resource path="res://assets/Themes/CasualBlue/HyperCasualUI/tickIcon.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxFlat" id=5]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.12549, 0.898039, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 1, 1, 1, 0.670588 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="BackgroundBtn" type="Button"]
+anchor_right = 0.09375
+anchor_bottom = 0.106667
+rect_min_size = Vector2( 96, 64 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 2 )
+toggle_mode = true
+clip_text = true
+expand_icon = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Texture" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = -1.0
+margin_bottom = -1.0
+expand = true
+stretch_mode = 7
+
+[node name="Selected" type="TextureRect" parent="Texture"]
+visible = false
+modulate = Color( 0.176471, 0.878431, 0.0313726, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -22.0
+margin_top = 1.0
+margin_right = -1.0
+margin_bottom = 20.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6

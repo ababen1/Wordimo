@@ -89,16 +89,16 @@ tracks/1/keys = {
 
 [node name="GameModeSelection" type="Panel"]
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -456.0
-margin_top = -273.0
-margin_right = 472.0
-margin_bottom = 247.0
+anchor_left = 0.0546875
+anchor_top = 0.045
+anchor_right = 0.960938
+anchor_bottom = 0.911667
+margin_top = -1.90735e-06
 rect_clip_content = true
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0

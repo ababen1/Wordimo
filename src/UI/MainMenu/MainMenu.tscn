@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/UI/MainMenu/TutorialPopup.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes/Resources/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/UI/MainMenu/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://src/UI/MainMenu/GameModeSelection.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Themes/Resources/BigFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://src/UI/Settings/Components/SettingsBtn.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -47,9 +48,9 @@ alignment = 1
 
 [node name="Start" type="Button" parent="VBoxContainer/VBoxContainer"]
 margin_left = 388.0
-margin_top = 146.0
+margin_top = 102.0
 margin_right = 475.0
-margin_bottom = 180.0
+margin_bottom = 136.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 5 )
@@ -57,13 +58,19 @@ text = "START"
 
 [node name="Tutorial" type="Button" parent="VBoxContainer/VBoxContainer"]
 margin_left = 341.0
-margin_top = 235.0
+margin_top = 191.0
 margin_right = 522.0
-margin_bottom = 269.0
+margin_bottom = 225.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 5 )
 text = "HOW TO PLAY"
+
+[node name="Settings" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
+margin_left = 377.0
+margin_top = 280.0
+margin_right = 486.0
+margin_bottom = 314.0
 
 [node name="TutorialPopup" type="AcceptDialog" parent="."]
 margin_left = 152.0

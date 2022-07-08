@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://src/Saver/SaveGame.gd" type="Script" id=1]
+[ext_resource path="res://assets/Themes/Backgrounds/abstractbackground (38).png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+name = ""
+random_seed = 3161026589
+game_version = "0"
+playtime = 0.0
+data = {
+"bg": ExtResource( 2 )
+}
+configs = {
+"fullscreen": false,
+"resolution": Vector2( 1024, 600 ),
+"vsync": false
+}

@@ -1,0 +1,138 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/UI/Settings/Components/UIResolutionSelector.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/UI/Settings/UIGeneralSettings.gd" type="Script" id=2]
+[ext_resource path="res://src/UI/Settings/Components/UISettingCheckbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/Settings/Components/VolumeSlider.gd" type="Script" id=4]
+
+[node name="GeneralSettings" type="VBoxContainer" groups=["save"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 289.0
+margin_top = 147.0
+margin_right = -288.0
+margin_bottom = -144.0
+script = ExtResource( 2 )
+
+[node name="Video" type="Control" parent="."]
+margin_right = 447.0
+margin_bottom = 138.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Video"]
+margin_top = 4.0
+margin_right = 447.0
+margin_bottom = 25.0
+text = "Video Settings"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="Video"]
+margin_top = 29.0
+margin_right = 447.0
+margin_bottom = 33.0
+
+[node name="UIResolutionSelector" parent="Video" instance=ExtResource( 1 )]
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 37.0
+margin_right = 447.0
+margin_bottom = 64.0
+
+[node name="UIFullscreenCheckbox" parent="Video" instance=ExtResource( 3 )]
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 68.0
+margin_right = 447.0
+margin_bottom = 97.0
+title = "Full Screen"
+
+[node name="UIVsyncCheckbox" parent="Video" instance=ExtResource( 3 )]
+anchor_right = 0.0
+margin_left = 0.0
+margin_top = 101.0
+margin_right = 447.0
+margin_bottom = 130.0
+title = "VSync"
+
+[node name="Spacer" type="Control" parent="."]
+margin_top = 142.0
+margin_right = 447.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 15, 25 )
+
+[node name="Audio" type="Control" parent="."]
+margin_top = 171.0
+margin_right = 447.0
+margin_bottom = 309.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="Audio"]
+margin_top = 4.0
+margin_right = 447.0
+margin_bottom = 25.0
+text = "Audio Settings"
+align = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Audio"]
+margin_top = 29.0
+margin_right = 447.0
+margin_bottom = 33.0
+
+[node name="GridContainer" type="GridContainer" parent="Audio"]
+margin_top = 37.0
+margin_right = 447.0
+margin_bottom = 130.0
+custom_constants/vseparation = 15
+custom_constants/hseparation = 10
+columns = 2
+
+[node name="Label" type="Label" parent="Audio/GridContainer"]
+margin_right = 62.0
+margin_bottom = 21.0
+text = "Master"
+
+[node name="VolumeSlider" type="HSlider" parent="Audio/GridContainer"]
+margin_left = 72.0
+margin_right = 447.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+value = 1.0
+script = ExtResource( 4 )
+
+[node name="Label2" type="Label" parent="Audio/GridContainer"]
+margin_top = 36.0
+margin_right = 62.0
+margin_bottom = 57.0
+text = "Sounds"
+
+[node name="VolumeSlider2" type="HSlider" parent="Audio/GridContainer"]
+margin_left = 72.0
+margin_top = 36.0
+margin_right = 447.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+value = 1.0
+script = ExtResource( 4 )
+audio_bus_name = "SFX"
+
+[node name="Label3" type="Label" parent="Audio/GridContainer"]
+margin_top = 72.0
+margin_right = 62.0
+margin_bottom = 93.0
+text = "Music"
+
+[node name="VolumeSlider3" type="HSlider" parent="Audio/GridContainer"]
+margin_left = 72.0
+margin_top = 72.0
+margin_right = 447.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+value = 1.0
+script = ExtResource( 4 )
+audio_bus_name = "BGM"
+
+[connection signal="resolution_changed" from="Video/UIResolutionSelector" to="." method="_on_UIResolutionSelector_resolution_changed"]
+[connection signal="toggled" from="Video/UIFullscreenCheckbox" to="." method="_on_UIFullscreenCheckbox_toggled"]
+[connection signal="toggled" from="Video/UIVsyncCheckbox" to="." method="_on_UIVsyncCheckbox_toggled"]

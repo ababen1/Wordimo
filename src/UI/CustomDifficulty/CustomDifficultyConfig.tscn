@@ -15,14 +15,16 @@
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="CustomDifficultyConfig" type="WindowDialog"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 72.0
-margin_top = 32.0
-margin_right = -72.0
-margin_bottom = -32.0
+visible = true
+anchor_left = 0.0703125
+anchor_top = 0.0533333
+anchor_right = 0.929688
+anchor_bottom = 0.946667
 window_title = "Custom Difficulty"
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [ PoolStringArray( "SaveDifficultyDialog" ), [ ExtResource( 8 ) ] ]
@@ -45,14 +47,14 @@ size_flags_vertical = 3
 [node name="VBox" type="VBoxContainer" parent="HSplit/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 587.0
+margin_right = 636.0
 margin_bottom = 481.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 27
 
 [node name="TimeLimit" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_right = 580.0
+margin_right = 629.0
 margin_bottom = 31.0
 rect_min_size = Vector2( 300, 0 )
 custom_constants/hseparation = 10
@@ -97,7 +99,7 @@ editable = false
 
 [node name="QueueSize" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
 margin_top = 58.0
-margin_right = 580.0
+margin_right = 629.0
 margin_bottom = 89.0
 rect_min_size = Vector2( 300, 0 )
 custom_constants/hseparation = 10
@@ -279,21 +281,21 @@ text = "Board is full"
 
 [node name="HBox" type="HBoxContainer" parent="HSplit/PanelContainer/VBox"]
 margin_top = 447.0
-margin_right = 580.0
+margin_right = 629.0
 margin_bottom = 474.0
 size_flags_vertical = 10
 custom_constants/separation = 25
 alignment = 1
 
 [node name="Start" type="Button" parent="HSplit/PanelContainer/VBox/HBox"]
-margin_left = 157.0
-margin_right = 264.0
+margin_left = 181.0
+margin_right = 288.0
 margin_bottom = 27.0
 text = "Start Game"
 
 [node name="Save" type="Button" parent="HSplit/PanelContainer/VBox/HBox"]
-margin_left = 289.0
-margin_right = 423.0
+margin_left = 313.0
+margin_right = 447.0
 margin_bottom = 27.0
 text = "Save Difficulty"
 
@@ -308,26 +310,26 @@ custom_constants/separation = 15
 script = ExtResource( 9 )
 
 [node name="HBox" type="HBoxContainer" parent="HSplit/SavedDifficulties"]
-margin_right = 242.0
+margin_right = 193.0
 margin_bottom = 27.0
 alignment = 1
 
 [node name="Label" type="Label" parent="HSplit/SavedDifficulties/HBox"]
-margin_left = 31.0
+margin_left = 7.0
 margin_top = 3.0
-margin_right = 178.0
+margin_right = 154.0
 margin_bottom = 24.0
 text = "Saved Difficulties"
 
 [node name="OpenFolder" type="Button" parent="HSplit/SavedDifficulties/HBox"]
-margin_left = 182.0
-margin_right = 210.0
+margin_left = 158.0
+margin_right = 186.0
 margin_bottom = 27.0
 icon = ExtResource( 11 )
 
 [node name="SavedDifficulty" parent="HSplit/SavedDifficulties" instance_placeholder="res://src/UI/CustomDifficulty/SavedDifficulty.tscn"]
 margin_top = 42.0
-margin_right = 242.0
+margin_right = 193.0
 margin_bottom = 72.0
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="HSplit/SavedDifficulties"]

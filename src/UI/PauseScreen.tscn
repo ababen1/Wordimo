@@ -1,12 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/UI/PauseScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes/Resources/LetterFont.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/Themes/Resources/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=3]
-
-[sub_resource type="DynamicFont" id=1]
-size = 25
-font_data = ExtResource( 3 )
+[ext_resource path="res://src/UI/Settings/Components/SettingsBtn.tscn" type="PackedScene" id=3]
 
 [node name="PauseScreen" type="PopupPanel"]
 pause_mode = 2
@@ -46,33 +42,36 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 3.5
 
 [node name="Continue" type="Button" parent="VBox/Vbox"]
-margin_left = 442.0
-margin_top = 15.0
-margin_right = 574.0
-margin_bottom = 53.0
+margin_left = 463.0
+margin_right = 552.0
+margin_bottom = 27.0
 size_flags_horizontal = 6
-size_flags_vertical = 6
-custom_fonts/font = SubResource( 1 )
+size_flags_vertical = 2
 text = "Continue"
 
+[node name="Settings" parent="VBox/Vbox" instance=ExtResource( 3 )]
+margin_left = 467.0
+margin_top = 55.0
+margin_right = 549.0
+margin_bottom = 82.0
+size_flags_vertical = 2
+
 [node name="GiveUp" type="Button" parent="VBox/Vbox"]
-margin_left = 451.0
-margin_top = 89.0
-margin_right = 565.0
-margin_bottom = 127.0
+margin_left = 469.0
+margin_top = 110.0
+margin_right = 547.0
+margin_bottom = 137.0
 size_flags_horizontal = 6
-size_flags_vertical = 6
-custom_fonts/font = SubResource( 1 )
+size_flags_vertical = 2
 text = "Give Up"
 
 [node name="Quit" type="Button" parent="VBox/Vbox"]
-margin_left = 473.0
-margin_top = 163.0
-margin_right = 542.0
-margin_bottom = 201.0
+margin_left = 483.0
+margin_top = 165.0
+margin_right = 532.0
+margin_bottom = 192.0
 size_flags_horizontal = 6
-size_flags_vertical = 6
-custom_fonts/font = SubResource( 1 )
+size_flags_vertical = 2
 text = "Quit"
 
 [connection signal="pressed" from="VBox/Vbox/GiveUp" to="." method="_on_GiveUp_pressed"]

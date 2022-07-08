@@ -14,8 +14,9 @@ signal total_score_changed()
 
 onready var tilemap = $GameGrid
 onready var _blocks_node = find_node("Blocks")
-onready var blocks_timer = $Queue/BlocksTimer
-onready var blocks_queue_panel = $Queue/QueuePanel
+onready var queue = find_node("Queue")
+onready var blocks_timer = queue.get_node("BlocksTimer")
+onready var blocks_queue_panel = queue.get_node("QueuePanel")
 onready var HUD = $HUD
 onready var timer = $Timer
 
@@ -41,7 +42,7 @@ func _ready() -> void:
 	timer.connect("timeout", self, "_on_timeout")
 	connect("game_over", HUD, "_on_game_over")
 	connect("total_score_changed", HUD.score_label, "set_score")
-	if OS.get_name() == "Android" or OS.get_name() == "iOS":
+	if GameSaver.is_mobile():
 		drag_input = true
 	set_difficulty(SceneChanger.message.get("difficulty", DifficultyResource.new()))
 	start_new_game()
