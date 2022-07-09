@@ -17,7 +17,7 @@ static func get_savefile_name(_name: String, _random_seed: int):
 	})
 
 func apply_configs() -> void:
-	OS.window_size = configs.get("resolution", OS.window_size)
+	#OS.window_size = configs.get("resolution", OS.window_size)
 	OS.vsync_enabled = configs.get("vsync", OS.vsync_enabled)
 	OS.window_fullscreen = configs.get("fullscreen", OS.window_fullscreen)
 

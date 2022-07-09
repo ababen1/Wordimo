@@ -4,6 +4,7 @@
 [ext_resource path="res://src/UI/Settings/BackgroundSelector.gd" type="Script" id=2]
 
 [node name="BackgroundSelect" type="AcceptDialog"]
+visible = true
 anchor_left = 0.15625
 anchor_top = 0.106667
 anchor_right = 0.789063
@@ -14,14 +15,14 @@ script = ExtResource( 2 )
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -43.0
 
 [node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
-margin_right = 640.0
-margin_bottom = 424.0
+margin_right = 632.0
+margin_bottom = 381.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 15
@@ -32,8 +33,8 @@ custom_constants/margin_bottom = 15
 [node name="BackgroundsGrid" type="GridContainer" parent="ScrollContainer/MarginContainer"]
 margin_left = 15.0
 margin_top = 15.0
-margin_right = 625.0
-margin_bottom = 409.0
+margin_right = 617.0
+margin_bottom = 366.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 6

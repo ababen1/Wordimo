@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/Icons/Reload.svg" type="Texture" id=2]
 [ext_resource path="res://src/UI/HUD.gd" type="Script" id=3]
 [ext_resource path="res://src/UI/GameOverDialog.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/Themes/Backgrounds/abstractbackground (42).png" type="Texture" id=5]
+[ext_resource path="res://src/UI/BackgroundLayer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Icons/Pause.svg" type="Texture" id=6]
 [ext_resource path="res://src/UI/PauseScreen.tscn" type="PackedScene" id=7]
 
@@ -75,19 +75,7 @@ size_flags_vertical = 4
 icon = ExtResource( 6 )
 expand_icon = true
 
-[node name="BackgroundLayer" type="CanvasLayer" parent="."]
-layer = -100
-
-[node name="TextureRect" type="TextureRect" parent="BackgroundLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 1
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="BackgroundLayer" parent="." instance=ExtResource( 5 )]
 
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 

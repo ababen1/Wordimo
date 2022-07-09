@@ -187,9 +187,9 @@ config/version="0"
 
 GameSaver="*res://src/Saver/GameSaver.tscn"
 EventBus="*res://src/Global/EventBus.gd"
+ThemeManger="*res://src/ThemeManger.gd"
 WordsDatabase="*res://src/WordsDatabase/DictonaryCreator.gd"
 SFX="*res://src/SFX.gd"
-ThemeManger="*res://src/ThemeManger.gd"
 SceneChanger="*res://src/Global/SceneChanger.tscn"
 
 [display]

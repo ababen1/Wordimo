@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://src/Saver/SaveGame.gd" type="Script" id=1]
-[ext_resource path="res://assets/Themes/Backgrounds/abstractbackground (38).png" type="Texture" id=2]
+[ext_resource path="res://assets/Themes/Backgrounds/abstractbackground (20).png" type="Texture" id=2]
+[ext_resource path="res://assets/Themes/Blue.tres" type="Theme" id=3]
 
 [resource]
 script = ExtResource( 1 )
@@ -10,7 +11,8 @@ random_seed = 3161026589
 game_version = "0"
 playtime = 0.0
 data = {
-"bg": ExtResource( 2 )
+"bg": ExtResource( 2 ),
+"theme": ExtResource( 3 )
 }
 configs = {
 "fullscreen": false,

@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/Themes/Resources/BigFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/UI/Components/SettingsBtn.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/Settings/SettingsDialog.tscn" type="PackedScene" id=3]
 
@@ -9,7 +8,6 @@ margin_right = 109.0
 margin_bottom = 34.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 1 )
 text = "Settings"
 script = ExtResource( 2 )
 

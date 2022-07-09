@@ -9,3 +9,6 @@ func _on_Start_pressed() -> void:
 	
 func _on_Tutorial_pressed() -> void:
 	_tutorial_popup.popup_centered()
+
+func _on_Quit_pressed() -> void:
+	get_tree().quit()

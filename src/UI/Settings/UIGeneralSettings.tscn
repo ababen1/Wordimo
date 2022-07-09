@@ -14,45 +14,45 @@ margin_right = -288.0
 margin_bottom = -144.0
 script = ExtResource( 2 )
 
-[node name="Video" type="Control" parent="."]
+[node name="Video" type="VBoxContainer" parent="."]
 margin_right = 447.0
 margin_bottom = 138.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="Video"]
-margin_top = 4.0
 margin_right = 447.0
-margin_bottom = 25.0
+margin_bottom = 21.0
 text = "Video Settings"
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="Video"]
-margin_top = 29.0
+margin_top = 25.0
 margin_right = 447.0
-margin_bottom = 33.0
+margin_bottom = 29.0
 
 [node name="UIResolutionSelector" parent="Video" instance=ExtResource( 1 )]
+visible = false
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 37.0
+margin_top = 33.0
 margin_right = 447.0
-margin_bottom = 64.0
+margin_bottom = 60.0
 
 [node name="UIFullscreenCheckbox" parent="Video" instance=ExtResource( 3 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 68.0
+margin_top = 33.0
 margin_right = 447.0
-margin_bottom = 97.0
+margin_bottom = 62.0
 title = "Full Screen"
 
 [node name="UIVsyncCheckbox" parent="Video" instance=ExtResource( 3 )]
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 101.0
+margin_top = 66.0
 margin_right = 447.0
-margin_bottom = 130.0
+margin_bottom = 95.0
 title = "VSync"
 
 [node name="Spacer" type="Control" parent="."]
@@ -133,6 +133,5 @@ value = 1.0
 script = ExtResource( 4 )
 audio_bus_name = "BGM"
 
-[connection signal="resolution_changed" from="Video/UIResolutionSelector" to="." method="_on_UIResolutionSelector_resolution_changed"]
 [connection signal="toggled" from="Video/UIFullscreenCheckbox" to="." method="_on_UIFullscreenCheckbox_toggled"]
 [connection signal="toggled" from="Video/UIVsyncCheckbox" to="." method="_on_UIVsyncCheckbox_toggled"]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/UI/Settings/Components/UISettingCheckbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/Settings/GameplaySettings.gd" type="Script" id=2]
-[ext_resource path="res://src/UI/Settings/Components/UISettingSpinbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/Settings/ThemeSelector.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/Settings/BackgroundSelector.tscn" type="PackedScene" id=4]
 
 [node name="GameplaySettings" type="VBoxContainer"]
@@ -12,6 +12,7 @@ margin_left = 20.0
 margin_top = 17.0
 margin_right = -20.0
 margin_bottom = -17.0
+custom_constants/separation = 10
 script = ExtResource( 2 )
 
 [node name="DragInput" parent="." instance=ExtResource( 1 )]
@@ -23,19 +24,19 @@ margin_bottom = 29.0
 hint_tooltip = "Move blocks by dragging instead of clicking"
 title = "Drag Input"
 
-[node name="MinLength" parent="." instance=ExtResource( 3 )]
-default_value = 4.0
-
-[node name="ChangeBackground" type="Button" parent="."]
-margin_top = 68.0
-margin_right = 185.0
-margin_bottom = 95.0
-size_flags_horizontal = 0
-text = "Change Background"
+[node name="ThemeSelector" parent="." instance=ExtResource( 3 )]
+margin_top = 39.0
+margin_bottom = 66.0
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [ PoolStringArray( "BgSelect" ), [ ExtResource( 4 ) ] ]
 
+[node name="ChangeBackground" type="Button" parent="."]
+margin_top = 76.0
+margin_right = 185.0
+margin_bottom = 103.0
+size_flags_horizontal = 0
+text = "Change Background"
+
 [connection signal="toggled" from="DragInput" to="." method="_on_DragInput_toggled"]
-[connection signal="setting_changed" from="MinLength" to="." method="_on_UISettingSpinbox_setting_changed"]
 [connection signal="pressed" from="ChangeBackground" to="." method="_on_ChangeBackground_pressed"]

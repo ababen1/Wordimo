@@ -61,7 +61,7 @@ text = "+"
 [node name="Timer" type="Timer" parent="BlocksTimer"]
 one_shot = true
 
-[node name="QueuePanel" type="PanelContainer" parent="."]
+[node name="QueuePanel" type="Panel" parent="."]
 margin_top = 55.0
 margin_right = 248.0
 margin_bottom = 584.0

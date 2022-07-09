@@ -2,24 +2,18 @@ extends CanvasLayer
 
 signal start_new_game
 
-const BACKGROUNDS_FOLDER = "res://assets/Themes/Backgrounds/"
-
 onready var score_label = $Control/HBox/Score
 onready var pause_screen: = $PauseScreen
 onready var _new_game_btn = $Control/VBox/NewGame
 onready var _time_left_label: Label = $Control/HBox/TimeLeft
 onready var _pause_btn = $Control/VBox/Pause
 onready var resource_preloader: = $ResourcePreloader
-onready var _background = $BackgroundLayer/TextureRect
 
 var time_left: float = 0 setget set_time_left
 
 func _ready() -> void:
 	_pause_btn.connect("pressed", pause_screen, "toggle")
-	_background.texture = GameSaver.current_save.data.get("bg", _background.texture)
-# warning-ignore:return_value_discarded
-	EventBus.connect("bg_changed", _background, "set_texture")
-	
+
 func set_theme(new: Theme) -> void:
 	$Control.propagate_call("set_theme", [new])
 	$Control.propagate_call("update")

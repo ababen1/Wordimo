@@ -1,4 +1,4 @@
-extends PanelContainer
+extends Panel
 
 signal block_clicked(block)
 signal panel_clicked

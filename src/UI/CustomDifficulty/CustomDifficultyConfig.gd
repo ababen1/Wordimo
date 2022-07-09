@@ -24,7 +24,7 @@ func get_time_limit() -> float:
 
 func set_saved_difficulties(val: Array):
 	saved_difficulties = val
-	$HSplit/SavedDifficulties.setup(saved_difficulties)
+	$HSplit/Panel/SavedDifficulties.setup(saved_difficulties)
 
 func popup_error(text: String, title: = "Error") -> void:
 	var error: = AcceptDialog.new()

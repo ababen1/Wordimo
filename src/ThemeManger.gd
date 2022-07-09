@@ -1,16 +1,25 @@
 extends Node
 
-const DEFAULT_THEME = preload("res://assets/Themes/DefaultTheme.tres")
+const DEFAULT_THEME = preload("res://assets/Themes/Default.tres")
 
 signal theme_changed(new_theme)
 
-var current_theme: Theme = DEFAULT_THEME setget set_current_theme
+var current_theme: Theme setget set_current_theme
+
+func _enter_tree() -> void:
+	add_to_group("save")
 
 func _ready() -> void:
 	get_tree().connect("node_added", self, "_on_node_added_to_tree")
+
+func save(savedata: SaveGame) -> void:
+	savedata.data["theme"] = current_theme
+
+func load(savedata: SaveGame) -> void:
+	self.current_theme = savedata.data.get("theme", DEFAULT_THEME)
 	
 func set_current_theme(val: Theme) -> void:
-	current_theme = val
+	current_theme = val 
 	_set_theme_to_nodes(get_tree().root)
 	emit_signal("theme_changed", current_theme)
 

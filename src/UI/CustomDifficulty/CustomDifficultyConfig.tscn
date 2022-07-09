@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/UI/CustomDifficulty/CustomDifficultyConfig.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/CustomDifficulty/TimeLimit.gd" type="Script" id=2]
@@ -12,49 +12,50 @@
 [ext_resource path="res://src/UI/CustomDifficulty/SavedDifficulty.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/Icons/Load.svg" type="Texture" id=11]
 
-[sub_resource type="StyleBoxEmpty" id=1]
-
 [node name="CustomDifficultyConfig" type="WindowDialog"]
 visible = true
-anchor_left = 0.0703125
-anchor_top = 0.0533333
-anchor_right = 0.929688
-anchor_bottom = 0.946667
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -440.0
+margin_top = -288.0
+margin_right = 440.0
+margin_bottom = 272.0
 window_title = "Custom Difficulty"
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": true
-}
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [ PoolStringArray( "SaveDifficultyDialog" ), [ ExtResource( 8 ) ] ]
 
 [node name="HSplit" type="HSplitContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 24.0
-margin_right = -16.0
-margin_bottom = -24.0
-custom_styles/bg = SubResource( 1 )
+anchor_left = 0.0181818
+anchor_top = 0.0416667
+anchor_right = 0.981818
+anchor_bottom = 0.972222
+margin_left = 9.53674e-07
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="PanelContainer" type="PanelContainer" parent="HSplit"]
-margin_right = 643.0
-margin_bottom = 488.0
+margin_right = 587.0
+margin_bottom = 521.111
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox" type="VBoxContainer" parent="HSplit/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 636.0
-margin_bottom = 481.0
+margin_right = 580.0
+margin_bottom = 514.111
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 27
+custom_constants/separation = 20
 
 [node name="TimeLimit" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_right = 629.0
+margin_right = 573.0
 margin_bottom = 31.0
 rect_min_size = Vector2( 300, 0 )
 custom_constants/hseparation = 10
@@ -98,9 +99,9 @@ text = "Unlimited"
 editable = false
 
 [node name="QueueSize" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 58.0
-margin_right = 629.0
-margin_bottom = 89.0
+margin_top = 51.0
+margin_right = 573.0
+margin_bottom = 82.0
 rect_min_size = Vector2( 300, 0 )
 custom_constants/hseparation = 10
 columns = 2
@@ -136,9 +137,9 @@ text = "Unlimited"
 editable = false
 
 [node name="Override" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 116.0
+margin_top = 102.0
 margin_right = 300.0
-margin_bottom = 145.0
+margin_bottom = 131.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
 custom_constants/hseparation = 10
@@ -151,9 +152,9 @@ size_flags_horizontal = 0
 text = "Allow Overriding"
 
 [node name="Speed" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 172.0
+margin_top = 151.0
 margin_right = 300.0
-margin_bottom = 203.0
+margin_bottom = 182.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
 custom_constants/hseparation = 10
@@ -182,9 +183,9 @@ margin_bottom = 31.0
 icon = ExtResource( 5 )
 
 [node name="BoardSize" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 230.0
+margin_top = 202.0
 margin_right = 300.0
-margin_bottom = 296.0
+margin_bottom = 268.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
 custom_constants/hseparation = 15
@@ -248,9 +249,9 @@ grid_size = Vector2( 4, 4 )
 color = Color( 0.835294, 0.835294, 0.835294, 1 )
 
 [node name="GameOver" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 323.0
+margin_top = 288.0
 margin_right = 300.0
-margin_bottom = 385.0
+margin_bottom = 350.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
 custom_constants/hseparation = 10
@@ -280,64 +281,77 @@ margin_bottom = 62.0
 text = "Board is full"
 
 [node name="HBox" type="HBoxContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 447.0
-margin_right = 629.0
-margin_bottom = 474.0
+margin_top = 480.0
+margin_right = 573.0
+margin_bottom = 507.0
 size_flags_vertical = 10
 custom_constants/separation = 25
 alignment = 1
 
 [node name="Start" type="Button" parent="HSplit/PanelContainer/VBox/HBox"]
-margin_left = 181.0
-margin_right = 288.0
+margin_left = 153.0
+margin_right = 260.0
 margin_bottom = 27.0
 text = "Start Game"
 
 [node name="Save" type="Button" parent="HSplit/PanelContainer/VBox/HBox"]
-margin_left = 313.0
-margin_right = 447.0
+margin_left = 285.0
+margin_right = 419.0
 margin_bottom = 27.0
 text = "Save Difficulty"
 
-[node name="SavedDifficulties" type="VBoxContainer" parent="HSplit"]
-margin_left = 655.0
+[node name="Panel" type="Panel" parent="HSplit"]
+margin_left = 599.0
 margin_right = 848.0
-margin_bottom = 488.0
+margin_bottom = 521.111
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.43
+
+[node name="SavedDifficulties" type="VBoxContainer" parent="HSplit/Panel"]
+anchor_left = 0.0321285
+anchor_top = 0.0230277
+anchor_right = 0.971888
+anchor_bottom = 0.97484
+margin_left = 4.76837e-07
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
 custom_constants/separation = 15
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="HBox" type="HBoxContainer" parent="HSplit/SavedDifficulties"]
-margin_right = 193.0
+[node name="HBox" type="HBoxContainer" parent="HSplit/Panel/SavedDifficulties"]
+margin_right = 234.0
 margin_bottom = 27.0
 alignment = 1
 
-[node name="Label" type="Label" parent="HSplit/SavedDifficulties/HBox"]
-margin_left = 7.0
+[node name="Label" type="Label" parent="HSplit/Panel/SavedDifficulties/HBox"]
+margin_left = 27.0
 margin_top = 3.0
-margin_right = 154.0
+margin_right = 174.0
 margin_bottom = 24.0
 text = "Saved Difficulties"
 
-[node name="OpenFolder" type="Button" parent="HSplit/SavedDifficulties/HBox"]
-margin_left = 158.0
-margin_right = 186.0
+[node name="OpenFolder" type="Button" parent="HSplit/Panel/SavedDifficulties/HBox"]
+margin_left = 178.0
+margin_right = 206.0
 margin_bottom = 27.0
 icon = ExtResource( 11 )
 
-[node name="SavedDifficulty" parent="HSplit/SavedDifficulties" instance_placeholder="res://src/UI/CustomDifficulty/SavedDifficulty.tscn"]
+[node name="SavedDifficulty" parent="HSplit/Panel/SavedDifficulties" instance_placeholder="res://src/UI/CustomDifficulty/SavedDifficulty.tscn"]
 margin_top = 42.0
-margin_right = 193.0
+margin_right = 234.0
 margin_bottom = 72.0
 
-[node name="ResourcePreloader" type="ResourcePreloader" parent="HSplit/SavedDifficulties"]
+[node name="ResourcePreloader" type="ResourcePreloader" parent="HSplit/Panel/SavedDifficulties"]
 resources = [ PoolStringArray( "SavedDifficulty" ), [ ExtResource( 10 ) ] ]
 
 [connection signal="value_changed" from="HSplit/PanelContainer/VBox/TimeLimit/Seconds" to="HSplit/PanelContainer/VBox/TimeLimit" method="_on_Seconds_value_changed"]
 [connection signal="value_changed" from="HSplit/PanelContainer/VBox/BoardSize/GridContainer/X" to="HSplit/PanelContainer/VBox/BoardSize" method="_on_X_value_changed"]
 [connection signal="value_changed" from="HSplit/PanelContainer/VBox/BoardSize/GridContainer/Y" to="HSplit/PanelContainer/VBox/BoardSize" method="_on_Y_value_changed"]
-[connection signal="delete_difficulty" from="HSplit/SavedDifficulties" to="." method="_on_SavedDifficulties_delete_difficulty"]
-[connection signal="load_to_editor" from="HSplit/SavedDifficulties" to="." method="_on_SavedDifficulties_load_to_editor"]
-[connection signal="pressed" from="HSplit/SavedDifficulties/HBox/OpenFolder" to="." method="_on_OpenFolder_pressed"]
+[connection signal="delete_difficulty" from="HSplit/Panel/SavedDifficulties" to="." method="_on_SavedDifficulties_delete_difficulty"]
+[connection signal="load_to_editor" from="HSplit/Panel/SavedDifficulties" to="." method="_on_SavedDifficulties_load_to_editor"]
+[connection signal="pressed" from="HSplit/Panel/SavedDifficulties/HBox/OpenFolder" to="." method="_on_OpenFolder_pressed"]
