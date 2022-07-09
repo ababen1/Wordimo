@@ -9,7 +9,6 @@ signal block_placed(block)
 signal tile_placed(tile)
 signal board_size_changed(new_size)
 
-onready var words_funcs: WordsFuncs = get_parent().words_funcs
 onready var highlight_layer = $HighlightLayer
 
 var tiles_data: Dictionary = {}
@@ -172,7 +171,7 @@ func _check_for_words(cell: Vector2, direction: = Vector2.RIGHT) -> Array:
 	return words
 
 func _append_word(word: String, array: Array, cell: Vector2, direction: Vector2) -> void:
-	if word and word.length() >= words_funcs.MIN_CHARS:
+	if word and WordsManger.is_valid_word(word):
 		array.append({
 			"word": word,
 			"from": cell - direction * word.length(),

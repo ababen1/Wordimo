@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "CONSTS",
 "language": "GDScript",
-"path": "res://src/Consts.gd"
+"path": "res://src/Global/Consts.gd"
 }, {
 "base": "ColorRect",
 "class": "ColorTile",
@@ -138,11 +138,6 @@ _global_script_classes=[ {
 "class": "WordTetrisGame",
 "language": "GDScript",
 "path": "res://src/GameBoard/Board.gd"
-}, {
-"base": "Resource",
-"class": "WordsFuncs",
-"language": "GDScript",
-"path": "res://src/WordsDatabase/WordsFuncs.gd"
 } ]
 _global_script_class_icons={
 "Block": "",
@@ -170,8 +165,7 @@ _global_script_class_icons={
 "UISettingCheckbox": "",
 "VolumeSlider": "",
 "WordLabel": "",
-"WordTetrisGame": "",
-"WordsFuncs": ""
+"WordTetrisGame": ""
 }
 
 [application]
@@ -185,11 +179,11 @@ config/version="0"
 
 [autoload]
 
+WordsManger="*res://src/Global/WordsManger.tscn"
 GameSaver="*res://src/Saver/GameSaver.tscn"
 EventBus="*res://src/Global/EventBus.gd"
-ThemeManger="*res://src/ThemeManger.gd"
-WordsDatabase="*res://src/WordsDatabase/DictonaryCreator.gd"
-SFX="*res://src/SFX.gd"
+ThemeManger="*res://src/Global/ThemeManger.gd"
+SFX="*res://src/Global/SFX.gd"
 SceneChanger="*res://src/Global/SceneChanger.tscn"
 
 [display]

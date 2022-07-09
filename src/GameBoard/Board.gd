@@ -23,7 +23,6 @@ onready var timer = $Timer
 var blocks: Array = []
 var dragged_block: Block = null setget set_dragged_block
 var blocks_factory: = BlocksFactory.new()
-var words_funcs = WordsFuncs.new()
 var combo: int = 0 setget set_combo
 var stats: = GameStats.new()
 var total_score: = 0.0
@@ -209,7 +208,7 @@ func _on_block_placed(block: Block) -> void:
 func _validate_words(words: Array) -> Array:
 	var valid_words: Array = []
 	for word_data in words:
-		var word_found = words_funcs.find_word(word_data.word)
+		var word_found = WordsManger.find_word(word_data.word)
 		if word_found:
 			var new_data = {
 				"word": word_found
