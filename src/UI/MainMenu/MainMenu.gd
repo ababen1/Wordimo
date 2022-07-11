@@ -2,6 +2,10 @@ extends Control
 
 onready var _tutorial_popup = $TutorialPopup
 
+func _ready() -> void:
+	if GameSaver.is_html():
+		$VBoxContainer/VBoxContainer/Quit.hide()
+
 func _on_Start_pressed() -> void:
 	var menu = $ResourcePreloader.get_resource("GameModeSelection").instance()
 	add_child(menu)
