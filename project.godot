@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "TextureRect",
 "class": "BlockImg",
 "language": "GDScript",
-"path": "res://src/UI/BlockImg.gd"
+"path": "res://src/UI/Queue/BlockImg.gd"
 }, {
 "base": "Node",
 "class": "BlocksFactory",
@@ -109,10 +109,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/UI/Settings/Components/BackgroundBtn.gd"
 }, {
-"base": "Popup",
+"base": "AcceptDialog",
 "class": "UIBackgroundSelect",
 "language": "GDScript",
 "path": "res://src/UI/Settings/BackgroundSelector.gd"
+}, {
+"base": "Label",
+"class": "UINotification",
+"language": "GDScript",
+"path": "res://src/UI/Notifications/UINotification.gd"
 }, {
 "base": "HBoxContainer",
 "class": "UISavedDifficulty",
@@ -132,7 +137,7 @@ _global_script_classes=[ {
 "base": "Label",
 "class": "WordLabel",
 "language": "GDScript",
-"path": "res://src/UI/WordLabel.gd"
+"path": "res://src/UI/Game/WordLabel.gd"
 }, {
 "base": "Node2D",
 "class": "WordTetrisGame",
@@ -161,6 +166,7 @@ _global_script_class_icons={
 "StatsGrid": "",
 "UIBackgroundBtn": "",
 "UIBackgroundSelect": "",
+"UINotification": "",
 "UISavedDifficulty": "",
 "UISettingCheckbox": "",
 "VolumeSlider": "",
@@ -179,12 +185,13 @@ config/version="0"
 
 [autoload]
 
-WordsManger="*res://src/Global/WordsManger.tscn"
+ThemeManger="*res://src/Global/ThemeManger.tscn"
 GameSaver="*res://src/Saver/GameSaver.tscn"
+WordsManger="*res://src/Global/WordsManger.tscn"
 EventBus="*res://src/Global/EventBus.gd"
-ThemeManger="*res://src/Global/ThemeManger.gd"
 SFX="*res://src/Global/SFX.gd"
 SceneChanger="*res://src/Global/SceneChanger.tscn"
+NotificationsLayer="*res://src/UI/Notifications/NotificationsLayer.tscn"
 
 [display]
 

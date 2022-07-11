@@ -3,6 +3,7 @@
 [ext_resource path="res://src/UI/Settings/ThemeSelector.gd" type="Script" id=1]
 
 [node name="ThemeSelector" type="HBoxContainer"]
+pause_mode = 2
 margin_right = 984.0
 margin_bottom = 27.0
 script = ExtResource( 1 )

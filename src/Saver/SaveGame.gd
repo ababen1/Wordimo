@@ -10,6 +10,14 @@ export var playtime: float = 0.0
 export var data: Dictionary = {}
 export var configs: = {}
 
+func _init(_name: String = "", _random_seed: int = randi()) -> void:
+	self.name = _name
+	self.random_seed = _random_seed
+	self.game_version = ProjectSettings.get_setting(
+		"application/config/version")
+	data["unlocked_themes"] = [ThemeManger.DEFAULT_THEME_NAME]
+	data["unlocked_bgs"] = [ThemeManger.DEFAULT_BG_NAME]
+
 static func get_savefile_name(_name: String, _random_seed: int):
 	return SAVE_NAME_TEMPLATE.format({
 		"name": _name,
@@ -28,10 +36,5 @@ func get_save_path(folder: String) -> String:
 func save(folder: String) -> int:
 	var path = get_save_path(folder)
 	return ResourceSaver.save(path, self)
-
-func _init(_name: String = "", _random_seed: int = randi()):
-	self.name = _name
-	self.random_seed = _random_seed
-	self.game_version = ProjectSettings.get_setting(
-		"application/config/version")
+	
 		

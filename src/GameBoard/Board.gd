@@ -151,7 +151,7 @@ func popup_word(
 	global_pos: Vector2,
 	color: = Color.royalblue,
 	font: DynamicFont = null):
-		var label = preload("res://src/UI/WordLabel.tscn").instance()
+		var label = $ResourcePreloader.get_resource("WordLabel").instance()
 		get_tree().root.add_child(label)
 		label.setup(word, global_pos, color, font)
 
@@ -171,8 +171,10 @@ func calculate_score(words):
 		self.total_score += pow(10, combo)
 	emit_signal("total_score_changed", total_score)
 
-func end_game() -> void:
+func end_game(give_prizes: = true) -> void:
 	emit_signal("game_over", total_score, stats.values)
+	if give_prizes:
+		stats.give_prizes(total_score)
 
 func _on_BlocksTimer_timeout() -> void:
 	if add_block_delay != 0:

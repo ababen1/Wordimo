@@ -19,6 +19,8 @@ func _ready() -> void:
 		set_as_current_save(get_all_save_games().front())
 
 func set_as_current_save(save: SaveGame):
+	if not save:
+		return
 	current_save = save
 	if current_save:
 		seed(current_save.random_seed)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://src/UI/Score.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/Game/Score.gd" type="Script" id=1]
 [ext_resource path="res://assets/Icons/Reload.svg" type="Texture" id=2]
 [ext_resource path="res://src/UI/HUD.gd" type="Script" id=3]
-[ext_resource path="res://src/UI/GameOverDialog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UI/Game/GameOverDialog.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/UI/BackgroundLayer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Icons/Pause.svg" type="Texture" id=6]
 [ext_resource path="res://src/UI/PauseScreen.tscn" type="PackedScene" id=7]

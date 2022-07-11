@@ -11,4 +11,5 @@ func _ready() -> void:
 	value = db2linear(AudioServer.get_bus_volume_db(_bus))
 
 func _on_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(_bus, linear2db(value))
+	if not Engine.editor_hint:
+		AudioServer.set_bus_volume_db(_bus, linear2db(value))

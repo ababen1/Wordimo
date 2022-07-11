@@ -171,7 +171,7 @@ func _check_for_words(cell: Vector2, direction: = Vector2.RIGHT) -> Array:
 	return words
 
 func _append_word(word: String, array: Array, cell: Vector2, direction: Vector2) -> void:
-	if word and WordsManger.is_valid_word(word):
+	if word and word.length() >= WordsManger.DEFAULT_MIN_CHARS:
 		array.append({
 			"word": word,
 			"from": cell - direction * word.length(),

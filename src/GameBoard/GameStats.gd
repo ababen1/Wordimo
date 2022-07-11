@@ -4,6 +4,9 @@ class_name GameStats
 var values: Dictionary = {}
 var defaults: Dictionary = {}
 
+const _chance_to_unlock_bg = 0.7
+const _chance_to_unlock_theme = 0.4
+
 func add_stat(stat_name: String, value, default_value = null):
 	values[stat_name] = value
 	defaults[stat_name] = default_value
@@ -39,3 +42,10 @@ func reset_stat(stat_name: String):
 func reset_all() -> void:
 	for stat_name in values.keys():
 		reset_stat(stat_name)
+
+func give_prizes(total_score: int) -> void:
+	var bonus_chance = (total_score % 1000)
+	if randf() <= _chance_to_unlock_bg + bonus_chance:
+		ThemeManger.unlock_bg_random()
+	if randf() <= _chance_to_unlock_theme + bonus_chance:
+		ThemeManger.unlock_theme_random()

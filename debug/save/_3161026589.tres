@@ -1,21 +1,23 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://src/Saver/SaveGame.gd" type="Script" id=1]
-[ext_resource path="res://assets/Themes/Backgrounds/abstractbackground (20).png" type="Texture" id=2]
-[ext_resource path="res://assets/Themes/Blue.tres" type="Theme" id=3]
+[ext_resource path="res://assets/Themes/Default.tres" type="Theme" id=1]
+[ext_resource path="res://src/Saver/SaveGame.gd" type="Script" id=2]
+[ext_resource path="res://assets/Themes/Backgrounds/abstractbackground (57).png" type="Texture" id=3]
 
 [resource]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 name = ""
 random_seed = 3161026589
 game_version = "0"
 playtime = 0.0
 data = {
-"bg": ExtResource( 2 ),
-"theme": ExtResource( 3 )
+"bg": ExtResource( 3 ),
+"current_theme": ExtResource( 1 ),
+"unlocked_bgs": [ "Default", "abstractbackground (10)", "abstractbackground (48)", "abstractbackground (42)", "abstractbackground (43)", "abstractbackground (57)", "abstractbackground (47)", "abstractbackground (47)", "abstractbackground (30)", "abstractbackground (42)" ],
+"unlocked_themes": [ "Default", "Grey" ]
 }
 configs = {
 "fullscreen": false,
 "resolution": Vector2( 1024, 600 ),
-"vsync": false
+"vsync": true
 }

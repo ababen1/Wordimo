@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/GameBoard/HighlightLayer.gd" type="Script" id=1]
 [ext_resource path="res://src/GameBoard/GameGrid.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/GameBoard/Board.gd" type="Script" id=5]
 [ext_resource path="res://assets/Tetriminos/Board/BG_1.png" type="Texture" id=6]
 [ext_resource path="res://assets/Tetriminos/Board/BG_2.png" type="Texture" id=7]
+[ext_resource path="res://src/UI/Game/WordLabel.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -98,5 +99,8 @@ anchor_bottom = 0.96
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [ PoolStringArray( "WordLabel" ), [ ExtResource( 8 ) ] ]
 
 [connection signal="game_started" from="." to="HUD" method="_on_game_started"]

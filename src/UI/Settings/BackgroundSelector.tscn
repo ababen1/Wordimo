@@ -4,7 +4,6 @@
 [ext_resource path="res://src/UI/Settings/BackgroundSelector.gd" type="Script" id=2]
 
 [node name="BackgroundSelect" type="AcceptDialog"]
-visible = true
 anchor_left = 0.15625
 anchor_top = 0.106667
 anchor_right = 0.789063
