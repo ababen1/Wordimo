@@ -8,8 +8,10 @@ signal bg_unlocked(bg)
 const DEFAULT_THEME_NAME = "Default"
 const DEFAULT_BG_NAME = "Default"
 
-onready var themes_preloader = $Themes
-onready var backgrounds_preloader = $Backgrounds
+onready var _themes_preloader = $Themes
+onready var _backgrounds_preloader = $Backgrounds
+onready var themes_list = Funcs.preloderer_get_dir_list(_themes_preloader, false)
+onready var backgrounds_list = Funcs.preloderer_get_dir_list(_backgrounds_preloader)
 
 var current_theme: Theme setget set_current_theme
 var current_bg: Texture setget set_current_bg
@@ -20,6 +22,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	self.current_bg = get_background(DEFAULT_BG_NAME)
 	self.current_theme = get_theme(DEFAULT_THEME_NAME)
+# warning-ignore:return_value_discarded
 	get_tree().connect("node_added", self, "_on_node_added_to_tree")
 
 func save(savedata: SaveGame) -> void:
@@ -41,53 +44,47 @@ func set_current_bg(val: Texture) -> void:
 
 func get_unlocked_themes_list() -> Array:
 	var unlocked_themes: = []
-	for theme in get_themes_list():
+	for theme in themes_list.keys():
 		if theme in GameSaver.current_save.data.get("unlocked_themes", []):
 			unlocked_themes.append(theme)
 	return unlocked_themes
 
 func get_unlocked_backgrounds_list() -> Array:
 	var unlocked_bgs: = []
-	for bg in get_backgrounds_list():
+	for bg in backgrounds_list:
 		if bg in GameSaver.current_save.data.get("unlocked_bgs", {}):
 			unlocked_bgs.append(bg)
 	return unlocked_bgs
 
-func get_themes_list() -> Dictionary:
-	return CONSTS.get_resources_data(themes_preloader)
-
-func get_backgrounds_list() -> Dictionary:
-	return CONSTS.get_resources_data(backgrounds_preloader)	
-
 func get_background(bg_name: String) -> Texture:
-	if backgrounds_preloader.has_resource(bg_name):
-		return backgrounds_preloader.get_resource(bg_name)
+	if bg_name in backgrounds_list.keys():	
+		return load(backgrounds_list.get(bg_name)) as Texture
 	else:
 		return null
 	
 func get_theme(theme_name: String) -> Theme:
-	if themes_preloader.has_resource(theme_name):
-		return themes_preloader.get_resource(theme_name)
+	if theme_name in themes_list.keys():	
+		return load(themes_list.get(theme_name)) as Theme
 	else:
 		return null
 
 func unlock_theme(theme_name: String) -> void:
-	if theme_name in themes_preloader.get_resource_list():
+	if theme_name in themes_list.keys():
 		GameSaver.current_save.data["unlocked_themes"].append(theme_name)
 		emit_signal("theme_unlocked", theme_name)
 		GameSaver.save_progress()
 
 func unlock_bg(bg_name: String) -> void:
-	if bg_name in backgrounds_preloader.get_resource_list():
+	if bg_name in backgrounds_list.keys():
 		GameSaver.current_save.data["unlocked_bgs"].append(bg_name)
 		emit_signal("bg_unlocked", bg_name)
 		GameSaver.save_progress()
 		
 func unlock_bg_random():
-	unlock_bg(CONSTS.pick_random_array_element(backgrounds_preloader.get_resource_list()))
+	unlock_bg(Funcs.get_random_array_element(backgrounds_list.keys()))
 
 func unlock_theme_random():
-	unlock_theme(CONSTS.pick_random_array_element(themes_preloader.get_resource_list()))
+	unlock_theme(Funcs.get_random_array_element(themes_list.keys()))
 
 func _set_theme_to_nodes(root: Node, theme: Theme = current_theme) -> void:
 	root.propagate_call("set_theme", [theme], false)

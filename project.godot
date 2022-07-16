@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Blocks/BlocksFactory.gd"
 }, {
+"base": "Resource",
+"class": "BoardStyle",
+"language": "GDScript",
+"path": "res://src/GameBoard/BoardStyles/BoardStyle.gd"
+}, {
+"base": "BoardStyle",
+"class": "BoardStyleTexture",
+"language": "GDScript",
+"path": "res://src/GameBoard/BoardStyles/BoardStyleTexture.gd"
+}, {
 "base": "Node",
 "class": "CONSTS",
 "language": "GDScript",
@@ -42,12 +52,17 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "DifficultyResource",
 "language": "GDScript",
-"path": "res://src/GameBoard/Difficulty.gd"
+"path": "res://src/GameBoard/Difficulties/Difficulty.gd"
 }, {
 "base": "Container",
 "class": "FlexGridContainer",
 "language": "GDScript",
 "path": "res://addons/color-palette/utilities/FlexGridContainer.gd"
+}, {
+"base": "Reference",
+"class": "Funcs",
+"language": "GDScript",
+"path": "res://src/Global/UsefulFuncs.gd"
 }, {
 "base": "Control",
 "class": "GameModeSelection",
@@ -63,6 +78,11 @@ _global_script_classes=[ {
 "class": "GridExample",
 "language": "GDScript",
 "path": "res://src/UI/Components/BoardExample.gd"
+}, {
+"base": "Node2D",
+"class": "GridLayer",
+"language": "GDScript",
+"path": "res://src/GameBoard/GridLayer.gd"
 }, {
 "base": "PanelContainer",
 "class": "Letter",
@@ -148,14 +168,18 @@ _global_script_class_icons={
 "Block": "",
 "BlockImg": "",
 "BlocksFactory": "",
+"BoardStyle": "",
+"BoardStyleTexture": "",
 "CONSTS": "",
 "ColorTile": "",
 "DifficultyBtn": "",
 "DifficultyResource": "",
 "FlexGridContainer": "res://addons/color-palette/utilities/FlexGridContainerIcon.png",
+"Funcs": "",
 "GameModeSelection": "",
 "GameStats": "",
 "GridExample": "",
+"GridLayer": "",
 "Letter": "",
 "OptionalField": "",
 "Palette": "",
@@ -204,7 +228,7 @@ enabled=PoolStringArray( "res://addons/build-and-deploy/plugin.cfg", "res://addo
 
 [gui]
 
-theme/custom_font="res://assets/Themes/Resources/RegularFont.tres"
+theme/custom_font="res://assets/Fonts/RegularFont.tres"
 
 [importer_defaults]
 

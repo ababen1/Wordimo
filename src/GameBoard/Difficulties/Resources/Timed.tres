@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/GameBoard/Difficulties/Difficulty.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Timed"
+description = "Make as many words as you can in 2 minutes. Can override blocks."
+time_limit = 120.0
+queue_size = 0
+lose_when_board_full = false
+lose_when_queue_full = true
+board_size = Vector2( 9, 7 )
+speed = 7.0
+increase_speed = false
+can_override = true
+is_favorite = false

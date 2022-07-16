@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/Themes/Resources/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Fonts/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/SFX/Pop.wav" type="AudioStream" id=2]
 [ext_resource path="res://src/UI/Game/WordLabel.gd" type="Script" id=3]
+
 
 [sub_resource type="DynamicFont" id=3]
 size = 30

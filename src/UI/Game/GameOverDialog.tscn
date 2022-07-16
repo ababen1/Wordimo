@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/Themes/Resources/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Fonts/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/UI/Components/StatsGrid.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/Game/GameOverDialog.gd" type="Script" id=3]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 24

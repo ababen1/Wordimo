@@ -87,13 +87,6 @@ static func pick_random_item(items: Dictionary):
 	# 4. Return the value
 	return chosen_value
 			
-static func get_resources_data(preloader: ResourcePreloader) -> Dictionary:
-	var data = {}
-	for resource_name in preloader.get_resource_list():
-		data[resource_name] = preloader.get_resource(resource_name)
-	return data
 
-static func pick_random_array_element(arr: Array):
-	return arr[rand_range(0, arr.size() - 1)]
 		
 		

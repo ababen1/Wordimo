@@ -13,9 +13,9 @@ func _ready() -> void:
 
 func setup() -> void:
 	option_button.clear()
-	for theme_name in ThemeManger.get_unlocked_themes_list():
+	for theme_name in unlocked_themes:
 		option_button.add_item(theme_name.capitalize())
-		if ThemeManger.get_theme(theme_name) == ThemeManger.current_theme:
+		if theme_name == ThemeManger.current_theme.resource_path.get_file().trim_suffix(".tres"):
 			option_button.selected = unlocked_themes.find(theme_name)
 
 func _on_OptionButton_item_selected(index: int) -> void:

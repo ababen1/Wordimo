@@ -78,5 +78,6 @@ expand_icon = true
 [node name="BackgroundLayer" parent="." instance=ExtResource( 5 )]
 
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [connection signal="pressed" from="Control/VBox/NewGame" to="." method="_on_NewGame_pressed"]

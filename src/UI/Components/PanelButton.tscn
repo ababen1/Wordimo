@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/Themes/Resources/RegularFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts/RegularFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/UI/Components/PanelButton.gd" type="Script" id=2]
 [ext_resource path="res://assets/Themes/Default.tres" type="Theme" id=3]
+
 
 [node name="PanelButton" type="Button"]
 anchor_left = 0.5

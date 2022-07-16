@@ -1,38 +1,51 @@
-tool
 extends TileMap
 
 export var size: = Vector2(5,5) setget set_size
-export var highlight_color: = Color.greenyellow
-export var error_color: = Color.red
+export var style: Resource = BoardStyle.new() setget set_style
 
 signal block_placed(block)
 signal tile_placed(tile)
 signal board_size_changed(new_size)
 
 onready var highlight_layer = $HighlightLayer
+onready var grid_layer: = $GridLayer
 
 var tiles_data: Dictionary = {}
 
 func _ready() -> void:
-	pass
+	grid_layer.setup()
+	connect("settings_changed", self, "_on_settings_changed")
+
+func _on_settings_changed() -> void:
+	grid_layer.setup()
 	
 func _process(_delta: float) -> void:
-	if not Engine.editor_hint:
+	if not Engine.editor_hint and owner is WordTetrisGame:
 		highlight_layer.cells = {}
 		if owner.dragged_block and is_inside_grid(owner.dragged_block):
 			for letter in owner.dragged_block.letters:
 				if letter is Letter:
 					if can_place_letter_tile(letter, get_letter_cell(letter)):
-						highlight_layer.cells[get_letter_cell(letter)] = highlight_color
+						highlight_layer.cells[get_letter_cell(letter)] = style.highlight_color
 					else:
-						highlight_layer.cells[get_letter_cell(letter)] = error_color
+						highlight_layer.cells[get_letter_cell(letter)] = style.error_color
 		update()
 	
 func _draw() -> void:
 	if not Engine.editor_hint:
 		highlight_layer.update()
-		draw_rect(get_rect(), Color.whitesmoke, false, 5)			
+		grid_layer.update()
 
+func set_style(val: BoardStyle):
+	style = val
+	emit_signal("settings_changed")
+
+func get_used_rect() -> Rect2:
+	return Rect2(position, size)
+
+func get_cell_global_position(cell: Vector2):
+	return to_global(map_to_world(cell))
+	
 func reset_board() -> void:
 	for cord in tiles_data.keys():
 		clear_cell(cord, false)
@@ -43,10 +56,6 @@ func set_size(val: Vector2):
 	clear()
 	size.x = clamp(val.x, 1, DifficultyResource.MAX_BOARD_SIZE.x)
 	size.y = clamp(val.y, 1, DifficultyResource.MAX_BOARD_SIZE.y)
-	for y in size.y:
-		for x in size.x:
-			var tile_idx = 0 if (x+y) % 2 ==0 else 1
-			set_cell(x,y, tile_idx)
 	if not Engine.editor_hint:
 		emit_signal("board_size_changed", size)
 

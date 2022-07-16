@@ -1,16 +1,17 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/UI/MainMenu/GameModeSelection.gd" type="Script" id=1]
-[ext_resource path="res://assets/Themes/Resources/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Fonts/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://src/UI/Components/PanelButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/Components/GameModeBtn.gd" type="Script" id=4]
-[ext_resource path="res://src/GameBoard/Chill.tres" type="Resource" id=5]
-[ext_resource path="res://src/GameBoard/Normal.tres" type="Resource" id=6]
-[ext_resource path="res://src/GameBoard/Hard.tres" type="Resource" id=7]
-[ext_resource path="res://src/GameBoard/Timed.tres" type="Resource" id=8]
+[ext_resource path="res://src/GameBoard/Difficulties/Resources/Chill.tres" type="Resource" id=5]
+[ext_resource path="res://src/GameBoard/Difficulties/Resources/Normal.tres" type="Resource" id=6]
+[ext_resource path="res://src/GameBoard/Difficulties/Resources/Hard.tres" type="Resource" id=7]
+[ext_resource path="res://src/GameBoard/Difficulties/Resources/Timed.tres" type="Resource" id=8]
 [ext_resource path="res://src/UI/CustomDifficulty/CustomDifficultyConfig.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/Icons/GuiClose.svg" type="Texture" id=10]
 [ext_resource path="res://src/UI/Components/GameModeButton.tscn" type="PackedScene" id=11]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 20

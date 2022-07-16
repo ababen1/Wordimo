@@ -1,8 +1,6 @@
 extends AcceptDialog
 class_name UIBackgroundSelect
 
-const BACKGROUNDS_PATH = "res://assets/Themes/Backgrounds/"
-
 signal bg_texture_selected(texture)
 
 onready var grid = $ScrollContainer/MarginContainer/BackgroundsGrid
@@ -15,7 +13,7 @@ func _enter_tree() -> void:
 		visible = true
 
 func _ready() -> void:
-	self.backgrounds = ThemeManger.get_backgrounds_list().keys() as PoolStringArray
+	self.backgrounds = ThemeManger.backgrounds_list.keys() as PoolStringArray
 	_button_group.connect("pressed", self, "_on_bg_btn_pressed")
 	connect("confirmed", self, "_on_ok")
 

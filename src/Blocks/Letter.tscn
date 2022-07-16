@@ -1,19 +1,26 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://assets/Themes/Resources/LetterFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts/LetterFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/Blocks/Letter.gd" type="Script" id=2]
 [ext_resource path="res://assets/Icons/Favorites.svg" type="Texture" id=3]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Cyan.png" type="Texture" id=4]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Green.png" type="Texture" id=5]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Blue.png" type="Texture" id=6]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Yellow.png" type="Texture" id=7]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Orange.png" type="Texture" id=8]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Purple.png" type="Texture" id=9]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Red.png" type="Texture" id=10]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Cyan.png" type="Texture" id=4]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Green.png" type="Texture" id=5]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Blue.png" type="Texture" id=6]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Yellow.png" type="Texture" id=7]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Orange.png" type="Texture" id=8]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Purple.png" type="Texture" id=9]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Red.png" type="Texture" id=10]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Purple.png" type="Texture" id=11]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Green.png" type="Texture" id=12]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Red.png" type="Texture" id=13]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Cyan.png" type="Texture" id=14]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Blue.png" type="Texture" id=15]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Orange.png" type="Texture" id=16]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Yellow.png" type="Texture" id=17]
 
 [sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 6 )
-region_rect = Rect2( 0, 0, 64, 64 )
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 120, 120 )
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
@@ -29,8 +36,10 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": true
 }
-letter = "E"
-color = 0
+letter = "H"
+color = 1
+preloader = NodePath("ResourcePreloader2")
+text_color = Color( 1, 1, 1, 1 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_right = 64.0
@@ -38,15 +47,15 @@ margin_bottom = 64.0002
 mouse_filter = 2
 
 [node name="Letter" type="Label" parent="CenterContainer"]
-margin_left = 15.0
+margin_left = 13.0
 margin_top = 1.0
-margin_right = 49.0
+margin_right = 50.0
 margin_bottom = 63.0
 size_flags_vertical = 1
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 9 )
-text = "E"
+text = "H"
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -60,3 +69,6 @@ stretch_mode = 6
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [ PoolStringArray( "Blue", "Cyan", "Green", "Orange", "Purple", "Red", "Yellow" ), [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 7 ) ] ]
+
+[node name="ResourcePreloader2" type="ResourcePreloader" parent="."]
+resources = [ PoolStringArray( "Blue", "Cyan", "Green", "Orange", "Purple", "Red", "Yellow" ), [ ExtResource( 15 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 17 ) ] ]

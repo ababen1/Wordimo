@@ -6,6 +6,8 @@ export(CONSTS.LETTER_TYPE) var letter_type setget set_letter_type
 export var letter: String setget set_letter
 export(CONSTS.COLORS) var color = CONSTS.COLORS.NONE setget set_color
 export var click_delay: = 0.1
+export var preloader: NodePath
+export var text_color: = Color.black setget set_text_color
 
 onready var letter_label: Label = $CenterContainer/Letter
 onready var tween: Tween = $Tween
@@ -49,8 +51,15 @@ func set_color(val: int) -> void:
 	if color == CONSTS.COLORS.NONE:
 		stylebox.texture = null
 	else:
-		stylebox.texture = $ResourcePreloader.get_resource(CONSTS.COLORS.keys()[color].capitalize())
+		stylebox.texture = get_node(preloader).get_resource(
+			CONSTS.COLORS.keys()[color].capitalize())
 	add_stylebox_override("panel", stylebox)
+
+func set_text_color(val: Color) -> void:
+	if not is_inside_tree():
+		yield(self, "ready")
+	text_color = val
+	$CenterContainer/Letter.add_color_override("font_color", text_color)
 
 func animate_expand(expand_by: float = 0.5):
 # warning-ignore:return_value_discarded
@@ -65,6 +74,3 @@ func animate_expand(expand_by: float = 0.5):
 	tween.start()
 	yield(tween, "tween_completed")
 	return
-
-static func get_random_array_element(array: Array):
-	return array[rand_range(0, array.size() - 1)]

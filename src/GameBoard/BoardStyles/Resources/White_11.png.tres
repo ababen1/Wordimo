@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://src/GameBoard/BoardStyles/BoardStyleTexture.gd" type="Script" id=1]
+[ext_resource path="res://assets/Boards/Color White/White_11.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 500, 250, 250, 250 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 250, 251, 250, 250 )
+
+[resource]
+script = ExtResource( 1 )
+outline_color = Color( 1, 1, 1, 0 )
+outline_size = 5.0
+highlight_color = Color( 0.68, 1, 0.18, 1 )
+error_color = Color( 1, 0, 0, 1 )
+color = Color( 0.168627, 0.160784, 0.160784, 1 )
+alt_color = Color( 0.333333, 0.317647, 0.317647, 1 )
+board_texture = ExtResource( 2 )
+tile_texture = SubResource( 2 )
+alt_tile_texture = SubResource( 1 )
