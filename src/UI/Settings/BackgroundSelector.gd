@@ -1,25 +1,28 @@
 extends AcceptDialog
 class_name UIBackgroundSelect
 
-signal bg_texture_selected(texture)
-
 onready var grid = $ScrollContainer/MarginContainer/BackgroundsGrid
 
 var backgrounds: PoolStringArray = [] setget set_backgrounds
 var _button_group = ButtonGroup.new()
+var thread = Thread.new()
 
 func _enter_tree() -> void:
 	if get_parent() == get_tree().root:
 		visible = true
 
+func _exit_tree():
+	thread.wait_to_finish()
+
 func _ready() -> void:
 	self.backgrounds = ThemeManger.backgrounds_list.keys() as PoolStringArray
 	_button_group.connect("pressed", self, "_on_bg_btn_pressed")
+# warning-ignore:return_value_discarded
 	connect("confirmed", self, "_on_ok")
 
 func set_backgrounds(val: PoolStringArray):
 	backgrounds = val
-	_display_backgrounds()
+	thread.start(self, "_display_backgrounds")
 
 func _display_backgrounds() -> void:
 	_clear_backgrounds()

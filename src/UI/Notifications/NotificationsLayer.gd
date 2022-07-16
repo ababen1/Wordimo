@@ -12,7 +12,9 @@ func _ready() -> void:
 		container = get_node_or_null(container_path)
 	else:
 		container = get_child(0)
+# warning-ignore:return_value_discarded
 	ThemeManger.connect("bg_unlocked", self, "_on_bg_unlocked")
+# warning-ignore:return_value_discarded
 	ThemeManger.connect("theme_unlocked", self, "_on_theme_unlocked")
 
 
