@@ -1,3 +1,4 @@
+tool
 extends Node2D
 class_name Block
 
@@ -9,7 +10,7 @@ signal block_touchscreen_press
 
 const LETTER_SCENE = preload("Letter.tscn")
 
-onready var type = name.validate_node_name().rstrip("0123456789")
+onready var type: String = name.validate_node_name().rstrip("0123456789")
 onready var sprite: = $Sprite
 onready var area: Area2D = $Area2D
 
@@ -37,7 +38,7 @@ func get_texture() -> Texture:
 	var viewport = Viewport.new()
 	viewport.transparent_bg = true
 	viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
-	viewport.size = sprite.texture.get_size()
+	viewport.size = CONSTS.CELL_SIZE * 4
 	var original_parent = get_parent()
 	original_parent.remove_child(self)
 	original_parent.get_tree().root.add_child(viewport)
@@ -70,15 +71,21 @@ func set_is_inside_grid(val: bool):
 		else:
 			emit_signal("exited_grid")
 
-func setup():
+func setup():	
+	for i in area.get_child_count():
+		area.get_child(i).position = CONSTS.SHAPES_POSITIONS.get(type).get(i)
+	
 	# Adding letters
 	for child in area.get_children():
 		if child is CollisionShape2D:
 			var letter = LETTER_SCENE.instance()
+			letter.rect_min_size = CONSTS.CELL_SIZE
+			letter.rect_size = CONSTS.CELL_SIZE
+			letter.rect_pivot_offset = CONSTS.CELL_SIZE / 2
 			child.add_child(letter)
 			letter.rect_position = -letter.rect_size/2
 			letters.append(letter)
-			letter.color = CONSTS.SHAPES[type]
+			letter.color = CONSTS.SHAPES_COLORS[type]
 	sprite.hide()
 
 func set_letters(val: Array):

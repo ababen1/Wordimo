@@ -7,6 +7,10 @@ func _enter_tree() -> void:
 	if Engine.editor_hint:
 		_test()
 
+func _ready() -> void:
+	get_close_button().hide()
+	get_close_button().disabled = true
+
 func _test() -> void:
 	show_results(99, {
 		"stat": "value", 

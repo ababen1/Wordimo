@@ -7,6 +7,7 @@
 position = Vector2( 96, 64 )
 
 [node name="Sprite" parent="." index="0"]
+visible = false
 texture = ExtResource( 1 )
 offset = Vector2( -96, -64 )
 
@@ -14,13 +15,13 @@ offset = Vector2( -96, -64 )
 position = Vector2( -192, -128 )
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2( 128, 96 )
+position = Vector2( 160, 120 )
 
 [node name="CollisionShape2D2" parent="Area2D" index="1"]
-position = Vector2( 128, 160 )
+position = Vector2( 160, 200 )
 
 [node name="CollisionShape2D3" parent="Area2D" index="2"]
-position = Vector2( 192, 160 )
+position = Vector2( 240, 200 )
 
 [node name="CollisionShape2D4" parent="Area2D" index="3"]
-position = Vector2( 256, 160 )
+position = Vector2( 320, 200 )

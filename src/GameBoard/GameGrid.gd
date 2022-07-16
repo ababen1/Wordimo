@@ -13,6 +13,7 @@ onready var grid_layer: = $GridLayer
 var tiles_data: Dictionary = {}
 
 func _ready() -> void:
+	cell_size = CONSTS.CELL_SIZE
 	grid_layer.setup()
 	connect("settings_changed", self, "_on_settings_changed")
 
@@ -58,6 +59,7 @@ func set_size(val: Vector2):
 	size.y = clamp(val.y, 1, DifficultyResource.MAX_BOARD_SIZE.y)
 	if not Engine.editor_hint:
 		emit_signal("board_size_changed", size)
+		$GridLayer.setup()
 
 func is_inside_grid(block: Block) -> bool:
 	for letter in block.letters:
@@ -158,10 +160,11 @@ func get_letters_between(start: Vector2, end: Vector2) -> Array:
 func _add_letter_to_grid(letter: Letter) -> void:
 	var shape: CollisionShape2D = letter.get_parent()
 	var target_cell = world_to_map(shape.global_position)
+	# Clear previous letter
 	if tiles_data.has(target_cell):
 		tiles_data[target_cell].queue_free()
 	tiles_data[target_cell] = letter
-	shape.global_position = to_global(map_to_world(target_cell)) + cell_size / 2
+	shape.global_position = to_global(map_to_world(target_cell) + cell_size / 2)
 	emit_signal("tile_placed", letter)
 
 func _check_for_words(cell: Vector2, direction: = Vector2.RIGHT) -> Array:

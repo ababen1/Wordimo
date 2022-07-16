@@ -45,6 +45,7 @@ func _ready() -> void:
 		drag_input = true
 	set_difficulty(SceneChanger.message.get("difficulty", DifficultyResource.new()))
 	start_new_game()
+	
 
 func _setup_game_stats() -> void:
 	stats.add_stat("difficulty", "", "")
@@ -174,6 +175,7 @@ func calculate_score(words):
 func end_game(give_prizes: = true) -> void:
 	emit_signal("game_over", total_score, stats.values)
 	if give_prizes:
+# warning-ignore:narrowing_conversion
 		stats.give_prizes(total_score)
 
 func _on_BlocksTimer_timeout() -> void:

@@ -11,6 +11,7 @@ enum COLORS {
 	YELLOW,
 	NONE
 }
+
 enum LETTER_TYPE {
 	ANY, # can be any letter, from A to Z
 	VOWEL, # can only be a vowel letter (a, e, o, i, u)
@@ -22,7 +23,9 @@ const VALID_LETTERS: = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "
 const VOWELS: = ["a", "e", "o", "i", "u"]
 const NON_VOWELS: = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
 const JOKER = "★"
-const SHAPES: = {
+const CELL = 80
+const CELL_SIZE = Vector2(CELL, CELL)
+const SHAPES_COLORS: = {
 	"I": COLORS.CYAN,
 	"J": COLORS.BLUE,
 	"L": COLORS.ORANGE,
@@ -31,6 +34,51 @@ const SHAPES: = {
 	"T": COLORS.PURPLE,
 	"Z": COLORS.RED
 }
+const SHAPES_POSITIONS: = {
+	"I": {
+		0: Vector2(CELL + CELL / 2, -CELL / 2),
+		1: Vector2(CELL + CELL / 2, CELL / 2),
+		2: Vector2(CELL + CELL / 2, CELL + CELL / 2),
+		3: Vector2(CELL + CELL / 2, CELL * 2 + CELL / 2)
+	},
+	"J":{
+		0: Vector2(CELL * 2, CELL * 2 - CELL / 2),
+		1: Vector2(CELL * 2, CELL * 2 + CELL / 2),
+		2: Vector2(CELL * 3, CELL * 2 + CELL / 2),
+		3: Vector2(CELL * 4, CELL * 3 - CELL / 2)
+	},
+	"L": {
+		0: Vector2(CELL * 3 - CELL / 2, CELL / 2),
+		1: Vector2(CELL / 2, CELL + CELL / 2),
+		2: Vector2(CELL + CELL / 2, CELL + CELL / 2),
+		3: Vector2(CELL * 3 - CELL / 2, CELL + CELL / 2)
+	},
+	"O": {
+		0: Vector2(CELL, CELL / 2),
+		1: Vector2(CELL * 2, CELL / 2),
+		2: Vector2(CELL, CELL * 2 - CELL / 2),
+		3: Vector2(CELL * 2, CELL * 2 - CELL / 2)
+	},
+	"S": {
+		0: Vector2(CELL * 3, CELL * 2 - CELL / 2),
+		1: Vector2(CELL * 4, CELL * 2 - CELL / 2),
+		2: Vector2(CELL * 2, CELL * 2 + CELL / 2),
+		3: Vector2(CELL * 3, CELL * 2 + CELL / 2)
+	},
+	"T": {
+		0: Vector2(CELL * 3, CELL * 2 - CELL / 2),
+		1: Vector2(CELL * 2, CELL * 2 + CELL / 2),
+		2: Vector2(CELL * 3, CELL * 2 + CELL / 2),
+		3: Vector2(CELL * 4, CELL * 2 + CELL / 2)
+	},
+	"Z": {
+		0: Vector2(CELL / 2, CELL / 2),
+		1: Vector2(CELL + CELL / 2 ,CELL / 2),
+		2: Vector2(CELL + CELL / 2, CELL + CELL / 2),
+		3: Vector2(CELL * 2 + CELL / 2, CELL + CELL / 2)
+	}
+}
+
 const LETTER_CHANCE = {
 	"a": 8.167,
 	"b": 1.492,

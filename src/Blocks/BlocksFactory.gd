@@ -24,7 +24,7 @@ static func create_custom_block(type: String, letters: Array) -> Block:
 
 static func create_letter_block(type: String, letter = null) -> Letter:
 	var new_letter = LETTER.instance()
-	new_letter.color = CONSTS.SHAPES[type]
+	new_letter.color = CONSTS.SHAPES_COLORS[type]
 	if letter is String:
 		new_letter.letter_type = CONSTS.LETTER_TYPE.ANY
 		new_letter.letter = letter
