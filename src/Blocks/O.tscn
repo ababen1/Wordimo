@@ -4,21 +4,23 @@
 [ext_resource path="res://assets/Tetriminos/Shape Blocks/O.png" type="Texture" id=2]
 
 [node name="O" instance=ExtResource( 1 )]
-position = Vector2( 64, 64 )
 
 [node name="Sprite" parent="." index="0"]
 visible = false
 texture = ExtResource( 2 )
 offset = Vector2( -64, -64 )
 
+[node name="Area2D" parent="." index="1"]
+position = Vector2( -80, -80 )
+
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2( 80, 40 )
+position = Vector2( 40, 40 )
 
 [node name="CollisionShape2D2" parent="Area2D" index="1"]
-position = Vector2( 160, 40 )
+position = Vector2( 120, 40 )
 
 [node name="CollisionShape2D3" parent="Area2D" index="2"]
-position = Vector2( 80, 120 )
+position = Vector2( 40, 120 )
 
 [node name="CollisionShape2D4" parent="Area2D" index="3"]
-position = Vector2( 160, 120 )
+position = Vector2( 120, 120 )

@@ -6,6 +6,7 @@ export var add_block_delay: = 7.0 setget set_add_block_delay
 export var word_length_multiplier: = 10.0
 export var time_limit: = 0.0
 export var drag_input: = false 
+export var drag_offset: = Vector2.ZERO
 
 signal turn_completed(words_found)
 signal game_started
@@ -39,10 +40,16 @@ func _ready() -> void:
 	HUD.connect("start_new_game", self, "start_new_game")
 	HUD.pause_screen.connect("end_game", self, "end_game")
 	timer.connect("timeout", self, "_on_timeout")
+# warning-ignore:return_value_discarded
 	connect("game_over", HUD, "_on_game_over")
+# warning-ignore:return_value_discarded
 	connect("total_score_changed", HUD.score_label, "set_score")
 	if GameSaver.is_mobile():
 		drag_input = true
+		drag_offset = Vector2(-130,-100)
+	else:
+		drag_input = GameSaver.current_save.data.get("drag_input", false)
+		drag_offset = Vector2.ZERO
 	set_difficulty(SceneChanger.message.get("difficulty", DifficultyResource.new()))
 	start_new_game()
 	
@@ -59,7 +66,7 @@ func _process(_delta: float) -> void:
 	if not is_instance_valid(dragged_block):
 		dragged_block = null
 	if dragged_block:
-		dragged_block.global_position = get_global_mouse_position()
+		dragged_block.global_position = get_global_mouse_position() + drag_offset
 	HUD.set_time_left(timer.time_left)
 	
 func _unhandled_input(event: InputEvent) -> void:
@@ -94,7 +101,7 @@ func set_difficulty(val: DifficultyResource):
 	blocks_queue_panel.set_queue_size(difficulty.queue_size)
 	self.add_block_delay = difficulty.speed
 	
-func start_new_game(difficulty:= self.difficulty) -> void:
+func start_new_game(_difficulty:= self.difficulty) -> void:
 	randomize()
 	stats.reset_all()
 	for prev_game_block in get_tree().get_nodes_in_group("blocks"):
@@ -106,7 +113,7 @@ func start_new_game(difficulty:= self.difficulty) -> void:
 	blocks_timer.start()
 	if time_limit != 0:
 		timer.start(time_limit)
-	set_difficulty(difficulty)
+	set_difficulty(_difficulty)
 	emit_signal("game_started", self)
 
 func add_block(block: Block, auto_set_letters: = true) -> void:
@@ -114,6 +121,7 @@ func add_block(block: Block, auto_set_letters: = true) -> void:
 	if auto_set_letters:
 		for letter in block.letters:
 			letter.set_random_letter()
+# warning-ignore:return_value_discarded
 	block.connect("block_touchscreen_press", self, "_on_block_touchscreen_press", [block])
 	blocks_queue_panel.add_block(block)
 	
@@ -212,7 +220,7 @@ func _on_block_placed(block: Block) -> void:
 func _validate_words(words: Array) -> Array:
 	var valid_words: Array = []
 	for word_data in words:
-		var word_found = WordsManger.find_word(word_data.word)
+		var word_found = WordsManger.find_word(word_data.word, difficulty.min_word_length)
 		if word_found:
 			var new_data = {
 				"word": word_found
@@ -233,8 +241,7 @@ func _on_queue_block_clicked(block: Block) -> void:
 	self.dragged_block = block
 
 func _on_queue_full() -> void:
-	if difficulty.lose_when_queue_full:
-		end_game()
+	end_game()
 
 func _on_queue_panel_clicked() -> void:
 	if dragged_block:

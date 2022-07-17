@@ -4,7 +4,6 @@
 [ext_resource path="res://src/Blocks/Block.tscn" type="PackedScene" id=2]
 
 [node name="J" instance=ExtResource( 2 )]
-position = Vector2( 96, 64 )
 
 [node name="Sprite" parent="." index="0"]
 visible = false
@@ -12,7 +11,7 @@ texture = ExtResource( 1 )
 offset = Vector2( -96, -64 )
 
 [node name="Area2D" parent="." index="1"]
-position = Vector2( -192, -128 )
+position = Vector2( -240, -160 )
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2( 160, 120 )

@@ -6,7 +6,7 @@ export(CONSTS.LETTER_TYPE) var letter_type setget set_letter_type
 export var letter: String setget set_letter
 export(CONSTS.COLORS) var color = CONSTS.COLORS.NONE setget set_color
 export var click_delay: = 0.1
-export var preloader: NodePath
+#export var preloader: NodePath
 export var text_color: = Color.black setget set_text_color
 
 onready var letter_label: Label = $CenterContainer/Letter
@@ -51,7 +51,7 @@ func set_color(val: int) -> void:
 	if color == CONSTS.COLORS.NONE:
 		stylebox.texture = null
 	else:
-		stylebox.texture = get_node(preloader).get_resource(
+		stylebox.texture = $ResourcePreloader.get_resource(
 			CONSTS.COLORS.keys()[color].capitalize())
 	add_stylebox_override("panel", stylebox)
 

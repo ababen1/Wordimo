@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/Backgrounds/abstractbackground (25).png" type="Texture" id=1]
 [ext_resource path="res://src/Saver/SaveGame.gd" type="Script" id=2]
-[ext_resource path="res://assets/Themes/Blue.tres" type="Theme" id=3]
+[ext_resource path="res://assets/Themes/Godot2.tres" type="Theme" id=3]
 
 [resource]
 script = ExtResource( 2 )
@@ -13,8 +13,9 @@ playtime = 0.0
 data = {
 "bg": ExtResource( 1 ),
 "current_theme": ExtResource( 3 ),
-"unlocked_bgs": [ "Default", "abstractbackground (10)", "abstractbackground (48)", "abstractbackground (42)", "abstractbackground (43)", "abstractbackground (57)", "abstractbackground (47)", "abstractbackground (47)", "abstractbackground (30)", "abstractbackground (42)", "abstractbackground (25)", "abstractbackground (33)", "abstractbackground (51)", "abstractbackground (31)" ],
-"unlocked_themes": [ "Default", "Grey", "Blue", "Godot2", "Light", "Godot2" ]
+"drag_input": false,
+"unlocked_bgs": [ "Default", "abstractbackground (10)", "abstractbackground (48)", "abstractbackground (42)", "abstractbackground (43)", "abstractbackground (57)", "abstractbackground (47)", "abstractbackground (47)", "abstractbackground (30)", "abstractbackground (42)", "abstractbackground (25)", "abstractbackground (33)", "abstractbackground (51)", "abstractbackground (31)", "abstractbackground (15)" ],
+"unlocked_themes": [ "Default", "Grey", "Blue", "Godot2", "Light", "Godot2", "Godot2" ]
 }
 configs = {
 "fullscreen": false,

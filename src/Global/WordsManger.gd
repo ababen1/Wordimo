@@ -30,9 +30,9 @@ func get_words_of(letter: String) ->	Array:
 func find_word(text: String, min_length: int = DEFAULT_MIN_CHARS) -> String:
 	if text.length() < min_length:
 		return ""
-	if is_valid_word(text):
+	if is_valid_word(text, min_length):
 		return text
-	if text.length() == min_length and not is_valid_word(text):
+	if text.length() == min_length and not is_valid_word(text, min_length):
 		return ""
 	var best_word: String
 	for start_idx in text.length() - 1:
@@ -44,7 +44,7 @@ func find_word(text: String, min_length: int = DEFAULT_MIN_CHARS) -> String:
 			end_idx += 1
 			current_word = text.substr(start_idx, end_idx)
 			potential_words = get_words_starting_with(current_word)
-		if is_valid_word(best_word):
+		if is_valid_word(best_word, min_length):
 			return best_word
 	return ""
 

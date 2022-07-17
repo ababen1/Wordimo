@@ -183,7 +183,7 @@ func _check_for_words(cell: Vector2, direction: = Vector2.RIGHT) -> Array:
 	return words
 
 func _append_word(word: String, array: Array, cell: Vector2, direction: Vector2) -> void:
-	if word and word.length() >= WordsManger.DEFAULT_MIN_CHARS:
+	if word and word.length() >= get_parent().difficulty.min_word_length:
 		array.append({
 			"word": word,
 			"from": cell - direction * word.length(),

@@ -54,10 +54,10 @@ const SHAPES_POSITIONS: = {
 		3: Vector2(CELL * 3 - CELL / 2, CELL + CELL / 2)
 	},
 	"O": {
-		0: Vector2(CELL, CELL / 2),
-		1: Vector2(CELL * 2, CELL / 2),
-		2: Vector2(CELL, CELL * 2 - CELL / 2),
-		3: Vector2(CELL * 2, CELL * 2 - CELL / 2)
+		0: Vector2(CELL / 2, CELL / 2),
+		1: Vector2(CELL * 2 - CELL / 2, CELL / 2),
+		2: Vector2(CELL / 2, CELL * 2 - CELL / 2),
+		3: Vector2(CELL * 2 - CELL / 2, CELL * 2 - CELL / 2)
 	},
 	"S": {
 		0: Vector2(CELL * 3, CELL * 2 - CELL / 2),

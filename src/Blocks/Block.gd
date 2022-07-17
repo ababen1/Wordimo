@@ -42,7 +42,12 @@ func get_texture() -> Texture:
 	var original_parent = get_parent()
 	original_parent.remove_child(self)
 	original_parent.get_tree().root.add_child(viewport)
+	var camera = Camera2D.new()
+	viewport.add_child(camera)
+	camera.current = true
 	viewport.add_child(self)
+	var org_pos = position
+	position = Vector2.ZERO
 	yield(get_tree(), "idle_frame")
 	var image: Image = viewport.get_texture().get_data()
 	image.flip_y()
@@ -51,6 +56,7 @@ func get_texture() -> Texture:
 	texture.create_from_image(image)
 	get_parent().remove_child(self)
 	original_parent.add_child(self)
+	position = org_pos
 	viewport.queue_free()
 	return texture
 	

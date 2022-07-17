@@ -7,8 +7,10 @@ onready var _start_btn = $HSplit/PanelContainer/VBox/HBox/Start
 onready var _save_btn = $HSplit/PanelContainer/VBox/HBox/Save
 onready var _override = $HSplit/PanelContainer/VBox/Override
 onready var _speed = $HSplit/PanelContainer/VBox/Speed
+onready var _min_length = $HSplit/PanelContainer/VBox/MinWordLength
 
 var saved_difficulties: Array = [] setget set_saved_difficulties
+var last_saved: String = ""
 
 func _ready() -> void:
 	if get_parent() == get_tree().root:
@@ -16,6 +18,7 @@ func _ready() -> void:
 	_start_btn.connect("pressed", self, "_on_start_pressed")
 	_save_btn.connect("pressed", self, "_on_save_pressed")
 	self.saved_difficulties = GameModeSelection.load_saved_difficulties()
+	set_difficulty(DifficultyResource.new())
 	
 func get_time_limit() -> float:
 	var minutes = $VBox/TimeLimit/Minutes.value
@@ -40,10 +43,7 @@ func create_difficulty() -> DifficultyResource:
 	difficulty.can_override = _override.get_node("CheckBox").pressed
 	difficulty.speed = _speed.get_speed()
 	difficulty.board_size = _board_size_field.get_board_size()
-	difficulty.lose_when_board_full = get_node(
-		"HSplit/PanelContainer/VBox/GameOver/VBox/BoardFull").pressed
-	difficulty.lose_when_queue_full = get_node(
-		"HSplit/PanelContainer/VBox/GameOver/VBox/QueueFull").pressed
+	difficulty.min_word_length = _min_length.get_min_length() 
 	return difficulty
 
 func set_difficulty(difficulty: DifficultyResource) -> void:
@@ -52,17 +52,14 @@ func set_difficulty(difficulty: DifficultyResource) -> void:
 	_override.get_node("CheckBox").set_pressed(difficulty.can_override)
 	_speed.set_speed(difficulty.speed)
 	_board_size_field.set_board_size(difficulty.board_size)
-	get_node(
-		"HSplit/PanelContainer/VBox/GameOver/VBox/BoardFull").set_pressed(
-			difficulty.lose_when_board_full)
-	get_node(
-		"HSplit/PanelContainer/VBox/GameOver/VBox/QueueFull").set_pressed(
-			difficulty.lose_when_queue_full)
+	_min_length.set_min_length(difficulty.min_word_length)
+	last_saved = difficulty.name
 
 func save_difficulty(_name, description):
 	var difficulty: = create_difficulty()
 	difficulty.name = _name
 	difficulty.description = description
+	last_saved = _name
 	var data_dir = OS.get_user_data_dir()
 	print(ResourceSaver.save(
 		data_dir.plus_file(_name + ".tres"), 
@@ -80,6 +77,7 @@ func _on_start_pressed() -> void:
 func _on_save_pressed() -> void:
 	var dialog = $ResourcePreloader.get_resource("SaveDifficultyDialog").instance()
 	add_child(dialog)
+	dialog.name_field.text = last_saved
 	dialog.connect("confirmed", self, "_on_save_dialog_confirmed")
 	dialog.existing_difficulties = saved_difficulties
 	dialog.popup()
