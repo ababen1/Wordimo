@@ -31,7 +31,7 @@ func _display_backgrounds() -> void:
 		var background_btn = $ResourcePreloader.get_resource("BgBtn").instance()		
 		grid.add_child(background_btn)
 		background_btn.texture = ThemeManger.get_background(bg)
-		if bg in unlocked_bgs:
+		if bg in unlocked_bgs:	
 			if ThemeManger.current_bg == background_btn.texture:
 				background_btn.pressed = (true)
 			background_btn.group = _button_group
@@ -41,10 +41,10 @@ func _display_backgrounds() -> void:
 
 func _clear_backgrounds() -> void:
 	for child in grid.get_children():
-		if child is UIBackgroundBtn:
+		if child is UIImageBtn:
 			child.queue_free()
 
-func _on_bg_btn_pressed(btn: UIBackgroundBtn) -> void:
+func _on_bg_btn_pressed(btn: UIImageBtn) -> void:
 	if btn.locked:
 		return
 	ThemeManger.current_bg = btn.texture

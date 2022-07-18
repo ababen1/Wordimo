@@ -5,14 +5,42 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "GDScript Godot",
-            "type": "godot",
+            "name": "Play in Editor",
+            "type": "godot-mono",
+            "mode": "playInEditor",
+            "request": "launch"
+        },
+        {
+            "name": "Launch",
+            "type": "godot-mono",
             "request": "launch",
-            "project": "${workspaceFolder}",
-            "port": 6007,
-            "address": "127.0.0.1",
-            "launch_game_instance": true,
-            "launch_scene": true
+            "mode": "executable",
+            "preLaunchTask": "build",
+            "executable": "D:/Steam/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe",
+            "executableArguments": [
+                "--path",
+                "${workspaceRoot}"
+            ]
+        },
+        {
+            "name": "Launch (Select Scene)",
+            "type": "godot-mono",
+            "request": "launch",
+            "mode": "executable",
+            "preLaunchTask": "build",
+            "executable": "D:/Steam/steamapps/common/Godot Engine/godot.windows.opt.tools.64.exe",
+            "executableArguments": [
+                "--path",
+                "${workspaceRoot}",
+                "${command:SelectLaunchScene}"
+            ]
+        },
+        {
+            "name": "Attach",
+            "type": "godot-mono",
+            "request": "attach",
+            "address": "localhost",
+            "port": 23685
         }
     ]
 }

@@ -1,6 +1,6 @@
 tool
 extends Button
-class_name UIBackgroundBtn
+class_name UIImageBtn
 
 export var is_selected: = false setget set_is_selected
 export var texture: Texture setget set_texture
