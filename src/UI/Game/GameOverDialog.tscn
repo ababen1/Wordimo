@@ -13,10 +13,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -312.0
-margin_top = -218.0
-margin_right = 312.0
-margin_bottom = 218.0
+margin_left = -456.0
+margin_top = -244.0
+margin_right = 456.0
+margin_bottom = 244.0
 input_pass_on_modal_close_click = false
 popup_exclusive = true
 window_title = "Game Over!"
@@ -31,8 +31,8 @@ margin_right = -16.0
 margin_bottom = -14.0
 
 [node name="ScoreLabel" type="Label" parent="VBox"]
-margin_left = 239.0
-margin_right = 352.0
+margin_left = 383.0
+margin_right = 496.0
 margin_bottom = 31.0
 size_flags_horizontal = 6
 size_flags_vertical = 1
@@ -41,31 +41,24 @@ text = "Score: 99"
 
 [node name="HBox2" type="HBoxContainer" parent="VBox"]
 margin_top = 35.0
-margin_right = 592.0
-margin_bottom = 337.0
+margin_right = 880.0
+margin_bottom = 380.0
 size_flags_vertical = 3
 
 [node name="StatsGrid" type="GridContainer" parent="VBox/HBox2"]
-margin_right = 592.0
-margin_bottom = 302.0
+margin_right = 880.0
+margin_bottom = 345.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/vseparation = 7
+custom_constants/hseparation = 60
 columns = 2
 script = ExtResource( 2 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBox/HBox2"]
-visible = false
-margin_left = 298.0
-margin_right = 592.0
-margin_bottom = 302.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="HBox" type="HBoxContainer" parent="VBox"]
-margin_top = 341.0
-margin_right = 592.0
-margin_bottom = 408.0
+margin_top = 384.0
+margin_right = 880.0
+margin_bottom = 460.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.22
@@ -73,15 +66,15 @@ custom_constants/separation = 45
 alignment = 1
 
 [node name="PlayAgain" type="Button" parent="VBox/HBox"]
-margin_left = 169.0
-margin_right = 272.0
-margin_bottom = 67.0
+margin_left = 313.0
+margin_right = 416.0
+margin_bottom = 76.0
 text = "Play Again"
 
 [node name="MainMenu" type="Button" parent="VBox/HBox"]
-margin_left = 317.0
-margin_right = 422.0
-margin_bottom = 67.0
+margin_left = 461.0
+margin_right = 566.0
+margin_bottom = 76.0
 text = "Main Menu"
 
 [connection signal="pressed" from="VBox/HBox/PlayAgain" to="." method="_on_PlayAgain_pressed"]

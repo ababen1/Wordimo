@@ -15,7 +15,7 @@ func _test() -> void:
 	show_results(99, {
 		"stat": "value", 
 		"stat2": "value",
-		"stat3": "valuasvgsavaafe"})
+		"stat3": "valuevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevalue"})
 
 func show_results(score: float, stats: Dictionary) -> void:
 	if not is_inside_tree():

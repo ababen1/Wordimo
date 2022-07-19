@@ -28,6 +28,7 @@ var combo: int = 0 setget set_combo
 var stats: = GameStats.new()
 var total_score: = 0.0
 var difficulty: DifficultyResource setget set_difficulty
+var tip_was_displayed: = false
 
 func _ready() -> void:
 	_setup_game_stats()
@@ -44,7 +45,7 @@ func _ready() -> void:
 	connect("game_over", HUD, "_on_game_over")
 # warning-ignore:return_value_discarded
 	connect("total_score_changed", HUD.score_label, "set_score")
-	if GameSaver.is_mobile():
+	if Funcs.is_mobile():
 		drag_input = true
 		drag_offset = Vector2(-130,-100)
 	else:
@@ -56,8 +57,9 @@ func _ready() -> void:
 
 func _setup_game_stats() -> void:
 	stats.add_stat("difficulty", "", "")
-	stats.add_numeric_stat("highest_combo", 0)
 	stats.add_numeric_stat("blocks_placed", 0)
+	stats.add_numeric_stat("blocks_rotated", 0)
+	stats.add_numeric_stat("highest_combo", 0)
 	stats.add_numeric_stat("highest_score_in_one_move", 0)
 	stats.add_stat("words_written", [], [])
 	
@@ -82,6 +84,7 @@ func _handle_touch_input(event: InputEvent) -> void:
 	elif event is InputEventScreenTouch and not event.pressed:
 		if event.index > 0 and dragged_block:
 			dragged_block.rotate_shape()
+			stats.add_to_stat("blocks_rotated", 1)
 		else:
 			drop_block()
 
@@ -89,13 +92,15 @@ func _handle_mouse_input(event: InputEventMouseButton) -> void:
 	if event.button_index == BUTTON_RIGHT and event.pressed:
 		if dragged_block:
 			dragged_block.rotate_shape()
+			stats.add_to_stat("blocks_rotated", 1)
 	elif event.button_index == BUTTON_LEFT and dragged_block:
 		if not event.pressed and drag_input or (event.pressed and not drag_input):
 			drop_block()
 
 func set_difficulty(val: DifficultyResource):
 	difficulty = val
-	stats.update_stat("difficulty", self.difficulty.name)
+	stats.update_stat(
+		"difficulty", self.difficulty.name if not difficulty.is_custom else "custom")
 	tilemap.size = difficulty.board_size
 	self.time_limit = difficulty.time_limit
 	blocks_queue_panel.set_queue_size(difficulty.queue_size)
@@ -186,6 +191,16 @@ func end_game(give_prizes: = true) -> void:
 # warning-ignore:narrowing_conversion
 		stats.give_prizes(total_score)
 
+func show_tip() -> void:
+	var tip: = "Tip: {action}"
+	NotificationsLayer.display_message(tip.format({"action": 
+		"Tap the screen while dragging a block to rotate it" if Funcs.is_mobile() else "Press right click to rotate a block"}))
+	tip_was_displayed = true
+	
+func _need_to_show_tip() -> bool:
+	return !tip_was_displayed and (
+		stats.get_value("blocks_placed") - stats.get_value("blocks_rotated") > 3)
+		
 func _on_BlocksTimer_timeout() -> void:
 	if add_block_delay != 0:
 		add_block(blocks_factory.get_random_block())
@@ -194,6 +209,8 @@ func _on_BlocksTimer_timeout() -> void:
 func _on_block_placed(block: Block) -> void:
 	stats.add_to_stat("blocks_placed", 1)
 	tilemap._print_board()
+	if _need_to_show_tip():
+		show_tip()
 	var cells_to_check: = []
 	# Mark all the cells in the placed block as cells to check
 	for tile in block.letters:
@@ -210,7 +227,7 @@ func _on_block_placed(block: Block) -> void:
 		tilemap.clear_cells(word_data.from, word_data.to)
 		popup_word(
 			word_data.word, 
-			block.global_position, 
+			block.letters.front().rect_global_position, 
 			Color(randf(),randf(),randf()))
 		stats.add_to_array_stat("words_written", word_data.word)
 	if tilemap.is_full():

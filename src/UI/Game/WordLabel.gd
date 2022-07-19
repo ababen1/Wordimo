@@ -21,7 +21,7 @@ func _animate() -> void:
 	# We define a range of 120 degrees for the direction in which the node can fly.
 	var angle := rand_range(-PI / 3.0, PI / 3.0)
 	# And we calculate an offset vector from that.
-	var offset := Vector2.UP.rotated(angle) * 60.0
+	var offset := Vector2.UP.rotated(angle) * 200.0
 
 	# The Tween node takes care of animating the Label's `rect_position` over 0.4 seconds. It's a
 	# bit faster than the miss label and uses an ease-out so the animation feels dynamic.

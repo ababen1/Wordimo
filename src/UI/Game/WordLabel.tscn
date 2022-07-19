@@ -4,7 +4,6 @@
 [ext_resource path="res://assets/SFX/Pop.wav" type="AudioStream" id=2]
 [ext_resource path="res://src/UI/Game/WordLabel.gd" type="Script" id=3]
 
-
 [sub_resource type="DynamicFont" id=3]
 size = 30
 outline_size = 2
@@ -111,11 +110,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 4016.0
-margin_top = 2377.0
-margin_right = 4176.0
-margin_bottom = 2423.0
-rect_scale = Vector2( 0.1, 0.1 )
+margin_left = 4528.0
+margin_top = 2677.0
+margin_right = 4688.0
+margin_bottom = 2723.0
 rect_pivot_offset = Vector2( 80, 23 )
 custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -133,3 +131,4 @@ anims/RESET = SubResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+bus = "SFX"

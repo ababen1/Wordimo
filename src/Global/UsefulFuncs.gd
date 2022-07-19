@@ -1,6 +1,12 @@
 extends Reference
 class_name Funcs
 
+static func is_html() -> bool:
+	return OS.get_name() == "HTML5"
+	
+static func is_mobile() -> bool:
+	return OS.get_name() in ["Android", "iOS"]
+
 static func get_random_array_element(array: Array):
 	return array[rand_range(0, array.size() - 1)]
 	

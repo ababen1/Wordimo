@@ -14,6 +14,10 @@ var time_left: float = 0 setget set_time_left
 func _ready() -> void:
 	_pause_btn.connect("pressed", pause_screen, "toggle")
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		pause_screen.toggle()
+
 func set_theme(new: Theme) -> void:
 	$Control.propagate_call("set_theme", [new])
 	$Control.propagate_call("update")

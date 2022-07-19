@@ -10,9 +10,9 @@ script = ExtResource( 1 )
 
 [node name="Theme" type="Label" parent="."]
 margin_top = 3.0
-margin_right = 58.0
+margin_right = 81.0
 margin_bottom = 24.0
-text = "Theme"
+text = "UI Theme"
 
 [node name="OptionButton" type="OptionButton" parent="."]
 margin_left = 684.0

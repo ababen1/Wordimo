@@ -13,7 +13,7 @@ var settings := {
 	vsync = false}
 
 func _ready() -> void:
-	if GameSaver.is_mobile() or GameSaver.is_html():
+	if Funcs.is_mobile() or Funcs.is_html():
 		$Video.queue_free()
 	self.load()
 

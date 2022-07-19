@@ -15,6 +15,7 @@ func play_sound_effect(sfx: AudioStream):
 	var audio_player: = AudioStreamPlayer.new()
 	get_tree().root.add_child(audio_player)
 	audio_player.stream = sfx
+	audio_player.bus = "SFX"
 	audio_player.play()
 	yield(audio_player, "finished")
 	audio_player.queue_free()

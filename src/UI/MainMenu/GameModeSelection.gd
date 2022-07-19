@@ -60,6 +60,7 @@ static func load_saved_difficulties(save_path: String = OS.get_user_data_dir()) 
 					"",
 					true)
 				if difficulty is DifficultyResource:
+					difficulty.is_custom = true
 					saved_difficulties.append(difficulty)
 			file_name = dir.get_next()
 	return saved_difficulties

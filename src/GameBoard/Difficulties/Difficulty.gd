@@ -13,6 +13,7 @@ export var increase_speed: = true
 export var can_override: = false
 export var is_favorite: = false
 export var min_word_length: int = WordsManger.DEFAULT_MIN_CHARS
+export var is_custom: = false
 
 func get_description() -> String:
 	if not description:

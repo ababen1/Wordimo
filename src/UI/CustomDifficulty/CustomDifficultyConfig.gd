@@ -38,6 +38,7 @@ func popup_error(text: String, title: = "Error") -> void:
 
 func create_difficulty() -> DifficultyResource:
 	var difficulty: = DifficultyResource.new()
+	difficulty.is_custom = true
 	difficulty.time_limit = _time_limit_field.get_time_limit()
 	difficulty.queue_size = _queue_size.get_queue_size()
 	difficulty.can_override = _override.get_node("CheckBox").pressed

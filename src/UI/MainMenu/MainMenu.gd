@@ -3,7 +3,7 @@ extends Control
 onready var _tutorial_popup = $TutorialPopup
 
 func _ready() -> void:
-	if GameSaver.is_html():
+	if Funcs.is_html():
 		$VBoxContainer/VBoxContainer/Quit.hide()
 
 func _on_Start_pressed() -> void:

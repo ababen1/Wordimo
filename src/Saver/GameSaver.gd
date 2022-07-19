@@ -44,12 +44,6 @@ func load_all_nodes(savefile: SaveGame = current_save):
 		node.load(savefile)
 #		print("loaded " + str(node))
 
-static func is_html() -> bool:
-	return OS.get_name() == "HTML5"
-	
-static func is_mobile() -> bool:
-	return OS.get_name() in ["Android", "iOS"]
-
 static func get_save_folder() -> String:
 	if OS.is_debug_build():
 		return GameSaver.SAVE_FOLDER_DEBUG

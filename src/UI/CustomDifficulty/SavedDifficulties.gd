@@ -4,7 +4,7 @@ signal load_to_editor(difficulty)
 signal delete_difficulty(difficulty)
 
 func _ready() -> void:
-	$HBox/OpenFolder.visible = not GameSaver.is_mobile() and not GameSaver.is_html()
+	$HBox/OpenFolder.visible = not Funcs.is_mobile() and not Funcs.is_html()
 
 func setup(difficulties: Array) -> void:
 	clear()

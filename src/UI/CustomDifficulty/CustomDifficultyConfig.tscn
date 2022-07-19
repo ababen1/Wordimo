@@ -14,14 +14,13 @@
 [ext_resource path="res://src/UI/CustomDifficulty/MinWordLength.gd" type="Script" id=12]
 
 [node name="CustomDifficultyConfig" type="WindowDialog"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -440.0
-margin_top = -288.0
-margin_right = 440.0
-margin_bottom = 272.0
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 24.0
+margin_right = -32.0
+margin_bottom = -8.0
 window_title = "Custom Difficulty"
 script = ExtResource( 1 )
 
@@ -40,22 +39,22 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="HSplit"]
-margin_right = 587.0
-margin_bottom = 521.111
+margin_right = 640.0
+margin_bottom = 528.555
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox" type="VBoxContainer" parent="HSplit/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 580.0
-margin_bottom = 514.111
+margin_right = 633.0
+margin_bottom = 521.555
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 20
+custom_constants/separation = 30
 
 [node name="TimeLimit" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_right = 573.0
+margin_right = 626.0
 margin_bottom = 31.0
 rect_min_size = Vector2( 300, 0 )
 custom_constants/hseparation = 10
@@ -99,9 +98,9 @@ text = "Unlimited"
 editable = false
 
 [node name="QueueSize" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 51.0
-margin_right = 573.0
-margin_bottom = 82.0
+margin_top = 61.0
+margin_right = 626.0
+margin_bottom = 92.0
 rect_min_size = Vector2( 300, 0 )
 custom_constants/hseparation = 10
 columns = 2
@@ -137,9 +136,9 @@ text = "Unlimited"
 editable = false
 
 [node name="Override" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 102.0
+margin_top = 122.0
 margin_right = 300.0
-margin_bottom = 131.0
+margin_bottom = 151.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
 custom_constants/hseparation = 10
@@ -152,9 +151,9 @@ size_flags_horizontal = 0
 text = "Allow Overriding"
 
 [node name="Speed" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 151.0
+margin_top = 181.0
 margin_right = 301.0
-margin_bottom = 182.0
+margin_bottom = 212.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
 custom_constants/hseparation = 10
@@ -185,9 +184,9 @@ margin_bottom = 31.0
 icon = ExtResource( 5 )
 
 [node name="BoardSize" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 202.0
+margin_top = 242.0
 margin_right = 300.0
-margin_bottom = 268.0
+margin_bottom = 308.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
 custom_constants/hseparation = 15
@@ -251,9 +250,9 @@ grid_size = Vector2( 4, 4 )
 color = Color( 0.835294, 0.835294, 0.835294, 1 )
 
 [node name="MinWordLength" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 288.0
+margin_top = 338.0
 margin_right = 358.0
-margin_bottom = 319.0
+margin_bottom = 369.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
 custom_constants/hseparation = 15
@@ -278,29 +277,29 @@ value = 2.0
 suffix = "Letters"
 
 [node name="HBox" type="HBoxContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 480.0
-margin_right = 573.0
-margin_bottom = 507.0
+margin_top = 487.0
+margin_right = 626.0
+margin_bottom = 514.0
 size_flags_vertical = 10
 custom_constants/separation = 25
 alignment = 1
 
 [node name="Start" type="Button" parent="HSplit/PanelContainer/VBox/HBox"]
-margin_left = 153.0
-margin_right = 260.0
+margin_left = 180.0
+margin_right = 287.0
 margin_bottom = 27.0
 text = "Start Game"
 
 [node name="Save" type="Button" parent="HSplit/PanelContainer/VBox/HBox"]
-margin_left = 285.0
-margin_right = 419.0
+margin_left = 312.0
+margin_right = 446.0
 margin_bottom = 27.0
 text = "Save Difficulty"
 
 [node name="Panel" type="Panel" parent="HSplit"]
-margin_left = 599.0
-margin_right = 848.0
-margin_bottom = 521.111
+margin_left = 652.0
+margin_right = 925.091
+margin_bottom = 528.555
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.43
@@ -321,26 +320,26 @@ __meta__ = {
 }
 
 [node name="HBox" type="HBoxContainer" parent="HSplit/Panel/SavedDifficulties"]
-margin_right = 234.0
+margin_right = 256.0
 margin_bottom = 27.0
 alignment = 1
 
 [node name="Label" type="Label" parent="HSplit/Panel/SavedDifficulties/HBox"]
-margin_left = 27.0
+margin_left = 38.0
 margin_top = 3.0
-margin_right = 174.0
+margin_right = 185.0
 margin_bottom = 24.0
 text = "Saved Difficulties"
 
 [node name="OpenFolder" type="Button" parent="HSplit/Panel/SavedDifficulties/HBox"]
-margin_left = 178.0
-margin_right = 206.0
+margin_left = 189.0
+margin_right = 217.0
 margin_bottom = 27.0
 icon = ExtResource( 11 )
 
 [node name="SavedDifficulty" parent="HSplit/Panel/SavedDifficulties" instance_placeholder="res://src/UI/CustomDifficulty/SavedDifficulty.tscn"]
 margin_top = 42.0
-margin_right = 234.0
+margin_right = 256.0
 margin_bottom = 72.0
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="HSplit/Panel/SavedDifficulties"]

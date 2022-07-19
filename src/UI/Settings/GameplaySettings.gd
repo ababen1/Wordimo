@@ -3,7 +3,7 @@ extends Control
 onready var _drag_input_checkbox: = $DragInput 
 
 func _ready() -> void:
-	if GameSaver.is_mobile():
+	if Funcs.is_mobile():
 		_drag_input_checkbox.visible = false
 	else:
 		$DragInput.checkbox.set_pressed_no_signal(

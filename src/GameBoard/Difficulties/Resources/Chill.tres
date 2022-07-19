@@ -14,3 +14,4 @@ increase_speed = false
 can_override = true
 is_favorite = false
 min_word_length = 3
+is_custom = false
