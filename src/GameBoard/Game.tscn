@@ -74,6 +74,8 @@ cell_size = Vector2( 80, 80 )
 [node name="Blocks" type="Node2D" parent="."]
 position = Vector2( 1368, 736 )
 
+[node name="HUD" parent="." instance=ExtResource( 3 )]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -82,8 +84,6 @@ anchor_left = 0.726563
 anchor_top = 0.0266667
 anchor_right = 0.96875
 anchor_bottom = 0.96
-
-[node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

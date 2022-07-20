@@ -1,8 +1,8 @@
 extends Control
 
 onready var timer: = $Timer
-onready var spawn_block_btn = $HBox/Button
-onready var time_bar: ProgressBar = $HBox/ProgressBar
+onready var spawn_block_btn = $MarginContainer/HBox/Button
+onready var time_bar: ProgressBar = $MarginContainer/HBox/ProgressBar
 
 var wait_time: float = 1 setget set_wait_time
 

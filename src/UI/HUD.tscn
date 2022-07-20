@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/UI/Game/Score.gd" type="Script" id=1]
 [ext_resource path="res://assets/Icons/Reload.svg" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/UI/BackgroundLayer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Icons/Pause.svg" type="Texture" id=6]
 [ext_resource path="res://src/UI/PauseScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/Backgrounds/W02.jpg" type="Texture" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -27,6 +28,7 @@ margin_left = 40.0
 margin_top = 8.0
 margin_right = 984.0
 margin_bottom = 40.0
+mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 
 [node name="Score" type="Label" parent="Control/HBox"]
@@ -76,6 +78,7 @@ icon = ExtResource( 6 )
 expand_icon = true
 
 [node name="BackgroundLayer" parent="." instance=ExtResource( 5 )]
+texture = ExtResource( 8 )
 
 [node name="PauseScreen" parent="." instance=ExtResource( 7 )]
 visible = false

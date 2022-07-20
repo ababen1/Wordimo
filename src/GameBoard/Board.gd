@@ -194,7 +194,8 @@ func end_game(give_prizes: = true) -> void:
 func show_tip() -> void:
 	var tip: = "Tip: {action}"
 	NotificationsLayer.display_message(tip.format({"action": 
-		"Tap the screen while dragging a block to rotate it" if Funcs.is_mobile() else "Press right click to rotate a block"}))
+		"Tap the screen while dragging a block to rotate it" if Funcs.is_mobile() else "Press right click to rotate a block"}),
+		Color.yellowgreen)
 	tip_was_displayed = true
 	
 func _need_to_show_tip() -> bool:

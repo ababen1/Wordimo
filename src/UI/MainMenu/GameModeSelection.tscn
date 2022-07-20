@@ -12,7 +12,6 @@
 [ext_resource path="res://assets/Icons/GuiClose.svg" type="Texture" id=10]
 [ext_resource path="res://src/UI/Components/GameModeButton.tscn" type="PackedScene" id=11]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 2 )
@@ -93,7 +92,7 @@ visible = false
 anchor_left = 0.0546875
 anchor_top = 0.045
 anchor_right = 0.960938
-anchor_bottom = 0.911667
+anchor_bottom = 0.973333
 margin_top = -1.90735e-06
 rect_clip_content = true
 script = ExtResource( 1 )
@@ -136,20 +135,20 @@ expand = true
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 margin_top = 52.0
 margin_right = 912.0
-margin_bottom = 504.0
+margin_bottom = 541.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
 margin_right = 912.0
-margin_bottom = 452.0
+margin_bottom = 489.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer/VBox"]
 margin_right = 912.0
-margin_bottom = 452.0
+margin_bottom = 489.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/vseparation = 30
@@ -161,9 +160,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 52.0
-margin_top = 0.0
+margin_top = 6.0
 margin_right = 402.0
-margin_bottom = 130.0
+margin_bottom = 136.0
 rect_min_size = Vector2( 350, 130 )
 rect_pivot_offset = Vector2( 175, 65 )
 size_flags_horizontal = 6
@@ -179,9 +178,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 510.0
-margin_top = 0.0
+margin_top = 6.0
 margin_right = 860.0
-margin_bottom = 130.0
+margin_bottom = 136.0
 rect_min_size = Vector2( 350, 130 )
 rect_pivot_offset = Vector2( 175, 65 )
 size_flags_horizontal = 6
@@ -197,9 +196,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 52.0
-margin_top = 160.0
+margin_top = 179.0
 margin_right = 402.0
-margin_bottom = 290.0
+margin_bottom = 309.0
 rect_min_size = Vector2( 350, 130 )
 rect_pivot_offset = Vector2( 175, 65 )
 size_flags_horizontal = 6
@@ -215,9 +214,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 510.0
-margin_top = 160.0
+margin_top = 179.0
 margin_right = 860.0
-margin_bottom = 290.0
+margin_bottom = 309.0
 rect_min_size = Vector2( 350, 130 )
 rect_pivot_offset = Vector2( 175, 65 )
 size_flags_horizontal = 6
@@ -233,9 +232,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 52.0
-margin_top = 320.0
+margin_top = 352.0
 margin_right = 402.0
-margin_bottom = 450.0
+margin_bottom = 482.0
 rect_min_size = Vector2( 350, 130 )
 rect_pivot_offset = Vector2( 175, 65 )
 size_flags_horizontal = 6

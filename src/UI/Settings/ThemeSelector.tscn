@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/UI/Settings/ThemeSelector.gd" type="Script" id=1]
+[ext_resource path="res://assets/Icons/Lock.svg" type="Texture" id=2]
 
 [node name="ThemeSelector" type="HBoxContainer"]
 pause_mode = 2
@@ -20,5 +21,8 @@ margin_right = 984.0
 margin_bottom = 27.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 10
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="."]
+resources = [ PoolStringArray( "Lock" ), [ ExtResource( 2 ) ] ]
 
 [connection signal="item_selected" from="OptionButton" to="." method="_on_OptionButton_item_selected"]
