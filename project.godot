@@ -211,7 +211,7 @@ config/version="0"
 
 ThemeManger="*res://src/Global/ThemeManger.tscn"
 GameSaver="*res://src/Saver/GameSaver.tscn"
-WordsManger="*res://src/Global/WordsManger.tscn"
+WordsManger="*res://src/Global/WordsManger/WordsManger.tscn"
 EventBus="*res://src/Global/EventBus.gd"
 SFX="*res://src/Global/SFX.gd"
 SceneChanger="*res://src/Global/SceneChanger.tscn"

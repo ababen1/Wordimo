@@ -5,6 +5,7 @@ const DEFAULT_MIN_CHARS: = 4 # minimum amount of characters a word should have i
 const WORDS_TEXT_FILE = "res://src/Global/Words.txt"
 
 onready var WORDS_DICT: Dictionary = _create_dict()
+onready var api: HTTPRequest = $API
 
 # Creates a dictonary with 26 keys (A-Z) and an array
 # of the words in that letter as the value
