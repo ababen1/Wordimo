@@ -34,7 +34,9 @@ static func get_content_in_path(path: String, ignore_dot_import: = true, recrusi
 	if dir.open(path) == OK and dir.list_dir_begin(true, true) == OK:
 		var filename: String = dir.get_next()
 		while filename:
-			if not(ignore_dot_import and filename.ends_with(".import")):
+			if not OS.is_debug_build():
+				filename = filename.replace('.import', '')
+			if !(ignore_dot_import and filename.ends_with(".import") and OS.is_debug_build()):
 				if dir.current_is_dir() and recrusive:
 					content.append_array(get_content_in_path(
 						path.plus_file(filename), ignore_dot_import, recrusive))

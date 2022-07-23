@@ -7,6 +7,8 @@ signal bg_unlocked(bg)
 
 const DEFAULT_THEME_NAME = "Default"
 const DEFAULT_BG_NAME = "Default"
+const THEMES_FOLDER = "res://assets/Themes/"
+const BGS_FOLDER = "res://assets/Backgrounds/"
 
 onready var _themes_preloader = $Themes
 onready var _backgrounds_preloader = $Backgrounds
