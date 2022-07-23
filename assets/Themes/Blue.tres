@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=28 format=2]
+[gd_resource type="Theme" load_steps=30 format=2]
 
 [ext_resource path="res://assets/Fonts/BigFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Themes/Blue/Resources/ButtonNormal.tres" type="StyleBox" id=2]
@@ -36,6 +36,12 @@ margin_left = 18.6223
 margin_right = 19.8157
 margin_top = 15.7007
 margin_bottom = 28.9805
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.109804, 0.607843, 0.905882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.109804, 0.882353, 1, 1 )
 
 [sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0.0627451, 0.498039, 0.768627, 0.960784 )
@@ -199,9 +205,9 @@ Button/styles/pressed = SubResource( 2 )
 GameGrid/colors/error_color = Color( 1, 0, 0, 1 )
 GameGrid/colors/highlight_color = Color( 0.6, 0.8, 0.2, 1 )
 GameGrid/colors/outline_color = Color( 1, 1, 1, 1 )
-GameGrid/constants/outline_size = 1
-GameGrid/styles/tile = null
-GameGrid/styles/tile_alt = null
+GameGrid/constants/outline_size = 5
+GameGrid/styles/tile = SubResource( 28 )
+GameGrid/styles/tile_alt = SubResource( 27 )
 HScrollBar/styles/grabber = SubResource( 12 )
 HScrollBar/styles/grabber_highlight = SubResource( 13 )
 HScrollBar/styles/grabber_pressed = SubResource( 14 )

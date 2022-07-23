@@ -14,9 +14,11 @@ func set_primary_color(val: Color):
 
 func set_secondary_color(val: Color):
 	secondary_color = val
-	if not has_stylebox("alt_tile", NODE_TYPE_GRID):
-		create_tile_from_color("alt_tile", secondary_color)
+	if not has_stylebox("tile_alt", NODE_TYPE_GRID):
+		create_tile_from_color("tile_alt", secondary_color)
 	emit_changed()
+
+		
 
 func get_board_style() -> BoardStyle:
 	var tile = get_stylebox("tile", NODE_TYPE_GRID) if has_stylebox("tile", NODE_TYPE_GRID) else null
