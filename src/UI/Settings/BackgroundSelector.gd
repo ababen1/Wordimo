@@ -12,7 +12,8 @@ func _enter_tree() -> void:
 		visible = true
 
 func _exit_tree():
-	thread.wait_to_finish()
+	if not Funcs.is_html():
+		thread.wait_to_finish()
 
 func _ready() -> void:
 	self.backgrounds = ThemeManger.backgrounds_list.keys() as PoolStringArray
@@ -22,7 +23,10 @@ func _ready() -> void:
 
 func set_backgrounds(val: PoolStringArray):
 	backgrounds = val
-	thread.start(self, "_display_backgrounds")
+	if not Funcs.is_html():
+		thread.start(self, "_display_backgrounds")
+	else:
+		_display_backgrounds()
 
 func _display_backgrounds() -> void:
 	_clear_backgrounds()

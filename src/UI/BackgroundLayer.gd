@@ -1,4 +1,4 @@
-tool
+#tool
 extends CanvasLayer
 
 export var texture: Texture setget set_texture
