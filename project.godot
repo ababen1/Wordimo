@@ -167,7 +167,7 @@ _global_script_classes=[ {
 "base": "Theme",
 "class": "WordTetrisTheme",
 "language": "GDScript",
-"path": "res://assets/Themes/WordTetrisTheme.gd"
+"path": "res://src/Global/WordTetrisTheme.gd"
 } ]
 _global_script_class_icons={
 "Block": "",

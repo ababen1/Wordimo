@@ -14,6 +14,7 @@ var tiles_data: Dictionary = {}
 
 func _ready() -> void:
 	cell_size = CONSTS.CELL_SIZE
+	style = ThemeManger.current_theme.get_board_style()
 	grid_layer.setup()
 	connect("settings_changed", self, "_on_settings_changed")
 

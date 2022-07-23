@@ -6,12 +6,15 @@ var style: BoardStyle
 var tile_size:= Vector2(64,64)
 var board_size: = Vector2(4,4)
 
-func setup() -> void:
-	self.board_size = get_parent().size
-	self.tile_size = get_parent().cell_size
-	self.style = get_parent().style
-	update()
+func _ready() -> void:
+	ThemeManger.connect("theme_changed", self, "setup")
 
+func setup(theme: WordTetrisTheme = ThemeManger.current_theme) -> void:
+	self.board_size = get_parent().size if get_parent() else board_size
+	self.tile_size = get_parent().cell_size if get_parent() else tile_size
+	self.style = theme.get_board_style()
+	update()
+ 
 func _draw() -> void:
 	if style:
 		_draw_board()
@@ -24,13 +27,6 @@ func _draw_board() -> void:
 	for y in board_size.y:
 		for x in board_size.x:
 			var rect: = Rect2(get_parent().get_cell_global_position(Vector2(x,y)), tile_size)
-			if style is BoardStyleTexture:
-				var stylebox: = StyleBoxTexture.new()
-				stylebox.texture = style.texture if int(x+y) % 2 == 0 else style.alt_texture
-				draw_style_box(
-					stylebox,rect)
-			elif style is BoardStyle:
-				draw_rect(
-					rect,
-					style.color if int(x+y) % 2 == 0 else style.alt_color
-				)
+			var stylebox: StyleBox = style.tile if int(x+y) % 2 == 0 else style.tile_alt
+			draw_style_box(stylebox, rect)
+				

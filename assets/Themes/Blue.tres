@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/Themes/Blue/Resources/PanelLight.tres" type="StyleBox" id=8]
 [ext_resource path="res://assets/Themes/Blue/Resources/PanelDark.tres" type="StyleBox" id=9]
 [ext_resource path="res://assets/Themes/Blue/Resources/PanelCyan.tres" type="StyleBox" id=10]
-[ext_resource path="res://assets/Themes/WordTetrisTheme.gd" type="Script" id=11]
+[ext_resource path="res://src/Global/WordTetrisTheme.gd" type="Script" id=11]
 
 [sub_resource type="StyleBoxTexture" id=3]
 content_margin_left = 5.0
@@ -196,6 +196,12 @@ Button/styles/focus = ExtResource( 7 )
 Button/styles/hover = ExtResource( 2 )
 Button/styles/normal = ExtResource( 2 )
 Button/styles/pressed = SubResource( 2 )
+GameGrid/colors/error_color = Color( 1, 0, 0, 1 )
+GameGrid/colors/highlight_color = Color( 0.6, 0.8, 0.2, 1 )
+GameGrid/colors/outline_color = Color( 1, 1, 1, 1 )
+GameGrid/constants/outline_size = 1
+GameGrid/styles/tile = null
+GameGrid/styles/tile_alt = null
 HScrollBar/styles/grabber = SubResource( 12 )
 HScrollBar/styles/grabber_highlight = SubResource( 13 )
 HScrollBar/styles/grabber_pressed = SubResource( 14 )
@@ -234,3 +240,5 @@ VSlider/styles/grabber_area_highlight = SubResource( 11 )
 VSlider/styles/slider = SubResource( 10 )
 WindowDialog/styles/panel = SubResource( 26 )
 script = ExtResource( 11 )
+primary_color = Color( 0.109804, 0.607843, 0.905882, 1 )
+secondary_color = Color( 0.109804, 0.882353, 1, 1 )
