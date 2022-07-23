@@ -8,8 +8,9 @@ static func is_mobile() -> bool:
 	return OS.get_name() in ["Android", "iOS"]
 
 static func get_random_array_element(array: Array):
-	return array[rand_range(0, array.size() - 1)]
-	
+	var randomizer = RandomNumberGenerator.new()
+	return array[randomizer.randi_range(0, array.size() -1)]
+		
 static func get_resources_data(preloader: ResourcePreloader) -> Dictionary:
 	var data = {}
 	for resource_name in preloader.get_resource_list():

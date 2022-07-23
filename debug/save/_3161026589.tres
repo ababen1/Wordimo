@@ -16,15 +16,15 @@ data = {
 "drag_input": false,
 "games_played": {
 "stats": {
-"blocks_placed": 1,
-"blocks_rotated": 2,
-"difficulty": "Chill",
-"highest_combo": 1,
-"highest_score_in_one_move": 30.0,
+"blocks_placed": 0,
+"blocks_rotated": 0,
+"difficulty": "Hard",
+"highest_combo": 0,
+"highest_score_in_one_move": 0,
 "level": 0,
-"words_written": [ "DUD" ]
+"words_written": [  ]
 },
-"timestamp": 1658565359
+"timestamp": 1658571736
 },
 "unlocked_bgs": [ "Default", "abstractbackground (10)", "abstractbackground (48)", "abstractbackground (42)", "abstractbackground (43)", "abstractbackground (57)", "abstractbackground (47)", "abstractbackground (47)", "abstractbackground (30)", "abstractbackground (42)", "abstractbackground (25)", "abstractbackground (33)", "abstractbackground (51)", "abstractbackground (31)", "abstractbackground (15)", "abstractbackground (32)", "abstractbackground (31)", "abstractbackground (10)", "abstractbackground (33)", "abstractbackground (1)", "abstractbackground (10)", "abstractbackground (11)", "abstractbackground (12)", "abstractbackground (13)", "abstractbackground (14)", "abstractbackground (15)", "abstractbackground (16)", "abstractbackground (17)", "abstractbackground (18)", "abstractbackground (19)", "abstractbackground (2)", "abstractbackground (21)", "abstractbackground (22)", "abstractbackground (23)", "abstractbackground (24)", "abstractbackground (25)", "abstractbackground (26)", "abstractbackground (27)", "abstractbackground (28)", "abstractbackground (29)", "abstractbackground (3)", "abstractbackground (30)", "abstractbackground (31)", "abstractbackground (32)", "abstractbackground (33)", "abstractbackground (34)", "abstractbackground (35)", "abstractbackground (36)", "abstractbackground (37)", "abstractbackground (38)", "abstractbackground (39)", "abstractbackground (4)", "abstractbackground (40)", "abstractbackground (41)", "abstractbackground (42)", "abstractbackground (43)", "abstractbackground (44)", "abstractbackground (45)", "abstractbackground (46)", "abstractbackground (47)", "abstractbackground (48)", "abstractbackground (49)", "abstractbackground (5)", "abstractbackground (50)", "abstractbackground (51)", "abstractbackground (52)", "abstractbackground (53)", "abstractbackground (54)", "abstractbackground (55)", "abstractbackground (56)", "abstractbackground (57)", "abstractbackground (6)", "abstractbackground (7)", "abstractbackground (8)", "abstractbackground (9)", "Default", "abstractbackground (27)" ],
 "unlocked_themes": [ "Default", "Grey", "Blue", "Godot2", "Light", "Godot2", "Godot2", "Alien", "Light", "Blue", "Alien", "Arc", "Blue", "Default", "Godot2", "Grey", "Light", "SolarizedDark", "Trans", "Light", "Ace" ]

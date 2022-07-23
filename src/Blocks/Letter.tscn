@@ -41,9 +41,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-letter = "A"
+letter = "H"
 color = 0
-preloader = NodePath("ResourcePreloader")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_right = 80.0
@@ -51,15 +50,15 @@ margin_bottom = 80.0
 mouse_filter = 2
 
 [node name="Letter" type="Label" parent="CenterContainer"]
-margin_left = 21.0
+margin_left = 20.0
 margin_top = 9.0
-margin_right = 59.0
+margin_right = 60.0
 margin_bottom = 71.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 9 )
-text = "A"
+text = "H"
 
 [node name="Tween" type="Tween" parent="."]
 

@@ -38,4 +38,10 @@ one_shot = true
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
 resources = [ PoolStringArray( "WordLabel" ), [ ExtResource( 8 ) ] ]
 
+[node name="HintTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
+
 [connection signal="game_started" from="." to="HUD" method="_on_game_started"]
+[connection signal="timeout" from="HintTimer" to="." method="_on_HintTimer_timeout"]

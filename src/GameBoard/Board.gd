@@ -219,12 +219,8 @@ func show_tip() -> void:
 	var tip: = "Tip: {action}"
 	NotificationsLayer.display_message(tip.format({"action": 
 		"Tap the screen while dragging a block to rotate it" if Funcs.is_mobile() else "Press right click to rotate a block"}),
-		Color.yellowgreen)
+		Color.yellow)
 	tip_was_displayed = true
-	
-func _need_to_show_tip() -> bool:
-	return !tip_was_displayed and (
-		stats.get_value("blocks_placed") - stats.get_value("blocks_rotated") > 3)
 		
 func _on_BlocksTimer_timeout() -> void:
 	if add_block_delay != 0:
@@ -291,3 +287,7 @@ func _on_HUD_start_new_game() -> void:
 
 func _on_timeout() -> void:
 	end_game(GAME_OVER.TIMES_UP)
+
+func _on_HintTimer_timeout() -> void:
+	if !tip_was_displayed and (stats.get_value("blocks_rotated") == 0):
+		show_tip()

@@ -91,10 +91,12 @@ func unlock_bg(bg_name: String) -> void:
 		emit_signal("bg_unlocked", bg_name)
 		
 func unlock_bg_random():
-	unlock_bg(Funcs.get_random_array_element(get_locked_backgrounds()))
+	if not get_locked_backgrounds().empty():
+		unlock_bg(Funcs.get_random_array_element(get_locked_backgrounds()))
 
 func unlock_theme_random():
-	unlock_theme(Funcs.get_random_array_element(get_locked_themes()))
+	if not get_locked_themes().empty():
+		unlock_theme(Funcs.get_random_array_element(get_locked_themes()))
 
 func unlock_all() -> void:
 	for bg in backgrounds_list:
