@@ -18,13 +18,14 @@ enum LETTER_TYPE {
 	NON_VOWEL, # can be any letter except vowels
 	JOCKER # a letter used to complete words, like a blank tile in scrabble
 }
-
+const MAX_LEVEL = 20
 const VALID_LETTERS: = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 const VOWELS: = ["a", "e", "o", "i", "u"]
 const NON_VOWELS: = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
 const JOKER = "★"
 const CELL = 80
 const CELL_SIZE = Vector2(CELL, CELL)
+const LEVEL_CLEAR_TARGET = 5
 const SHAPES_COLORS: = {
 	"I": COLORS.CYAN,
 	"J": COLORS.BLUE,
@@ -34,6 +35,7 @@ const SHAPES_COLORS: = {
 	"T": COLORS.PURPLE,
 	"Z": COLORS.RED
 }
+
 const SHAPES_POSITIONS: = {
 	"I": {
 		0: Vector2(CELL + CELL / 2, -CELL / 2),
@@ -108,8 +110,13 @@ const LETTER_CHANCE = {
 	"z": 0.074
 }
 
+
+
 static func pick_random_letter() -> String:
 	return pick_random_item(LETTER_CHANCE)
+
+static func pick_random_vowel_equal_chance() -> String:
+	return Funcs.get_random_array_element(VOWELS)
 
 # Items should be a dictonary of 
 # Object : Pick Chance
@@ -135,6 +142,5 @@ static func pick_random_item(items: Dictionary):
 	# 4. Return the value
 	return chosen_value
 			
-
-		
-		
+static func get_level_speed(level: int) -> float:
+	return max(MAX_LEVEL - level, 0.1)

@@ -6,9 +6,9 @@ signal queue_full
 
 export var can_scroll: = true setget set_can_scroll
 
-onready var _images_container = $ScrollContainer/VBox
-onready var _scroll_container = $ScrollContainer
-onready var _blocks_limit = $ScrollContainer/VBox/BlocksLimit
+onready var _images_container = $VBox/Blocks/VBox
+onready var _scroll_container = _images_container.get_parent()
+onready var _blocks_limit = $VBox/BlocksLimit
 
 var blocks: = {}
 

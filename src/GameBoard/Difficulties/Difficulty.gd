@@ -8,8 +8,8 @@ export var description: = "" setget ,get_description
 export var time_limit: = 0.0
 export var queue_size: = 10 # max amount of blocks in the queue
 export var board_size: = Vector2(9,7)
-export var speed: float = 7
-export var increase_speed: = true
+export var starting_level: int = 1
+export var increase_levels: = true
 export var can_override: = false
 export var is_favorite: = false
 export var min_word_length: int = WordsManger.DEFAULT_MIN_CHARS
@@ -27,13 +27,15 @@ func get_info() -> String:
 		Stack size: {stack} \n
 		Board size: {board} \n
 		Override Allowed: {override} \n
-		Speed: New block every {speed} seconds \n
+		Starting Level: {level} \n
+		Increase Levels: {increase}
 		Minimum word length: {min_length} \n
 		""".format(
 			{"time": time_limit, 
 			"queue_size": queue_size,
 			"board": board_size,
 			"override": "Yes" if can_override else "No",
-			"speed": speed,
+			"level": starting_level,
+			"increase": "Yes" if increase_levels else "No",
 			"min_length": min_word_length
-			})
+		})

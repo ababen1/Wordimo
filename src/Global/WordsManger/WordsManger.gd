@@ -3,6 +3,11 @@ extends Node
 const VALID_LETTERS = "abcdefghijklmnopqrstuvwxyz"
 const DEFAULT_MIN_CHARS: = 4 # minimum amount of characters a word should have in order
 const WORDS_TEXT_FILE = "res://src/Global/Words.txt"
+const SECRET_WORDS = [
+	"godot",
+	"owo",
+	"meme"
+]
 
 onready var WORDS_DICT: Dictionary = _create_dict()
 onready var api: HTTPRequest = $API

@@ -49,3 +49,9 @@ func give_prizes(total_score: int) -> void:
 		ThemeManger.unlock_bg_random()
 	if randf() <= _chance_to_unlock_theme + bonus_chance:
 		ThemeManger.unlock_theme_random()
+
+func save_to_global_stats(savegame: SaveGame) -> void:
+	savegame.data["games_played"] = {
+		"timestamp": OS.get_unix_time(),
+		"stats": self.values
+	}

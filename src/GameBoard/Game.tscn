@@ -1,62 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/GameBoard/GameGrid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/Queue/Queue.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/GameBoard/Board.gd" type="Script" id=5]
-[ext_resource path="res://assets/Tetriminos/Board/BG_1.png" type="Texture" id=6]
-[ext_resource path="res://assets/Tetriminos/Board/BG_2.png" type="Texture" id=7]
 [ext_resource path="res://src/UI/Game/WordLabel.tscn" type="PackedScene" id=8]
-
-[sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
-
-[sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
-
-[sub_resource type="TileSet" id=4]
-0/name = "BG_2.png 0"
-0/texture = ExtResource( 7 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 64, 64 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 2 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = -2
-1/name = "BG_1.png 1"
-1/texture = ExtResource( 6 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 0, 64, 64 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 3 )
-1/shape_one_way = false
-1/shape_one_way_margin = 1.0
-1/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 3 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-1/z_index = -2
 
 [node name="GameBoard" type="Node2D"]
 script = ExtResource( 5 )
@@ -68,7 +16,6 @@ current = true
 zoom = Vector2( 1.5, 1.5 )
 
 [node name="GameGrid" parent="." instance=ExtResource( 1 )]
-tile_set = SubResource( 4 )
 cell_size = Vector2( 80, 80 )
 
 [node name="Blocks" type="Node2D" parent="."]
@@ -85,7 +32,7 @@ anchor_top = 0.0266667
 anchor_right = 0.96875
 anchor_bottom = 0.96
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TimeLimit" type="Timer" parent="."]
 one_shot = true
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
