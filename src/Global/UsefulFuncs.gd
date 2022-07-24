@@ -45,20 +45,37 @@ static func get_content_in_path(path: String, ignore_dot_import: = true, recrusi
 			filename = dir.get_next()
 	return content
 	
-#static func generate_board_styles(path: String, output: String):
-#	var dir = Directory.new()
-#	if dir.open(path) == OK:
-#		dir.list_dir_begin(true, true)
-#		var file: String = dir.get_next()
-#		while file:
-#			if dir.current_is_dir():
-#				generate_board_styles(path.plus_file(file), output)
-#			elif ResourceLoader.exists(path.plus_file(file)):
-#				var texture = load(path.plus_file(file))
-#				if texture is Texture:
-#					var board_style = BoardStyleTexture.new()
-#					board_style.board_texture = texture
-#					ResourceSaver.save(
-#						output.plus_file(file.get_file() + ".tres"),
-#						board_style)
-#			file = dir.get_next()
+static func generate_board_styles(path: String, output: String):
+	var dir = Directory.new()
+	if dir.open(path) == OK:
+		dir.list_dir_begin(true, true)
+		var file: String = dir.get_next()
+		while file:
+			if dir.current_is_dir():
+				generate_board_styles(path.plus_file(file), output)
+			elif ResourceLoader.exists(path.plus_file(file)):
+				var texture = load(path.plus_file(file))
+				if texture is Texture:
+					# Create atlas textures
+					var tile_tex: = AtlasTexture.new()
+					var tile_alt_tex = AtlasTexture.new()
+					tile_tex.atlas = texture.duplicate()
+					tile_alt_tex.atlas = texture.duplicate()
+					tile_tex.region = Rect2(Vector2(250, 251), Vector2(250,250))
+					tile_alt_tex.region = Rect2(Vector2(500,250), Vector2(250,250))
+					
+					# Create Styleboxes
+					var tile_stylebox = StyleBoxTexture.new()
+					tile_stylebox.texture = tile_tex
+					var tile_alt_stylebox = StyleBoxTexture.new()
+					tile_alt_stylebox.texture = tile_alt_tex
+					
+					# Create BoardStyles
+					var board_style = BoardStyle.new()
+					board_style.tile = tile_stylebox.duplicate()
+					board_style.tile_alt = tile_alt_stylebox.duplicate()
+					
+					ResourceSaver.save(
+						output.plus_file(file.get_file() + ".tres"),
+						board_style)
+			file = dir.get_next()

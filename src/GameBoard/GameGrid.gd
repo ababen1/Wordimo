@@ -39,6 +39,8 @@ func _draw() -> void:
 		grid_layer.update()
 
 func set_style(val: BoardStyle):
+	if not is_inside_tree():
+		yield(self, "ready")
 	style = val
 	emit_signal("settings_changed")
 

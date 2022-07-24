@@ -18,13 +18,13 @@ func get_random_block() -> Block:
 static func create_custom_block(type: String, letters: Array) -> Block:
 	var new_block: Block = instance_block(type)
 	for i in letters.size():
-		var new_letter: = create_letter_block(type, letters[i])
+		var new_letter: = create_letter(type, letters[i])
 		new_block.set_letter(i, new_letter)
 	return new_block
 
-static func create_letter_block(type: String, letter = null) -> Letter:
+static func create_letter(type: String, letter = null) -> Letter:
 	var new_letter = LETTER.instance()
-	new_letter.color = CONSTS.SHAPES_COLORS[type]
+	new_letter.color = CONSTS.BLOCK_TYPES[type]
 	if letter is String:
 		new_letter.letter_type = CONSTS.LETTER_TYPE.ANY
 		new_letter.letter = letter

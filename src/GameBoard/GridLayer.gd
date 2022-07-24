@@ -7,12 +7,13 @@ var tile_size:= Vector2(64,64)
 var board_size: = Vector2(4,4)
 
 func _ready() -> void:
+# warning-ignore:return_value_discarded
 	ThemeManger.connect("theme_changed", self, "setup")
 
-func setup(theme: WordTetrisTheme = ThemeManger.current_theme) -> void:
+func setup() -> void:
 	self.board_size = get_parent().size if get_parent() else board_size
 	self.tile_size = get_parent().cell_size if get_parent() else tile_size
-	self.style = theme.get_board_style()
+	self.style = get_parent().style if get_parent() else ThemeManger.current_theme.get_board_style()
 	update()
  
 func _draw() -> void:

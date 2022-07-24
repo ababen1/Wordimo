@@ -91,7 +91,7 @@ func setup():
 			child.add_child(letter)
 			letter.rect_position = -letter.rect_size/2
 			letters.append(letter)
-			letter.color = CONSTS.SHAPES_COLORS[type]
+			letter.color = CONSTS.BLOCK_TYPES[type]
 	sprite.hide()
 
 func set_letters(val: Array):

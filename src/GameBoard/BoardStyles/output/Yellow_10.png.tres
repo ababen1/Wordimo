@@ -1,0 +1,36 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://src/GameBoard/BoardStyles/BoardStyle.gd" type="Script" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/Yellow_10.png-face6fdae635a9fa5612968fb394e953.stex"
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = SubResource( 1 )
+region = Rect2( 250, 251, 250, 250 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = SubResource( 2 )
+region_rect = Rect2( 0, 0, 250, 250 )
+
+[sub_resource type="StreamTexture" id=4]
+load_path = "res://.import/Yellow_10.png-face6fdae635a9fa5612968fb394e953.stex"
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = SubResource( 4 )
+region = Rect2( 500, 250, 250, 250 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = SubResource( 5 )
+region_rect = Rect2( 0, 0, 250, 250 )
+
+[resource]
+script = ExtResource( 1 )
+primary_color = Color( 0.168627, 0.160784, 0.160784, 1 )
+secondary_color = Color( 0.333333, 0.317647, 0.317647, 1 )
+outline_color = Color( 1, 1, 1, 0 )
+outline_size = 5.0
+highlight_color = Color( 0.68, 1, 0.18, 1 )
+error_color = Color( 1, 0, 0, 1 )
+tile = SubResource( 3 )
+tile_alt = SubResource( 6 )

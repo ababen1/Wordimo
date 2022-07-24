@@ -26,7 +26,7 @@ const JOKER = "★"
 const CELL = 80
 const CELL_SIZE = Vector2(CELL, CELL)
 const LEVEL_CLEAR_TARGET = 5
-const SHAPES_COLORS: = {
+const BLOCK_TYPES: = {
 	"I": COLORS.CYAN,
 	"J": COLORS.BLUE,
 	"L": COLORS.ORANGE,
@@ -81,7 +81,7 @@ const SHAPES_POSITIONS: = {
 	}
 }
 
-const LETTER_CHANCE = {
+const DEFAULT_LETTER_WEIGHT = {
 	"a": 8.167,
 	"b": 1.492,
 	"c": 2.782,
@@ -100,7 +100,7 @@ const LETTER_CHANCE = {
 	"p": 1.929,
 	"q": 0.095,
 	"r": 5.987,
-	"s": 6.327,
+	"s": 6.327 / 4,
 	"t": 9.056,
 	"u": 2.758,
 	"v": 0.978,
@@ -110,13 +110,35 @@ const LETTER_CHANCE = {
 	"z": 0.074
 }
 
+var SPECIAL_BLOCKS = {
+	"ALL_S":
+	{
+		"possible_types": ["I"],
+		"letters": ["s", "s", "s", "s"]
+	},
+	"RARE_LETTERS":
+	{
+		"possible_types": BLOCK_TYPES.keys(),
+		"letters": ["j", "q", "x", "z"]
+	},
+}
 
+static func pick_random_letter(letters_weight: Dictionary = DEFAULT_LETTER_WEIGHT) -> String:
+	return pick_random_item(letters_weight)
 
-static func pick_random_letter() -> String:
-	return pick_random_item(LETTER_CHANCE)
+static func pick_random_vowel(letters_weight: Dictionary = DEFAULT_LETTER_WEIGHT) -> String:
+	var only_vowels = get_vowels_weight(letters_weight)
+	return pick_random_item(only_vowels)
 
 static func pick_random_vowel_equal_chance() -> String:
 	return Funcs.get_random_array_element(VOWELS)
+
+# Returns the given weight dictonary with just vowels
+static func get_vowels_weight(letters_weight: Dictionary = DEFAULT_LETTER_WEIGHT) -> Dictionary:
+	var weight_dict = {}
+	for vowel in VOWELS:
+		weight_dict[vowel] = letters_weight[vowel]
+	return weight_dict
 
 # Items should be a dictonary of 
 # Object : Pick Chance
@@ -124,15 +146,15 @@ static func pick_random_item(items: Dictionary):
 	var chosen_value = null
 	if not items.empty():
 		# 1. Calculate the overall chance
-		var overall_chance: int = 0
+		var overall_chance: float = 0.0
 		for item in items:
-			overall_chance += items[item]
+			overall_chance += items[item] as float
 		
 		# 2. Generate a random number
-		var random_number = randi() % overall_chance
+		var random_number: float = rand_range(0, overall_chance)
 		
 		# 3. Pick a random item
-		var offset: int = 0
+		var offset: float = 0
 		for item in items:
 			if random_number < items[item] + offset:
 				chosen_value = item
