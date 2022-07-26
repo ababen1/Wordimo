@@ -12,7 +12,9 @@ export var current_level: = 1 setget set_current_level
 signal turn_completed(words_found)
 signal game_started
 signal game_over(score, stats)
-signal total_score_changed()
+signal total_score_changed(score)
+signal level_changed(new_lvl)
+signal combo_changed(combo)
 
 onready var tilemap = $GameGrid
 onready var _blocks_node = find_node("Blocks")
@@ -32,15 +34,14 @@ var blocks: Array = []
 var dragged_block: Block = null setget set_dragged_block
 var blocks_factory: = BlocksFactory.new()
 var combo: int = 0 setget set_combo
-var stats: = GameStats.new()
-var total_score: = 0.0
+var total_score: = 0.0 setget set_total_score
 var difficulty: DifficultyResource setget set_difficulty
 var tip_was_displayed: = false
 var _game_started_timestamp_msec: = 0.0
-var blocks_till_next_level = CONSTS.LEVEL_CLEAR_TARGET setget set_blocks_till_next_level
+var words_till_next_level = CONSTS.LEVEL_CLEAR_TARGET setget set_words_till_next_level
+var game_results: = GameResults.new()
 
 func _ready() -> void:
-	_setup_game_stats()
 	blocks_queue_panel.connect("block_clicked", self, "_on_queue_block_clicked")
 	blocks_queue_panel.connect("panel_clicked", self, "_on_queue_panel_clicked")
 	blocks_queue_panel.connect("queue_full", self, "_on_queue_full")
@@ -49,11 +50,10 @@ func _ready() -> void:
 	tilemap.connect("block_placed", blocks_queue_panel, "_on_block_placed")
 	HUD.connect("start_new_game", self, "start_new_game")
 	HUD.pause_screen.connect("end_game", self, "end_game")
+# warning-ignore:return_value_discarded
 	time_limit_timer.connect("timeout", self, "_on_timeout")
 # warning-ignore:return_value_discarded
 	connect("game_over", HUD, "_on_game_over")
-# warning-ignore:return_value_discarded
-	connect("total_score_changed", HUD.score_label, "set_score")
 	if Funcs.is_mobile():
 		drag_input = true
 		drag_offset = Vector2(-130,-100)
@@ -62,16 +62,6 @@ func _ready() -> void:
 		drag_offset = Vector2.ZERO
 	set_difficulty(SceneChanger.message.get("difficulty", DifficultyResource.new()))
 	start_new_game()
-	
-
-func _setup_game_stats() -> void:
-	stats.add_stat("difficulty", "", "")
-	stats.add_numeric_stat("level", self.current_level)
-	stats.add_numeric_stat("blocks_placed", 0)
-	stats.add_numeric_stat("blocks_rotated", 0)
-	stats.add_numeric_stat("highest_combo", 0)
-	stats.add_numeric_stat("highest_score_in_one_move", 0)
-	stats.add_stat("words_written", [], [])
 	
 func _process(_delta: float) -> void:
 	update()
@@ -94,7 +84,7 @@ func _handle_touch_input(event: InputEvent) -> void:
 	elif event is InputEventScreenTouch and not event.pressed:
 		if event.index > 0 and dragged_block:
 			dragged_block.rotate_shape()
-			stats.add_to_stat("blocks_rotated", 1)
+			game_results.blocks_rotated += 1 
 		else:
 			drop_block()
 
@@ -102,23 +92,26 @@ func _handle_mouse_input(event: InputEventMouseButton) -> void:
 	if event.button_index == BUTTON_RIGHT and event.pressed:
 		if dragged_block:
 			dragged_block.rotate_shape()
-			stats.add_to_stat("blocks_rotated", 1)
+			game_results.blocks_rotated += 1 
 	elif event.button_index == BUTTON_LEFT and dragged_block:
 		if not event.pressed and drag_input or (event.pressed and not drag_input):
 			drop_block()
 
 func set_difficulty(val: DifficultyResource):
 	difficulty = val
-	stats.update_stat(
-		"difficulty", self.difficulty.name if not difficulty.is_custom else "custom")
+	game_results.difficulty = self.difficulty.name if not difficulty.is_custom else "custom"
 	tilemap.size = difficulty.board_size
 	self.time_limit = difficulty.time_limit
 	blocks_queue_panel.set_queue_size(difficulty.queue_size)
 	self.current_level = difficulty.starting_level
+
+func set_total_score(val: float):
+	total_score = val
+	emit_signal("total_score_changed", val)
 	
 func start_new_game(_difficulty:= self.difficulty) -> void:
 	randomize()
-	stats.reset_all()
+	game_results = GameResults.new()
 	for prev_game_block in get_tree().get_nodes_in_group("blocks"):
 		prev_game_block.queue_free()
 	tilemap.reset_board()
@@ -130,6 +123,8 @@ func start_new_game(_difficulty:= self.difficulty) -> void:
 		time_limit_timer.start(time_limit)
 	set_difficulty(_difficulty)
 	_game_started_timestamp_msec = OS.get_ticks_msec()
+	self.total_score = 0
+	self.combo = 0
 	emit_signal("game_started", self)
 
 func add_block(block: Block, auto_set_letters: = true) -> void:
@@ -150,7 +145,9 @@ func set_dragged_block(val: Block) -> void:
 
 func set_combo(val: int) -> void:
 	combo = val
-	stats.update_if_bigger("highest_combo", combo)
+# warning-ignore:narrowing_conversion
+	game_results.highest_combo = max(game_results.highest_combo, combo)
+	emit_signal("combo_changed", combo)
 
 func set_add_block_delay(val: float):
 	if not is_inside_tree():
@@ -162,12 +159,14 @@ func set_add_block_delay(val: float):
 func set_current_level(val: int) -> void:
 	current_level = val
 	self.add_block_delay = CONSTS.get_level_speed(current_level)
+	game_results.level = current_level
+	emit_signal("level_changed", current_level)
 
-func set_blocks_till_next_level(val: int) -> void:
-	blocks_till_next_level = val
-	if blocks_till_next_level <= 0:
+func set_words_till_next_level(val: int) -> void:
+	words_till_next_level = val
+	if words_till_next_level <= 0:
 		self.current_level += 1
-		blocks_till_next_level = CONSTS.LEVEL_CLEAR_TARGET
+		words_till_next_level = CONSTS.LEVEL_CLEAR_TARGET
 
 func drop_block(block: Block = dragged_block) -> void:
 	if not block:
@@ -201,18 +200,20 @@ func calculate_score(words):
 	else:
 		self.combo += 1
 	self.total_score += score_this_move
-	stats.update_if_bigger("highest_score_in_one_move", score_this_move)
+# warning-ignore:narrowing_conversion
+	game_results.highest_score_in_one_move = score_this_move
 	if combo > 1:
 		self.total_score += pow(10, combo)
-	emit_signal("total_score_changed", total_score)
 
 func end_game(reason: int = GAME_OVER.GAVE_UP) -> void:
 	var game_length_msec = OS.get_ticks_msec() - _game_started_timestamp_msec
-	emit_signal("game_over", total_score, stats.values)
+	game_results.length = game_length_msec
+# warning-ignore:narrowing_conversion
+	game_results.score = total_score
+	emit_signal("game_over", game_results)
 	if reason != GAME_OVER.GAVE_UP:
 # warning-ignore:narrowing_conversion
-		stats.give_prizes(total_score)
-	stats.save_to_global_stats(GameSaver.current_save)
+		game_results.give_prizes()
 	GameSaver.save_progress()
 
 func show_tip() -> void:
@@ -228,8 +229,7 @@ func _on_BlocksTimer_timeout() -> void:
 		blocks_timer.start()
 
 func _on_block_placed(block: Block) -> void:
-	stats.add_to_stat("blocks_placed", 1)
-	self.blocks_till_next_level -= 1
+	game_results.blocks_placed += 1
 	tilemap._print_board()
 	var cells_to_check: = []
 	# Mark all the cells in the placed block as cells to check
@@ -239,6 +239,7 @@ func _on_block_placed(block: Block) -> void:
 		cells_to_check.append(tile_cords)
 	var words_found: Array = tilemap.find_words_in_board(cells_to_check)
 	words_found = _validate_words(words_found)
+	self.words_till_next_level -= words_found.size()
 	if words_found.empty():
 		SFX.play_sound_effect(SFX.SOUNDS.place_block)
 	calculate_score(words_found)
@@ -249,7 +250,7 @@ func _on_block_placed(block: Block) -> void:
 			word_data.word, 
 			block.letters.front().rect_global_position, 
 			Color(randf(),randf(),randf()))
-		stats.add_to_array_stat("words_written", word_data.word)
+		game_results.words_written.append(word_data.word)
 	emit_signal("turn_completed", words_found)
 
 func _validate_words(words: Array) -> Array:
@@ -289,5 +290,5 @@ func _on_timeout() -> void:
 	end_game(GAME_OVER.TIMES_UP)
 
 func _on_HintTimer_timeout() -> void:
-	if !tip_was_displayed and (stats.get_value("blocks_rotated") == 0):
+	if !tip_was_displayed and (game_results.blocks_rotated == 0):
 		show_tip()

@@ -69,10 +69,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/UI/MainMenu/GameModeSelection.gd"
 }, {
-"base": "Reference",
-"class": "GameStats",
+"base": "Resource",
+"class": "GameResults",
 "language": "GDScript",
-"path": "res://src/GameBoard/GameStats.gd"
+"path": "res://src/GameBoard/GameResults.gd"
 }, {
 "base": "GridContainer",
 "class": "GridExample",
@@ -182,7 +182,7 @@ _global_script_class_icons={
 "FlexGridContainer": "res://addons/color-palette/utilities/FlexGridContainerIcon.png",
 "Funcs": "",
 "GameModeSelection": "",
-"GameStats": "",
+"GameResults": "",
 "GridExample": "",
 "GridLayer": "",
 "Letter": "",

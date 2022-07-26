@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/GameBoard/GameGrid.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/UI/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/Game/HUD/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/Queue/Queue.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/GameBoard/Board.gd" type="Script" id=5]
 [ext_resource path="res://src/UI/Game/WordLabel.tscn" type="PackedScene" id=8]
@@ -30,7 +30,7 @@ layer = -1
 
 [node name="Queue" parent="CanvasLayer" instance=ExtResource( 4 )]
 anchor_left = 0.726563
-anchor_top = 0.0266667
+anchor_top = 0.115
 anchor_right = 0.96875
 anchor_bottom = 0.96
 
@@ -46,4 +46,6 @@ one_shot = true
 autostart = true
 
 [connection signal="game_started" from="." to="HUD" method="_on_game_started"]
+[connection signal="level_changed" from="." to="HUD" method="_on_GameBoard_level_changed"]
+[connection signal="total_score_changed" from="." to="HUD" method="_on_GameBoard_total_score_changed"]
 [connection signal="timeout" from="HintTimer" to="." method="_on_HintTimer_timeout"]

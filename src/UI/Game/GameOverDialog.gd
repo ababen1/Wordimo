@@ -12,16 +12,13 @@ func _ready() -> void:
 	get_close_button().disabled = true
 
 func _test() -> void:
-	show_results(99, {
-		"stat": "value", 
-		"stat2": "value",
-		"stat3": "valuevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevaluevalue"})
-
-func show_results(score: float, stats: Dictionary) -> void:
+	pass
+	
+func show_results(stats: GameResults) -> void:
 	if not is_inside_tree():
 		yield(self, "ready")
-	find_node("ScoreLabel").text = "Score: %d" % score
-	find_node("StatsGrid").setup(stats)
+	find_node("ScoreLabel").text = "Score: %d" % stats.score
+	find_node("StatsGrid").setup(stats.as_dict())
 	if not Engine.editor_hint:
 		popup()
 

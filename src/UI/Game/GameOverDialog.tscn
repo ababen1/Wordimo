@@ -9,6 +9,7 @@ size = 24
 font_data = ExtResource( 1 )
 
 [node name="GameOverDialog" type="WindowDialog"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -39,13 +40,20 @@ size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Score: 99"
 
-[node name="HBox2" type="HBoxContainer" parent="VBox"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBox"]
 margin_top = 35.0
 margin_right = 880.0
 margin_bottom = 380.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="StatsGrid" type="GridContainer" parent="VBox/HBox2"]
+[node name="VBox" type="VBoxContainer" parent="VBox/ScrollContainer"]
+margin_right = 880.0
+margin_bottom = 345.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StatsGrid" type="GridContainer" parent="VBox/ScrollContainer/VBox"]
 margin_right = 880.0
 margin_bottom = 345.0
 size_flags_horizontal = 3

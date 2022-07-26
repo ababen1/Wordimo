@@ -160,6 +160,22 @@ func get_letters_between(start: Vector2, end: Vector2) -> Array:
 	letters.append(get_letter_str_at_cell(end))
 	return letters
 
+func get_board_state() -> Dictionary:
+	var state = {}
+	for tile in tiles_data:
+		var letter: Letter = tiles_data[tile]
+		state[tile] = {
+			"color": letter.color,
+			"letter": letter.letter
+		}
+	return state
+
+func load_board_state(state: Dictionary):
+	reset_board()
+	for tile in state:
+		var new_tile = BlocksFactory.create_letter_by_type(state[tile].color, state[tile].letter)
+		_add_letter_to_grid(new_tile)
+		
 func _add_letter_to_grid(letter: Letter) -> void:
 	var shape: CollisionShape2D = letter.get_parent()
 	var target_cell = world_to_map(shape.global_position)
