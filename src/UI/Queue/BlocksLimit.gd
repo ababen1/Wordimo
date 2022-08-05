@@ -19,7 +19,7 @@ var state = DEFAULT_STATE setget set_state
 
 func set_max_blocks(val: int):
 	max_blocks = val
-	visible = (max_blocks != 0)
+	visible = (max_blocks > 0)
 	_update_text()	
 	
 func set_blocks_in_queue(val: int):
@@ -39,7 +39,7 @@ func set_state(val: Dictionary) -> void:
 		}))
 
 func is_full() -> bool:
-	return (max_blocks >= 1) and (blocks_in_queue > max_blocks)
+	return (max_blocks > 0) and (blocks_in_queue > max_blocks)
 
 func _update_text():
 	var rate: int = (max_blocks - blocks_in_queue)

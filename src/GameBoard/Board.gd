@@ -281,5 +281,6 @@ func _on_HintTimer_timeout() -> void:
 		show_tip()
 
 func _on_spawn_block(bonus):
-	self.total_score += bonus
+	if self.difficulty.queue_size > 0:
+		self.total_score += bonus
 	add_block(blocks_factory.get_random_block())
