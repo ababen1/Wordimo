@@ -14,6 +14,7 @@ const LETTERS_VALUES = {
 	 ["Q", "Z"]:											10,	
 }
 const BONUS_FOR_BLOCK_SPAWN = 1 # 1 point per seconds skipped
+const BONUS_FOR_COMBO = 50 
 
 static func get_letter_value(letter: String) -> int:
 	for letter_group in LETTERS_VALUES.keys():
@@ -27,8 +28,8 @@ static func calculate_word_value(word: String) -> int:
 		word_value += get_letter_value(letter)
 	return word_value
 
-static func calculate_turn_score(words_written: Array, level: int) -> int:
-	var score: int = 0
+static func calculate_turn_score(words_written: Array, level: int, combo: int) -> int:
+	var move_value: int = 0
 	for word in words_written:
-		score += calculate_word_value(word) * word.length() * level
-	return score
+		move_value += calculate_word_value(word.word) * word.word.length() * level
+	return move_value + (combo * BONUS_FOR_COMBO)

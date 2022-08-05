@@ -29,20 +29,21 @@ margin_top = 25.0
 margin_right = 1014.0
 margin_bottom = 559.0
 
-[node name="VBox" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+[node name="VBox" type="HFlowContainer" parent="MarginContainer/ScrollContainer"]
 margin_right = 1004.0
 margin_bottom = 534.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 20
+custom_constants/vseparation = 35
+custom_constants/hseparation = 35
 
 [node name="WordLink" parent="MarginContainer/ScrollContainer/VBox" instance_placeholder="res://src/UI/Game/GameOver/WordLink.tscn"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 464.0
+margin_left = 0.0
 margin_top = 0.0
-margin_right = 540.0
+margin_right = 76.0
 margin_bottom = 33.0
 custom_fonts/font = SubResource( 3 )

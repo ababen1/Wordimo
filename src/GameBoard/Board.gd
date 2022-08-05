@@ -34,7 +34,7 @@ var blocks: Array = []
 var dragged_block: Block = null setget set_dragged_block
 var blocks_factory: = BlocksFactory.new()
 var combo: int = 0 setget set_combo
-var total_score: = 0.0 setget set_total_score
+var total_score: = 0 setget set_total_score
 var difficulty: DifficultyResource setget set_difficulty
 var tip_was_displayed: = false
 var _game_started_timestamp_msec: = 0.0
@@ -45,7 +45,7 @@ func _ready() -> void:
 	blocks_queue_panel.connect("block_clicked", self, "_on_queue_block_clicked")
 	blocks_queue_panel.connect("panel_clicked", self, "_on_queue_panel_clicked")
 	blocks_queue_panel.connect("queue_full", self, "_on_queue_full")
-	blocks_timer.timer.connect("timeout", self, "_on_BlocksTimer_timeout")
+	blocks_timer.connect("spawn_block", self, "_on_spawn_block")
 	tilemap.connect("block_placed", self, "_on_block_placed")
 	tilemap.connect("block_placed", blocks_queue_panel, "_on_block_placed")
 	HUD.connect("start_new_game", self, "start_new_game")
@@ -105,7 +105,7 @@ func set_difficulty(val: DifficultyResource):
 	blocks_queue_panel.set_queue_size(difficulty.queue_size)
 	self.current_level = difficulty.starting_level
 
-func set_total_score(val: float):
+func set_total_score(val: int):
 	total_score = val
 	emit_signal("total_score_changed", val)
 	
@@ -118,7 +118,7 @@ func start_new_game(_difficulty:= self.difficulty) -> void:
 	blocks_queue_panel.clear()
 	add_block(blocks_factory.get_random_block())
 	blocks_timer.wait_time = add_block_delay
-	blocks_timer.start()
+	blocks_timer.start_timer()
 	if time_limit != 0:
 		time_limit_timer.start(time_limit)
 	set_difficulty(_difficulty)
@@ -154,7 +154,7 @@ func set_add_block_delay(val: float):
 		yield(self, "ready")
 	add_block_delay = val
 	blocks_timer.wait_time = val
-	blocks_timer.start()
+	blocks_timer.start_timer()
 
 func set_current_level(val: int) -> void:
 	current_level = val
@@ -189,30 +189,22 @@ func popup_word(
 		get_tree().root.add_child(label)
 		label.setup(word, global_pos, color, font)
 
-func calculate_score(words):
-	var score_this_move: = 0.0
-	for word_data in words:
-		score_this_move += word_data.word.length() * word_length_multiplier
-	# bonus for having multiple words in one move
-	score_this_move *= words.size()
-	if score_this_move == 0:
+func calculate_score(words: Array):
+	var score_this_move: = Score.calculate_turn_score(words, self.current_level, self.combo)
+	if words.empty():
 		self.combo = 0
 	else:
 		self.combo += 1
 	self.total_score += score_this_move
-# warning-ignore:narrowing_conversion
-	game_results.highest_score_in_one_move = score_this_move
-	if combo > 1:
-		self.total_score += pow(10, combo)
+	if score_this_move > game_results.highest_score_in_one_move:
+		game_results.highest_score_in_one_move = score_this_move
 
 func end_game(reason: int = GAME_OVER.GAVE_UP) -> void:
 	var game_length_msec = OS.get_ticks_msec() - _game_started_timestamp_msec
 	game_results.length = game_length_msec
-# warning-ignore:narrowing_conversion
 	game_results.score = total_score
 	emit_signal("game_over", game_results)
 	if reason != GAME_OVER.GAVE_UP:
-# warning-ignore:narrowing_conversion
 		game_results.give_prizes()
 	GameSaver.save_progress()
 
@@ -222,11 +214,6 @@ func show_tip() -> void:
 		"Tap the screen while dragging a block to rotate it" if Funcs.is_mobile() else "Press right click to rotate a block"}),
 		Color.yellow)
 	tip_was_displayed = true
-		
-func _on_BlocksTimer_timeout() -> void:
-	if add_block_delay != 0:
-		add_block(blocks_factory.get_random_block())
-		blocks_timer.start()
 
 func _on_block_placed(block: Block) -> void:
 	game_results.blocks_placed += 1
@@ -292,3 +279,7 @@ func _on_timeout() -> void:
 func _on_HintTimer_timeout() -> void:
 	if !tip_was_displayed and (game_results.blocks_rotated == 0):
 		show_tip()
+
+func _on_spawn_block(bonus):
+	self.total_score += bonus
+	add_block(blocks_factory.get_random_block())

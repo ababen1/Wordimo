@@ -3,9 +3,9 @@
 # `Main.gd`.
 extends Control
 
-onready var _res_settings: = $Video/UIResolutionSelector
-onready var _fullscreen_checkbox: = $Video/UIFullscreenCheckbox
-onready var _vsync_checkbox: = $Video/UIVsyncCheckbox
+onready var _res_settings: = $"%UIResolutionSelector"
+onready var _fullscreen_checkbox: = $"%UIFullscreenCheckbox"
+onready var _vsync_checkbox: = $"%UIVsyncCheckbox"
 
 var settings := {
 	resolution = Vector2(640, 480), 

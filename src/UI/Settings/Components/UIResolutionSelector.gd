@@ -40,6 +40,8 @@ func _find_resulotion_index(res: Vector2) -> int:
 	return -1
 
 func _text_to_resoultion(text: String = option_button.text) -> Vector2:
+	if not text:
+		return OS.window_size
 	var values := option_button.get_item_text(
 		option_button.selected).split_floats("x")
 	return Vector2(values[0], values[1])

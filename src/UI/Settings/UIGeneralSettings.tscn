@@ -22,37 +22,40 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="Video"]
 margin_right = 447.0
-margin_bottom = 21.0
+margin_bottom = 33.0
 text = "Video Settings"
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="Video"]
-margin_top = 25.0
+margin_top = 37.0
 margin_right = 447.0
-margin_bottom = 29.0
+margin_bottom = 41.0
 
 [node name="UIResolutionSelector" parent="Video" instance=ExtResource( 1 )]
+unique_name_in_owner = true
 visible = false
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 33.0
+margin_top = 45.0
 margin_right = 447.0
-margin_bottom = 60.0
+margin_bottom = 84.0
 
 [node name="UIFullscreenCheckbox" parent="Video" instance=ExtResource( 3 )]
+unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 33.0
+margin_top = 45.0
 margin_right = 447.0
-margin_bottom = 62.0
+margin_bottom = 86.0
 title = "Full Screen"
 
 [node name="UIVsyncCheckbox" parent="Video" instance=ExtResource( 3 )]
+unique_name_in_owner = true
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 66.0
+margin_top = 90.0
 margin_right = 447.0
-margin_bottom = 95.0
+margin_bottom = 131.0
 title = "VSync"
 
 [node name="Spacer" type="Control" parent="."]
@@ -94,12 +97,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Audio/GridContainer"]
-margin_right = 62.0
-margin_bottom = 21.0
+margin_right = 102.0
+margin_bottom = 33.0
 text = "Master"
 
 [node name="VolumeSlider" type="HSlider" parent="Audio/GridContainer"]
-margin_left = 72.0
+margin_left = 112.0
 margin_right = 447.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
@@ -109,16 +112,16 @@ value = 1.0
 script = ExtResource( 4 )
 
 [node name="Label2" type="Label" parent="Audio/GridContainer"]
-margin_top = 56.0
-margin_right = 62.0
-margin_bottom = 77.0
+margin_top = 68.0
+margin_right = 102.0
+margin_bottom = 101.0
 text = "Sounds"
 
 [node name="VolumeSlider2" type="HSlider" parent="Audio/GridContainer"]
-margin_left = 72.0
-margin_top = 56.0
+margin_left = 112.0
+margin_top = 68.0
 margin_right = 447.0
-margin_bottom = 72.0
+margin_bottom = 84.0
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.05
