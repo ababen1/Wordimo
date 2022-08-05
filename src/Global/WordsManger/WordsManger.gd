@@ -10,7 +10,7 @@ const SECRET_WORDS = [
 ]
 
 onready var WORDS_DICT: Dictionary = _create_dict()
-onready var api: HTTPRequest = $API
+onready var api: DictonaryAPI = $API
 
 # Creates a dictonary with 26 keys (A-Z) and an array
 # of the words in that letter as the value

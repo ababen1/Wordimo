@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/color-palette/ColorTile.gd"
 }, {
+"base": "HTTPRequest",
+"class": "DictonaryAPI",
+"language": "GDScript",
+"path": "res://src/Global/WordsManger/API.gd"
+}, {
 "base": "PanelButton",
 "class": "DifficultyBtn",
 "language": "GDScript",
@@ -114,6 +119,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Saver/SaveGame.gd"
 }, {
+"base": "Node",
+"class": "Score",
+"language": "GDScript",
+"path": "res://src/Global/ScoreCalculator.gd"
+}, {
 "base": "Button",
 "class": "SettingsBtn",
 "language": "GDScript",
@@ -159,6 +169,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/UI/Game/WordLabel.gd"
 }, {
+"base": "LinkButton",
+"class": "WordLink",
+"language": "GDScript",
+"path": "res://src/UI/Game/GameOver/WordLink.gd"
+}, {
 "base": "Node2D",
 "class": "WordTetrisGame",
 "language": "GDScript",
@@ -177,6 +192,7 @@ _global_script_class_icons={
 "BoardStyleTexture": "",
 "CONSTS": "",
 "ColorTile": "",
+"DictonaryAPI": "",
 "DifficultyBtn": "",
 "DifficultyResource": "",
 "FlexGridContainer": "res://addons/color-palette/utilities/FlexGridContainerIcon.png",
@@ -191,6 +207,7 @@ _global_script_class_icons={
 "PaletteImporter": "",
 "PanelButton": "",
 "SaveGame": "",
+"Score": "",
 "SettingsBtn": "",
 "StatsGrid": "",
 "UIBackgroundBtn": "",
@@ -200,6 +217,7 @@ _global_script_class_icons={
 "UISettingCheckbox": "",
 "VolumeSlider": "",
 "WordLabel": "",
+"WordLink": "",
 "WordTetrisGame": "",
 "WordTetrisTheme": ""
 }

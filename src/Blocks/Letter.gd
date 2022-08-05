@@ -8,6 +8,7 @@ export(CONSTS.COLORS) var color = CONSTS.COLORS.NONE setget set_color
 export var click_delay: = 0.1
 #export var preloader: NodePath
 export var text_color: = Color.black setget set_text_color
+export var shiny: = false setget set_shiny
 
 onready var letter_label: Label = $CenterContainer/Letter
 onready var tween: Tween = $Tween
@@ -38,7 +39,8 @@ func set_letter(val: String) -> void:
 	letter = val.to_upper()
 	if not is_inside_tree() and not Engine.editor_hint:
 		yield(self, "ready")
-	$CenterContainer/Letter.text = letter
+	$CenterContainer/Letter.text = letter 
+	self.shiny = CONSTS.DEFAULT_LETTER_WEIGHT[letter.to_lower()] < 1.0
 
 func set_random_letter() -> void:
 	set_letter(CONSTS.pick_random_letter())
@@ -74,3 +76,8 @@ func animate_expand(expand_by: float = 0.5):
 	tween.start()
 	yield(tween, "tween_completed")
 	return
+
+func set_shiny(val: bool):
+	shiny = val
+	material = $ResourcePreloader.get_resource("ShineEffect") if shiny else null
+	

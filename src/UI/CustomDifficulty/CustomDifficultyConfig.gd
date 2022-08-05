@@ -8,7 +8,7 @@ onready var _save_btn = $HSplit/PanelContainer/VBox/HBox/Save
 onready var _override = $HSplit/PanelContainer/VBox/Override
 onready var _min_length = $HSplit/PanelContainer/VBox/MinWordLength
 onready var _starting_level = $HSplit/PanelContainer/VBox/StartingLevel
-onready var _inscrease_levels = $HSplit/PanelContainer/VBox/IncreaseLevels
+onready var _inscrease_levels = _starting_level.get_node("IncreaseLevels")
 
 var saved_difficulties: Array = [] setget set_saved_difficulties
 var last_saved: String = ""
@@ -43,7 +43,7 @@ func create_difficulty() -> DifficultyResource:
 	difficulty.time_limit = _time_limit_field.get_time_limit()
 	difficulty.queue_size = _queue_size.get_queue_size()
 	difficulty.can_override = _override.get_node("CheckBox").pressed
-	difficulty.increase_levels = _starting_level.get_node("IncreaseLevels").pressed
+	difficulty.increase_levels = _inscrease_levels.pressed
 	difficulty.board_size = _board_size_field.get_board_size()
 	difficulty.min_word_length = _min_length.get_min_length() 
 	difficulty.starting_level = _starting_level.get_starting_level()
@@ -56,7 +56,7 @@ func set_difficulty(difficulty: DifficultyResource) -> void:
 	_board_size_field.set_board_size(difficulty.board_size)
 	_min_length.set_min_length(difficulty.min_word_length)
 	_starting_level.set_starting_level(difficulty.starting_level)
-	_starting_level.get_node("IncreaseLevels").set_pressed_no_signal(difficulty.increase_levels)
+	_inscrease_levels.set_pressed_no_signal(difficulty.increase_levels)
 	last_saved = difficulty.name
 
 func save_difficulty(_name, description):

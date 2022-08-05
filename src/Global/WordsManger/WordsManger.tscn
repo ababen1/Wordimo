@@ -7,4 +7,6 @@
 script = ExtResource( 2 )
 
 [node name="API" type="HTTPRequest" parent="."]
+pause_mode = 2
+timeout = 30
 script = ExtResource( 1 )

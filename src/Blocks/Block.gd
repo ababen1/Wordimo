@@ -10,6 +10,8 @@ signal block_touchscreen_press
 
 const LETTER_SCENE = preload("Letter.tscn")
 
+export var is_special: = false setget set_is_special
+
 onready var type: String = name.validate_node_name().rstrip("0123456789")
 onready var sprite: = $Sprite
 onready var area: Area2D = $Area2D
@@ -76,6 +78,12 @@ func set_is_inside_grid(val: bool):
 			emit_signal("entered_grid")
 		else:
 			emit_signal("exited_grid")
+
+func set_is_special(val: bool):
+	is_special = val
+	for letter in letters:
+		if letter is Letter:
+			letter.shiny = val
 
 func setup():	
 	for i in area.get_child_count():

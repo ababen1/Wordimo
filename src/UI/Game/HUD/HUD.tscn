@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/Fonts/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/UI/BackgroundLayer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/UI/Game/GameOverDialog.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/Game/GameOver/GameOverDialog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/Game/HUD/PauseScreen.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Icons/Reload.svg" type="Texture" id=5]
 [ext_resource path="res://assets/Icons/Pause.svg" type="Texture" id=6]

@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/UI/Components/PanelButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UI/Components/GameModeBtn.gd" type="Script" id=2]
 [ext_resource path="res://assets/Icons/Favorites.svg" type="Texture" id=3]
+[ext_resource path="res://assets/Fonts/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+use_filter = true
+font_data = ExtResource( 4 )
 
 [node name="GameModeButton" instance=ExtResource( 1 )]
+rect_min_size = Vector2( 350, 130 )
+rect_pivot_offset = Vector2( 175, 65 )
 script = ExtResource( 2 )
 animation_duration = 0.2
 
@@ -12,6 +19,18 @@ animation_duration = 0.2
 texture = ExtResource( 3 )
 
 [node name="Title" parent="VBoxContainer" index="0"]
-margin_left = 99.0
-margin_right = 99.0
+margin_left = 167.0
+margin_right = 167.0
+margin_bottom = 33.0
 text = ""
+
+[node name="HSeparator" parent="VBoxContainer" index="1"]
+margin_top = 37.0
+margin_right = 334.0
+margin_bottom = 39.0
+
+[node name="Description" parent="VBoxContainer" index="2"]
+margin_top = 43.0
+margin_right = 334.0
+margin_bottom = 122.0
+custom_fonts/normal_font = SubResource( 1 )

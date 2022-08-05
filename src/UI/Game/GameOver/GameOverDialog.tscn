@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/UI/Game/GameOver/WordsWritten.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UI/Components/StatsGrid.gd" type="Script" id=3]
+[ext_resource path="res://src/UI/Game/GameOver/GameOverDialog.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="GameOverDialog" type="PopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = 24.0
+margin_right = -24.0
+margin_bottom = -24.0
+input_pass_on_modal_close_click = false
+popup_exclusive = true
+script = ExtResource( 4 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="TabContainer" type="TabContainer" parent="VBox"]
+margin_right = 968.0
+margin_bottom = 486.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="Stats" type="Control" parent="VBox/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 43.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="VBox/TabContainer/Stats"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 21.0
+
+[node name="Label" type="Label" parent="VBox/TabContainer/Stats/VBox"]
+margin_right = 968.0
+margin_bottom = 33.0
+text = "Game Over!"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBox/TabContainer/Stats/VBox"]
+margin_top = 37.0
+margin_right = 968.0
+margin_bottom = 422.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="VBox/TabContainer/Stats/VBox/ScrollContainer"]
+margin_right = 968.0
+margin_bottom = 385.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StatsGrid" type="GridContainer" parent="VBox/TabContainer/Stats/VBox/ScrollContainer/VBox"]
+margin_right = 968.0
+margin_bottom = 385.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 7
+custom_constants/hseparation = 60
+columns = 2
+script = ExtResource( 3 )
+
+[node name="Words" parent="VBox/TabContainer" instance=ExtResource( 2 )]
+visible = false
+
+[node name="HBox" type="HBoxContainer" parent="VBox"]
+margin_top = 490.0
+margin_right = 968.0
+margin_bottom = 544.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.22
+custom_constants/separation = 55
+alignment = 1
+
+[node name="PlayAgain" type="Button" parent="VBox/HBox"]
+margin_left = 296.0
+margin_right = 454.0
+margin_bottom = 54.0
+text = "Play Again"
+
+[node name="MainMenu" type="Button" parent="VBox/HBox"]
+margin_left = 509.0
+margin_right = 672.0
+margin_bottom = 54.0
+text = "Main Menu"
+
+[connection signal="pressed" from="VBox/HBox/PlayAgain" to="." method="_on_PlayAgain_pressed"]
+[connection signal="pressed" from="VBox/HBox/MainMenu" to="." method="_on_MainMenu_pressed"]
