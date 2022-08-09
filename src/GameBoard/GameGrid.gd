@@ -173,17 +173,21 @@ func get_board_state() -> Dictionary:
 func load_board_state(state: Dictionary):
 	reset_board()
 	for tile in state:
-		var new_tile = BlocksFactory.create_letter_by_type(state[tile].color, state[tile].letter)
-		_add_letter_to_grid(new_tile)
+		var new_tile: CollisionShape2D = BlocksFactory.create_letter(state[tile].color, state[tile].letter, true)
+		yield(get_tree(), "idle_frame")
+		get_tree().root.add_child(new_tile)
+		_add_letter_to_grid(new_tile.get_child(0), tile)
 		
-func _add_letter_to_grid(letter: Letter) -> void:
+		
+func _add_letter_to_grid(letter: Letter, cell = null) -> void:
 	var shape: CollisionShape2D = letter.get_parent()
-	var target_cell = world_to_map(shape.global_position)
+	var target_cell = world_to_map(shape.global_position) if not cell else cell
 	# Clear previous letter
 	if tiles_data.has(target_cell):
 		tiles_data[target_cell].queue_free()
 	tiles_data[target_cell] = letter
-	shape.global_position = to_global(map_to_world(target_cell) + cell_size / 2)
+	shape.global_position = to_global(map_to_world(target_cell) + CONSTS.CELL_SIZE / 2)
+	
 	emit_signal("tile_placed", letter)
 
 func _check_for_words(cell: Vector2, direction: = Vector2.RIGHT) -> Array:

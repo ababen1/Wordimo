@@ -40,6 +40,7 @@ var tip_was_displayed: = false
 var _game_started_timestamp_msec: = 0.0
 var words_till_next_level = CONSTS.LEVEL_CLEAR_TARGET setget set_words_till_next_level
 var game_results: = GameResults.new()
+var game_length_seconds: = 0.0
 
 func _ready() -> void:
 	blocks_queue_panel.connect("block_clicked", self, "_on_queue_block_clicked")
@@ -64,12 +65,14 @@ func _ready() -> void:
 	start_new_game()
 	
 func _process(_delta: float) -> void:
+	game_length_seconds += _delta
 	update()
 	if not is_instance_valid(dragged_block):
 		dragged_block = null
 	if dragged_block:
 		dragged_block.global_position = get_global_mouse_position() + drag_offset
 	HUD.set_time_left(time_limit_timer.time_left)
+	
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -125,6 +128,7 @@ func start_new_game(_difficulty:= self.difficulty) -> void:
 	_game_started_timestamp_msec = OS.get_ticks_msec()
 	self.total_score = 0
 	self.combo = 0
+	self.game_length_seconds = 0.0
 	emit_signal("game_started", self)
 
 func add_block(block: Block, auto_set_letters: = true) -> void:
@@ -200,8 +204,7 @@ func calculate_score(words: Array):
 		game_results.highest_score_in_one_move = score_this_move
 
 func end_game(reason: int = GAME_OVER.GAVE_UP) -> void:
-	var game_length_msec = OS.get_ticks_msec() - _game_started_timestamp_msec
-	game_results.length = game_length_msec
+	game_results.length = game_length_seconds
 	game_results.score = total_score
 	emit_signal("game_over", game_results)
 	if reason != GAME_OVER.GAVE_UP:

@@ -46,14 +46,14 @@ func find_word(text: String, min_length: int = DEFAULT_MIN_CHARS) -> String:
 		var current_word = text.substr(start_idx, end_idx)
 		var potential_words = get_words_starting_with(current_word)
 		while(not potential_words.empty()) and end_idx != text.length():
-			best_word = current_word
+			if is_valid_word(current_word, min_length):
+				best_word = current_word
 			end_idx += 1
 			current_word = text.substr(start_idx, end_idx)
 			potential_words = get_words_starting_with(current_word)
 		if is_valid_word(best_word, min_length):
 			return best_word
 	return ""
-
 
 static func is_valid_word(word: String, min_chars: = DEFAULT_MIN_CHARS) -> bool:
 	return (word.length() >= min_chars) and (

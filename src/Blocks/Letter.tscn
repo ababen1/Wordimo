@@ -19,14 +19,8 @@ region_rect = Rect2( 0, 0, 64, 64 )
 [sub_resource type="StyleBoxEmpty" id=9]
 
 [node name="Letter" type="PanelContainer"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -40.0
-margin_top = -40.0
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 80.0
+margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
 rect_pivot_offset = Vector2( 32, 32 )
 mouse_filter = 2
@@ -35,7 +29,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-letter = "N"
+letter = "B"
 color = 0
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -44,15 +38,15 @@ margin_bottom = 80.0
 mouse_filter = 2
 
 [node name="Letter" type="Label" parent="CenterContainer"]
-margin_left = 20.0
+margin_left = 21.0
 margin_top = 9.0
-margin_right = 60.0
+margin_right = 59.0
 margin_bottom = 71.0
 size_flags_vertical = 1
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 1 )
 custom_styles/normal = SubResource( 9 )
-text = "N"
+text = "B"
 
 [node name="Tween" type="Tween" parent="."]
 

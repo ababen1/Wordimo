@@ -40,7 +40,7 @@ func as_dict() -> Dictionary:
 		"highest_combo": highest_combo,
 		"highest_score_in_one_move": highest_score_in_one_move,
 		"words_written": words_written,
-		"length": time_convert(int(length / 1000))
+		"length": time_convert(length)
 	}
 	
 #	var dict = {}
