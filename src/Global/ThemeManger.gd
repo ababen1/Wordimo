@@ -15,7 +15,7 @@ onready var _backgrounds_preloader = $Backgrounds
 onready var themes_list: Dictionary = Funcs.preloderer_get_dir_list(_themes_preloader, false)
 onready var backgrounds_list: Dictionary = Funcs.preloderer_get_dir_list(_backgrounds_preloader)
 
-var current_theme: WordTetrisTheme setget set_current_theme
+var current_theme: WordimoTheme setget set_current_theme
 var current_bg: Texture setget set_current_bg
 
 func _enter_tree() -> void:
@@ -35,7 +35,7 @@ func load(savedata: SaveGame) -> void:
 	self.current_theme = savedata.data.get("current_theme", get_theme(DEFAULT_THEME_NAME))
 	self.current_bg = savedata.data.get("bg", get_theme(DEFAULT_BG_NAME))
 	
-func set_current_theme(val: WordTetrisTheme) -> void:
+func set_current_theme(val: WordimoTheme) -> void:
 	current_theme = val 
 	_set_theme_to_nodes(get_tree().root)
 	emit_signal("theme_changed", val)

@@ -32,4 +32,4 @@ func _on_Quit_pressed() -> void:
 
 func _on_GiveUp_pressed() -> void:
 	self.is_active = false
-	emit_signal("end_game", WordTetrisGame.GAME_OVER.GAVE_UP)
+	emit_signal("end_game", WordimoGame.GAME_OVER.GAVE_UP)

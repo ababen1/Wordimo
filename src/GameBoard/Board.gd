@@ -1,5 +1,5 @@
 extends Node2D
-class_name WordTetrisGame
+class_name WordimoGame
 
 # add a new block every x seconds
 export var add_block_delay: = 7.0 setget set_add_block_delay
@@ -194,11 +194,11 @@ func popup_word(
 		label.setup(word, global_pos, color, font)
 
 func calculate_score(words: Array):
-	var score_this_move: = Score.calculate_turn_score(words, self.current_level, self.combo)
 	if words.empty():
 		self.combo = 0
 	else:
 		self.combo += 1
+	var score_this_move: = Score.calculate_turn_score(words, self.current_level, self.combo)
 	self.total_score += score_this_move
 	if score_this_move > game_results.highest_score_in_one_move:
 		game_results.highest_score_in_one_move = score_this_move

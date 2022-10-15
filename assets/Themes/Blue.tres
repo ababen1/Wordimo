@@ -10,7 +10,8 @@
 [ext_resource path="res://assets/Themes/Blue/Resources/PanelLight.tres" type="StyleBox" id=8]
 [ext_resource path="res://assets/Themes/Blue/Resources/PanelDark.tres" type="StyleBox" id=9]
 [ext_resource path="res://assets/Themes/Blue/Resources/PanelCyan.tres" type="StyleBox" id=10]
-[ext_resource path="res://src/Global/WordTetrisTheme.gd" type="Script" id=11]
+[ext_resource path="res://src/Global/WordimoTheme.gd" type="Script" id=11]
+
 
 [sub_resource type="StyleBoxTexture" id=3]
 content_margin_left = 5.0

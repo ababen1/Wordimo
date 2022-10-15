@@ -29,7 +29,7 @@ func set_time_left(val: float):
 		"%02d" % (time_left / 60)) + ":" +(
 		"%02d" % (int(time_left) % 60))
 
-func _on_game_started(game: WordTetrisGame) -> void:
+func _on_game_started(game: WordimoGame) -> void:
 	time_left_label.visible = (game.time_limit != 0.0)
 	level_label.visible = game.difficulty.increase_levels
 		

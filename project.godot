@@ -175,14 +175,14 @@ _global_script_classes=[ {
 "path": "res://src/UI/Game/GameOver/WordLink.gd"
 }, {
 "base": "Node2D",
-"class": "WordTetrisGame",
+"class": "WordimoGame",
 "language": "GDScript",
 "path": "res://src/GameBoard/Board.gd"
 }, {
 "base": "Theme",
-"class": "WordTetrisTheme",
+"class": "WordimoTheme",
 "language": "GDScript",
-"path": "res://src/Global/WordTetrisTheme.gd"
+"path": "res://src/Global/WordimoTheme.gd"
 } ]
 _global_script_class_icons={
 "Block": "",
@@ -218,16 +218,16 @@ _global_script_class_icons={
 "VolumeSlider": "",
 "WordLabel": "",
 "WordLink": "",
-"WordTetrisGame": "",
-"WordTetrisTheme": ""
+"WordimoGame": "",
+"WordimoTheme": ""
 }
 
 [application]
 
-config/name="WordTetris"
+config/name="Wordimo"
 run/main_scene="res://src/UI/MainMenu/MainMenu.tscn"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="WordTetris"
+config/custom_user_dir_name="wordimo"
 config/icon="res://Icon.png"
 config/version="0"
 

@@ -22,7 +22,7 @@ func _on_settings_changed() -> void:
 	grid_layer.setup()
 	
 func _process(_delta: float) -> void:
-	if not Engine.editor_hint and owner is WordTetrisGame:
+	if not Engine.editor_hint and owner is WordimoGame:
 		highlight_layer.cells = {}
 		if owner.dragged_block and is_inside_grid(owner.dragged_block):
 			for letter in owner.dragged_block.letters:
