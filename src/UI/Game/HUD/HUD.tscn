@@ -1,29 +1,29 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/Fonts/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Fonts/MontserratBold-DOWZd.ttf" type="FontFile" id=1]
 [ext_resource path="res://src/UI/BackgroundLayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/UI/Game/GameOver/GameOverDialog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/UI/Game/HUD/PauseScreen.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/Icons/Reload.svg" type="Texture" id=5]
-[ext_resource path="res://assets/Icons/Pause.svg" type="Texture" id=6]
+[ext_resource path="res://assets/Icons/Reload.svg" type="Texture2D" id=5]
+[ext_resource path="res://assets/Icons/Pause.svg" type="Texture2D" id=6]
 [ext_resource path="res://src/UI/Game/HUD/Score.gd" type="Script" id=7]
 [ext_resource path="res://src/UI/Game/HUD/HUD.gd" type="Script" id=8]
 [ext_resource path="res://src/UI/Game/HUD/Level.gd" type="Script" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 25
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [node name="HUD" type="CanvasLayer"]
-pause_mode = 2
+process_mode = 3
 script = ExtResource( 8 )
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "GameOverDialog" ), [ ExtResource( 3 ) ] ]
+resources = [ PackedStringArray( "GameOverDialog" ), [ ExtResource( 3 ) ] ]
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
@@ -35,40 +35,40 @@ anchor_left = 0.0234375
 anchor_top = 0.0033333
 anchor_right = 0.976563
 anchor_bottom = 0.115
-margin_bottom = -3.8147e-06
+offset_bottom = -3.8147e-06
 mouse_filter = 2
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Score" type="Label" parent="Control/HBox"]
-margin_top = 17.0
-margin_right = 105.0
-margin_bottom = 49.0
+offset_top = 17.0
+offset_right = 105.0
+offset_bottom = 49.0
 size_flags_horizontal = 2
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_fonts/font = SubResource( 2 )
 text = "Score: 0"
 script = ExtResource( 7 )
 
 [node name="TimeLeft" type="Label" parent="Control/HBox"]
-margin_left = 430.0
-margin_top = 17.0
-margin_right = 546.0
-margin_bottom = 49.0
+offset_left = 430.0
+offset_top = 17.0
+offset_right = 546.0
+offset_bottom = 49.0
 size_flags_horizontal = 6
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_fonts/font = SubResource( 2 )
 text = "00:00:00"
 
 [node name="Level" type="Label" parent="Control/HBox"]
-margin_left = 892.0
-margin_right = 976.0
-margin_bottom = 67.0
+offset_left = 892.0
+offset_right = 976.0
+offset_bottom = 67.0
 size_flags_horizontal = 10
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 2 )
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_fonts/font = SubResource( 2 )
 text = "Level: 
  1"
 align = 1
@@ -77,29 +77,29 @@ script = ExtResource( 9 )
 [node name="VBox" type="VBoxContainer" parent="Control"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = -120.0
-margin_right = 40.0
-margin_bottom = -8.0
-custom_constants/separation = 10
+offset_left = 8.0
+offset_top = -120.0
+offset_right = 40.0
+offset_bottom = -8.0
+theme_override_constants/separation = 10
 alignment = 2
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="NewGame" type="Button" parent="Control/VBox"]
-margin_top = 48.0
-margin_right = 32.0
-margin_bottom = 75.0
+offset_top = 48.0
+offset_right = 32.0
+offset_bottom = 75.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 icon = ExtResource( 5 )
 expand_icon = true
 
 [node name="Pause" type="Button" parent="Control/VBox"]
-margin_top = 85.0
-margin_right = 32.0
-margin_bottom = 112.0
+offset_top = 85.0
+offset_right = 32.0
+offset_bottom = 112.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 icon = ExtResource( 6 )

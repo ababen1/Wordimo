@@ -2,13 +2,13 @@
 
 [ext_resource path="res://src/Global/ThemeManger.gd" type="Script" id=1]
 [ext_resource path="res://assets/Themes/Default.tres" type="Theme" id=2]
-[ext_resource path="res://assets/Backgrounds/Default.png" type="Texture" id=33]
+[ext_resource path="res://assets/Backgrounds/Default.png" type="Texture2D" id=33]
 
 [node name="ThemeManger" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Themes" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "Default" ), [ ExtResource( 2 ) ] ]
+resources = [ PackedStringArray( "Default" ), [ ExtResource( 2 ) ] ]
 
 [node name="Backgrounds" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "Default" ), [ ExtResource( 33 ) ] ]
+resources = [ PackedStringArray( "Default" ), [ ExtResource( 33 ) ] ]

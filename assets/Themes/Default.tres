@@ -1,22 +1,22 @@
-[gd_resource type="Theme" load_steps=5 format=2]
+[gd_resource type="Theme" script_class="WordimoTheme" load_steps=5 format=3 uid="uid://gph605alexn4"]
 
-[ext_resource path="res://assets/Fonts/RegularFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://src/Global/WordimoTheme.gd" type="Script" id=2]
+[ext_resource type="FontFile" path="res://assets/Fonts/RegularFont.tres" id="1"]
+[ext_resource type="Script" path="res://src/Global/WordimoTheme.gd" id="2"]
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.235294, 0.227451, 0.266667, 1 )
+[sub_resource type="StyleBoxFlat" id="2"]
+bg_color = Color(0.235294, 0.227451, 0.266667, 1)
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.145098, 0.145098, 0.164706, 1 )
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(0.145098, 0.145098, 0.164706, 1)
 
 [resource]
-default_font = ExtResource( 1 )
-GameGrid/colors/error_color = Color( 1, 0, 0, 1 )
-GameGrid/colors/highlight_color = Color( 0.6, 0.8, 0.2, 1 )
-GameGrid/colors/outline_color = Color( 1, 1, 1, 1 )
+default_font = ExtResource("1")
+GameGrid/colors/error_color = Color(1, 0, 0, 1)
+GameGrid/colors/highlight_color = Color(0.6, 0.8, 0.2, 1)
+GameGrid/colors/outline_color = Color(1, 1, 1, 1)
 GameGrid/constants/outline_size = 5
-GameGrid/styles/tile = SubResource( 2 )
-GameGrid/styles/tile_alt = SubResource( 1 )
-script = ExtResource( 2 )
-primary_color = Color( 0.235294, 0.227451, 0.266667, 1 )
-secondary_color = Color( 0.145098, 0.145098, 0.164706, 1 )
+GameGrid/styles/tile = SubResource("2")
+GameGrid/styles/tile_alt = SubResource("1")
+script = ExtResource("2")
+primary_color = Color(0.235294, 0.227451, 0.266667, 1)
+secondary_color = Color(0.145098, 0.145098, 0.164706, 1)

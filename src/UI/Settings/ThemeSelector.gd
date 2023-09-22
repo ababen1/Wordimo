@@ -4,8 +4,8 @@ signal theme_selected(new_theme)
 
 const THEMES_PATH: = "res://assets/Themes/"
 
-onready var option_button = $OptionButton
-onready var preloader = $ResourcePreloader
+@onready var option_button = $OptionButton
+@onready var preloader = $ResourcePreloader
 
 var unlocked_themes: Array = ThemeManger.get_unlocked_themes_list()
 var all_themes: Array = ThemeManger.themes_list.keys()

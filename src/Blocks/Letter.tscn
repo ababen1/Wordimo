@@ -1,23 +1,23 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://assets/Fonts/LetterFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts/LetterFont.tres" type="FontFile" id=1]
 [ext_resource path="res://src/Blocks/Letter.gd" type="Script" id=2]
-[ext_resource path="res://assets/Icons/Favorites.svg" type="Texture" id=3]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Cyan.png" type="Texture" id=4]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Green.png" type="Texture" id=5]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Blue.png" type="Texture" id=6]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Yellow.png" type="Texture" id=7]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Orange.png" type="Texture" id=8]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Purple.png" type="Texture" id=9]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Red.png" type="Texture" id=10]
+[ext_resource path="res://assets/Icons/Favorites.svg" type="Texture2D" id=3]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Cyan.png" type="Texture2D" id=4]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Green.png" type="Texture2D" id=5]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Blue.png" type="Texture2D" id=6]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Yellow.png" type="Texture2D" id=7]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Orange.png" type="Texture2D" id=8]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Purple.png" type="Texture2D" id=9]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Default/Red.png" type="Texture2D" id=10]
 [ext_resource path="res://assets/ShineEffect.tres" type="Material" id=11]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Orange.png" type="Texture" id=12]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Cyan.png" type="Texture" id=13]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Blue.png" type="Texture" id=14]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Purple.png" type="Texture" id=15]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Red.png" type="Texture" id=16]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Yellow.png" type="Texture" id=17]
-[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Green.png" type="Texture" id=18]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Orange.png" type="Texture2D" id=12]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Cyan.png" type="Texture2D" id=13]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Blue.png" type="Texture2D" id=14]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Purple.png" type="Texture2D" id=15]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Red.png" type="Texture2D" id=16]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Yellow.png" type="Texture2D" id=17]
+[ext_resource path="res://assets/Tetriminos/Single Blocks/Style1/Green.png" type="Texture2D" id=18]
 
 [sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 4 )
@@ -26,12 +26,12 @@ region_rect = Rect2( 0, 0, 64, 64 )
 [sub_resource type="StyleBoxEmpty" id=9]
 
 [node name="Letter" type="PanelContainer"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-rect_pivot_offset = Vector2( 32, 32 )
+offset_right = 80.0
+offset_bottom = 80.0
+custom_minimum_size = Vector2( 80, 80 )
+pivot_offset = Vector2( 32, 32 )
 mouse_filter = 2
-custom_styles/panel = SubResource( 10 )
+theme_override_styles/panel = SubResource( 10 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -41,33 +41,33 @@ color = 2
 text_color = Color( 1, 1, 1, 1 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-margin_right = 80.0
-margin_bottom = 80.0
+offset_right = 80.0
+offset_bottom = 80.0
 mouse_filter = 2
 
 [node name="Letter" type="Label" parent="CenterContainer"]
-margin_left = 20.0
-margin_top = 9.0
-margin_right = 59.0
-margin_bottom = 71.0
+offset_left = 20.0
+offset_top = 9.0
+offset_right = 59.0
+offset_bottom = 71.0
 size_flags_vertical = 1
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 1 )
-custom_styles/normal = SubResource( 9 )
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_fonts/font = ExtResource( 1 )
+theme_override_styles/normal = SubResource( 9 )
 text = "G"
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Star" type="TextureRect" parent="."]
 visible = false
-margin_right = 80.0
-margin_bottom = 80.0
+offset_right = 80.0
+offset_bottom = 80.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 
 [node name="__ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "Blue", "Cyan", "Green", "Orange", "Purple", "Red", "ShineEffect", "Yellow" ), [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 7 ) ] ]
+resources = [ PackedStringArray( "Blue", "Cyan", "Green", "Orange", "Purple", "Red", "ShineEffect", "Yellow" ), [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 7 ) ] ]
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "Blue", "Cyan", "Green", "Orange", "Purple", "Red", "ShineEffect", "Yellow" ), [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 18 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 17 ) ] ]
+resources = [ PackedStringArray( "Blue", "Cyan", "Green", "Orange", "Purple", "Red", "ShineEffect", "Yellow" ), [ ExtResource( 14 ), ExtResource( 13 ), ExtResource( 18 ), ExtResource( 12 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 17 ) ] ]

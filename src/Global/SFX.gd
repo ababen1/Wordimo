@@ -9,7 +9,7 @@ const SOUNDS = {
 }
 
 func _enter_tree() -> void:
-	pause_mode = Node.PAUSE_MODE_PROCESS
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func play_sound_effect(sfx: AudioStream):
 	var audio_player: = AudioStreamPlayer.new()
@@ -17,6 +17,6 @@ func play_sound_effect(sfx: AudioStream):
 	audio_player.stream = sfx
 	audio_player.bus = "SFX"
 	audio_player.play()
-	yield(audio_player, "finished")
+	await audio_player.finished
 	audio_player.queue_free()
 		

@@ -1,4 +1,4 @@
-tool
+@tool
 extends OptionalField
 
 func get_queue_size() -> int:

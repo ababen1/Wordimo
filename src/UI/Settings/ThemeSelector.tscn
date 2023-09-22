@@ -1,28 +1,28 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/UI/Settings/ThemeSelector.gd" type="Script" id=1]
-[ext_resource path="res://assets/Icons/Lock.svg" type="Texture" id=2]
+[ext_resource path="res://assets/Icons/Lock.svg" type="Texture2D" id=2]
 
 [node name="ThemeSelector" type="HBoxContainer"]
-pause_mode = 2
-margin_right = 984.0
-margin_bottom = 27.0
+process_mode = 3
+offset_right = 984.0
+offset_bottom = 27.0
 script = ExtResource( 1 )
 
 [node name="Theme" type="Label" parent="."]
-margin_top = 3.0
-margin_right = 81.0
-margin_bottom = 24.0
+offset_top = 3.0
+offset_right = 81.0
+offset_bottom = 24.0
 text = "UI Theme"
 
 [node name="OptionButton" type="OptionButton" parent="."]
-margin_left = 684.0
-margin_right = 984.0
-margin_bottom = 27.0
-rect_min_size = Vector2( 300, 0 )
+offset_left = 684.0
+offset_right = 984.0
+offset_bottom = 27.0
+custom_minimum_size = Vector2( 300, 0 )
 size_flags_horizontal = 10
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "Lock" ), [ ExtResource( 2 ) ] ]
+resources = [ PackedStringArray( "Lock" ), [ ExtResource( 2 ) ] ]
 
 [connection signal="item_selected" from="OptionButton" to="." method="_on_OptionButton_item_selected"]

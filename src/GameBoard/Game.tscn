@@ -38,7 +38,7 @@ anchor_bottom = 0.96
 one_shot = true
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "WordLabel" ), [ ExtResource( 8 ) ] ]
+resources = [ PackedStringArray( "WordLabel" ), [ ExtResource( 8 ) ] ]
 
 [node name="HintTimer" type="Timer" parent="."]
 wait_time = 100.0

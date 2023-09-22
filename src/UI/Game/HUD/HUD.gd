@@ -2,18 +2,18 @@ extends CanvasLayer
 
 signal start_new_game
 
-onready var score_label = $Control/HBox/Score
-onready var pause_screen: = $PauseScreen
-onready var time_left_label: Label = $Control/HBox/TimeLeft
-onready var resource_preloader: = $ResourcePreloader
-onready var level_label = $Control/HBox/Level
-onready var _pause_btn = $Control/VBox/Pause
-onready var _new_game_btn = $Control/VBox/NewGame
+@onready var score_label = $Control/HBox/Score
+@onready var pause_screen: = $PauseScreen
+@onready var time_left_label: Label = $Control/HBox/TimeLeft
+@onready var resource_preloader: = $ResourcePreloader
+@onready var level_label = $Control/HBox/Level
+@onready var _pause_btn = $Control/VBox/Pause
+@onready var _new_game_btn = $Control/VBox/NewGame
 
-var time_left: float = 0 setget set_time_left
+var time_left: float = 0: set = set_time_left
 
 func _ready() -> void:
-	_pause_btn.connect("pressed", pause_screen, "toggle")
+	_pause_btn.connect("pressed", Callable(pause_screen, "toggle"))
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -37,18 +37,18 @@ func _on_NewGame_pressed() -> void:
 	var confirm: = ConfirmationDialog.new()
 	confirm.dialog_text = "Restart?"
 # warning-ignore:return_value_discarded
-	confirm.get_cancel().connect("pressed", confirm, "queue_free", [], CONNECT_ONESHOT)
+	confirm.get_cancel_button().connect("pressed", Callable(confirm, "queue_free").bind(), CONNECT_ONE_SHOT)
 	add_child(confirm)
 	confirm.popup_centered(Vector2(300,150))
-	yield(confirm, "confirmed")
+	await confirm.confirmed
 	emit_signal("start_new_game")
 
 func _on_game_over(stats: GameResults) -> void:
 	get_tree().paused = true
-	var game_over_dialog = resource_preloader.get_resource("GameOverDialog").instance()
+	var game_over_dialog = resource_preloader.get_resource("GameOverDialog").instantiate()
 	add_child(game_over_dialog)
 	game_over_dialog.show_results(stats)
-	game_over_dialog.connect("replay", self, "_on_game_over_dialog_replay", [game_over_dialog])
+	game_over_dialog.connect("replay", Callable(self, "_on_game_over_dialog_replay").bind(game_over_dialog))
 
 func _on_game_over_dialog_replay(dialog: Control):
 	dialog.queue_free()

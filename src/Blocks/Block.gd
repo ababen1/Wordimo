@@ -1,4 +1,4 @@
-tool
+@tool
 extends Node2D
 class_name Block
 
@@ -10,15 +10,15 @@ signal block_touchscreen_press
 
 const LETTER_SCENE = preload("Letter.tscn")
 
-export var is_special: = false setget set_is_special
+@export var is_special: = false: set = set_is_special
 
-onready var type: String = name.validate_node_name().rstrip("0123456789")
-onready var sprite: = $Sprite
-onready var area: Area2D = $Area2D
+@onready var type: String = name.validate_node_name().rstrip("0123456789")
+@onready var sprite: = $Sprite2D
+@onready var area: Area2D = $Area2D
 
-var is_inside_grid: = false setget set_is_inside_grid
-var locked: = false setget set_locked
-var letters: Array = [] setget set_letters
+var is_inside_grid: = false: set = set_is_inside_grid
+var locked: = false: set = set_locked
+var letters: Array = []: set = set_letters
 
 func _enter_tree() -> void:
 	add_to_group("blocks")
@@ -26,20 +26,20 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	setup()
 # warning-ignore:return_value_discarded
-	area.connect("input_event", self, "_on_area2D_input_event")
+	area.connect("input_event", Callable(self, "_on_area2D_input_event"))
 	
 func _process(_delta: float) -> void:
 	update()
 
-func get_texture() -> Texture:
-	if Engine.editor_hint:
+func get_texture() -> Texture2D:
+	if Engine.is_editor_hint():
 		return
 	if not is_inside_tree():
-		yield(self, "ready")
-	yield(get_tree(), "idle_frame")
-	var viewport = Viewport.new()
+		await self.ready
+	await get_tree().idle_frame
+	var viewport = SubViewport.new()
 	viewport.transparent_bg = true
-	viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
+	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	viewport.size = CONSTS.CELL_SIZE * 4
 	var original_parent = get_parent()
 	original_parent.remove_child(self)
@@ -50,7 +50,7 @@ func get_texture() -> Texture:
 	viewport.add_child(self)
 	var org_pos = position
 	position = Vector2.ZERO
-	yield(get_tree(), "idle_frame")
+	await get_tree().idle_frame
 	var image: Image = viewport.get_texture().get_data()
 	image.flip_y()
 	image.convert(Image.FORMAT_RGBA8)
@@ -64,7 +64,7 @@ func get_texture() -> Texture:
 	
 func reset_position() -> void:
 	if not is_inside_tree():
-		yield(self, "ready")
+		await self.ready
 	position = sprite.offset * -1
 
 func set_locked(val: bool):
@@ -92,12 +92,12 @@ func setup():
 	# Adding letters
 	for child in area.get_children():
 		if child is CollisionShape2D:
-			var letter = LETTER_SCENE.instance()
-			letter.rect_min_size = CONSTS.CELL_SIZE
-			letter.rect_size = CONSTS.CELL_SIZE
-			letter.rect_pivot_offset = CONSTS.CELL_SIZE / 2
+			var letter = LETTER_SCENE.instantiate()
+			letter.custom_minimum_size = CONSTS.CELL_SIZE
+			letter.size = CONSTS.CELL_SIZE
+			letter.pivot_offset = CONSTS.CELL_SIZE / 2
 			child.add_child(letter)
-			letter.rect_position = -letter.rect_size/2
+			letter.position = -letter.size/2
 			letters.append(letter)
 			letter.color = CONSTS.BLOCK_TYPES[type]
 	sprite.hide()
@@ -112,10 +112,10 @@ func set_letters(val: Array):
 
 func set_letter(index: int, new_letter: Letter) -> void:
 	if not is_inside_tree():
-		yield(self, "ready")
+		await self.ready
 	if index >= 0 and index < letters.size():
 		letters[index].get_parent().add_child(new_letter)
-		new_letter.rect_position = letters[index].rect_position
+		new_letter.position = letters[index].position
 		letters[index].queue_free()
 		letters[index] = new_letter
 		
@@ -125,7 +125,7 @@ func get_letter(index: int) -> Letter:
 func rotate_shape(with_sound: = true) -> void:
 	rotation_degrees += 90
 	for letter in letters:
-		letter.rect_rotation -= 90
+		letter.rotation -= 90
 	if with_sound:
 		SFX.play_sound_effect(SFX.SOUNDS.rotate)
 

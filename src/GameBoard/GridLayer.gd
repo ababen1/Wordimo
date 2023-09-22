@@ -1,4 +1,4 @@
-tool
+@tool
 extends Node2D
 class_name GridLayer
 
@@ -8,7 +8,7 @@ var board_size: = Vector2(4,4)
 
 func _ready() -> void:
 # warning-ignore:return_value_discarded
-	ThemeManger.connect("theme_changed", self, "setup")
+	ThemeManger.connect("theme_changed", Callable(self, "setup"))
 
 func setup() -> void:
 	self.board_size = get_parent().size if get_parent() else board_size

@@ -1,15 +1,15 @@
 extends Resource
 class_name GameResults
 
-export var difficulty: = ""
-export var score: = 0
-export var level: int = 1
-export var blocks_placed: = 0
-export var blocks_rotated: = 0
-export var highest_combo: = 0
-export var highest_score_in_one_move: = 0
-export var words_written: = []
-export var length: = 0.0
+@export var difficulty: = ""
+@export var score: = 0
+@export var level: int = 1
+@export var blocks_placed: = 0
+@export var blocks_rotated: = 0
+@export var highest_combo: = 0
+@export var highest_score_in_one_move: = 0
+@export var words_written: = []
+@export var length: = 0.0
 
 const CHANCE_TO_UNLOCK_BG = 0.7
 const CHANCE_TO_UNLOCK_THEME = 0.4

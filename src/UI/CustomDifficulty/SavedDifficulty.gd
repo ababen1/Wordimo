@@ -6,14 +6,14 @@ signal delete()
 signal load_difficulty()
 signal favorite_toggled()
 
-var difficulty: DifficultyResource setget set_difficulty
-var is_favorite: = false setget set_is_favorite
+var difficulty: DifficultyResource: set = set_difficulty
+var is_favorite: = false: set = set_is_favorite
 
 func _ready() -> void:
-	$Play.connect("pressed", self, "emit_signal", ["play"])
-	$Load.connect("pressed", self, "emit_signal", ["load_difficulty"])
-	$Delete.connect("pressed", self, "emit_signal", ["delete"])
-	$Favorite.connect("toggled", self, "set_is_favorite")
+	$Play.connect("pressed", Callable(self, "emit_signal").bind("play"))
+	$Load.connect("pressed", Callable(self, "emit_signal").bind("load_difficulty"))
+	$Delete.connect("pressed", Callable(self, "emit_signal").bind("delete"))
+	$Favorite.connect("toggled", Callable(self, "set_is_favorite"))
 	
 func set_difficulty(val: DifficultyResource) -> void:
 	difficulty = val

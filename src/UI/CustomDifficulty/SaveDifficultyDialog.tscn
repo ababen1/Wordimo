@@ -2,17 +2,17 @@
 
 [ext_resource path="res://src/UI/CustomDifficulty/SaveDifficultyDialog.gd" type="Script" id=1]
 
-[node name="SaveDifficultyDialog" type="WindowDialog"]
+[node name="SaveDifficultyDialog" type="Window"]
 visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -256.0
-margin_top = -107.0
-margin_right = 256.0
-margin_bottom = 108.0
-rect_min_size = Vector2( 430, 215 )
+offset_left = -256.0
+offset_top = -107.0
+offset_right = 256.0
+offset_bottom = 108.0
+custom_minimum_size = Vector2( 430, 215 )
 window_title = "Save Difficulty"
 resizable = true
 script = ExtResource( 1 )
@@ -20,49 +20,49 @@ script = ExtResource( 1 )
 [node name="VBox" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 8.0
-margin_right = -16.0
-margin_bottom = -8.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -8.0
 
 [node name="HBox" type="HBoxContainer" parent="VBox"]
-margin_right = 480.0
-margin_bottom = 31.0
+offset_right = 480.0
+offset_bottom = 31.0
 
 [node name="Label" type="Label" parent="VBox/HBox"]
-margin_top = 5.0
-margin_right = 136.0
-margin_bottom = 26.0
+offset_top = 5.0
+offset_right = 136.0
+offset_bottom = 26.0
 text = "Difficulty Name:"
 
 [node name="Name" type="LineEdit" parent="VBox/HBox"]
-margin_left = 140.0
-margin_right = 476.0
-margin_bottom = 31.0
+offset_left = 140.0
+offset_right = 476.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 
 [node name="Error" type="Label" parent="VBox/HBox"]
-margin_left = 480.0
-margin_top = 5.0
-margin_right = 480.0
-margin_bottom = 26.0
-custom_colors/font_color = Color( 1, 0, 0, 1 )
+offset_left = 480.0
+offset_top = 5.0
+offset_right = 480.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color( 1, 0, 0, 1 )
 
 [node name="Label" type="Label" parent="VBox"]
-margin_top = 35.0
-margin_right = 480.0
-margin_bottom = 56.0
+offset_top = 35.0
+offset_right = 480.0
+offset_bottom = 56.0
 text = "Description (optional):"
 
 [node name="Description" type="TextEdit" parent="VBox"]
-margin_top = 60.0
-margin_right = 480.0
-margin_bottom = 168.0
+offset_top = 60.0
+offset_right = 480.0
+offset_bottom = 168.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Save" type="Button" parent="VBox"]
-margin_top = 172.0
-margin_right = 480.0
-margin_bottom = 199.0
+offset_top = 172.0
+offset_right = 480.0
+offset_bottom = 199.0
 text = "Save"

@@ -1,9 +1,9 @@
 extends AcceptDialog
 class_name UIBackgroundSelect
 
-onready var grid = $ScrollContainer/MarginContainer/BackgroundsGrid
+@onready var grid = $ScrollContainer/MarginContainer/BackgroundsGrid
 
-var backgrounds: PoolStringArray = [] setget set_backgrounds
+var backgrounds: PackedStringArray = []: set = set_backgrounds
 var _button_group = ButtonGroup.new()
 var thread = Thread.new()
 
@@ -16,15 +16,15 @@ func _exit_tree():
 		thread.wait_to_finish()
 
 func _ready() -> void:
-	self.backgrounds = ThemeManger.backgrounds_list.keys() as PoolStringArray
-	_button_group.connect("pressed", self, "_on_bg_btn_pressed")
+	self.backgrounds = ThemeManger.backgrounds_list.keys() as PackedStringArray
+	_button_group.connect("pressed", Callable(self, "_on_bg_btn_pressed"))
 # warning-ignore:return_value_discarded
-	connect("confirmed", self, "_on_ok")
+	connect("confirmed", Callable(self, "_on_ok"))
 
-func set_backgrounds(val: PoolStringArray):
+func set_backgrounds(val: PackedStringArray):
 	backgrounds = val
 	if not Funcs.is_html():
-		thread.start(self, "_display_backgrounds")
+		thread.start(Callable(self, "_display_backgrounds"))
 	else:
 		_display_backgrounds()
 
@@ -32,12 +32,12 @@ func _display_backgrounds() -> void:
 	_clear_backgrounds()
 	var unlocked_bgs = ThemeManger.get_unlocked_backgrounds_list()
 	for bg in backgrounds:
-		var background_btn = $ResourcePreloader.get_resource("BgBtn").instance()		
+		var background_btn = $ResourcePreloader.get_resource("BgBtn").instantiate()		
 		grid.add_child(background_btn)
 		background_btn.texture = ThemeManger.get_background(bg)
 		if bg in unlocked_bgs:
 			if ThemeManger.current_bg == background_btn.texture:
-				background_btn.pressed = (true)
+				background_btn.button_pressed = (true)
 			background_btn.group = _button_group
 		else:
 			background_btn.locked = true

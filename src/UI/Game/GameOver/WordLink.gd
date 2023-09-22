@@ -1,12 +1,12 @@
 extends LinkButton
 class_name WordLink
 
-export var word: = "" setget set_word
+@export var word: = "": set = set_word
 
 func _ready() -> void:
-	if not Engine.editor_hint:
+	if not Engine.is_editor_hint():
 # warning-ignore:return_value_discarded
-		connect("pressed", self, "_on_pressed")
+		connect("pressed", Callable(self, "_on_pressed"))
 
 func set_word(val: String) -> void:
 	word = val

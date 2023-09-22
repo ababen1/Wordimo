@@ -2,12 +2,12 @@ extends Node2D
 class_name WordimoGame
 
 # add a new block every x seconds
-export var add_block_delay: = 7.0 setget set_add_block_delay
-export var word_length_multiplier: = 10.0
-export var time_limit: = 0.0
-export var drag_input: = false 
-export var drag_offset: = Vector2.ZERO
-export var current_level: = 1 setget set_current_level
+@export var add_block_delay: = 7.0: set = set_add_block_delay
+@export var word_length_multiplier: = 10.0
+@export var time_limit: = 0.0
+@export var drag_input: = false 
+@export var drag_offset: = Vector2.ZERO
+@export var current_level: = 1: set = set_current_level
 
 signal turn_completed(words_found)
 signal game_started
@@ -16,13 +16,13 @@ signal total_score_changed(score)
 signal level_changed(new_lvl)
 signal combo_changed(combo)
 
-onready var tilemap = $GameGrid
-onready var _blocks_node = find_node("Blocks")
-onready var queue = find_node("Queue")
-onready var blocks_timer = queue.get_node("BlocksTimer")
-onready var blocks_queue_panel = queue.get_node("QueuePanel")
-onready var HUD = $HUD
-onready var time_limit_timer: Timer = $TimeLimit
+@onready var tilemap = $GameGrid
+@onready var _blocks_node = find_child("Blocks")
+@onready var queue = find_child("Queue")
+@onready var blocks_timer = queue.get_node("BlocksTimer")
+@onready var blocks_queue_panel = queue.get_node("QueuePanel")
+@onready var HUD = $HUD
+@onready var time_limit_timer: Timer = $TimeLimit
 
 enum GAME_OVER {
 	TIMES_UP,
@@ -31,30 +31,30 @@ enum GAME_OVER {
 }
 
 var blocks: Array = []
-var dragged_block: Block = null setget set_dragged_block
+var dragged_block: Block = null: set = set_dragged_block
 var blocks_factory: = BlocksFactory.new()
-var combo: int = 0 setget set_combo
-var total_score: = 0 setget set_total_score
-var difficulty: DifficultyResource setget set_difficulty
+var combo: int = 0: set = set_combo
+var total_score: = 0: set = set_total_score
+var difficulty: DifficultyResource: set = set_difficulty
 var tip_was_displayed: = false
 var _game_started_timestamp_msec: = 0.0
-var words_till_next_level = CONSTS.LEVEL_CLEAR_TARGET setget set_words_till_next_level
+var words_till_next_level = CONSTS.LEVEL_CLEAR_TARGET: set = set_words_till_next_level
 var game_results: = GameResults.new()
 var game_length_seconds: = 0.0
 
 func _ready() -> void:
-	blocks_queue_panel.connect("block_clicked", self, "_on_queue_block_clicked")
-	blocks_queue_panel.connect("panel_clicked", self, "_on_queue_panel_clicked")
-	blocks_queue_panel.connect("queue_full", self, "_on_queue_full")
-	blocks_timer.connect("spawn_block", self, "_on_spawn_block")
-	tilemap.connect("block_placed", self, "_on_block_placed")
-	tilemap.connect("block_placed", blocks_queue_panel, "_on_block_placed")
-	HUD.connect("start_new_game", self, "start_new_game")
-	HUD.pause_screen.connect("end_game", self, "end_game")
+	blocks_queue_panel.connect("block_clicked", Callable(self, "_on_queue_block_clicked"))
+	blocks_queue_panel.connect("panel_clicked", Callable(self, "_on_queue_panel_clicked"))
+	blocks_queue_panel.connect("queue_full", Callable(self, "_on_queue_full"))
+	blocks_timer.connect("spawn_block", Callable(self, "_on_spawn_block"))
+	tilemap.connect("block_placed", Callable(self, "_on_block_placed"))
+	tilemap.connect("block_placed", Callable(blocks_queue_panel, "_on_block_placed"))
+	HUD.connect("start_new_game", Callable(self, "start_new_game"))
+	HUD.pause_screen.connect("end_game", Callable(self, "end_game"))
 # warning-ignore:return_value_discarded
-	time_limit_timer.connect("timeout", self, "_on_timeout")
+	time_limit_timer.connect("timeout", Callable(self, "_on_timeout"))
 # warning-ignore:return_value_discarded
-	connect("game_over", HUD, "_on_game_over")
+	connect("game_over", Callable(HUD, "_on_game_over"))
 	if Funcs.is_mobile():
 		drag_input = true
 		drag_offset = Vector2(-130,-100)
@@ -92,11 +92,11 @@ func _handle_touch_input(event: InputEvent) -> void:
 			drop_block()
 
 func _handle_mouse_input(event: InputEventMouseButton) -> void:
-	if event.button_index == BUTTON_RIGHT and event.pressed:
+	if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		if dragged_block:
 			dragged_block.rotate_shape()
 			game_results.blocks_rotated += 1 
-	elif event.button_index == BUTTON_LEFT and dragged_block:
+	elif event.button_index == MOUSE_BUTTON_LEFT and dragged_block:
 		if not event.pressed and drag_input or (event.pressed and not drag_input):
 			drop_block()
 
@@ -125,7 +125,7 @@ func start_new_game(_difficulty:= self.difficulty) -> void:
 	if time_limit != 0:
 		time_limit_timer.start(time_limit)
 	set_difficulty(_difficulty)
-	_game_started_timestamp_msec = OS.get_ticks_msec()
+	_game_started_timestamp_msec = Time.get_ticks_msec()
 	self.total_score = 0
 	self.combo = 0
 	self.game_length_seconds = 0.0
@@ -137,7 +137,7 @@ func add_block(block: Block, auto_set_letters: = true) -> void:
 		for letter in block.letters:
 			letter.set_random_letter()
 # warning-ignore:return_value_discarded
-	block.connect("block_touchscreen_press", self, "_on_block_touchscreen_press", [block])
+	block.connect("block_touchscreen_press", Callable(self, "_on_block_touchscreen_press").bind(block))
 	blocks_queue_panel.add_block(block)
 	
 func set_dragged_block(val: Block) -> void:
@@ -155,7 +155,7 @@ func set_combo(val: int) -> void:
 
 func set_add_block_delay(val: float):
 	if not is_inside_tree():
-		yield(self, "ready")
+		await self.ready
 	add_block_delay = val
 	blocks_timer.wait_time = val
 	blocks_timer.start_timer()
@@ -187,14 +187,14 @@ func drop_block(block: Block = dragged_block) -> void:
 func popup_word(
 	word: String, 
 	global_pos: Vector2,
-	color: = Color.royalblue,
-	font: DynamicFont = null):
-		var label = $ResourcePreloader.get_resource("WordLabel").instance()
+	color: = Color.ROYAL_BLUE,
+	font: FontFile = null):
+		var label = $ResourcePreloader.get_resource("WordLabel").instantiate()
 		get_tree().root.add_child(label)
 		label.setup(word, global_pos, color, font)
 
 func calculate_score(words: Array):
-	if words.empty():
+	if words.is_empty():
 		self.combo = 0
 	else:
 		self.combo += 1
@@ -215,7 +215,7 @@ func show_tip() -> void:
 	var tip: = "Tip: {action}"
 	NotificationsLayer.display_message(tip.format({"action": 
 		"Tap the screen while dragging a block to rotate it" if Funcs.is_mobile() else "Press right click to rotate a block"}),
-		Color.yellow)
+		Color.YELLOW)
 	tip_was_displayed = true
 
 func _on_block_placed(block: Block) -> void:
@@ -230,7 +230,7 @@ func _on_block_placed(block: Block) -> void:
 	var words_found: Array = tilemap.find_words_in_board(cells_to_check)
 	words_found = _validate_words(words_found)
 	self.words_till_next_level -= words_found.size()
-	if words_found.empty():
+	if words_found.is_empty():
 		SFX.play_sound_effect(SFX.SOUNDS.place_block)
 	calculate_score(words_found)
 	print(words_found)
@@ -238,7 +238,7 @@ func _on_block_placed(block: Block) -> void:
 		tilemap.clear_cells(word_data.from, word_data.to)
 		popup_word(
 			word_data.word, 
-			block.letters.front().rect_global_position, 
+			block.letters.front().global_position, 
 			Color(randf(),randf(),randf()))
 		game_results.words_written.append(word_data.word)
 	emit_signal("turn_completed", words_found)

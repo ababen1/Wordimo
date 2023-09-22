@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Pop.wav-d1c9a641dcdca1ee8e75a2d12bec9ffd.sample"
+type="AudioStreamWAV"
+uid="uid://d3qgw5uktl6mo"
+path="res://.godot/imported/Pop.wav-d1c9a641dcdca1ee8e75a2d12bec9ffd.sample"
 
 [deps]
 
 source_file="res://assets/SFX/Pop.wav"
-dest_files=[ "res://.import/Pop.wav-d1c9a641dcdca1ee8e75a2d12bec9ffd.sample" ]
+dest_files=["res://.godot/imported/Pop.wav-d1c9a641dcdca1ee8e75a2d12bec9ffd.sample"]
 
 [params]
 

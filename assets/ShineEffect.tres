@@ -1,9 +1,9 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://3fplvpgoyxje"]
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id="5"]
 code = "shader_type canvas_item;
 
-uniform vec4 shine_color : hint_color = vec4(1.0);
+uniform vec4 shine_color : source_color = vec4(1.0);
 uniform float shine_speed : hint_range(0.0, 10.0, 0.1) = 1.0;
 uniform float shine_size : hint_range(0.01, 1.0, 0.01) = 0.01;
 
@@ -14,7 +14,7 @@ void fragment() {
 }"
 
 [resource]
-shader = SubResource( 5 )
-shader_param/shine_color = Color( 1, 1, 1, 0.67451 )
-shader_param/shine_speed = 3.0
-shader_param/shine_size = 0.02
+shader = SubResource("5")
+shader_parameter/shine_color = Color(1, 1, 1, 0.67451)
+shader_parameter/shine_speed = 3.0
+shader_parameter/shine_size = 0.02

@@ -14,13 +14,13 @@ func setup(difficulties: Array) -> void:
 	sort()
 	
 func add_difficulty(difficulty: DifficultyResource) -> void:
-	var difficulty_ui: UISavedDifficulty = $ResourcePreloader.get_resource("SavedDifficulty").instance()
+	var difficulty_ui: UISavedDifficulty = $ResourcePreloader.get_resource("SavedDifficulty").instantiate()
 	add_child(difficulty_ui)
 	difficulty_ui.difficulty = difficulty
-	difficulty_ui.connect("delete", self, "_on_delete", [difficulty_ui])
-	difficulty_ui.connect("play", self, "_on_play", [difficulty_ui.difficulty])
-	difficulty_ui.connect("load_difficulty", self, "_on_load_difficulty", [difficulty_ui.difficulty])
-	difficulty_ui.connect("favorite_toggled", self, "_on_favorite", [difficulty_ui.difficulty])
+	difficulty_ui.connect("delete", Callable(self, "_on_delete").bind(difficulty_ui))
+	difficulty_ui.connect("play", Callable(self, "_on_play").bind(difficulty_ui.difficulty))
+	difficulty_ui.connect("load_difficulty", Callable(self, "_on_load_difficulty").bind(difficulty_ui.difficulty))
+	difficulty_ui.connect("favorite_toggled", Callable(self, "_on_favorite").bind(difficulty_ui.difficulty))
 
 func sort() -> void:
 	var index = 1
@@ -46,7 +46,7 @@ func _on_delete(ui_node: UISavedDifficulty) -> void:
 	ui_node.queue_free()
 	
 func _on_play(difficulty: DifficultyResource) -> void:
-	SceneChanger.change_scene(
+	SceneChanger.change_scene_to_file(
 		"GameScreen", 
 		true, 
 		{"difficulty": difficulty})

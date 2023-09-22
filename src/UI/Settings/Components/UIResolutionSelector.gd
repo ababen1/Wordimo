@@ -2,20 +2,20 @@ extends Control
 
 const RESOLUTIONS = [
 	Vector2(640, 360),
-	OS.window_size,
+	get_window().size,
 	Vector2(1280, 720),
 	Vector2(1920, 1080)
 ]
 
 signal resolution_changed(new_resolution)
 
-onready var option_button: OptionButton = $OptionButton
+@onready var option_button: OptionButton = $OptionButton
 
 func _ready() -> void:
-	yield(get_parent(), "ready")
-	if not RESOLUTIONS.empty():
+	await get_parent().ready
+	if not RESOLUTIONS.is_empty():
 		setup(RESOLUTIONS)
-	option_button.selected = _find_resulotion_index(OS.window_size)
+	option_button.selected = _find_resulotion_index(get_window().size)
 	
 func setup(resolutions: Array) -> void:
 	option_button.clear()
@@ -41,7 +41,7 @@ func _find_resulotion_index(res: Vector2) -> int:
 
 func _text_to_resoultion(text: String = option_button.text) -> Vector2:
 	if not text:
-		return OS.window_size
+		return get_window().size
 	var values := option_button.get_item_text(
 		option_button.selected).split_floats("x")
 	return Vector2(values[0], values[1])

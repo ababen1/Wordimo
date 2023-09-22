@@ -1,23 +1,23 @@
-extends WindowDialog
+extends Window
 
-onready var _board_size_field = $HSplit/PanelContainer/VBox/BoardSize
-onready var _time_limit_field = $HSplit/PanelContainer/VBox/TimeLimit
-onready var _queue_size = $HSplit/PanelContainer/VBox/QueueSize
-onready var _start_btn = $HSplit/PanelContainer/VBox/HBox/Start
-onready var _save_btn = $HSplit/PanelContainer/VBox/HBox/Save
-onready var _override = $HSplit/PanelContainer/VBox/Override
-onready var _min_length = $HSplit/PanelContainer/VBox/MinWordLength
-onready var _starting_level = $HSplit/PanelContainer/VBox/StartingLevel
-onready var _inscrease_levels = _starting_level.get_node("IncreaseLevels")
+@onready var _board_size_field = $HSplit/PanelContainer/VBox/BoardSize
+@onready var _time_limit_field = $HSplit/PanelContainer/VBox/TimeLimit
+@onready var _queue_size = $HSplit/PanelContainer/VBox/QueueSize
+@onready var _start_btn = $HSplit/PanelContainer/VBox/HBox/Start
+@onready var _save_btn = $HSplit/PanelContainer/VBox/HBox/Save
+@onready var _override = $HSplit/PanelContainer/VBox/Override
+@onready var _min_length = $HSplit/PanelContainer/VBox/MinWordLength
+@onready var _starting_level = $HSplit/PanelContainer/VBox/StartingLevel
+@onready var _inscrease_levels = _starting_level.get_node("IncreaseLevels")
 
-var saved_difficulties: Array = [] setget set_saved_difficulties
+var saved_difficulties: Array = []: set = set_saved_difficulties
 var last_saved: String = ""
 
 func _ready() -> void:
 	if get_parent() == get_tree().root:
 		visible = true
-	_start_btn.connect("pressed", self, "_on_start_pressed")
-	_save_btn.connect("pressed", self, "_on_save_pressed")
+	_start_btn.connect("pressed", Callable(self, "_on_start_pressed"))
+	_save_btn.connect("pressed", Callable(self, "_on_save_pressed"))
 	self.saved_difficulties = GameModeSelection.load_saved_difficulties()
 	set_difficulty(DifficultyResource.new())
 	
@@ -76,13 +76,13 @@ func _on_start_pressed() -> void:
 	if not _board_size_field.is_valid():
 		popup_error("Invalid board size")
 		return
-	SceneChanger.change_scene("GameScreen", true, {"difficulty": create_difficulty()})
+	SceneChanger.change_scene_to_file("GameScreen", true, {"difficulty": create_difficulty()})
 	
 func _on_save_pressed() -> void:
-	var dialog = $ResourcePreloader.get_resource("SaveDifficultyDialog").instance()
+	var dialog = $ResourcePreloader.get_resource("SaveDifficultyDialog").instantiate()
 	add_child(dialog)
 	dialog.name_field.text = last_saved
-	dialog.connect("confirmed", self, "_on_save_dialog_confirmed")
+	dialog.connect("confirmed", Callable(self, "_on_save_dialog_confirmed"))
 	dialog.existing_difficulties = saved_difficulties
 	dialog.popup()
 
@@ -96,7 +96,7 @@ func _on_SavedDifficulties_load_to_editor(difficulty) -> void:
 	set_difficulty(difficulty)
 
 func _on_SavedDifficulties_delete_difficulty(difficulty) -> void:
-	var dir = Directory.new()
+	var dir = DirAccess.new()
 	dir.remove(OS.get_user_data_dir().plus_file(difficulty.name + ".tres"))
 	self.saved_difficulties = GameModeSelection.load_saved_difficulties()
 

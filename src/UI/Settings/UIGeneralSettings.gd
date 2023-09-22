@@ -3,9 +3,9 @@
 # `Main.gd`.
 extends Control
 
-onready var _res_settings: = $"%UIResolutionSelector"
-onready var _fullscreen_checkbox: = $"%UIFullscreenCheckbox"
-onready var _vsync_checkbox: = $"%UIVsyncCheckbox"
+@onready var _res_settings: = $"%UIResolutionSelector"
+@onready var _fullscreen_checkbox: = $"%UIFullscreenCheckbox"
+@onready var _vsync_checkbox: = $"%UIVsyncCheckbox"
 
 var settings := {
 	resolution = Vector2(640, 480), 
@@ -23,9 +23,9 @@ func save(savedata: SaveGame) -> void:
 	savedata.configs["vsync"] = _vsync_checkbox.checkbox.pressed
 
 func load(_savedata: SaveGame = null) -> void:
-	_vsync_checkbox.checkbox.set_pressed(OS.vsync_enabled)
-	_fullscreen_checkbox.checkbox.set_pressed(OS.window_fullscreen)
-	_res_settings.set_selected_res(OS.window_size)
+	_vsync_checkbox.checkbox.set_pressed((DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED))
+	_fullscreen_checkbox.checkbox.set_pressed(((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN)))
+	_res_settings.set_selected_res(get_window().size)
 	
 func _on_UIResolutionSelector_resolution_changed(new_resolution: Vector2) -> void:
 	GameSaver.current_save.configs["resolution"] = new_resolution

@@ -1,11 +1,11 @@
 [gd_resource type="Theme" load_steps=30 format=2]
 
-[ext_resource path="res://assets/Fonts/RegularFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Fonts/RegularFont.tres" type="FontFile" id=1]
 [ext_resource path="res://assets/Themes/Blue/Resources/ButtonNormal.tres" type="StyleBox" id=2]
 [ext_resource path="res://assets/Themes/Blue/Resources/Textbox.tres" type="StyleBox" id=3]
-[ext_resource path="res://assets/Themes/Blue/HyperCasualUI/greyRectNormal.png" type="Texture" id=4]
-[ext_resource path="res://assets/Themes/Blue/HyperCasualUI/blueRectInactive.png" type="Texture" id=5]
-[ext_resource path="res://assets/Themes/Blue/HyperCasualUI/blueBtnTapped.png" type="Texture" id=6]
+[ext_resource path="res://assets/Themes/Blue/HyperCasualUI/greyRectNormal.png" type="Texture2D" id=4]
+[ext_resource path="res://assets/Themes/Blue/HyperCasualUI/blueRectInactive.png" type="Texture2D" id=5]
+[ext_resource path="res://assets/Themes/Blue/HyperCasualUI/blueBtnTapped.png" type="Texture2D" id=6]
 [ext_resource path="res://assets/Themes/Blue/Resources/Highlight.stylebox" type="StyleBox" id=7]
 [ext_resource path="res://assets/Themes/Blue/Resources/PanelLight.tres" type="StyleBox" id=8]
 [ext_resource path="res://assets/Themes/Blue/Resources/PanelDark.tres" type="StyleBox" id=9]
@@ -223,7 +223,7 @@ LineEdit/styles/normal = ExtResource( 3 )
 LineEdit/styles/read_only = SubResource( 24 )
 Panel/styles/panel = ExtResource( 8 )
 PanelContainer/styles/panel = ExtResource( 9 )
-PopupDialog/styles/panel = ExtResource( 9 )
+Popup/styles/panel = ExtResource( 9 )
 PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_hover = Color( 1, 1, 1, 1 )
 PopupMenu/styles/panel = ExtResource( 10 )
@@ -245,7 +245,7 @@ VScrollBar/styles/scroll_focus = SubResource( 15 )
 VSlider/styles/grabber_area = SubResource( 11 )
 VSlider/styles/grabber_area_highlight = SubResource( 11 )
 VSlider/styles/slider = SubResource( 10 )
-WindowDialog/styles/panel = SubResource( 26 )
+Window/styles/panel = SubResource( 26 )
 script = ExtResource( 11 )
 primary_color = Color( 0.109804, 0.607843, 0.905882, 1 )
 secondary_color = Color( 0.109804, 0.882353, 1, 1 )

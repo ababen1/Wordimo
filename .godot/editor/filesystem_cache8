@@ -1,0 +1,348 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1695390436
+default_bus_layout.tres::AudioBusLayout::-1::1695390325::0::1::::<><>::
+default_env.tres::Environment::6572113237678375830::1695390430::0::1::::<><>::
+export_presets.cfg::TextFile::-1::1665859375::0::1::::<><>::
+Icon.png::CompressedTexture2D::1847929391287832735::1653920169::1695390357::1::::<><>::
+PrivacyPolicy.txt::TextFile::-1::1695390269::0::1::::<><>::
+README.md::TextFile::-1::1695390269::0::1::::<><>::
+::res://android/::1695390230
+::res://android/plugins/::1665859300
+::res://assets/::1695390387
+ShineEffect.tres::ShaderMaterial::1976541035714367154::1695390387::0::1::::<><>::
+::res://assets/Backgrounds/::1695390361
+abstractbackground (1).png::CompressedTexture2D::3314779789722207162::1665856775::1695390359::1::::<><>::
+abstractbackground (2).png::CompressedTexture2D::478958526198553201::1665856775::1695390359::1::::<><>::
+abstractbackground (3).png::CompressedTexture2D::8189574583902946065::1665856775::1695390359::1::::<><>::
+abstractbackground (4).png::CompressedTexture2D::5039354579390380933::1665856775::1695390359::1::::<><>::
+abstractbackground (5).png::CompressedTexture2D::2919808738486124267::1665856775::1695390359::1::::<><>::
+abstractbackground (6).png::CompressedTexture2D::8650871729518325380::1665856775::1695390359::1::::<><>::
+abstractbackground (7).png::CompressedTexture2D::5057609168855931787::1665856775::1695390359::1::::<><>::
+abstractbackground (8).png::CompressedTexture2D::7857732308857391644::1665856775::1695390359::1::::<><>::
+abstractbackground (9).png::CompressedTexture2D::752924582087265090::1665856775::1695390359::1::::<><>::
+abstractbackground (10).png::CompressedTexture2D::6307388433003760657::1665856775::1695390359::1::::<><>::
+abstractbackground (11).png::CompressedTexture2D::5479453416863579936::1665856775::1695390360::1::::<><>::
+abstractbackground (12).png::CompressedTexture2D::8037035895304104035::1665856775::1695390359::1::::<><>::
+abstractbackground (13).png::CompressedTexture2D::4718452124182347072::1665856775::1695390357::1::::<><>::
+abstractbackground (14).png::CompressedTexture2D::4965880401718343085::1665856775::1695390357::1::::<><>::
+abstractbackground (15).png::CompressedTexture2D::2595202662382709137::1665856775::1695390358::1::::<><>::
+abstractbackground (16).png::CompressedTexture2D::3214639200065968015::1665856775::1695390357::1::::<><>::
+abstractbackground (17).png::CompressedTexture2D::4011373108013631087::1665856775::1695390358::1::::<><>::
+abstractbackground (18).png::CompressedTexture2D::2073486891628425198::1665856775::1695390358::1::::<><>::
+abstractbackground (19).png::CompressedTexture2D::5153272315301426845::1665856775::1695390358::1::::<><>::
+abstractbackground (21).png::CompressedTexture2D::4637183726018560400::1665856775::1695390358::1::::<><>::
+abstractbackground (22).png::CompressedTexture2D::8309426514414679946::1665856775::1695390358::1::::<><>::
+abstractbackground (23).png::CompressedTexture2D::4554063574814540458::1665856775::1695390358::1::::<><>::
+abstractbackground (24).png::CompressedTexture2D::3777080097913706521::1665856775::1695390358::1::::<><>::
+abstractbackground (25).png::CompressedTexture2D::5205738985250132346::1665856775::1695390358::1::::<><>::
+abstractbackground (26).png::CompressedTexture2D::1073152681718370253::1665856775::1695390358::1::::<><>::
+abstractbackground (27).png::CompressedTexture2D::3342632545751678391::1665856775::1695390358::1::::<><>::
+abstractbackground (28).png::CompressedTexture2D::6029850999626182507::1665856775::1695390358::1::::<><>::
+abstractbackground (29).png::CompressedTexture2D::752975575730432723::1665856775::1695390358::1::::<><>::
+abstractbackground (30).png::CompressedTexture2D::6236894953372856848::1665856775::1695390358::1::::<><>::
+abstractbackground (31).png::CompressedTexture2D::8780159615769084857::1665856775::1695390358::1::::<><>::
+abstractbackground (32).png::CompressedTexture2D::6732648803831976632::1665856775::1695390358::1::::<><>::
+abstractbackground (33).png::CompressedTexture2D::1397662324638767628::1665856775::1695390358::1::::<><>::
+abstractbackground (34).png::CompressedTexture2D::387911891185226967::1665856775::1695390358::1::::<><>::
+abstractbackground (35).png::CompressedTexture2D::4984082481340178029::1665856775::1695390360::1::::<><>::
+abstractbackground (36).png::CompressedTexture2D::5710709474050466183::1665856775::1695390360::1::::<><>::
+abstractbackground (37).png::CompressedTexture2D::1880044290819765524::1665856775::1695390360::1::::<><>::
+abstractbackground (38).png::CompressedTexture2D::3748766760798016703::1665856775::1695390360::1::::<><>::
+abstractbackground (39).png::CompressedTexture2D::8212156624452837345::1665856775::1695390360::1::::<><>::
+abstractbackground (40).png::CompressedTexture2D::2731816281160620366::1665856775::1695390360::1::::<><>::
+abstractbackground (41).png::CompressedTexture2D::5558370834008456579::1665856775::1695390360::1::::<><>::
+abstractbackground (42).png::CompressedTexture2D::7712692466700402374::1665856775::1695390360::1::::<><>::
+abstractbackground (43).png::CompressedTexture2D::4737312254276073143::1665856775::1695390361::1::::<><>::
+abstractbackground (44).png::CompressedTexture2D::7659523313152217627::1665856775::1695390361::1::::<><>::
+abstractbackground (45).png::CompressedTexture2D::37256386602081834::1665856775::1695390361::1::::<><>::
+abstractbackground (46).png::CompressedTexture2D::4973015149760526780::1665856775::1695390361::1::::<><>::
+abstractbackground (47).png::CompressedTexture2D::8509406469111337367::1665856775::1695390361::1::::<><>::
+abstractbackground (48).png::CompressedTexture2D::3701676627266122567::1665856775::1695390361::1::::<><>::
+abstractbackground (49).png::CompressedTexture2D::4740758791588656411::1665856775::1695390361::1::::<><>::
+abstractbackground (50).png::CompressedTexture2D::3509550724738199161::1665856775::1695390361::1::::<><>::
+abstractbackground (51).png::CompressedTexture2D::333042895322135176::1665856775::1695390361::1::::<><>::
+abstractbackground (52).png::CompressedTexture2D::284247061500808975::1665856775::1695390361::1::::<><>::
+abstractbackground (53).png::CompressedTexture2D::786049801562533923::1665856775::1695390361::1::::<><>::
+abstractbackground (54).png::CompressedTexture2D::35194023199007854::1665856775::1695390360::1::::<><>::
+abstractbackground (55).png::CompressedTexture2D::6271763430094628728::1665856775::1695390360::1::::<><>::
+abstractbackground (56).png::CompressedTexture2D::1300602251551388027::1665856775::1695390360::1::::<><>::
+abstractbackground (57).png::CompressedTexture2D::8594065378799551673::1665856775::1695390360::1::::<><>::
+Default.png::CompressedTexture2D::8986523665750323539::1665856775::1695390360::1::::<><>::
+::res://assets/Fonts/::1695390356
+BigFont.tres::FontFile::-1::1695390330::0::1::::<><>::res://assets/Fonts/MontserratBold-DOWZd.ttf
+kenvector_future.ttf::FontFile::7951758091841467172::1665856775::1695390356::1::::<><>::
+LetterFont.tres::FontFile::-1::1695390330::0::1::::<><>::res://assets/Fonts/MontserratBold-DOWZd.ttf
+MontserratBold-DOWZd.ttf::FontFile::5524237604731637419::1665856775::1695390356::1::::<><>::
+RegularFont.tres::FontFile::-1::1695390330::0::1::::<><>::res://assets/Fonts/MontserratBold-DOWZd.ttf
+::res://assets/Icons/::1695390360
+Add.svg::CompressedTexture2D::6329627089249896124::1665856775::1695390359::1::::<><>::
+ArrowDown.svg::CompressedTexture2D::6352552714849982530::1665856775::1695390359::1::::<><>::
+ArrowLeft.svg::CompressedTexture2D::7230898446843469052::1665856775::1695390359::1::::<><>::
+Edit.svg::CompressedTexture2D::872235846667352531::1665856775::1695390359::1::::<><>::
+Favorites.svg::CompressedTexture2D::2624023848487654542::1665856775::1695390359::1::::<><>::
+GuiClose.svg::CompressedTexture2D::1728143764449765245::1665856775::1695390359::1::::<><>::
+Load.svg::CompressedTexture2D::7452293589086710795::1665856775::1695390359::1::::<><>::
+Lock.svg::CompressedTexture2D::2313616088464264912::1665856775::1695390359::1::::<><>::
+Pause.svg::CompressedTexture2D::3632620833287998067::1665856775::1695390359::1::::<><>::
+Play.svg::CompressedTexture2D::1536774426357309752::1665856775::1695390359::1::::<><>::
+Reload.svg::CompressedTexture2D::6243368982638053167::1665856775::1695390359::1::::<><>::
+Remove.svg::CompressedTexture2D::3691291743460335692::1665856775::1695390359::1::::<><>::
+Save.svg::CompressedTexture2D::8426726251129442490::1665856775::1695390359::1::::<><>::
+::res://assets/SFX/::1695390361
+AddBlock.wav::AudioStreamWAV::7141759608682619822::1665856775::1695390361::1::::<><>::
+Click.wav::AudioStreamWAV::700139787075309764::1665856775::1695390361::1::::<><>::
+Hover.wav::AudioStreamWAV::4025570134908550844::1665856775::1695390361::1::::<><>::
+Pop.wav::AudioStreamWAV::9157984913508478698::1665856775::1695390361::1::::<><>::
+Rotate.wav::AudioStreamWAV::906307872698672816::1665856775::1695390361::1::::<><>::
+::res://assets/Tetriminos/::1665856775
+::res://assets/Tetriminos/Shape Blocks/::1695390359
+I.png::CompressedTexture2D::7867876526388214382::1665856775::1695390359::1::::<><>::
+J.png::CompressedTexture2D::4269852321981449693::1665856775::1695390356::1::::<><>::
+L.png::CompressedTexture2D::5728704164940317172::1665856775::1695390356::1::::<><>::
+O.png::CompressedTexture2D::7218545612792110620::1665856775::1695390356::1::::<><>::
+S.png::CompressedTexture2D::8782321119291975588::1665856775::1695390356::1::::<><>::
+T.png::CompressedTexture2D::8792371027597079197::1665856775::1695390356::1::::<><>::
+Z.png::CompressedTexture2D::136402380530097319::1665856775::1695390356::1::::<><>::
+::res://assets/Tetriminos/Single Blocks/::1665856775
+::res://assets/Tetriminos/Single Blocks/Default/::1695390357
+Blue.png::CompressedTexture2D::7451875474365823479::1665856775::1695390356::1::::<><>::
+Cyan.png::CompressedTexture2D::2958070218375014153::1665856775::1695390356::1::::<><>::
+Green.png::CompressedTexture2D::7900735269965778455::1665856775::1695390356::1::::<><>::
+Orange.png::CompressedTexture2D::7039249727862156779::1665856775::1695390356::1::::<><>::
+Purple.png::CompressedTexture2D::8341117673694309611::1665856775::1695390357::1::::<><>::
+Red.png::CompressedTexture2D::2812138610950780654::1665856775::1695390357::1::::<><>::
+Yellow.png::CompressedTexture2D::5947158770768079503::1665856775::1695390357::1::::<><>::
+::res://assets/Tetriminos/Single Blocks/Style1/::1695390357
+Blue.png::CompressedTexture2D::3946712890642584282::1665856775::1695390357::1::::<><>::
+Cyan.png::CompressedTexture2D::7657335025735625781::1665856775::1695390357::1::::<><>::
+Green.png::CompressedTexture2D::7731877242121324788::1665856775::1695390357::1::::<><>::
+Orange.png::CompressedTexture2D::2630677831893578888::1665856775::1695390357::1::::<><>::
+Purple.png::CompressedTexture2D::1404864426066162508::1665856775::1695390357::1::::<><>::
+Red.png::CompressedTexture2D::401629727243057058::1665856775::1695390357::1::::<><>::
+Yellow.png::CompressedTexture2D::7638408540356466114::1665856775::1695390357::1::::<><>::
+::res://assets/Themes/::1695390430
+Ace.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
+Alien.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
+Arc.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
+Blue.tres::Theme::-1::1695390327::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://assets/Themes/Blue/Resources/ButtonNormal.tres<>res://assets/Themes/Blue/Resources/Textbox.tres<>res://assets/Themes/Blue/HyperCasualUI/greyRectNormal.png<>res://assets/Themes/Blue/HyperCasualUI/blueRectInactive.png<>res://assets/Themes/Blue/HyperCasualUI/blueBtnTapped.png<>res://assets/Themes/Blue/Resources/Highlight.stylebox<>res://assets/Themes/Blue/Resources/PanelLight.tres<>res://assets/Themes/Blue/Resources/PanelDark.tres<>res://assets/Themes/Blue/Resources/PanelCyan.tres<>res://src/Global/WordimoTheme.gd
+Default.tres::Theme/WordimoTheme::452580466142278019::1695390430::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
+Godot2.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
+Grey.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
+Light.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
+SolarizedDark.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
+Trans.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
+::res://assets/Themes/Blue/::1665856775
+::res://assets/Themes/Blue/HyperCasualUI/::1695390357
+backBtn.png::CompressedTexture2D::8112217546465939875::1665856775::1695390357::1::::<><>::
+BG.png::CompressedTexture2D::2732863665941049093::1665856775::1695390356::1::::<><>::
+blueBtnNormal.png::CompressedTexture2D::7554435537118059991::1665856775::1695390356::1::::<><>::
+blueBtnTapped.png::CompressedTexture2D::4248209453923834601::1665856775::1695390356::1::::<><>::
+blueRectInactive.png::CompressedTexture2D::1378250620956204068::1665856775::1695390356::1::::<><>::
+blueRectNormal.png::CompressedTexture2D::8242633587974695989::1665856775::1695390356::1::::<><>::
+closeBtn.png::CompressedTexture2D::2949526087763192023::1665856775::1695390356::1::::<><>::
+coinIcon.png::CompressedTexture2D::7351743424846934631::1665856775::1695390356::1::::<><>::
+cornerSquare2.png::CompressedTexture2D::1534178496313476443::1665856775::1695390356::1::::<><>::
+cornerSquare.png::CompressedTexture2D::4385474756352415786::1665856775::1695390356::1::::<><>::
+giftIcon.png::CompressedTexture2D::7584943112666716294::1665856775::1695390356::1::::<><>::
+greenBtnInactive.png::CompressedTexture2D::5490152701711206051::1665856775::1695390356::1::::<><>::
+greenBtnNormal.png::CompressedTexture2D::3547482729320195437::1665856775::1695390356::1::::<><>::
+greenBtnTapped.png::CompressedTexture2D::7753435522635521831::1665856775::1695390356::1::::<><>::
+greenRectNormal.png::CompressedTexture2D::2660565516634516913::1665856775::1695390356::1::::<><>::
+greenRectTapped.png::CompressedTexture2D::3185089350321863302::1665856775::1695390356::1::::<><>::
+greyRectNormal.png::CompressedTexture2D::7973174238595727929::1665856775::1695390356::1::::<><>::
+greyRectTapped.png::CompressedTexture2D::4115625350807840586::1665856775::1695390356::1::::<><>::
+heartIcon.png::CompressedTexture2D::518753645206585366::1665856775::1695390356::1::::<><>::
+hintIcon.png::CompressedTexture2D::7472828197161152434::1665856775::1695390356::1::::<><>::
+homeBtn.png::CompressedTexture2D::6752715279391002513::1665856775::1695390356::1::::<><>::
+likeBtn.png::CompressedTexture2D::5380072685230470944::1665856775::1695390356::1::::<><>::
+lockIcon.png::CompressedTexture2D::186601560137471906::1665856775::1695390357::1::::<><>::
+musicBtn.png::CompressedTexture2D::3543347317566446471::1665856775::1695390357::1::::<><>::
+nextBtn.png::CompressedTexture2D::9137213514820447253::1665856775::1695390357::1::::<><>::
+noAdsBtn.png::CompressedTexture2D::1394387576319731300::1665856775::1695390357::1::::<><>::
+pauseBtn.png::CompressedTexture2D::1677011840166373791::1665856775::1695390357::1::::<><>::
+pinkBtnInactive.png::CompressedTexture2D::425729963912882741::1665856775::1695390357::1::::<><>::
+pinkBtnNormal.png::CompressedTexture2D::3858851566060743597::1665856775::1695390357::1::::<><>::
+pinkBtnTapped.png::CompressedTexture2D::6919118134561364677::1665856775::1695390357::1::::<><>::
+pinkRectNormal.png::CompressedTexture2D::524223247520446112::1665856775::1695390357::1::::<><>::
+pinkRectTapped.png::CompressedTexture2D::590154659465326847::1665856775::1695390357::1::::<><>::
+playBtn.png::CompressedTexture2D::377545689813143326::1665856775::1695390357::1::::<><>::
+playBtnRect.png::CompressedTexture2D::5189281352024001654::1665856775::1695390357::1::::<><>::
+plusIcon.png::CompressedTexture2D::3142641206816411214::1665856775::1695390357::1::::<><>::
+previousBtn.png::CompressedTexture2D::894047646978047149::1665856775::1695390357::1::::<><>::
+privacyIcon.png::CompressedTexture2D::4283564663094253603::1665856775::1695390357::1::::<><>::
+purpleBtnInactive.png::CompressedTexture2D::4630443594653111787::1665856775::1695390357::1::::<><>::
+purpleBtnNormal.png::CompressedTexture2D::2978081279267493001::1665856775::1695390357::1::::<><>::
+purpleBtnTapped.png::CompressedTexture2D::5184784871693099768::1665856775::1695390357::1::::<><>::
+purpleRectNormal.png::CompressedTexture2D::8433089811006381066::1665856775::1695390357::1::::<><>::
+purpleRectTapped.png::CompressedTexture2D::4725880664075476201::1665856775::1695390357::1::::<><>::
+rect2.png::CompressedTexture2D::165301738094034208::1665856775::1695390357::1::::<><>::
+restoreBtn.png::CompressedTexture2D::1459485990579847766::1665856775::1695390357::1::::<><>::
+rewardAdsBtn.png::CompressedTexture2D::1723026540086482087::1665856775::1695390357::1::::<><>::
+Settings Menu.png::CompressedTexture2D::636841944275482171::1665856775::1695390357::1::::<><>::
+settingsBtn.png::CompressedTexture2D::6066897426765827688::1665856775::1695390357::1::::<><>::
+shareIcon.png::CompressedTexture2D::1172104004397340829::1665856775::1695390357::1::::<><>::
+slider1.png::CompressedTexture2D::2077596085054853055::1665856775::1695390357::1::::<><>::
+slider2.png::CompressedTexture2D::3655033152314289418::1665856775::1695390357::1::::<><>::
+slider3.png::CompressedTexture2D::7617539118238512289::1665856775::1695390357::1::::<><>::
+soundOffBtn.png::CompressedTexture2D::3802351739347491166::1665856775::1695390357::1::::<><>::
+soundOnBtn.png::CompressedTexture2D::4926676247764462816::1665856775::1695390357::1::::<><>::
+starIcon.png::CompressedTexture2D::5140530528493922347::1665856775::1695390357::1::::<><>::
+tickIcon.png::CompressedTexture2D::6655089248346554175::1665856775::1695390357::1::::<><>::
+toggleOff.png::CompressedTexture2D::268380682782362022::1665856775::1695390357::1::::<><>::
+toggleOn.png::CompressedTexture2D::8213906575933011205::1665856775::1695390357::1::::<><>::
+trophyIcon.png::CompressedTexture2D::4323259953500213566::1665856775::1695390357::1::::<><>::
+unlikeBtn.png::CompressedTexture2D::3887705879155173309::1665856775::1695390357::1::::<><>::
+whiteBG.png::CompressedTexture2D::6054975239213646483::1665856775::1695390357::1::::<><>::
+yellowBtnInactive.png::CompressedTexture2D::319430042939541980::1665856775::1695390357::1::::<><>::
+yellowBtnNormal.png::CompressedTexture2D::8595738247920529053::1665856775::1695390357::1::::<><>::
+yellowBtnTapped.png::CompressedTexture2D::2389588289088931267::1665856775::1695390357::1::::<><>::
+yellowRectNormal.png::CompressedTexture2D::2054149975246678973::1665856775::1695390357::1::::<><>::
+yellowRectTapped.png::CompressedTexture2D::1178206330006448875::1665856775::1695390357::1::::<><>::
+::res://assets/Themes/Blue/Resources/::1665856775
+ButtonNormal.tres::StyleBoxTexture::-1::1695390329::0::1::::<><>::res://assets/Themes/Blue/HyperCasualUI/blueBtnNormal.png
+Highlight.stylebox::StyleBoxFlat::-1::1665856775::0::1::::<><>::
+PanelCyan.tres::StyleBoxFlat::-1::1695390329::0::1::::<><>::
+PanelDark.tres::StyleBoxFlat::-1::1695390329::0::1::::<><>::
+PanelLight.tres::StyleBoxFlat::-1::1695390329::0::1::::<><>::
+Textbox.tres::StyleBoxTexture::-1::1695390329::0::1::::<><>::res://assets/Themes/Blue/HyperCasualUI/blueRectNormal.png
+::res://debug/::1657551222
+::res://debug/save/::1665763270
+_3161026589.tres::Resource::-1::1695390326::0::1::::<><>::res://assets/Backgrounds/abstractbackground (56).png<>res://src/Saver/SaveGame.gd<>res://assets/Themes/Trans.tres
+::res://src/::1657551222
+::res://src/Blocks/::1666028872
+Block.gd::GDScript::-1::1695390326::0::1::::Block<>Node2D<>::
+Block.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/Blocks/Block.gd
+BlocksFactory.gd::GDScript::-1::1695390326::0::1::::BlocksFactory<>Node<>::
+I.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Tetriminos/Shape3D Blocks/I.png<>res://src/Blocks/Block.tscn
+J.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Tetriminos/Shape3D Blocks/J.png<>res://src/Blocks/Block.tscn
+L.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Tetriminos/Shape3D Blocks/L.png<>res://src/Blocks/Block.tscn
+Letter.gd::GDScript::-1::1695390326::0::1::::Letter<>PanelContainer<>::
+Letter.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Fonts/LetterFont.tres<>res://src/Blocks/Letter.gd<>res://assets/Icons/Favorites.svg<>res://assets/Tetriminos/Single Blocks/Default/Cyan.png<>res://assets/Tetriminos/Single Blocks/Default/Green.png<>res://assets/Tetriminos/Single Blocks/Default/Blue.png<>res://assets/Tetriminos/Single Blocks/Default/Yellow.png<>res://assets/Tetriminos/Single Blocks/Default/Orange.png<>res://assets/Tetriminos/Single Blocks/Default/Purple.png<>res://assets/Tetriminos/Single Blocks/Default/Red.png<>res://assets/ShineEffect.tres<>res://assets/Tetriminos/Single Blocks/Style1/Orange.png<>res://assets/Tetriminos/Single Blocks/Style1/Cyan.png<>res://assets/Tetriminos/Single Blocks/Style1/Blue.png<>res://assets/Tetriminos/Single Blocks/Style1/Purple.png<>res://assets/Tetriminos/Single Blocks/Style1/Red.png<>res://assets/Tetriminos/Single Blocks/Style1/Yellow.png<>res://assets/Tetriminos/Single Blocks/Style1/Green.png
+O.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/Blocks/Block.tscn<>res://assets/Tetriminos/Shape3D Blocks/O.png
+S.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Tetriminos/Shape3D Blocks/S.png<>res://src/Blocks/Block.tscn
+T.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Tetriminos/Shape3D Blocks/T.png<>res://src/Blocks/Block.tscn
+Z.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Tetriminos/Shape3D Blocks/Z.png<>res://src/Blocks/Block.tscn
+::res://src/GameBoard/::1665856775
+Board.gd::GDScript::-1::1695390326::0::1::::WordimoGame<>Node2D<>::
+Game.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/GameBoard/GameGrid.tscn<>res://src/UI/Game/HUD/HUD.tscn<>res://src/UI/Queue/Queue.tscn<>res://src/GameBoard/Board.gd<>res://src/UI/Game/WordLabel.tscn
+GameGrid.gd::GDScript::-1::1695390326::0::1::::<>TileMap<>::
+GameGrid.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/GameBoard/GridLayer.gd<>res://src/GameBoard/HighlightLayer.gd<>res://src/GameBoard/GameGrid.gd
+GameResults.gd::GDScript::-1::1695390326::0::1::::GameResults<>Resource<>::
+GridLayer.gd::GDScript::-1::1695390326::0::1::::GridLayer<>Node2D<>::
+HighlightLayer.gd::GDScript::-1::1695390326::0::1::::<>Node2D<>::
+::res://src/GameBoard/BoardStyles/::1665763270
+BoardStyle.gd::GDScript::-1::1695390326::0::1::::BoardStyle<>Resource<>::
+BoardStyleTexture.gd::GDScript::-1::1695390326::0::1::::BoardStyleTexture<>BoardStyle<>::
+::res://src/GameBoard/Difficulties/::1665763270
+Difficulty.gd::GDScript::-1::1695390326::0::1::::DifficultyResource<>Resource<>::
+::res://src/GameBoard/Difficulties/Resources/::1666028872
+Chill.tres::Resource::-1::1695390326::0::1::::<><>::res://src/GameBoard/Difficulties/Difficulty.gd
+Hard.tres::Resource::-1::1695390326::0::1::::<><>::res://src/GameBoard/Difficulties/Difficulty.gd
+Normal.tres::Resource::-1::1695390326::0::1::::<><>::res://src/GameBoard/Difficulties/Difficulty.gd
+Timed.tres::Resource::-1::1695390326::0::1::::<><>::res://src/GameBoard/Difficulties/Difficulty.gd
+::res://src/Global/::1665856775
+Consts.gd::GDScript::-1::1695390326::0::1::::CONSTS<>Node<>::
+EventBus.gd::GDScript::-1::1695390326::0::1::::<>Node<>::
+SceneChanger.gd::GDScript::-1::1695390326::0::1::::<>Node<>::
+SceneChanger.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/Global/SceneChanger.gd<>res://src/GameBoard/Game.tscn<>res://src/UI/MainMenu/MainMenu.tscn
+ScoreCalculator.gd::GDScript::-1::1695390326::0::1::::Score<>Node<>::
+SFX.gd::GDScript::-1::1695390326::0::1::::<>Node<>::
+ThemeManger.gd::GDScript::-1::1695390326::0::1::::<>Node<>::
+ThemeManger.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/Global/ThemeManger.gd<>res://assets/Themes/Default.tres<>res://assets/Backgrounds/Default.png
+UsefulFuncs.gd::GDScript::-1::1695390326::0::1::::Funcs<>RefCounted<>::
+WordimoTheme.gd::GDScript::-1::1695390326::0::1::::WordimoTheme<>Theme<>::
+Words.txt::TextFile::-1::1665763270::0::1::::<><>::
+::res://src/Global/WordsManger/::1665763270
+API.gd::GDScript::-1::1695390326::0::1::::DictonaryAPI<>HTTPRequest<>::
+WordsManger.gd::GDScript::-1::1695390326::0::1::::<>Node<>::
+WordsManger.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/Global/WordsManger/API.gd<>res://src/Global/WordsManger/WordsManger.gd
+::res://src/Saver/::1659712654
+GameSaver.gd::GDScript::-1::1695390326::0::1::::<>Node<>::
+GameSaver.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/Saver/GameSaver.gd
+SaveGame.gd::GDScript::-1::1695390326::0::1::::SaveGame<>Resource<>::
+::res://src/UI/::1665763270
+BackgroundLayer.gd::GDScript::-1::1695390325::0::1::::<>CanvasLayer<>::
+BackgroundLayer.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://assets/Backgrounds/abstractbackground (42).png<>res://src/UI/BackgroundLayer.gd
+Debug.gd::GDScript::-1::1695390325::0::1::::<>Control<>::
+Debug.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Debug.gd<>res://src/GameBoard/Game.tscn
+::res://src/UI/Components/::1665763270
+BoardExample.gd::GDScript::-1::1695390326::0::1::::GridExample<>GridContainer<>::
+GameModeBtn.gd::GDScript::-1::1695390326::0::1::::DifficultyBtn<>PanelButton<>::
+GameModeButton.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/UI/Components/PanelButton.tscn<>res://src/UI/Components/GameModeBtn.gd<>res://assets/Icons/Favorites.svg<>res://assets/Fonts/MontserratBold-DOWZd.ttf
+OptionalField.gd::GDScript::-1::1695390326::0::1::::OptionalField<>GridContainer<>::
+PanelButton.gd::GDScript::-1::1695390326::0::1::::PanelButton<>Button<>::
+PanelButton.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://src/UI/Components/PanelButton.gd<>res://assets/Themes/Default.tres
+SettingsBtn.gd::GDScript::-1::1695390326::0::1::::SettingsBtn<>Button<>::
+StatsGrid.gd::GDScript::-1::1695390326::0::1::::StatsGrid<>GridContainer<>::
+::res://src/UI/CustomDifficulty/::1665763270
+BoardSize.gd::GDScript::-1::1695390326::0::1::::<>GridContainer<>::
+CustomDifficultyConfig.gd::GDScript::-1::1695390326::0::1::::<>Window<>::
+CustomDifficultyConfig.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/UI/CustomDifficulty/CustomDifficultyConfig.gd<>res://src/UI/CustomDifficulty/TimeLimit.gd<>res://src/UI/CustomDifficulty/QueueSize.gd<>res://src/UI/CustomDifficulty/StartingLevel.gd<>res://assets/Icons/Reload.svg<>res://src/UI/CustomDifficulty/BoardSize.gd<>res://src/UI/Components/BoardExample.gd<>res://src/UI/CustomDifficulty/SaveDifficultyDialog.tscn<>res://src/UI/CustomDifficulty/SavedDifficulties.gd<>res://src/UI/CustomDifficulty/SavedDifficulty.tscn<>res://assets/Icons/Load.svg<>res://src/UI/CustomDifficulty/MinWordLength.gd
+MinWordLength.gd::GDScript::-1::1695390326::0::1::::<>GridContainer<>::
+QueueSize.gd::GDScript::-1::1695390326::0::1::::<>OptionalField<>::
+SavedDifficulties.gd::GDScript::-1::1695390326::0::1::::<>VBoxContainer<>::
+SavedDifficulty.gd::GDScript::-1::1695390326::0::1::::UISavedDifficulty<>HBoxContainer<>::
+SavedDifficulty.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Icons/Play.svg<>res://assets/Icons/Remove.svg<>res://assets/Icons/ArrowDown.svg<>res://assets/Icons/Favorites.svg<>res://src/UI/CustomDifficulty/SavedDifficulty.gd
+SaveDifficultyDialog.gd::GDScript::-1::1695390326::0::1::::<>Window<>::
+SaveDifficultyDialog.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/UI/CustomDifficulty/SaveDifficultyDialog.gd
+StartingLevel.gd::GDScript::-1::1695390326::0::1::::<>GridContainer<>::
+TimeLimit.gd::GDScript::-1::1695390326::0::1::::<>OptionalField<>::
+::res://src/UI/Game/::1665763270
+WordLabel.gd::GDScript::-1::1695390325::0::1::::WordLabel<>Label<>::
+WordLabel.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://assets/SFX/Pop.wav<>res://src/UI/Game/WordLabel.gd
+::res://src/UI/Game/GameOver/::1665763270
+DefinitionPopup.gd::GDScript::-1::1695390325::0::1::::<>AcceptDialog<>::
+GameOverDialog.gd::GDScript::-1::1695390326::0::1::::<>PopupPanel<>::
+GameOverDialog.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/UI/Game/GameOver/WordsWritten.tscn<>res://src/UI/Components/StatsGrid.gd<>res://src/UI/Game/GameOver/GameOverDialog.gd
+WordLink.gd::GDScript::-1::1695390326::0::1::::WordLink<>LinkButton<>::
+WordLink.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://src/UI/Game/GameOver/WordLink.gd<>res://src/UI/Game/GameOver/DefinitionPopup.gd
+WordsWritten.gd::GDScript::-1::1695390326::0::1::::<>Control<>::
+WordsWritten.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://src/UI/Game/GameOver/WordsWritten.gd
+::res://src/UI/Game/HUD/::1665856775
+HUD.gd::GDScript::-1::1695390325::0::1::::<>CanvasLayer<>::
+HUD.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://src/UI/BackgroundLayer.tscn<>res://src/UI/Game/GameOver/GameOverDialog.tscn<>res://src/UI/Game/HUD/PauseScreen.tscn<>res://assets/Icons/Reload.svg<>res://assets/Icons/Pause.svg<>res://src/UI/Game/HUD/Score.gd<>res://src/UI/Game/HUD/HUD.gd<>res://src/UI/Game/HUD/Level.gd
+Level.gd::GDScript::-1::1695390325::0::1::::<>Label<>::
+PauseScreen.gd::GDScript::-1::1695390325::0::1::::<>PopupPanel<>::
+PauseScreen.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Game/HUD/PauseScreen.gd<>res://assets/Fonts/LetterFont.tres<>res://src/UI/Settings/Components/SettingsBtn.tscn
+Score.gd::GDScript::-1::1695390325::0::1::::<>Label<>::
+::res://src/UI/MainMenu/::1695390430
+GameModeSelection.gd::GDScript::-1::1695390325::0::1::::GameModeSelection<>Control<>::
+GameModeSelection.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/MainMenu/GameModeSelection.gd<>res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://src/UI/Components/PanelButton.tscn<>res://src/UI/Components/GameModeBtn.gd<>res://src/GameBoard/Difficulties/Resources/Chill.tres<>res://src/GameBoard/Difficulties/Resources/Normal.tres<>res://src/GameBoard/Difficulties/Resources/Hard.tres<>res://src/GameBoard/Difficulties/Resources/Timed.tres<>res://src/UI/CustomDifficulty/CustomDifficultyConfig.tscn<>res://assets/Icons/GuiClose.svg<>res://src/UI/Components/GameModeButton.tscn
+MainMenu.gd::GDScript::-1::1695390325::0::1::::<>Control<>::
+MainMenu.tscn::PackedScene::4015977133997390414::1695390430::0::1::::<><>::res://src/UI/MainMenu/TutorialPopup.gd<>res://src/UI/MainMenu/MainMenu.gd<>res://src/UI/MainMenu/GameModeSelection.tscn<>res://src/UI/BackgroundLayer.tscn<>res://src/UI/Settings/Components/SettingsBtn.tscn
+TutorialPopup.gd::GDScript::-1::1695390325::0::1::::<>AcceptDialog<>::
+::res://src/UI/Notifications/::1658575935
+NotificationsLayer.gd::GDScript::-1::1695390325::0::1::::<>CanvasLayer<>::
+NotificationsLayer.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Notifications/NotificationsLayer.gd
+UINotification.gd::GDScript::-1::1695390325::0::1::::UINotification<>Label<>::
+UINotification.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Notifications/UINotification.gd<>res://assets/Fonts/MontserratBold-DOWZd.ttf
+::res://src/UI/Queue/::1665763270
+BlockImg.gd::GDScript::-1::1695390325::0::1::::BlockImg<>TextureRect<>::
+BlocksLimit.gd::GDScript::-1::1695390325::0::1::::<>RichTextLabel<>::
+BlocksTimer.gd::GDScript::-1::1695390325::0::1::::<>Control<>::
+BlocksTimer.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://src/UI/Queue/BlocksTimer.gd
+Queue.gd::GDScript::-1::1695390325::0::1::::<>VBoxContainer<>::
+Queue.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Queue/QueuePanel.gd<>res://src/UI/Queue/Queue.gd<>res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://src/UI/Queue/BlocksTimer.tscn<>res://src/UI/Queue/BlocksLimit.gd
+QueuePanel.gd::GDScript::-1::1695390325::0::1::::<>Panel<>::
+::res://src/UI/Settings/::1665763270
+BackgroundSelector.gd::GDScript::-1::1695390325::0::1::::UIBackgroundSelect<>AcceptDialog<>::
+BackgroundSelector.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/Components/BackgroundBtn.tscn<>res://src/UI/Settings/BackgroundSelector.gd
+GameplaySettings.gd::GDScript::-1::1695390325::0::1::::<>Control<>::
+GameplaySettings.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/Components/UISettingCheckbox.tscn<>res://src/UI/Settings/GameplaySettings.gd<>res://src/UI/Settings/ThemeSelector.tscn<>res://src/UI/Settings/BackgroundSelector.tscn
+SettingsDialog.gd::GDScript::-1::1695390325::0::1::::<>Popup<>::
+SettingsDialog.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/UIGeneralSettings.tscn<>res://src/UI/Settings/SettingsDialog.gd<>res://src/UI/Settings/GameplaySettings.tscn
+ThemeSelector.gd::GDScript::-1::1695390325::0::1::::<>HBoxContainer<>::
+ThemeSelector.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/ThemeSelector.gd<>res://assets/Icons/Lock.svg
+UIGeneralSettings.gd::GDScript::-1::1695390325::0::1::::<>Control<>::
+UIGeneralSettings.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/Components/UIResolutionSelector.tscn<>res://src/UI/Settings/UIGeneralSettings.gd<>res://src/UI/Settings/Components/UISettingCheckbox.tscn<>res://src/UI/Settings/Components/VolumeSlider.gd
+::res://src/UI/Settings/Components/::1665763270
+BackgroundBtn.gd::GDScript::-1::1695390325::0::1::::UIBackgroundBtn<>Button<>::
+BackgroundBtn.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://assets/Icons/Lock.svg<>res://src/UI/Settings/Components/BackgroundBtn.gd<>res://assets/Themes/Blue/HyperCasualUI/tickIcon.png
+SettingsBtn.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Components/SettingsBtn.gd<>res://src/UI/Settings/SettingsDialog.tscn
+UIResolutionSelector.gd::GDScript::-1::1695390325::0::1::::<>Control<>::
+UIResolutionSelector.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/Components/UIResolutionSelector.gd
+UISettingCheckbox.gd::GDScript::-1::1695390325::0::1::::UISettingCheckbox<>Control<>::
+UISettingCheckbox.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/Components/UISettingCheckbox.gd
+UISettingSpinbox.gd::GDScript::-1::1695390325::0::1::::<>HBoxContainer<>::
+UISettingSpinbox.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/Components/UISettingSpinbox.gd
+VolumeSlider.gd::GDScript::-1::1695390325::0::1::::VolumeSlider<>HSlider<>::

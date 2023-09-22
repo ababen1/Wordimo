@@ -1,10 +1,10 @@
-tool
+@tool
 extends GridContainer
 class_name GridExample
 
-export var grid_size: Vector2 setget set_grid_size
-export var cell_size: = Vector2(8,8) setget set_cell_size
-export var color: = Color.white setget set_color
+@export var grid_size: Vector2: set = set_grid_size
+@export var cell_size: = Vector2(8,8): set = set_cell_size
+@export var color: = Color.WHITE: set = set_color
 
 func set_grid_size(val: Vector2):
 	grid_size = Vector2(max(0, val.x) as int, max(0, val.y) as int)
@@ -25,7 +25,7 @@ func _update_grid() -> void:
 	for _i in grid_size.x * grid_size.y:
 		var rect: = ColorRect.new()
 		rect.color = color
-		rect.rect_min_size = cell_size
+		rect.custom_minimum_size = cell_size
 		add_child(rect)
 
 func _clear() -> void:

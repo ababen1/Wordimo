@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Hover.wav-7fee56925ba0a54c5a4da68a5d34bd45.sample"
+type="AudioStreamWAV"
+uid="uid://bxmas1c8eg621"
+path="res://.godot/imported/Hover.wav-7fee56925ba0a54c5a4da68a5d34bd45.sample"
 
 [deps]
 
 source_file="res://assets/SFX/Hover.wav"
-dest_files=[ "res://.import/Hover.wav-7fee56925ba0a54c5a4da68a5d34bd45.sample" ]
+dest_files=["res://.godot/imported/Hover.wav-7fee56925ba0a54c5a4da68a5d34bd45.sample"]
 
 [params]
 

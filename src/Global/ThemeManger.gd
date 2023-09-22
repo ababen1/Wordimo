@@ -10,13 +10,13 @@ const DEFAULT_BG_NAME = "Default"
 const THEMES_FOLDER = "res://assets/Themes/"
 const BGS_FOLDER = "res://assets/Backgrounds/"
 
-onready var _themes_preloader = $Themes
-onready var _backgrounds_preloader = $Backgrounds
-onready var themes_list: Dictionary = Funcs.preloderer_get_dir_list(_themes_preloader, false)
-onready var backgrounds_list: Dictionary = Funcs.preloderer_get_dir_list(_backgrounds_preloader)
+@onready var _themes_preloader = $Themes
+@onready var _backgrounds_preloader = $Backgrounds
+@onready var themes_list: Dictionary = Funcs.preloderer_get_dir_list(_themes_preloader, false)
+@onready var backgrounds_list: Dictionary = Funcs.preloderer_get_dir_list(_backgrounds_preloader)
 
-var current_theme: WordimoTheme setget set_current_theme
-var current_bg: Texture setget set_current_bg
+var current_theme: WordimoTheme: set = set_current_theme
+var current_bg: Texture2D: set = set_current_bg
 
 func _enter_tree() -> void:
 	add_to_group("save")
@@ -25,7 +25,7 @@ func _ready() -> void:
 	self.current_bg = get_background(DEFAULT_BG_NAME)
 	self.current_theme = get_theme(DEFAULT_THEME_NAME)
 # warning-ignore:return_value_discarded
-	get_tree().connect("node_added", self, "_on_node_added_to_tree")
+	get_tree().connect("node_added", Callable(self, "_on_node_added_to_tree"))
 
 func save(savedata: SaveGame) -> void:
 	savedata.data["current_theme"] = current_theme
@@ -40,7 +40,7 @@ func set_current_theme(val: WordimoTheme) -> void:
 	_set_theme_to_nodes(get_tree().root)
 	emit_signal("theme_changed", val)
 
-func set_current_bg(val: Texture) -> void:
+func set_current_bg(val: Texture2D) -> void:
 	current_bg = val
 	emit_signal("bg_changed", current_bg)
 
@@ -70,9 +70,9 @@ func get_locked_backgrounds() -> Array:
 		locked.erase(bg)
 	return locked
 
-func get_background(bg_name: String) -> Texture:
+func get_background(bg_name: String) -> Texture2D:
 	if bg_name in backgrounds_list.keys():	
-		return load(backgrounds_list.get(bg_name)) as Texture
+		return load(backgrounds_list.get(bg_name)) as Texture2D
 	else:
 		return null
 	
@@ -93,11 +93,11 @@ func unlock_bg(bg_name: String) -> void:
 		emit_signal("bg_unlocked", bg_name)
 		
 func unlock_bg_random():
-	if not get_locked_backgrounds().empty():
+	if not get_locked_backgrounds().is_empty():
 		unlock_bg(Funcs.get_random_array_element(get_locked_backgrounds()))
 
 func unlock_theme_random():
-	if not get_locked_themes().empty():
+	if not get_locked_themes().is_empty():
 		unlock_theme(Funcs.get_random_array_element(get_locked_themes()))
 
 func unlock_all() -> void:

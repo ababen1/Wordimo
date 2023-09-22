@@ -9,8 +9,8 @@ const SECRET_WORDS = [
 	"meme"
 ]
 
-onready var WORDS_DICT: Dictionary = _create_dict()
-onready var api: DictonaryAPI = $API
+@onready var WORDS_DICT: Dictionary = _create_dict()
+@onready var api: DictonaryAPI = $API
 
 # Creates a dictonary with 26 keys (A-Z) and an array
 # of the words in that letter as the value
@@ -45,7 +45,7 @@ func find_word(text: String, min_length: int = DEFAULT_MIN_CHARS) -> String:
 		var end_idx = min_length
 		var current_word = text.substr(start_idx, end_idx)
 		var potential_words = get_words_starting_with(current_word)
-		while(not potential_words.empty()) and end_idx != text.length():
+		while(not potential_words.is_empty()) and end_idx != text.length():
 			if is_valid_word(current_word, min_length):
 				best_word = current_word
 			end_idx += 1

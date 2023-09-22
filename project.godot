@@ -6,221 +6,7 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Node2D",
-"class": "Block",
-"language": "GDScript",
-"path": "res://src/Blocks/Block.gd"
-}, {
-"base": "TextureRect",
-"class": "BlockImg",
-"language": "GDScript",
-"path": "res://src/UI/Queue/BlockImg.gd"
-}, {
-"base": "Node",
-"class": "BlocksFactory",
-"language": "GDScript",
-"path": "res://src/Blocks/BlocksFactory.gd"
-}, {
-"base": "Resource",
-"class": "BoardStyle",
-"language": "GDScript",
-"path": "res://src/GameBoard/BoardStyles/BoardStyle.gd"
-}, {
-"base": "BoardStyle",
-"class": "BoardStyleTexture",
-"language": "GDScript",
-"path": "res://src/GameBoard/BoardStyles/BoardStyleTexture.gd"
-}, {
-"base": "Node",
-"class": "CONSTS",
-"language": "GDScript",
-"path": "res://src/Global/Consts.gd"
-}, {
-"base": "ColorRect",
-"class": "ColorTile",
-"language": "GDScript",
-"path": "res://addons/color-palette/ColorTile.gd"
-}, {
-"base": "HTTPRequest",
-"class": "DictonaryAPI",
-"language": "GDScript",
-"path": "res://src/Global/WordsManger/API.gd"
-}, {
-"base": "PanelButton",
-"class": "DifficultyBtn",
-"language": "GDScript",
-"path": "res://src/UI/Components/GameModeBtn.gd"
-}, {
-"base": "Resource",
-"class": "DifficultyResource",
-"language": "GDScript",
-"path": "res://src/GameBoard/Difficulties/Difficulty.gd"
-}, {
-"base": "Container",
-"class": "FlexGridContainer",
-"language": "GDScript",
-"path": "res://addons/color-palette/utilities/FlexGridContainer.gd"
-}, {
-"base": "Reference",
-"class": "Funcs",
-"language": "GDScript",
-"path": "res://src/Global/UsefulFuncs.gd"
-}, {
-"base": "Control",
-"class": "GameModeSelection",
-"language": "GDScript",
-"path": "res://src/UI/MainMenu/GameModeSelection.gd"
-}, {
-"base": "Resource",
-"class": "GameResults",
-"language": "GDScript",
-"path": "res://src/GameBoard/GameResults.gd"
-}, {
-"base": "GridContainer",
-"class": "GridExample",
-"language": "GDScript",
-"path": "res://src/UI/Components/BoardExample.gd"
-}, {
-"base": "Node2D",
-"class": "GridLayer",
-"language": "GDScript",
-"path": "res://src/GameBoard/GridLayer.gd"
-}, {
-"base": "PanelContainer",
-"class": "Letter",
-"language": "GDScript",
-"path": "res://src/Blocks/Letter.gd"
-}, {
-"base": "GridContainer",
-"class": "OptionalField",
-"language": "GDScript",
-"path": "res://src/UI/Components/OptionalField.gd"
-}, {
-"base": "Reference",
-"class": "Palette",
-"language": "GDScript",
-"path": "res://addons/color-palette/Palette.gd"
-}, {
-"base": "Reference",
-"class": "PaletteImporter",
-"language": "GDScript",
-"path": "res://addons/color-palette/PaletteImporter.gd"
-}, {
-"base": "Button",
-"class": "PanelButton",
-"language": "GDScript",
-"path": "res://src/UI/Components/PanelButton.gd"
-}, {
-"base": "Resource",
-"class": "SaveGame",
-"language": "GDScript",
-"path": "res://src/Saver/SaveGame.gd"
-}, {
-"base": "Node",
-"class": "Score",
-"language": "GDScript",
-"path": "res://src/Global/ScoreCalculator.gd"
-}, {
-"base": "Button",
-"class": "SettingsBtn",
-"language": "GDScript",
-"path": "res://src/UI/Components/SettingsBtn.gd"
-}, {
-"base": "GridContainer",
-"class": "StatsGrid",
-"language": "GDScript",
-"path": "res://src/UI/Components/StatsGrid.gd"
-}, {
-"base": "Button",
-"class": "UIBackgroundBtn",
-"language": "GDScript",
-"path": "res://src/UI/Settings/Components/BackgroundBtn.gd"
-}, {
-"base": "AcceptDialog",
-"class": "UIBackgroundSelect",
-"language": "GDScript",
-"path": "res://src/UI/Settings/BackgroundSelector.gd"
-}, {
-"base": "Label",
-"class": "UINotification",
-"language": "GDScript",
-"path": "res://src/UI/Notifications/UINotification.gd"
-}, {
-"base": "HBoxContainer",
-"class": "UISavedDifficulty",
-"language": "GDScript",
-"path": "res://src/UI/CustomDifficulty/SavedDifficulty.gd"
-}, {
-"base": "Control",
-"class": "UISettingCheckbox",
-"language": "GDScript",
-"path": "res://src/UI/Settings/Components/UISettingCheckbox.gd"
-}, {
-"base": "HSlider",
-"class": "VolumeSlider",
-"language": "GDScript",
-"path": "res://src/UI/Settings/Components/VolumeSlider.gd"
-}, {
-"base": "Label",
-"class": "WordLabel",
-"language": "GDScript",
-"path": "res://src/UI/Game/WordLabel.gd"
-}, {
-"base": "LinkButton",
-"class": "WordLink",
-"language": "GDScript",
-"path": "res://src/UI/Game/GameOver/WordLink.gd"
-}, {
-"base": "Node2D",
-"class": "WordimoGame",
-"language": "GDScript",
-"path": "res://src/GameBoard/Board.gd"
-}, {
-"base": "Theme",
-"class": "WordimoTheme",
-"language": "GDScript",
-"path": "res://src/Global/WordimoTheme.gd"
-} ]
-_global_script_class_icons={
-"Block": "",
-"BlockImg": "",
-"BlocksFactory": "",
-"BoardStyle": "",
-"BoardStyleTexture": "",
-"CONSTS": "",
-"ColorTile": "",
-"DictonaryAPI": "",
-"DifficultyBtn": "",
-"DifficultyResource": "",
-"FlexGridContainer": "res://addons/color-palette/utilities/FlexGridContainerIcon.png",
-"Funcs": "",
-"GameModeSelection": "",
-"GameResults": "",
-"GridExample": "",
-"GridLayer": "",
-"Letter": "",
-"OptionalField": "",
-"Palette": "",
-"PaletteImporter": "",
-"PanelButton": "",
-"SaveGame": "",
-"Score": "",
-"SettingsBtn": "",
-"StatsGrid": "",
-"UIBackgroundBtn": "",
-"UIBackgroundSelect": "",
-"UINotification": "",
-"UISavedDifficulty": "",
-"UISettingCheckbox": "",
-"VolumeSlider": "",
-"WordLabel": "",
-"WordLink": "",
-"WordimoGame": "",
-"WordimoTheme": ""
-}
+config_version=5
 
 [application]
 
@@ -228,6 +14,7 @@ config/name="Wordimo"
 run/main_scene="res://src/UI/MainMenu/MainMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="wordimo"
+config/features=PackedStringArray("4.1")
 config/icon="res://Icon.png"
 config/version="0"
 
@@ -245,10 +32,6 @@ NotificationsLayer="*res://src/UI/Notifications/NotificationsLayer.tscn"
 
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "res://addons/build-and-deploy/plugin.cfg", "res://addons/color-palette/plugin.cfg" )
 
 [gui]
 
@@ -282,18 +65,18 @@ texture={
 
 right_click={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 left_click={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 pause={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194305,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 
 [layer_names]
@@ -308,4 +91,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+renderer/rendering_method="mobile"
+environment/defaults/default_environment="res://default_env.tres"

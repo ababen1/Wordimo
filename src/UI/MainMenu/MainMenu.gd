@@ -1,13 +1,13 @@
 extends Control
 
-onready var _tutorial_popup = $TutorialPopup
+@onready var _tutorial_popup = $TutorialPopup
 
 func _ready() -> void:
 	if Funcs.is_html():
 		$VBoxContainer/VBoxContainer/Quit.hide()
 
 func _on_Start_pressed() -> void:
-	var menu = $ResourcePreloader.get_resource("GameModeSelection").instance()
+	var menu = $ResourcePreloader.get_resource("GameModeSelection").instantiate()
 	add_child(menu)
 	menu.show()
 	

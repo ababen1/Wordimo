@@ -144,14 +144,14 @@ static func get_vowels_weight(letters_weight: Dictionary = DEFAULT_LETTER_WEIGHT
 # Object : Pick Chance
 static func pick_random_item(items: Dictionary):
 	var chosen_value = null
-	if not items.empty():
+	if not items.is_empty():
 		# 1. Calculate the overall chance
 		var overall_chance: float = 0.0
 		for item in items:
 			overall_chance += items[item] as float
 		
 		# 2. Generate a random number
-		var random_number: float = rand_range(0, overall_chance)
+		var random_number: float = randf_range(0, overall_chance)
 		
 		# 3. Pick a random item
 		var offset: float = 0

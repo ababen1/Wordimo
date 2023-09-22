@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/AddBlock.wav-22c996c16392e05c56dff2e4b4c15357.sample"
+type="AudioStreamWAV"
+uid="uid://c80r0cmb1rav3"
+path="res://.godot/imported/AddBlock.wav-22c996c16392e05c56dff2e4b4c15357.sample"
 
 [deps]
 
 source_file="res://assets/SFX/AddBlock.wav"
-dest_files=[ "res://.import/AddBlock.wav-22c996c16392e05c56dff2e4b4c15357.sample" ]
+dest_files=["res://.godot/imported/AddBlock.wav-22c996c16392e05c56dff2e4b4c15357.sample"]
 
 [params]
 

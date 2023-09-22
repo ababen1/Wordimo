@@ -1,17 +1,17 @@
 extends Control
 
-onready var timer: = $Timer
-onready var spawn_block_btn = $MarginContainer/HBox/Button
-onready var time_bar: ProgressBar = $MarginContainer/HBox/ProgressBar
+@onready var timer: = $Timer
+@onready var spawn_block_btn = $MarginContainer/HBox/Button
+@onready var time_bar: ProgressBar = $MarginContainer/HBox/ProgressBar
 
-var wait_time: float = 1 setget set_wait_time
+var wait_time: float = 1: set = set_wait_time
 
 signal spawn_block(bonus)
 
 func _ready() -> void:
-	spawn_block_btn.connect("pressed", self, "_on_spawn_block_pressed")
+	spawn_block_btn.connect("pressed", Callable(self, "_on_spawn_block_pressed"))
 # warning-ignore:return_value_discarded
-	timer.connect("timeout", self, "_on_timeout")
+	timer.connect("timeout", Callable(self, "_on_timeout"))
 	timer.one_shot = true
 	
 func _process(_delta: float) -> void:

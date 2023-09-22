@@ -1,4 +1,4 @@
-extends Reference
+extends RefCounted
 class_name Funcs
 
 static func is_html() -> bool:
@@ -29,9 +29,9 @@ static func preloderer_get_dir_list(preloader: ResourcePreloader, include_subfol
 	return list
 
 static func get_content_in_path(path: String, ignore_dot_import: = true, recrusive: = false) -> Array:
-	var dir: = Directory.new()
+	var dir: = DirAccess.new()
 	var content: = []
-	if dir.open(path) == OK and dir.list_dir_begin(true, true) == OK:
+	if dir.open(path) == OK and dir.list_dir_begin()  == OK:# TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var filename: String = dir.get_next()
 		while filename:
 			if not OS.is_debug_build():
@@ -46,16 +46,16 @@ static func get_content_in_path(path: String, ignore_dot_import: = true, recrusi
 	return content
 	
 static func generate_board_styles(path: String, output: String):
-	var dir = Directory.new()
+	var dir = DirAccess.new()
 	if dir.open(path) == OK:
-		dir.list_dir_begin(true, true)
+		dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var file: String = dir.get_next()
 		while file:
 			if dir.current_is_dir():
 				generate_board_styles(path.plus_file(file), output)
 			elif ResourceLoader.exists(path.plus_file(file)):
 				var texture = load(path.plus_file(file))
-				if texture is Texture:
+				if texture is Texture2D:
 					# Create atlas textures
 					var tile_tex: = AtlasTexture.new()
 					var tile_alt_tex = AtlasTexture.new()

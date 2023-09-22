@@ -4,11 +4,11 @@ signal block_clicked(block)
 signal panel_clicked
 signal queue_full
 
-export var can_scroll: = true setget set_can_scroll
+@export var can_scroll: = true: set = set_can_scroll
 
-onready var _images_container = $VBox/Blocks/VBox
-onready var _scroll_container = _images_container.get_parent()
-onready var _blocks_limit = $VBox/BlocksLimit
+@onready var _images_container = $VBox/Blocks/VBox
+@onready var _scroll_container = _images_container.get_parent()
+@onready var _blocks_limit = $VBox/BlocksLimit
 
 var blocks: = {}
 
@@ -29,14 +29,14 @@ func set_can_scroll(val: bool) -> void:
 
 func set_queue_size(max_blocks: int):
 	if not is_inside_tree():
-		yield(self, "ready")
+		await self.ready
 	_blocks_limit.max_blocks = max_blocks
 
 func add_block(block: Block) -> void:
 	block.reset_position()
 	var block_img = BlockImg.new()
 	_images_container.add_child(block_img)
-	block_img.texture = yield(block.get_texture(), "completed")
+	block_img.texture = await block.get_texture().completed
 	blocks[block] = block_img
 	block_img.connect(
 		"clicked", 

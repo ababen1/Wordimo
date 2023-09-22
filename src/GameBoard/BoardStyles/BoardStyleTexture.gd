@@ -1,14 +1,14 @@
-tool
+@tool
 extends BoardStyle
 class_name BoardStyleTexture
 
 const TILE_TEXTURE_SIZE = Vector2(250,250)
 
-export var board_texture: Texture setget set_board_texture
-export var tile_texture: Texture
-export var alt_tile_texture: Texture
+@export var board_texture: Texture2D: set = set_board_texture
+@export var tile_texture: Texture2D
+@export var alt_tile_texture: Texture2D
 
-func set_board_texture(val: Texture):
+func set_board_texture(val: Texture2D):
 	board_texture = val
 	
 	var tile: = AtlasTexture.new()

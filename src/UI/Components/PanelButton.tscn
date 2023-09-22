@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/Fonts/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Fonts/MontserratBold-DOWZd.ttf" type="FontFile" id=1]
 [ext_resource path="res://src/UI/Components/PanelButton.gd" type="Script" id=2]
 [ext_resource path="res://assets/Themes/Default.tres" type="Theme" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 use_filter = true
 font_data = ExtResource( 1 )
 
@@ -13,57 +13,57 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -107.5
-margin_top = -57.5
-margin_right = 107.5
-margin_bottom = 57.5
-rect_min_size = Vector2( 215, 120 )
-rect_pivot_offset = Vector2( 107.5, 57.5 )
+offset_left = -107.5
+offset_top = -57.5
+offset_right = 107.5
+offset_bottom = 57.5
+custom_minimum_size = Vector2( 215, 120 )
+pivot_offset = Vector2( 107.5, 57.5 )
 size_flags_horizontal = 4
 theme = ExtResource( 3 )
 script = ExtResource( 2 )
 animation_duration = 0.1
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 8.0
-margin_top = 4.0
-margin_right = 24.0
-margin_bottom = 20.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 24.0
+offset_bottom = 20.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 4.0
-margin_right = -8.0
-margin_bottom = -4.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = -8.0
+offset_bottom = -4.0
 mouse_filter = 2
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_left = 70.0
-margin_right = 129.0
-margin_bottom = 33.0
+offset_left = 70.0
+offset_right = 129.0
+offset_bottom = 33.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Title"
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 37.0
-margin_right = 199.0
-margin_bottom = 39.0
+offset_top = 37.0
+offset_right = 199.0
+offset_bottom = 39.0
 mouse_filter = 2
-custom_constants/separation = 2
+theme_override_constants/separation = 2
 
 [node name="Description" type="RichTextLabel" parent="VBoxContainer"]
-margin_top = 43.0
-margin_right = 199.0
-margin_bottom = 112.0
+offset_top = 43.0
+offset_right = 199.0
+offset_bottom = 112.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 1 )
+theme_override_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[center][/center]"
+text = "[center][/center]"
 
 [node name="Tween" type="Tween" parent="."]

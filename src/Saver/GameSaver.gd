@@ -10,7 +10,7 @@ signal saved
 const SAVE_FOLDER_DEBUG: String = "res://debug/save"
 var SAVE_FOLDER_RELEASE: String = OS.get_user_data_dir()
 
-export var load_first_on_ready: = false
+@export var load_first_on_ready: = false
 
 var current_save: SaveGame = SaveGame.new()
 
@@ -53,10 +53,10 @@ static func get_save_folder() -> String:
 static func get_all_save_games() -> Array:
 	var saves: = []
 	var folder = GameSaver.get_save_folder()
-	var dir: Directory = Directory.new()
+	var dir: DirAccess = DirAccess.new()
 	if dir.open(folder) == OK:
 # warning-ignore:return_value_discarded
-		dir.list_dir_begin(true)
+		dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var file: = dir.get_next()
 		while file != "":
 			if ResourceLoader.exists(folder.plus_file(file)):
@@ -68,7 +68,7 @@ static func get_all_save_games() -> Array:
 
 static func write_to_disk(save_game: SaveGame) -> void:
 	var save_folder = get_save_folder()
-	var directory: Directory = Directory.new()
+	var directory: DirAccess = DirAccess.new()
 	if not directory.dir_exists(save_folder):
 # warning-ignore:return_value_discarded
 		directory.make_dir_recursive(save_folder)

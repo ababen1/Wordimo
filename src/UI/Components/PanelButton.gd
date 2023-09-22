@@ -1,29 +1,29 @@
-tool
+@tool
 extends Button
 class_name PanelButton
 
-export var title: String setget set_title
-export var description: String setget set_description
-export var panel_icon: Texture setget set_panel_icon
-export var animate: = true
-export var animation_duration: = 0.2
-export var focused_rect_scale: = Vector2(1.1, 1.1)
+@export var title: String: set = set_title
+@export var description: String: set = set_description
+@export var panel_icon: Texture2D: set = set_panel_icon
+@export var animate: = true
+@export var animation_duration: = 0.2
+@export var focused_rect_scale: = Vector2(1.1, 1.1)
 
-onready var tween = $Tween
+@onready var tween = $Tween
 
 func _enter_tree() -> void:
-	rect_pivot_offset = rect_size / 2
+	pivot_offset = size / 2
 
 func _ready() -> void:
-	if not Engine.editor_hint:
+	if not Engine.is_editor_hint():
 # warning-ignore:return_value_discarded
-		connect("mouse_entered", self, "_on_mouse_entered")
+		connect("mouse_entered", Callable(self, "_on_mouse_entered"))
 # warning-ignore:return_value_discarded
-		connect("mouse_exited", self, "_on_mouse_exited")
+		connect("mouse_exited", Callable(self, "_on_mouse_exited"))
 # warning-ignore:return_value_discarded
-		connect("focus_entered", self, "_on_focus_entered")
+		connect("focus_entered", Callable(self, "_on_focus_entered"))
 # warning-ignore:return_value_discarded
-		connect("focus_exited", self, "_on_focus_exited")
+		connect("focus_exited", Callable(self, "_on_focus_exited"))
 
 func set_title(val: String):
 	title = val
@@ -31,17 +31,17 @@ func set_title(val: String):
 
 func set_description(val: String):
 	description = val
-	$VBoxContainer/Description.bbcode_text = "[center]{text}[/center]".format({
+	$VBoxContainer/Description.text = "[center]{text}[/center]".format({
 		"text": val
 	})
 
-func set_panel_icon(val: Texture):
+func set_panel_icon(val: Texture2D):
 	panel_icon = val
 	$TextureRect.texture = val
 
 func _on_focus_entered() -> void:
 	if tween.is_active():
-		yield(tween, "tween_completed")
+		await tween.tween_completed
 	_pop_out()
 
 func _on_focus_exited() -> void:
@@ -49,7 +49,7 @@ func _on_focus_exited() -> void:
 		_pop_in()
 	else:
 		tween.stop_all()
-		rect_scale = Vector2.ONE
+		scale = Vector2.ONE
 
 func _on_mouse_entered() -> void:
 	if not has_focus():
@@ -62,21 +62,21 @@ func _on_mouse_exited() -> void:
 func _pop_out() -> void:
 	tween.interpolate_property(
 		self,
-		"rect_scale",
-		rect_scale,
+		"scale",
+		scale,
 		focused_rect_scale,
 		animation_duration,
 		0,
 		Tween.EASE_IN_OUT)
 	tween.start()
-	yield(tween, "tween_completed")
+	await tween.tween_completed
 
 func _pop_in() -> void:
 	tween.interpolate_property(
 		self,
-		"rect_scale",
-		rect_scale,
+		"scale",
+		scale,
 		Vector2.ONE,
 		animation_duration)
 	tween.start()
-	yield(tween, "tween_completed")
+	await tween.tween_completed

@@ -4,7 +4,7 @@ func display(word: String):
 	WordsManger.api.connect(
 		"requst_proccesed", 
 		self, 
-		"_on_api_completed", [], CONNECT_ONESHOT)
+		"_on_api_completed", [], CONNECT_ONE_SHOT)
 	WordsManger.api.request_word(word)
 	self.dialog_text = "Getting definition..."
 	self.window_title = word

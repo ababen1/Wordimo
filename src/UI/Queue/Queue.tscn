@@ -2,13 +2,13 @@
 
 [ext_resource path="res://src/UI/Queue/QueuePanel.gd" type="Script" id=1]
 [ext_resource path="res://src/UI/Queue/Queue.gd" type="Script" id=2]
-[ext_resource path="res://assets/Fonts/MontserratBold-DOWZd.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/Fonts/MontserratBold-DOWZd.ttf" type="FontFile" id=3]
 [ext_resource path="res://src/UI/Queue/BlocksTimer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/UI/Queue/BlocksLimit.gd" type="Script" id=5]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 25
-extra_spacing_bottom = -17
+spacing_bottom = -17
 extra_spacing_char = 3
 font_data = ExtResource( 3 )
 
@@ -17,9 +17,9 @@ anchor_left = 0.756836
 anchor_top = 0.0133333
 anchor_right = 0.992188
 anchor_bottom = 0.986667
-rect_clip_content = true
+clip_contents = true
 size_flags_horizontal = 0
-custom_constants/separation = 10
+theme_override_constants/separation = 10
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true,
@@ -27,13 +27,13 @@ __meta__ = {
 }
 
 [node name="BlocksTimer" parent="." instance=ExtResource( 4 )]
-margin_right = 241.0
+offset_right = 241.0
 size_flags_stretch_ratio = 1.0
 
 [node name="QueuePanel" type="Panel" parent="."]
-margin_top = 80.0
-margin_right = 241.0
-margin_bottom = 584.0
+offset_top = 80.0
+offset_right = 241.0
+offset_bottom = 584.0
 mouse_filter = 1
 size_flags_vertical = 3
 size_flags_stretch_ratio = 12.0
@@ -44,10 +44,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="BlocksLimit" type="RichTextLabel" parent="QueuePanel/VBox"]
-margin_right = 241.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 200, 70 )
-custom_fonts/normal_font = SubResource( 1 )
+offset_right = 241.0
+offset_bottom = 70.0
+custom_minimum_size = Vector2( 200, 70 )
+theme_override_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 meta_underlined = false
 text = "
@@ -58,9 +58,9 @@ script = ExtResource( 5 )
 max_blocks = 10
 
 [node name="Blocks" type="ScrollContainer" parent="QueuePanel/VBox"]
-margin_top = 74.0
-margin_right = 241.0
-margin_bottom = 504.0
+offset_top = 74.0
+offset_right = 241.0
+offset_bottom = 504.0
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -70,6 +70,6 @@ __meta__ = {
 }
 
 [node name="VBox" type="GridContainer" parent="QueuePanel/VBox/Blocks"]
-margin_left = 120.0
-margin_right = 120.0
+offset_left = 120.0
+offset_right = 120.0
 size_flags_horizontal = 6

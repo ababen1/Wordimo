@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Rotate.wav-62dccb1fe4be35cc1eea9ff374e93f81.sample"
+type="AudioStreamWAV"
+uid="uid://m6a01si6ibdw"
+path="res://.godot/imported/Rotate.wav-62dccb1fe4be35cc1eea9ff374e93f81.sample"
 
 [deps]
 
 source_file="res://assets/SFX/Rotate.wav"
-dest_files=[ "res://.import/Rotate.wav-62dccb1fe4be35cc1eea9ff374e93f81.sample" ]
+dest_files=["res://.godot/imported/Rotate.wav-62dccb1fe4be35cc1eea9ff374e93f81.sample"]
 
 [params]
 

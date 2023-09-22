@@ -1,14 +1,14 @@
 extends TileMap
 
-export var size: = Vector2(5,5) setget set_size
-export var style: Resource = BoardStyle.new() setget set_style
+@export var size: = Vector2(5,5): set = set_size
+@export var style: Resource = BoardStyle.new(): set = set_style
 
 signal block_placed(block)
 signal tile_placed(tile)
 signal board_size_changed(new_size)
 
-onready var highlight_layer = $HighlightLayer
-onready var grid_layer: = $GridLayer
+@onready var highlight_layer = $HighlightLayer
+@onready var grid_layer: = $GridLayer
 
 var tiles_data: Dictionary = {}
 
@@ -16,13 +16,13 @@ func _ready() -> void:
 	cell_size = CONSTS.CELL_SIZE
 	style = ThemeManger.current_theme.get_board_style()
 	grid_layer.setup()
-	connect("settings_changed", self, "_on_settings_changed")
+	connect("changed", Callable(self, "_on_settings_changed"))
 
 func _on_settings_changed() -> void:
 	grid_layer.setup()
 	
 func _process(_delta: float) -> void:
-	if not Engine.editor_hint and owner is WordimoGame:
+	if not Engine.is_editor_hint() and owner is WordimoGame:
 		highlight_layer.cells = {}
 		if owner.dragged_block and is_inside_grid(owner.dragged_block):
 			for letter in owner.dragged_block.letters:
@@ -34,21 +34,21 @@ func _process(_delta: float) -> void:
 		update()
 	
 func _draw() -> void:
-	if not Engine.editor_hint:
+	if not Engine.is_editor_hint():
 		highlight_layer.update()
 		grid_layer.update()
 
 func set_style(val: BoardStyle):
 	if not is_inside_tree():
-		yield(self, "ready")
+		await self.ready
 	style = val
-	emit_signal("settings_changed")
+	emit_signal("changed")
 
 func get_used_rect() -> Rect2:
 	return Rect2(position, size)
 
 func get_cell_global_position(cell: Vector2):
-	return to_global(map_to_world(cell))
+	return to_global(map_to_local(cell))
 	
 func reset_board() -> void:
 	for cord in tiles_data.keys():
@@ -56,11 +56,11 @@ func reset_board() -> void:
 	
 func set_size(val: Vector2):
 	if not is_inside_tree():
-		yield(self, "ready")
+		await self.ready
 	clear()
 	size.x = clamp(val.x, 1, DifficultyResource.MAX_BOARD_SIZE.x)
 	size.y = clamp(val.y, 1, DifficultyResource.MAX_BOARD_SIZE.y)
-	if not Engine.editor_hint:
+	if not Engine.is_editor_hint():
 		emit_signal("board_size_changed", size)
 		$GridLayer.setup()
 
@@ -71,10 +71,10 @@ func is_inside_grid(block: Block) -> bool:
 	return true
 
 func get_letter_cell(letter: Letter) -> Vector2:
-	return world_to_map(letter.rect_global_position + cell_size / 2)
+	return local_to_map(letter.global_position + cell_size / 2)
 
 func can_drop_block(block: Block) -> bool:
-	if highlight_layer.cells.empty():
+	if highlight_layer.cells.is_empty():
 		return false
 	else:
 		for letter in block.letters:
@@ -95,7 +95,7 @@ func get_letter_str_at_cell(cord: Vector2) -> String:
 	return letter.letter if letter else ""
 
 func get_letter_str_at_position(global_pos: Vector2) -> String:
-	var cell = world_to_map(global_pos + cell_size / 2)
+	var cell = local_to_map(global_pos + cell_size / 2)
 	return get_letter_str_at_cell(cell)
 
 func can_place_letter_tile(tile: Letter, cell: Vector2) -> bool:
@@ -117,7 +117,7 @@ func clear_cell(cell: Vector2, animate: = true) -> void:
 # warning-ignore:return_value_discarded
 		tiles_data.erase(cell)
 		if animate:
-			yield(tile.animate_expand(), "completed")
+			await tile.animate_expand().completed
 		tile.queue_free()
 
 func clear_cells(from: Vector2, to: Vector2) -> void:
@@ -174,19 +174,19 @@ func load_board_state(state: Dictionary):
 	reset_board()
 	for tile in state:
 		var new_tile: CollisionShape2D = BlocksFactory.create_letter(state[tile].color, state[tile].letter, true)
-		yield(get_tree(), "idle_frame")
+		await get_tree().idle_frame
 		get_tree().root.add_child(new_tile)
 		_add_letter_to_grid(new_tile.get_child(0), tile)
 		
 		
 func _add_letter_to_grid(letter: Letter, cell = null) -> void:
 	var shape: CollisionShape2D = letter.get_parent()
-	var target_cell = world_to_map(shape.global_position) if not cell else cell
+	var target_cell = local_to_map(shape.global_position) if not cell else cell
 	# Clear previous letter
 	if tiles_data.has(target_cell):
 		tiles_data[target_cell].queue_free()
 	tiles_data[target_cell] = letter
-	shape.global_position = to_global(map_to_world(target_cell) + CONSTS.CELL_SIZE / 2)
+	shape.global_position = to_global(map_to_local(target_cell) + CONSTS.CELL_SIZE / 2)
 	
 	emit_signal("tile_placed", letter)
 

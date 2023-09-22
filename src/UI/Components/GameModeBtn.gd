@@ -1,11 +1,11 @@
-tool
+@tool
 extends PanelButton
 class_name DifficultyBtn
 
-export var difficulty: Resource setget set_difficulty
+@export var difficulty: Resource: set = set_difficulty
 
 func _enter_tree() -> void:
-	self.rect_min_size = Vector2(350,130)
+	self.custom_minimum_size = Vector2(350,130)
 
 func set_difficulty(val: Resource) -> void:
 	difficulty = val

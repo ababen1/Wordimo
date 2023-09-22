@@ -4,249 +4,249 @@
 [ext_resource path="res://src/UI/CustomDifficulty/TimeLimit.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/CustomDifficulty/QueueSize.gd" type="Script" id=3]
 [ext_resource path="res://src/UI/CustomDifficulty/StartingLevel.gd" type="Script" id=4]
-[ext_resource path="res://assets/Icons/Reload.svg" type="Texture" id=5]
+[ext_resource path="res://assets/Icons/Reload.svg" type="Texture2D" id=5]
 [ext_resource path="res://src/UI/CustomDifficulty/BoardSize.gd" type="Script" id=6]
 [ext_resource path="res://src/UI/Components/BoardExample.gd" type="Script" id=7]
 [ext_resource path="res://src/UI/CustomDifficulty/SaveDifficultyDialog.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/UI/CustomDifficulty/SavedDifficulties.gd" type="Script" id=9]
 [ext_resource path="res://src/UI/CustomDifficulty/SavedDifficulty.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/Icons/Load.svg" type="Texture" id=11]
+[ext_resource path="res://assets/Icons/Load.svg" type="Texture2D" id=11]
 [ext_resource path="res://src/UI/CustomDifficulty/MinWordLength.gd" type="Script" id=12]
 
-[node name="CustomDifficultyConfig" type="WindowDialog"]
+[node name="CustomDifficultyConfig" type="Window"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 24.0
-margin_top = 32.0
-margin_right = -24.0
-margin_bottom = -16.0
-rect_min_size = Vector2( 768, 480 )
+offset_left = 24.0
+offset_top = 32.0
+offset_right = -24.0
+offset_bottom = -16.0
+custom_minimum_size = Vector2( 768, 480 )
 window_title = "Custom Difficulty"
 resizable = true
 script = ExtResource( 1 )
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="."]
-resources = [ PoolStringArray( "SaveDifficultyDialog" ), [ ExtResource( 8 ) ] ]
+resources = [ PackedStringArray( "SaveDifficultyDialog" ), [ ExtResource( 8 ) ] ]
 
 [node name="HSplit" type="HSplitContainer" parent="."]
 anchor_left = 0.0181818
 anchor_top = 0.0416667
 anchor_right = 0.981818
 anchor_bottom = 0.972222
-margin_left = 9.53674e-07
-rect_clip_content = true
+offset_left = 9.53674e-07
+clip_contents = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="HSplit"]
-margin_right = 651.0
-margin_bottom = 513.667
+offset_right = 651.0
+offset_bottom = 513.667
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBox" type="VBoxContainer" parent="HSplit/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 644.0
-margin_bottom = 506.667
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 644.0
+offset_bottom = 506.667
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 30
+theme_override_constants/separation = 30
 
 [node name="TimeLimit" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_right = 637.0
-margin_bottom = 31.0
-rect_min_size = Vector2( 300, 0 )
-custom_constants/hseparation = 10
+offset_right = 637.0
+offset_bottom = 31.0
+custom_minimum_size = Vector2( 300, 0 )
+theme_override_constants/h_separation = 10
 columns = 3
 script = ExtResource( 2 )
 deactivated_fields = [ NodePath("Unlimited") ]
 activated_fields = [ NodePath("Minutes"), NodePath("Seconds") ]
 
 [node name="CheckBox" type="CheckBox" parent="HSplit/PanelContainer/VBox/TimeLimit"]
-margin_right = 123.0
-margin_bottom = 31.0
-custom_colors/font_color = Color( 0.529412, 0.529412, 0.529412, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+offset_right = 123.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color( 0.529412, 0.529412, 0.529412, 1 )
+theme_override_colors/font_pressed_color = Color( 1, 1, 1, 1 )
 text = "Time Limit:"
 
 [node name="Minutes" type="SpinBox" parent="HSplit/PanelContainer/VBox/TimeLimit"]
 visible = false
-margin_left = 133.0
-margin_right = 283.0
-margin_bottom = 31.0
-rect_min_size = Vector2( 150, 0 )
+offset_left = 133.0
+offset_right = 283.0
+offset_bottom = 31.0
+custom_minimum_size = Vector2( 150, 0 )
 max_value = 9.22337e+18
 value = 1.0
 suffix = "Minutes"
 
 [node name="Seconds" type="SpinBox" parent="HSplit/PanelContainer/VBox/TimeLimit"]
 visible = false
-margin_left = 293.0
-margin_right = 443.0
-margin_bottom = 31.0
-rect_min_size = Vector2( 150, 0 )
+offset_left = 293.0
+offset_right = 443.0
+offset_bottom = 31.0
+custom_minimum_size = Vector2( 150, 0 )
 max_value = 60.0
 suffix = "Seconds"
 
 [node name="Unlimited" type="LineEdit" parent="HSplit/PanelContainer/VBox/TimeLimit"]
-margin_left = 133.0
-margin_right = 283.0
-margin_bottom = 31.0
-rect_min_size = Vector2( 150, 0 )
+offset_left = 133.0
+offset_right = 283.0
+offset_bottom = 31.0
+custom_minimum_size = Vector2( 150, 0 )
 text = "Unlimited"
 editable = false
 
 [node name="QueueSize" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 61.0
-margin_right = 637.0
-margin_bottom = 92.0
-rect_min_size = Vector2( 300, 0 )
-custom_constants/hseparation = 10
+offset_top = 61.0
+offset_right = 637.0
+offset_bottom = 92.0
+custom_minimum_size = Vector2( 300, 0 )
+theme_override_constants/h_separation = 10
 columns = 2
 script = ExtResource( 3 )
 deactivated_fields = [ NodePath("Unlimited") ]
 activated_fields = [ NodePath("SpinBox") ]
 
 [node name="CheckBox" type="CheckBox" parent="HSplit/PanelContainer/VBox/QueueSize"]
-margin_right = 127.0
-margin_bottom = 31.0
+offset_right = 127.0
+offset_bottom = 31.0
 size_flags_horizontal = 0
-custom_colors/font_color = Color( 0.529412, 0.529412, 0.529412, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+theme_override_colors/font_color = Color( 0.529412, 0.529412, 0.529412, 1 )
+theme_override_colors/font_pressed_color = Color( 1, 1, 1, 1 )
 text = "Queue Size:"
 
 [node name="SpinBox" type="SpinBox" parent="HSplit/PanelContainer/VBox/QueueSize"]
 visible = false
-margin_left = 137.0
-margin_right = 287.0
-margin_bottom = 31.0
-rect_min_size = Vector2( 150, 0 )
+offset_left = 137.0
+offset_right = 287.0
+offset_bottom = 31.0
+custom_minimum_size = Vector2( 150, 0 )
 min_value = 1.0
 max_value = 9.22337e+18
 value = 10.0
 suffix = "Blocks"
 
 [node name="Unlimited" type="LineEdit" parent="HSplit/PanelContainer/VBox/QueueSize"]
-margin_left = 137.0
-margin_right = 287.0
-margin_bottom = 31.0
-rect_min_size = Vector2( 150, 0 )
+offset_left = 137.0
+offset_right = 287.0
+offset_bottom = 31.0
+custom_minimum_size = Vector2( 150, 0 )
 text = "Unlimited"
 editable = false
 
 [node name="Override" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 122.0
-margin_right = 300.0
-margin_bottom = 151.0
-rect_min_size = Vector2( 300, 0 )
+offset_top = 122.0
+offset_right = 300.0
+offset_bottom = 151.0
+custom_minimum_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
-custom_constants/hseparation = 10
+theme_override_constants/h_separation = 10
 
 [node name="CheckBox" type="CheckBox" parent="HSplit/PanelContainer/VBox/Override"]
-margin_right = 171.0
-margin_bottom = 29.0
+offset_right = 171.0
+offset_bottom = 29.0
 size_flags_horizontal = 0
 text = "Allow Overriding"
 
 [node name="StartingLevel" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 181.0
-margin_right = 446.0
-margin_bottom = 212.0
-rect_min_size = Vector2( 300, 0 )
+offset_top = 181.0
+offset_right = 446.0
+offset_bottom = 212.0
+custom_minimum_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
-custom_constants/hseparation = 10
+theme_override_constants/h_separation = 10
 columns = 4
 script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="HSplit/PanelContainer/VBox/StartingLevel"]
-margin_top = 5.0
-margin_right = 118.0
-margin_bottom = 26.0
+offset_top = 5.0
+offset_right = 118.0
+offset_bottom = 26.0
 size_flags_horizontal = 0
 text = "Starting Level"
 
 [node name="SpinBox" type="SpinBox" parent="HSplit/PanelContainer/VBox/StartingLevel"]
-margin_left = 128.0
-margin_right = 278.0
-margin_bottom = 31.0
-rect_min_size = Vector2( 150, 0 )
+offset_left = 128.0
+offset_right = 278.0
+offset_bottom = 31.0
+custom_minimum_size = Vector2( 150, 0 )
 min_value = 1.0
 value = 1.0
 
 [node name="IncreaseLevels" type="CheckBox" parent="HSplit/PanelContainer/VBox/StartingLevel"]
-margin_left = 288.0
-margin_right = 446.0
-margin_bottom = 31.0
+offset_left = 288.0
+offset_right = 446.0
+offset_bottom = 31.0
 text = "Increase Levels"
 
 [node name="Reset" type="Button" parent="HSplit/PanelContainer/VBox/StartingLevel"]
 visible = false
-margin_left = 456.0
-margin_right = 484.0
-margin_bottom = 31.0
+offset_left = 456.0
+offset_right = 484.0
+offset_bottom = 31.0
 icon = ExtResource( 5 )
 
 [node name="BoardSize" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 242.0
-margin_right = 300.0
-margin_bottom = 308.0
-rect_min_size = Vector2( 300, 0 )
+offset_top = 242.0
+offset_right = 300.0
+offset_bottom = 308.0
+custom_minimum_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
-custom_constants/hseparation = 15
+theme_override_constants/h_separation = 15
 columns = 3
 script = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="HSplit/PanelContainer/VBox/BoardSize"]
-margin_top = 22.0
-margin_right = 93.0
-margin_bottom = 43.0
+offset_top = 22.0
+offset_right = 93.0
+offset_bottom = 43.0
 size_flags_horizontal = 0
 text = "Board Size:"
 
 [node name="GridContainer" type="GridContainer" parent="HSplit/PanelContainer/VBox/BoardSize"]
-margin_left = 108.0
-margin_right = 209.0
-margin_bottom = 66.0
+offset_left = 108.0
+offset_right = 209.0
+offset_bottom = 66.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 columns = 2
 
 [node name="Label" type="Label" parent="HSplit/PanelContainer/VBox/BoardSize/GridContainer"]
-margin_top = 5.0
-margin_right = 11.0
-margin_bottom = 26.0
+offset_top = 5.0
+offset_right = 11.0
+offset_bottom = 26.0
 text = "X"
 
 [node name="X" type="SpinBox" parent="HSplit/PanelContainer/VBox/BoardSize/GridContainer"]
-margin_left = 15.0
-margin_right = 101.0
-margin_bottom = 31.0
+offset_left = 15.0
+offset_right = 101.0
+offset_bottom = 31.0
 min_value = 1.0
 value = 4.0
 rounded = true
 
 [node name="Label2" type="Label" parent="HSplit/PanelContainer/VBox/BoardSize/GridContainer"]
-margin_top = 40.0
-margin_right = 11.0
-margin_bottom = 61.0
+offset_top = 40.0
+offset_right = 11.0
+offset_bottom = 61.0
 text = "Y"
 
 [node name="Y" type="SpinBox" parent="HSplit/PanelContainer/VBox/BoardSize/GridContainer"]
-margin_left = 15.0
-margin_top = 35.0
-margin_right = 101.0
-margin_bottom = 66.0
+offset_left = 15.0
+offset_top = 35.0
+offset_right = 101.0
+offset_bottom = 66.0
 min_value = 1.0
 value = 4.0
 rounded = true
 
 [node name="BoardExample" type="GridContainer" parent="HSplit/PanelContainer/VBox/BoardSize"]
-margin_left = 240.0
-margin_top = 11.0
-margin_right = 284.0
-margin_bottom = 55.0
+offset_left = 240.0
+offset_top = 11.0
+offset_right = 284.0
+offset_bottom = 55.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
 columns = 4
@@ -255,56 +255,56 @@ grid_size = Vector2( 4, 4 )
 color = Color( 0.835294, 0.835294, 0.835294, 1 )
 
 [node name="MinWordLength" type="GridContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 338.0
-margin_right = 358.0
-margin_bottom = 369.0
-rect_min_size = Vector2( 300, 0 )
+offset_top = 338.0
+offset_right = 358.0
+offset_bottom = 369.0
+custom_minimum_size = Vector2( 300, 0 )
 size_flags_horizontal = 0
-custom_constants/hseparation = 15
+theme_override_constants/h_separation = 15
 columns = 3
 script = ExtResource( 12 )
 
 [node name="Label" type="Label" parent="HSplit/PanelContainer/VBox/MinWordLength"]
-margin_top = 5.0
-margin_right = 193.0
-margin_bottom = 26.0
+offset_top = 5.0
+offset_right = 193.0
+offset_bottom = 26.0
 size_flags_horizontal = 0
 text = "Minimum word length:"
 
 [node name="SpinBox" type="SpinBox" parent="HSplit/PanelContainer/VBox/MinWordLength"]
-margin_left = 208.0
-margin_right = 358.0
-margin_bottom = 31.0
-rect_min_size = Vector2( 150, 0 )
+offset_left = 208.0
+offset_right = 358.0
+offset_bottom = 31.0
+custom_minimum_size = Vector2( 150, 0 )
 min_value = 2.0
 max_value = 10.0
 value = 2.0
 suffix = "Letters"
 
 [node name="HBox" type="HBoxContainer" parent="HSplit/PanelContainer/VBox"]
-margin_top = 472.0
-margin_right = 637.0
-margin_bottom = 499.0
+offset_top = 472.0
+offset_right = 637.0
+offset_bottom = 499.0
 size_flags_vertical = 10
-custom_constants/separation = 25
+theme_override_constants/separation = 25
 alignment = 1
 
 [node name="Start" type="Button" parent="HSplit/PanelContainer/VBox/HBox"]
-margin_left = 185.0
-margin_right = 292.0
-margin_bottom = 27.0
+offset_left = 185.0
+offset_right = 292.0
+offset_bottom = 27.0
 text = "Start Game"
 
 [node name="Save" type="Button" parent="HSplit/PanelContainer/VBox/HBox"]
-margin_left = 317.0
-margin_right = 451.0
-margin_bottom = 27.0
+offset_left = 317.0
+offset_right = 451.0
+offset_bottom = 27.0
 text = "Save Difficulty"
 
 [node name="Panel" type="Panel" parent="HSplit"]
-margin_left = 663.0
-margin_right = 940.509
-margin_bottom = 513.667
+offset_left = 663.0
+offset_right = 940.509
+offset_bottom = 513.667
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.43
@@ -314,41 +314,41 @@ anchor_left = 0.0321285
 anchor_top = 0.0230277
 anchor_right = 0.971888
 anchor_bottom = 0.97484
-margin_left = 4.76837e-07
+offset_left = 4.76837e-07
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.3
-custom_constants/separation = 15
+theme_override_constants/separation = 15
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="HBox" type="HBoxContainer" parent="HSplit/Panel/SavedDifficulties"]
-margin_right = 260.0
-margin_bottom = 27.0
+offset_right = 260.0
+offset_bottom = 27.0
 alignment = 1
 
 [node name="Label" type="Label" parent="HSplit/Panel/SavedDifficulties/HBox"]
-margin_left = 40.0
-margin_top = 3.0
-margin_right = 187.0
-margin_bottom = 24.0
+offset_left = 40.0
+offset_top = 3.0
+offset_right = 187.0
+offset_bottom = 24.0
 text = "Saved Difficulties"
 
 [node name="OpenFolder" type="Button" parent="HSplit/Panel/SavedDifficulties/HBox"]
-margin_left = 191.0
-margin_right = 219.0
-margin_bottom = 27.0
+offset_left = 191.0
+offset_right = 219.0
+offset_bottom = 27.0
 icon = ExtResource( 11 )
 
 [node name="SavedDifficulty" parent="HSplit/Panel/SavedDifficulties" instance_placeholder="res://src/UI/CustomDifficulty/SavedDifficulty.tscn"]
-margin_top = 42.0
-margin_right = 260.0
-margin_bottom = 72.0
+offset_top = 42.0
+offset_right = 260.0
+offset_bottom = 72.0
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="HSplit/Panel/SavedDifficulties"]
-resources = [ PoolStringArray( "SavedDifficulty" ), [ ExtResource( 10 ) ] ]
+resources = [ PackedStringArray( "SavedDifficulty" ), [ ExtResource( 10 ) ] ]
 
 [connection signal="value_changed" from="HSplit/PanelContainer/VBox/TimeLimit/Seconds" to="HSplit/PanelContainer/VBox/TimeLimit" method="_on_Seconds_value_changed"]
 [connection signal="value_changed" from="HSplit/PanelContainer/VBox/BoardSize/GridContainer/X" to="HSplit/PanelContainer/VBox/BoardSize" method="_on_X_value_changed"]

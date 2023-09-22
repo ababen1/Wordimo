@@ -7,15 +7,17 @@ signal requst_proccesed(results)
 
 func _ready() -> void:
 # warning-ignore:return_value_discarded
-	connect("request_completed", self, "_on_request_completed")
+	connect("request_completed", Callable(self, "_on_request_completed"))
 
 func request_word(word: String):
 	print(request(DICTONARY_API_URL + word))
 
-func _on_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
+func _on_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var request_result 
 	if response_code == 200:
-		var api_res = JSON.parse(body.get_string_from_utf8()).result
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(body.get_string_from_utf8()).result
+		var api_res = test_json_conv.get_data()
 		request_result = {
 			"success": true,
 			"api_res": api_res,

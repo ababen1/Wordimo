@@ -8,11 +8,11 @@ const LETTER = preload("Letter.tscn")
 var blocks_beanbag = BLOCKS.duplicate()
 
 func get_random_block() -> Block:
-	if blocks_beanbag.empty():
+	if blocks_beanbag.is_empty():
 		blocks_beanbag = BLOCKS.duplicate()
 		blocks_beanbag.shuffle()
 	var block_type = blocks_beanbag.pop_at(
-		rand_range(0, blocks_beanbag.size() - 1))
+		randf_range(0, blocks_beanbag.size() - 1))
 	return instance_block(block_type)
 
 static func create_custom_block(type: String, letters: Array) -> Block:
@@ -23,7 +23,7 @@ static func create_custom_block(type: String, letters: Array) -> Block:
 	return new_block
 
 static func create_letter(type, letter = null, with_collision_shape: = false):
-	var new_letter = LETTER.instance()
+	var new_letter = LETTER.instantiate()
 	if type is String:
 		new_letter.color = CONSTS.BLOCK_TYPES[type]
 	elif type is int:
@@ -37,10 +37,10 @@ static func create_letter(type, letter = null, with_collision_shape: = false):
 	if with_collision_shape:
 		var collision_shape = CollisionShape2D.new()
 		collision_shape.shape = RectangleShape2D.new()
-		collision_shape.shape.extents = CONSTS.CELL_SIZE / 2
+		collision_shape.shape.size = CONSTS.CELL_SIZE / 2
 		collision_shape.position = CONSTS.CELL_SIZE / 2
 		collision_shape.add_child(new_letter)
-		new_letter.rect_position = -CONSTS.CELL_SIZE / 2
+		new_letter.position = -CONSTS.CELL_SIZE / 2
 		return collision_shape
 	return new_letter
 
@@ -49,7 +49,7 @@ static func instance_block(type: String) -> Block:
 	if type in BLOCKS:
 		var block_scene: PackedScene = load(
 			FOLDER.plus_file(type + ".tscn"))
-		var block = block_scene.instance()
+		var block = block_scene.instantiate()
 		return block
 	else:
 		return null

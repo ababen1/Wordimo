@@ -1,15 +1,15 @@
 extends VBoxContainer
 
-export var is_canvas_layer: = true setget set_is_canvas_layer
+@export var is_canvas_layer: = true: set = set_is_canvas_layer
 
 func _ready() -> void:
 	self.is_canvas_layer = is_canvas_layer
 
 func set_is_canvas_layer(val: bool, deferred: = true):
 	if not is_inside_tree():
-		yield(self, "ready")
+		await self.ready
 	if deferred:
-		yield(get_tree(), "idle_frame")
+		await get_tree().idle_frame
 	
 	is_canvas_layer = val
 	if get_parent() is CanvasLayer and not is_canvas_layer:

@@ -8,103 +8,103 @@
 [node name="GeneralSettings" type="VBoxContainer" groups=["save"]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 289.0
-margin_top = 147.0
-margin_right = -288.0
-margin_bottom = -144.0
+offset_left = 289.0
+offset_top = 147.0
+offset_right = -288.0
+offset_bottom = -144.0
 script = ExtResource( 2 )
 
 [node name="Video" type="VBoxContainer" parent="."]
-margin_right = 447.0
-margin_bottom = 138.0
+offset_right = 447.0
+offset_bottom = 138.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="Video"]
-margin_right = 447.0
-margin_bottom = 33.0
+offset_right = 447.0
+offset_bottom = 33.0
 text = "Video Settings"
 align = 1
 
 [node name="HSeparator" type="HSeparator" parent="Video"]
-margin_top = 37.0
-margin_right = 447.0
-margin_bottom = 41.0
+offset_top = 37.0
+offset_right = 447.0
+offset_bottom = 41.0
 
 [node name="UIResolutionSelector" parent="Video" instance=ExtResource( 1 )]
 unique_name_in_owner = true
 visible = false
 anchor_right = 0.0
-margin_left = 0.0
-margin_top = 45.0
-margin_right = 447.0
-margin_bottom = 84.0
+offset_left = 0.0
+offset_top = 45.0
+offset_right = 447.0
+offset_bottom = 84.0
 
 [node name="UIFullscreenCheckbox" parent="Video" instance=ExtResource( 3 )]
 unique_name_in_owner = true
 anchor_right = 0.0
-margin_left = 0.0
-margin_top = 45.0
-margin_right = 447.0
-margin_bottom = 86.0
+offset_left = 0.0
+offset_top = 45.0
+offset_right = 447.0
+offset_bottom = 86.0
 title = "Full Screen"
 
 [node name="UIVsyncCheckbox" parent="Video" instance=ExtResource( 3 )]
 unique_name_in_owner = true
 anchor_right = 0.0
-margin_left = 0.0
-margin_top = 90.0
-margin_right = 447.0
-margin_bottom = 131.0
+offset_left = 0.0
+offset_top = 90.0
+offset_right = 447.0
+offset_bottom = 131.0
 title = "VSync"
 
 [node name="Spacer" type="Control" parent="."]
-margin_top = 142.0
-margin_right = 447.0
-margin_bottom = 167.0
-rect_min_size = Vector2( 15, 25 )
+offset_top = 142.0
+offset_right = 447.0
+offset_bottom = 167.0
+custom_minimum_size = Vector2( 15, 25 )
 
 [node name="Audio" type="Control" parent="."]
-margin_top = 171.0
-margin_right = 447.0
-margin_bottom = 309.0
+offset_top = 171.0
+offset_right = 447.0
+offset_bottom = 309.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label2" type="Label" parent="Audio"]
-margin_top = 4.0
-margin_right = 447.0
-margin_bottom = 25.0
+offset_top = 4.0
+offset_right = 447.0
+offset_bottom = 25.0
 text = "Audio Settings"
 align = 1
 
 [node name="HSeparator2" type="HSeparator" parent="Audio"]
 visible = false
-margin_top = 29.0
-margin_right = 447.0
-margin_bottom = 33.0
+offset_top = 29.0
+offset_right = 447.0
+offset_bottom = 33.0
 
 [node name="GridContainer" type="GridContainer" parent="Audio"]
 anchor_top = 0.268116
 anchor_right = 1.0
 anchor_bottom = 1.23188
-margin_bottom = -40.0
-custom_constants/vseparation = 35
-custom_constants/hseparation = 10
+offset_bottom = -40.0
+theme_override_constants/v_separation = 35
+theme_override_constants/h_separation = 10
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Label" type="Label" parent="Audio/GridContainer"]
-margin_right = 102.0
-margin_bottom = 33.0
+offset_right = 102.0
+offset_bottom = 33.0
 text = "Master"
 
 [node name="VolumeSlider" type="HSlider" parent="Audio/GridContainer"]
-margin_left = 112.0
-margin_right = 447.0
-margin_bottom = 16.0
+offset_left = 112.0
+offset_right = 447.0
+offset_bottom = 16.0
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.05
@@ -112,16 +112,16 @@ value = 1.0
 script = ExtResource( 4 )
 
 [node name="Label2" type="Label" parent="Audio/GridContainer"]
-margin_top = 68.0
-margin_right = 102.0
-margin_bottom = 101.0
+offset_top = 68.0
+offset_right = 102.0
+offset_bottom = 101.0
 text = "Sounds"
 
 [node name="VolumeSlider2" type="HSlider" parent="Audio/GridContainer"]
-margin_left = 112.0
-margin_top = 68.0
-margin_right = 447.0
-margin_bottom = 84.0
+offset_left = 112.0
+offset_top = 68.0
+offset_right = 447.0
+offset_bottom = 84.0
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.05
@@ -131,16 +131,16 @@ audio_bus_name = "SFX"
 
 [node name="Label3" type="Label" parent="Audio/GridContainer"]
 visible = false
-margin_top = 112.0
-margin_right = 62.0
-margin_bottom = 133.0
+offset_top = 112.0
+offset_right = 62.0
+offset_bottom = 133.0
 text = "Music"
 
 [node name="VolumeSlider3" type="HSlider" parent="Audio/GridContainer"]
 visible = false
-margin_top = 112.0
-margin_right = 218.0
-margin_bottom = 128.0
+offset_top = 112.0
+offset_right = 218.0
+offset_bottom = 128.0
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.05
