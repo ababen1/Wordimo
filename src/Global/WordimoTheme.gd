@@ -8,21 +8,23 @@ const NODE_TYPE_GRID = "GameGrid"
 
 func set_primary_color(val: Color):
 	primary_color = val
-	if not has_theme_stylebox("tile", NODE_TYPE_GRID):
+	if not has_theme_item(Theme.DATA_TYPE_STYLEBOX, "tile", NODE_TYPE_GRID):
 		create_tile_from_color("tile", primary_color)
 	emit_changed()
 
 func set_secondary_color(val: Color):
 	secondary_color = val
-	if not has_theme_stylebox("tile_alt", NODE_TYPE_GRID):
+	if not has_theme_item(Theme.DATA_TYPE_STYLEBOX, "tile_alt", NODE_TYPE_GRID):
 		create_tile_from_color("tile_alt", secondary_color)
 	emit_changed()
 
 		
 
 func get_board_style() -> BoardStyle:
-	var tile = get_stylebox("tile", NODE_TYPE_GRID) if has_theme_stylebox("tile", NODE_TYPE_GRID) else null
-	var tile_alt = get_stylebox("tile_alt", NODE_TYPE_GRID) if has_theme_stylebox("tile_alt", NODE_TYPE_GRID) else null
+	var tile = get_theme_item(Theme.DATA_TYPE_STYLEBOX, "tile", NODE_TYPE_GRID) \
+	if has_theme_item(Theme.DATA_TYPE_STYLEBOX, "tile", NODE_TYPE_GRID) else null
+	var tile_alt = get_theme_item(Theme.DATA_TYPE_STYLEBOX, "tile_alt", NODE_TYPE_GRID) \
+	if has_theme_item(Theme.DATA_TYPE_STYLEBOX, "tile_alt", NODE_TYPE_GRID) else null
 	var board_style: BoardStyle = BoardStyle.new()
 	board_style.primary_color = primary_color
 	board_style.secondary_color = secondary_color

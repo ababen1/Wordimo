@@ -48,7 +48,7 @@ static func instance_block(type: String) -> Block:
 	type = type.to_upper()
 	if type in BLOCKS:
 		var block_scene: PackedScene = load(
-			FOLDER.plus_file(type + ".tscn"))
+			FOLDER.path_join(type + ".tscn"))
 		var block = block_scene.instantiate()
 		return block
 	else:

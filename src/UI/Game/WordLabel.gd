@@ -1,8 +1,6 @@
 extends Label
 class_name WordLabel
 
-@onready var _tween: Tween = $Tween
-
 func setup(
 	word: String, 
 	start_global_position: Vector2, 
@@ -25,6 +23,7 @@ func _animate() -> void:
 
 	# The Tween node takes care of animating the Label's `rect_position` over 0.4 seconds. It's a
 	# bit faster than the miss label and uses an ease-out so the animation feels dynamic.
+	var _tween = create_tween()
 	_tween.interpolate_property(
 		self,
 		"position",

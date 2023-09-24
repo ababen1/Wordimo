@@ -53,14 +53,14 @@ static func get_save_folder() -> String:
 static func get_all_save_games() -> Array:
 	var saves: = []
 	var folder = GameSaver.get_save_folder()
-	var dir: DirAccess = DirAccess.new()
-	if dir.open(folder) == OK:
+	var dir: = DirAccess.open(folder)
+	if dir:
 # warning-ignore:return_value_discarded
 		dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var file: = dir.get_next()
 		while file != "":
-			if ResourceLoader.exists(folder.plus_file(file)):
-				var savefile = load(folder.plus_file(file))
+			if ResourceLoader.exists(folder.path_join(file)):
+				var savefile = load(folder.path_join(file))
 				if savefile is SaveGame:
 					saves.append(savefile)
 			file = dir.get_next()
@@ -68,7 +68,7 @@ static func get_all_save_games() -> Array:
 
 static func write_to_disk(save_game: SaveGame) -> void:
 	var save_folder = get_save_folder()
-	var directory: DirAccess = DirAccess.new()
+	var directory: = DirAccess.open(save_folder)
 	if not directory.dir_exists(save_folder):
 # warning-ignore:return_value_discarded
 		directory.make_dir_recursive(save_folder)
@@ -82,14 +82,14 @@ static func find_savefile(
 	name: String, 
 	random_seed: int) -> SaveGame:
 		var save_file: SaveGame = null
-		var path: String = get_save_folder().plus_file(
+		var path: String = get_save_folder().path_join(
 		SaveGame.get_savefile_name(name, random_seed))
 		if ResourceLoader.exists(path):
 			save_file = load(path)
 		return save_file
 
 #static func delete_save_file(id: int):
-#	var save_file_path: String = get_save_folder().plus_file(
+#	var save_file_path: String = get_save_folder().path_join(
 #		SAVE_NAME_TEMPLATE % id)
 #	var directory: Directory = Directory.new()
 #	if not directory.file_exists(save_file_path):

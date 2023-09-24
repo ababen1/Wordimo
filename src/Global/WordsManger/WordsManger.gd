@@ -15,9 +15,7 @@ const SECRET_WORDS = [
 # Creates a dictonary with 26 keys (A-Z) and an array
 # of the words in that letter as the value
 func _create_dict() -> Dictionary:
-	var file: = File.new()
-	var error_code: = file.open(WORDS_TEXT_FILE, File.READ)
-	assert(error_code == OK)
+	var file: = FileAccess.open(WORDS_TEXT_FILE, FileAccess.WRITE_READ)
 	var words_dict: Dictionary = {}
 	for letter in VALID_LETTERS:
 		words_dict[letter.to_upper()] = []

@@ -2,7 +2,6 @@ extends Control
 
 const RESOLUTIONS = [
 	Vector2(640, 360),
-	get_window().size,
 	Vector2(1280, 720),
 	Vector2(1920, 1080)
 ]

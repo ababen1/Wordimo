@@ -24,7 +24,7 @@ func change_scene_to_file(
 			new_scene = res_preloader.get_resource(new_scene)
 		self.message = message
 		if fade_out:
-			await play_transition_animation(fade_out_anim_name).completed
+			await play_transition_animation(fade_out_anim_name)
 			emit_signal("fade_out_finished")
 		var new_scene_instance = new_scene.instance()
 		if free_prev_scene:
@@ -33,7 +33,7 @@ func change_scene_to_file(
 		get_tree().current_scene = new_scene_instance
 		emit_signal("scene_changed")
 		if fade_in:
-			await play_transition_animation(fade_in_anim_name).completed
+			await play_transition_animation(fade_in_anim_name)
 			emit_signal("fade_in_finished")
 
 func pop_message() -> Dictionary:
@@ -44,10 +44,9 @@ func pop_message() -> Dictionary:
 func goto_scene(path: String, msg: = {}):
 	call_deferred("_deferred_goto_scene", path, msg)
 
-func play_transition_animation(anim_name: String) -> bool:
+func play_transition_animation(anim_name: String) -> void:
 	anim_player.play(anim_name)
 	await anim_player.animation_finished
-	return
 
 func _deferred_goto_scene(path: String, msg: Dictionary):
 	emit_signal("changing_scene")

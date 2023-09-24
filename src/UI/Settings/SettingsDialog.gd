@@ -11,9 +11,6 @@ func close() -> void:
 
 func update_settings(settings: Dictionary) -> void:
 	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (settings.fullscreen) else Window.MODE_WINDOWED
-	get_tree().set_screen_stretch(
-		SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, settings.resolution
-	)
 	get_window().set_size(settings.resolution)
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if (settings.vsync) else DisplayServer.VSYNC_DISABLED)
 

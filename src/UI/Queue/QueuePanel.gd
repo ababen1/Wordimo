@@ -36,13 +36,9 @@ func add_block(block: Block) -> void:
 	block.reset_position()
 	var block_img = BlockImg.new()
 	_images_container.add_child(block_img)
-	block_img.texture = await block.get_texture().completed
+	block_img.texture = await block.get_texture()
 	blocks[block] = block_img
-	block_img.connect(
-		"clicked", 
-		self, 
-		"_on_block_clicked", 
-		[block])
+	block_img.clicked.connect(_on_block_clicked.bind(block))
 	_blocks_limit.blocks_in_queue = blocks.size()
 	if _blocks_limit.is_full():
 		emit_signal("queue_full")

@@ -37,8 +37,8 @@ func clear() -> void:
 
 func _on_favorite(difficulty: DifficultyResource):
 	ResourceSaver.save(
-		OS.get_user_data_dir().plus_file(difficulty.name + ".tres"),
-		difficulty)
+		difficulty,
+		OS.get_user_data_dir().path_join(difficulty.name + ".tres"))
 	sort()
 
 func _on_delete(ui_node: UISavedDifficulty) -> void:

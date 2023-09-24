@@ -66,8 +66,8 @@ func save_difficulty(_name, description):
 	last_saved = _name
 	var data_dir = OS.get_user_data_dir()
 	print(ResourceSaver.save(
-		data_dir.plus_file(_name + ".tres"), 
-		difficulty))
+		difficulty,
+		data_dir.path_join(_name + ".tres")))
 
 func _on_start_pressed() -> void:
 	if not _time_limit_field.is_valid():
@@ -96,8 +96,7 @@ func _on_SavedDifficulties_load_to_editor(difficulty) -> void:
 	set_difficulty(difficulty)
 
 func _on_SavedDifficulties_delete_difficulty(difficulty) -> void:
-	var dir = DirAccess.new()
-	dir.remove(OS.get_user_data_dir().plus_file(difficulty.name + ".tres"))
+	DirAccess.remove_absolute(OS.get_user_data_dir().path_join(difficulty.name + ".tres"))
 	self.saved_difficulties = GameModeSelection.load_saved_difficulties()
 
 func _on_OpenFolder_pressed() -> void:

@@ -14,7 +14,7 @@ func setup() -> void:
 	self.board_size = get_parent().size if get_parent() else board_size
 	self.tile_size = get_parent().cell_size if get_parent() else tile_size
 	self.style = get_parent().style if get_parent() else ThemeManger.current_theme.get_board_style()
-	update()
+	queue_redraw()
  
 func _draw() -> void:
 	if style:

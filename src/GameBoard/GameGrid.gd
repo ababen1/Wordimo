@@ -10,6 +10,7 @@ signal board_size_changed(new_size)
 @onready var highlight_layer = $HighlightLayer
 @onready var grid_layer: = $GridLayer
 
+var cell_size
 var tiles_data: Dictionary = {}
 
 func _ready() -> void:
@@ -31,7 +32,7 @@ func _process(_delta: float) -> void:
 						highlight_layer.cells[get_letter_cell(letter)] = style.highlight_color
 					else:
 						highlight_layer.cells[get_letter_cell(letter)] = style.error_color
-		update()
+		queue_redraw()
 	
 func _draw() -> void:
 	if not Engine.is_editor_hint():
@@ -43,9 +44,6 @@ func set_style(val: BoardStyle):
 		await self.ready
 	style = val
 	emit_signal("changed")
-
-func get_used_rect() -> Rect2:
-	return Rect2(position, size)
 
 func get_cell_global_position(cell: Vector2):
 	return to_global(map_to_local(cell))
@@ -117,7 +115,7 @@ func clear_cell(cell: Vector2, animate: = true) -> void:
 # warning-ignore:return_value_discarded
 		tiles_data.erase(cell)
 		if animate:
-			await tile.animate_expand().completed
+			await tile.animate_expand()
 		tile.queue_free()
 
 func clear_cells(from: Vector2, to: Vector2) -> void:

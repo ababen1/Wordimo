@@ -29,9 +29,9 @@ static func preloderer_get_dir_list(preloader: ResourcePreloader, include_subfol
 	return list
 
 static func get_content_in_path(path: String, ignore_dot_import: = true, recrusive: = false) -> Array:
-	var dir: = DirAccess.new()
+	var dir: = DirAccess.open(path)
 	var content: = []
-	if dir.open(path) == OK and dir.list_dir_begin()  == OK:# TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
+	if dir and dir.list_dir_begin()  == OK:
 		var filename: String = dir.get_next()
 		while filename:
 			if not OS.is_debug_build():
@@ -39,22 +39,22 @@ static func get_content_in_path(path: String, ignore_dot_import: = true, recrusi
 			if !(ignore_dot_import and filename.ends_with(".import") and OS.is_debug_build()):
 				if dir.current_is_dir() and recrusive:
 					content.append_array(get_content_in_path(
-						path.plus_file(filename), ignore_dot_import, recrusive))
+						path.path_join(filename), ignore_dot_import, recrusive))
 				else:
-					content.append(path.plus_file(filename))
+					content.append(path.path_join(filename))
 			filename = dir.get_next()
 	return content
 	
 static func generate_board_styles(path: String, output: String):
-	var dir = DirAccess.new()
-	if dir.open(path) == OK:
+	var dir = DirAccess.open(path)
+	if dir:
 		dir.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var file: String = dir.get_next()
 		while file:
 			if dir.current_is_dir():
-				generate_board_styles(path.plus_file(file), output)
-			elif ResourceLoader.exists(path.plus_file(file)):
-				var texture = load(path.plus_file(file))
+				generate_board_styles(path.path_join(file), output)
+			elif ResourceLoader.exists(path.path_join(file)):
+				var texture = load(path.path_join(file))
 				if texture is Texture2D:
 					# Create atlas textures
 					var tile_tex: = AtlasTexture.new()
@@ -76,6 +76,6 @@ static func generate_board_styles(path: String, output: String):
 					board_style.tile_alt = tile_alt_stylebox.duplicate()
 					
 					ResourceSaver.save(
-						output.plus_file(file.get_file() + ".tres"),
-						board_style)
+						board_style,
+						output.path_join(file.get_file() + ".tres"))
 			file = dir.get_next()

@@ -5,7 +5,6 @@ class_name BlockImg
 signal clicked
 
 func _enter_tree() -> void:
-	expand = true
 	custom_minimum_size = Vector2(80,80) 
 	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED 
 	size_flags_horizontal = SIZE_SHRINK_CENTER

@@ -15,7 +15,6 @@ signal dissapear_time_up
 @export var direction = "LEFT" # (String, "UP", "LEFT", "RIGHT", "DOWN")
 
 @onready var timer: Timer = $Timer
-@onready var tween: Tween = $Tween
 		
 func _ready() -> void:
 # warning-ignore:return_value_discarded
@@ -29,7 +28,7 @@ func setup(message: String, color: = Color.WHITE, font: FontFile = null):
 		add_theme_font_override("font", font)
 	
 func animate_add():
-# warning-ignore:return_value_discarded
+	var tween = create_tween()
 	tween.interpolate_property(
 		self, 
 		"offset_left", 
@@ -37,14 +36,12 @@ func animate_add():
 		0, 
 		0.5, 
 		Tween.TRANS_BACK)
-	
-# warning-ignore:return_value_discarded
 	tween.start()
-	await tween.tween_completed
+	await tween.finished
 	timer.start(disappear_after)
 
 func animate_remove():
-# warning-ignore:return_value_discarded
+	var tween = create_tween()
 	tween.interpolate_property(
 		self, 
 		"modulate", 
@@ -52,6 +49,5 @@ func animate_remove():
 		Color.TRANSPARENT, 
 		0.3)
 # warning-ignore:return_value_discarded
-	tween.start()
-	await tween.tween_completed
+	await tween.finished
 	emit_signal("dissapear_time_up")

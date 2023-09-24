@@ -1,0 +1,9 @@
+C:\Users\Ben\Documents\WordTetris\.mono\temp\obj\Debug\WordTetris.csproj.AssemblyReference.cache
+C:\Users\Ben\Documents\WordTetris\.mono\temp\obj\Debug\WordTetris.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ben\Documents\WordTetris\.mono\temp\obj\Debug\WordTetris.AssemblyInfoInputs.cache
+C:\Users\Ben\Documents\WordTetris\.mono\temp\obj\Debug\WordTetris.AssemblyInfo.cs
+C:\Users\Ben\Documents\WordTetris\.mono\temp\obj\Debug\WordTetris.csproj.CoreCompileInputs.cache
+C:\Users\Ben\Documents\WordTetris\.mono\temp\bin\Debug\WordTetris.dll
+C:\Users\Ben\Documents\WordTetris\.mono\temp\bin\Debug\WordTetris.pdb
+C:\Users\Ben\Documents\WordTetris\.mono\temp\obj\Debug\WordTetris.dll
+C:\Users\Ben\Documents\WordTetris\.mono\temp\obj\Debug\WordTetris.pdb

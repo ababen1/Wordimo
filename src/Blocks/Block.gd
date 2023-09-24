@@ -29,7 +29,7 @@ func _ready() -> void:
 	area.connect("input_event", Callable(self, "_on_area2D_input_event"))
 	
 func _process(_delta: float) -> void:
-	update()
+	queue_redraw()
 
 func get_texture() -> Texture2D:
 	if Engine.is_editor_hint():

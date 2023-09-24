@@ -2,7 +2,7 @@
 extends PanelContainer
 class_name Letter
 
-@export var letter_type : set = set_letter_type
+@export var letter_type : CONSTS.LETTER_TYPE : set = set_letter_type
 @export var letter: String: set = set_letter
 @export var color = CONSTS.COLORS.NONE: set = set_color
 @export var click_delay: = 0.1
@@ -11,7 +11,6 @@ class_name Letter
 @export var shiny: = false: set = set_shiny
 
 @onready var letter_label: Label = $CenterContainer/Letter
-@onready var tween: Tween = $Tween
 
 var locked: = false
 	
@@ -49,7 +48,7 @@ func set_color(val: int) -> void:
 	color = val
 	if not is_inside_tree() and not Engine.is_editor_hint():
 		await self.ready
-	var stylebox: StyleBoxTexture = get_stylebox("panel").duplicate()
+	var stylebox: StyleBoxTexture = get_theme_stylebox("panel").duplicate()
 	if color == CONSTS.COLORS.NONE:
 		stylebox.texture = null
 	else:
@@ -65,6 +64,7 @@ func set_text_color(val: Color) -> void:
 
 func animate_expand(expand_by: float = 0.5):
 # warning-ignore:return_value_discarded
+	var tween = create_tween()
 	tween.interpolate_property(
 		self,
 		"scale",
@@ -74,7 +74,7 @@ func animate_expand(expand_by: float = 0.5):
 		Tween.TRANS_BOUNCE)
 # warning-ignore:return_value_discarded
 	tween.start()
-	await tween.tween_completed
+	await tween.finished
 	return
 
 func set_shiny(val: bool):

@@ -66,7 +66,7 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	game_length_seconds += _delta
-	update()
+	queue_redraw()
 	if not is_instance_valid(dragged_block):
 		dragged_block = null
 	if dragged_block:

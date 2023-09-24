@@ -15,9 +15,7 @@ func request_word(word: String):
 func _on_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var request_result 
 	if response_code == 200:
-		var test_json_conv = JSON.new()
-		test_json_conv.parse(body.get_string_from_utf8()).result
-		var api_res = test_json_conv.get_data()
+		var api_res = JSON.parse_string(body.get_string_from_utf8())
 		request_result = {
 			"success": true,
 			"api_res": api_res,

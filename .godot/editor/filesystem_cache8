@@ -1,15 +1,15 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1695390436
+::res://::1695478538
 default_bus_layout.tres::AudioBusLayout::-1::1695390325::0::1::::<><>::
-default_env.tres::Environment::6572113237678375830::1695390430::0::1::::<><>::
+default_env.tres::Environment::6572113237678375830::1695478372::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1665859375::0::1::::<><>::
 Icon.png::CompressedTexture2D::1847929391287832735::1653920169::1695390357::1::::<><>::
 PrivacyPolicy.txt::TextFile::-1::1695390269::0::1::::<><>::
 README.md::TextFile::-1::1695390269::0::1::::<><>::
 ::res://android/::1695390230
 ::res://android/plugins/::1665859300
-::res://assets/::1695390387
-ShineEffect.tres::ShaderMaterial::1976541035714367154::1695390387::0::1::::<><>::
+::res://assets/::1695391324
+ShineEffect.tres::ShaderMaterial::1976541035714367154::1695391324::0::1::::<><>::
 ::res://assets/Backgrounds/::1695390361
 abstractbackground (1).png::CompressedTexture2D::3314779789722207162::1665856775::1695390359::1::::<><>::
 abstractbackground (2).png::CompressedTexture2D::478958526198553201::1665856775::1695390359::1::::<><>::
@@ -120,12 +120,12 @@ Orange.png::CompressedTexture2D::2630677831893578888::1665856775::1695390357::1:
 Purple.png::CompressedTexture2D::1404864426066162508::1665856775::1695390357::1::::<><>::
 Red.png::CompressedTexture2D::401629727243057058::1665856775::1695390357::1::::<><>::
 Yellow.png::CompressedTexture2D::7638408540356466114::1665856775::1695390357::1::::<><>::
-::res://assets/Themes/::1695390430
+::res://assets/Themes/::1695390511
 Ace.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
 Alien.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
 Arc.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
 Blue.tres::Theme::-1::1695390327::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://assets/Themes/Blue/Resources/ButtonNormal.tres<>res://assets/Themes/Blue/Resources/Textbox.tres<>res://assets/Themes/Blue/HyperCasualUI/greyRectNormal.png<>res://assets/Themes/Blue/HyperCasualUI/blueRectInactive.png<>res://assets/Themes/Blue/HyperCasualUI/blueBtnTapped.png<>res://assets/Themes/Blue/Resources/Highlight.stylebox<>res://assets/Themes/Blue/Resources/PanelLight.tres<>res://assets/Themes/Blue/Resources/PanelDark.tres<>res://assets/Themes/Blue/Resources/PanelCyan.tres<>res://src/Global/WordimoTheme.gd
-Default.tres::Theme/WordimoTheme::452580466142278019::1695390430::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
+Default.tres::Theme/WordimoTheme::452580466142278019::1695390511::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
 Godot2.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
 Grey.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
 Light.tres::Theme::-1::1665856775::0::1::::<><>::res://assets/Fonts/RegularFont.tres<>res://src/Global/WordimoTheme.gd
@@ -209,26 +209,26 @@ Textbox.tres::StyleBoxTexture::-1::1695390329::0::1::::<><>::res://assets/Themes
 ::res://debug/save/::1665763270
 _3161026589.tres::Resource::-1::1695390326::0::1::::<><>::res://assets/Backgrounds/abstractbackground (56).png<>res://src/Saver/SaveGame.gd<>res://assets/Themes/Trans.tres
 ::res://src/::1657551222
-::res://src/Blocks/::1666028872
-Block.gd::GDScript::-1::1695390326::0::1::::Block<>Node2D<>::
+::res://src/Blocks/::1695478372
+Block.gd::GDScript::-1::1695391329::0::1::::Block<>Node2D<>::
 Block.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/Blocks/Block.gd
-BlocksFactory.gd::GDScript::-1::1695390326::0::1::::BlocksFactory<>Node<>::
+BlocksFactory.gd::GDScript::-1::1695390578::0::1::::BlocksFactory<>Node<>::
 I.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Tetriminos/Shape3D Blocks/I.png<>res://src/Blocks/Block.tscn
 J.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Tetriminos/Shape3D Blocks/J.png<>res://src/Blocks/Block.tscn
 L.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Tetriminos/Shape3D Blocks/L.png<>res://src/Blocks/Block.tscn
-Letter.gd::GDScript::-1::1695390326::0::1::::Letter<>PanelContainer<>::
-Letter.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Fonts/LetterFont.tres<>res://src/Blocks/Letter.gd<>res://assets/Icons/Favorites.svg<>res://assets/Tetriminos/Single Blocks/Default/Cyan.png<>res://assets/Tetriminos/Single Blocks/Default/Green.png<>res://assets/Tetriminos/Single Blocks/Default/Blue.png<>res://assets/Tetriminos/Single Blocks/Default/Yellow.png<>res://assets/Tetriminos/Single Blocks/Default/Orange.png<>res://assets/Tetriminos/Single Blocks/Default/Purple.png<>res://assets/Tetriminos/Single Blocks/Default/Red.png<>res://assets/ShineEffect.tres<>res://assets/Tetriminos/Single Blocks/Style1/Orange.png<>res://assets/Tetriminos/Single Blocks/Style1/Cyan.png<>res://assets/Tetriminos/Single Blocks/Style1/Blue.png<>res://assets/Tetriminos/Single Blocks/Style1/Purple.png<>res://assets/Tetriminos/Single Blocks/Style1/Red.png<>res://assets/Tetriminos/Single Blocks/Style1/Yellow.png<>res://assets/Tetriminos/Single Blocks/Style1/Green.png
+Letter.gd::GDScript::-1::1695477755::0::1::::Letter<>PanelContainer<>::
+Letter.tscn::PackedScene::8944400093373244134::1695478372::0::1::::<><>::res://assets/Fonts/LetterFont.tres<>res://src/Blocks/Letter.gd<>uid://bdndj3s747giw::::res://assets/Icons/Favorites.svg<>uid://bie58p4up6gjx::::res://assets/Tetriminos/Single Blocks/Default/Cyan.png<>uid://dktf7qwj6o2ql::::res://assets/Tetriminos/Single Blocks/Default/Green.png<>uid://def0khgga0hrr::::res://assets/Tetriminos/Single Blocks/Default/Blue.png<>uid://cqy33oqwek6jr::::res://assets/Tetriminos/Single Blocks/Default/Yellow.png<>uid://c7j4odijwrkut::::res://assets/Tetriminos/Single Blocks/Default/Orange.png<>uid://dq3q8v1xhblsd::::res://assets/Tetriminos/Single Blocks/Default/Purple.png<>uid://bgchrn7filuxy::::res://assets/Tetriminos/Single Blocks/Default/Red.png<>uid://3fplvpgoyxje::::res://assets/ShineEffect.tres<>uid://bdqk450u53dlg::::res://assets/Tetriminos/Single Blocks/Style1/Orange.png<>uid://dhdjgovkftkbd::::res://assets/Tetriminos/Single Blocks/Style1/Cyan.png<>uid://bwh21xdlmvle5::::res://assets/Tetriminos/Single Blocks/Style1/Blue.png<>uid://uar6adea7ryy::::res://assets/Tetriminos/Single Blocks/Style1/Purple.png<>uid://fys1vciarujy::::res://assets/Tetriminos/Single Blocks/Style1/Red.png<>uid://dg3dqcn8tpjeo::::res://assets/Tetriminos/Single Blocks/Style1/Yellow.png<>uid://difm5hfbdfeqm::::res://assets/Tetriminos/Single Blocks/Style1/Green.png
 O.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/Blocks/Block.tscn<>res://assets/Tetriminos/Shape3D Blocks/O.png
 S.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Tetriminos/Shape3D Blocks/S.png<>res://src/Blocks/Block.tscn
 T.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Tetriminos/Shape3D Blocks/T.png<>res://src/Blocks/Block.tscn
 Z.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Tetriminos/Shape3D Blocks/Z.png<>res://src/Blocks/Block.tscn
-::res://src/GameBoard/::1665856775
-Board.gd::GDScript::-1::1695390326::0::1::::WordimoGame<>Node2D<>::
+::res://src/GameBoard/::1695478372
+Board.gd::GDScript::-1::1695477780::0::1::::WordimoGame<>Node2D<>::
 Game.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/GameBoard/GameGrid.tscn<>res://src/UI/Game/HUD/HUD.tscn<>res://src/UI/Queue/Queue.tscn<>res://src/GameBoard/Board.gd<>res://src/UI/Game/WordLabel.tscn
-GameGrid.gd::GDScript::-1::1695390326::0::1::::<>TileMap<>::
-GameGrid.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/GameBoard/GridLayer.gd<>res://src/GameBoard/HighlightLayer.gd<>res://src/GameBoard/GameGrid.gd
+GameGrid.gd::GDScript::-1::1695391321::0::1::::<>TileMap<>::
+GameGrid.tscn::PackedScene::7979135704910576127::1695478372::0::1::::<><>::res://src/GameBoard/GridLayer.gd<>res://src/GameBoard/HighlightLayer.gd<>res://src/GameBoard/GameGrid.gd
 GameResults.gd::GDScript::-1::1695390326::0::1::::GameResults<>Resource<>::
-GridLayer.gd::GDScript::-1::1695390326::0::1::::GridLayer<>Node2D<>::
+GridLayer.gd::GDScript::-1::1695391231::0::1::::GridLayer<>Node2D<>::
 HighlightLayer.gd::GDScript::-1::1695390326::0::1::::<>Node2D<>::
 ::res://src/GameBoard/BoardStyles/::1665763270
 BoardStyle.gd::GDScript::-1::1695390326::0::1::::BoardStyle<>Resource<>::
@@ -240,26 +240,26 @@ Chill.tres::Resource::-1::1695390326::0::1::::<><>::res://src/GameBoard/Difficul
 Hard.tres::Resource::-1::1695390326::0::1::::<><>::res://src/GameBoard/Difficulties/Difficulty.gd
 Normal.tres::Resource::-1::1695390326::0::1::::<><>::res://src/GameBoard/Difficulties/Difficulty.gd
 Timed.tres::Resource::-1::1695390326::0::1::::<><>::res://src/GameBoard/Difficulties/Difficulty.gd
-::res://src/Global/::1665856775
+::res://src/Global/::1695391219
 Consts.gd::GDScript::-1::1695390326::0::1::::CONSTS<>Node<>::
 EventBus.gd::GDScript::-1::1695390326::0::1::::<>Node<>::
-SceneChanger.gd::GDScript::-1::1695390326::0::1::::<>Node<>::
+SceneChanger.gd::GDScript::-1::1695391219::0::1::::<>Node<>::
 SceneChanger.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/Global/SceneChanger.gd<>res://src/GameBoard/Game.tscn<>res://src/UI/MainMenu/MainMenu.tscn
 ScoreCalculator.gd::GDScript::-1::1695390326::0::1::::Score<>Node<>::
 SFX.gd::GDScript::-1::1695390326::0::1::::<>Node<>::
 ThemeManger.gd::GDScript::-1::1695390326::0::1::::<>Node<>::
 ThemeManger.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/Global/ThemeManger.gd<>res://assets/Themes/Default.tres<>res://assets/Backgrounds/Default.png
-UsefulFuncs.gd::GDScript::-1::1695390326::0::1::::Funcs<>RefCounted<>::
-WordimoTheme.gd::GDScript::-1::1695390326::0::1::::WordimoTheme<>Theme<>::
-Words.txt::TextFile::-1::1665763270::0::1::::<><>::
-::res://src/Global/WordsManger/::1665763270
-API.gd::GDScript::-1::1695390326::0::1::::DictonaryAPI<>HTTPRequest<>::
-WordsManger.gd::GDScript::-1::1695390326::0::1::::<>Node<>::
+UsefulFuncs.gd::GDScript::-1::1695390694::0::1::::Funcs<>RefCounted<>::
+WordimoTheme.gd::GDScript::-1::1695390867::0::1::::WordimoTheme<>Theme<>::
+Words.txt::TextFile::-1::1695478373::0::1::::<><>::
+::res://src/Global/WordsManger/::1695478370
+API.gd::GDScript::-1::1695391118::0::1::::DictonaryAPI<>HTTPRequest<>::
+WordsManger.gd::GDScript::-1::1695478370::0::1::::<>Node<>::
 WordsManger.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/Global/WordsManger/API.gd<>res://src/Global/WordsManger/WordsManger.gd
-::res://src/Saver/::1659712654
-GameSaver.gd::GDScript::-1::1695390326::0::1::::<>Node<>::
+::res://src/Saver/::1695391019
+GameSaver.gd::GDScript::-1::1695391019::0::1::::<>Node<>::
 GameSaver.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/Saver/GameSaver.gd
-SaveGame.gd::GDScript::-1::1695390326::0::1::::SaveGame<>Resource<>::
+SaveGame.gd::GDScript::-1::1695390968::0::1::::SaveGame<>Resource<>::
 ::res://src/UI/::1665763270
 BackgroundLayer.gd::GDScript::-1::1695390325::0::1::::<>CanvasLayer<>::
 BackgroundLayer.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://assets/Backgrounds/abstractbackground (42).png<>res://src/UI/BackgroundLayer.gd
@@ -274,24 +274,24 @@ PanelButton.gd::GDScript::-1::1695390326::0::1::::PanelButton<>Button<>::
 PanelButton.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://src/UI/Components/PanelButton.gd<>res://assets/Themes/Default.tres
 SettingsBtn.gd::GDScript::-1::1695390326::0::1::::SettingsBtn<>Button<>::
 StatsGrid.gd::GDScript::-1::1695390326::0::1::::StatsGrid<>GridContainer<>::
-::res://src/UI/CustomDifficulty/::1665763270
+::res://src/UI/CustomDifficulty/::1695478314
 BoardSize.gd::GDScript::-1::1695390326::0::1::::<>GridContainer<>::
-CustomDifficultyConfig.gd::GDScript::-1::1695390326::0::1::::<>Window<>::
+CustomDifficultyConfig.gd::GDScript::-1::1695478297::0::1::::<>Window<>::
 CustomDifficultyConfig.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/UI/CustomDifficulty/CustomDifficultyConfig.gd<>res://src/UI/CustomDifficulty/TimeLimit.gd<>res://src/UI/CustomDifficulty/QueueSize.gd<>res://src/UI/CustomDifficulty/StartingLevel.gd<>res://assets/Icons/Reload.svg<>res://src/UI/CustomDifficulty/BoardSize.gd<>res://src/UI/Components/BoardExample.gd<>res://src/UI/CustomDifficulty/SaveDifficultyDialog.tscn<>res://src/UI/CustomDifficulty/SavedDifficulties.gd<>res://src/UI/CustomDifficulty/SavedDifficulty.tscn<>res://assets/Icons/Load.svg<>res://src/UI/CustomDifficulty/MinWordLength.gd
 MinWordLength.gd::GDScript::-1::1695390326::0::1::::<>GridContainer<>::
 QueueSize.gd::GDScript::-1::1695390326::0::1::::<>OptionalField<>::
-SavedDifficulties.gd::GDScript::-1::1695390326::0::1::::<>VBoxContainer<>::
+SavedDifficulties.gd::GDScript::-1::1695478314::0::1::::<>VBoxContainer<>::
 SavedDifficulty.gd::GDScript::-1::1695390326::0::1::::UISavedDifficulty<>HBoxContainer<>::
 SavedDifficulty.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://assets/Icons/Play.svg<>res://assets/Icons/Remove.svg<>res://assets/Icons/ArrowDown.svg<>res://assets/Icons/Favorites.svg<>res://src/UI/CustomDifficulty/SavedDifficulty.gd
 SaveDifficultyDialog.gd::GDScript::-1::1695390326::0::1::::<>Window<>::
 SaveDifficultyDialog.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/UI/CustomDifficulty/SaveDifficultyDialog.gd
 StartingLevel.gd::GDScript::-1::1695390326::0::1::::<>GridContainer<>::
 TimeLimit.gd::GDScript::-1::1695390326::0::1::::<>OptionalField<>::
-::res://src/UI/Game/::1665763270
-WordLabel.gd::GDScript::-1::1695390325::0::1::::WordLabel<>Label<>::
+::res://src/UI/Game/::1695478139
+WordLabel.gd::GDScript::-1::1695478139::0::1::::WordLabel<>Label<>::
 WordLabel.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://assets/SFX/Pop.wav<>res://src/UI/Game/WordLabel.gd
-::res://src/UI/Game/GameOver/::1665763270
-DefinitionPopup.gd::GDScript::-1::1695390325::0::1::::<>AcceptDialog<>::
+::res://src/UI/Game/GameOver/::1695477832
+DefinitionPopup.gd::GDScript::-1::1695477832::0::1::::<>AcceptDialog<>::
 GameOverDialog.gd::GDScript::-1::1695390326::0::1::::<>PopupPanel<>::
 GameOverDialog.tscn::PackedScene::-1::1695390326::0::1::::<><>::res://src/UI/Game/GameOver/WordsWritten.tscn<>res://src/UI/Components/StatsGrid.gd<>res://src/UI/Game/GameOver/GameOverDialog.gd
 WordLink.gd::GDScript::-1::1695390326::0::1::::WordLink<>LinkButton<>::
@@ -305,41 +305,41 @@ Level.gd::GDScript::-1::1695390325::0::1::::<>Label<>::
 PauseScreen.gd::GDScript::-1::1695390325::0::1::::<>PopupPanel<>::
 PauseScreen.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Game/HUD/PauseScreen.gd<>res://assets/Fonts/LetterFont.tres<>res://src/UI/Settings/Components/SettingsBtn.tscn
 Score.gd::GDScript::-1::1695390325::0::1::::<>Label<>::
-::res://src/UI/MainMenu/::1695390430
-GameModeSelection.gd::GDScript::-1::1695390325::0::1::::GameModeSelection<>Control<>::
+::res://src/UI/MainMenu/::1695478371
+GameModeSelection.gd::GDScript::-1::1695478225::0::1::::GameModeSelection<>Control<>::
 GameModeSelection.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/MainMenu/GameModeSelection.gd<>res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://src/UI/Components/PanelButton.tscn<>res://src/UI/Components/GameModeBtn.gd<>res://src/GameBoard/Difficulties/Resources/Chill.tres<>res://src/GameBoard/Difficulties/Resources/Normal.tres<>res://src/GameBoard/Difficulties/Resources/Hard.tres<>res://src/GameBoard/Difficulties/Resources/Timed.tres<>res://src/UI/CustomDifficulty/CustomDifficultyConfig.tscn<>res://assets/Icons/GuiClose.svg<>res://src/UI/Components/GameModeButton.tscn
 MainMenu.gd::GDScript::-1::1695390325::0::1::::<>Control<>::
-MainMenu.tscn::PackedScene::4015977133997390414::1695390430::0::1::::<><>::res://src/UI/MainMenu/TutorialPopup.gd<>res://src/UI/MainMenu/MainMenu.gd<>res://src/UI/MainMenu/GameModeSelection.tscn<>res://src/UI/BackgroundLayer.tscn<>res://src/UI/Settings/Components/SettingsBtn.tscn
+MainMenu.tscn::PackedScene::4015977133997390414::1695478371::0::1::::<><>::res://src/UI/MainMenu/TutorialPopup.gd<>res://src/UI/MainMenu/MainMenu.gd<>res://src/UI/MainMenu/GameModeSelection.tscn<>res://src/UI/BackgroundLayer.tscn<>res://src/UI/Settings/Components/SettingsBtn.tscn
 TutorialPopup.gd::GDScript::-1::1695390325::0::1::::<>AcceptDialog<>::
-::res://src/UI/Notifications/::1658575935
+::res://src/UI/Notifications/::1695478352
 NotificationsLayer.gd::GDScript::-1::1695390325::0::1::::<>CanvasLayer<>::
 NotificationsLayer.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Notifications/NotificationsLayer.gd
-UINotification.gd::GDScript::-1::1695390325::0::1::::UINotification<>Label<>::
+UINotification.gd::GDScript::-1::1695478352::0::1::::UINotification<>Label<>::
 UINotification.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Notifications/UINotification.gd<>res://assets/Fonts/MontserratBold-DOWZd.ttf
-::res://src/UI/Queue/::1665763270
-BlockImg.gd::GDScript::-1::1695390325::0::1::::BlockImg<>TextureRect<>::
-BlocksLimit.gd::GDScript::-1::1695390325::0::1::::<>RichTextLabel<>::
+::res://src/UI/Queue/::1695478120
+BlockImg.gd::GDScript::-1::1695477960::0::1::::BlockImg<>TextureRect<>::
+BlocksLimit.gd::GDScript::-1::1695478120::0::1::::<>RichTextLabel<>::
 BlocksTimer.gd::GDScript::-1::1695390325::0::1::::<>Control<>::
 BlocksTimer.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://src/UI/Queue/BlocksTimer.gd
-Queue.gd::GDScript::-1::1695390325::0::1::::<>VBoxContainer<>::
+Queue.gd::GDScript::-1::1695477995::0::1::::<>VBoxContainer<>::
 Queue.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Queue/QueuePanel.gd<>res://src/UI/Queue/Queue.gd<>res://assets/Fonts/MontserratBold-DOWZd.ttf<>res://src/UI/Queue/BlocksTimer.tscn<>res://src/UI/Queue/BlocksLimit.gd
-QueuePanel.gd::GDScript::-1::1695390325::0::1::::<>Panel<>::
-::res://src/UI/Settings/::1665763270
+QueuePanel.gd::GDScript::-1::1695477947::0::1::::<>Panel<>::
+::res://src/UI/Settings/::1695477894
 BackgroundSelector.gd::GDScript::-1::1695390325::0::1::::UIBackgroundSelect<>AcceptDialog<>::
 BackgroundSelector.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/Components/BackgroundBtn.tscn<>res://src/UI/Settings/BackgroundSelector.gd
 GameplaySettings.gd::GDScript::-1::1695390325::0::1::::<>Control<>::
 GameplaySettings.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/Components/UISettingCheckbox.tscn<>res://src/UI/Settings/GameplaySettings.gd<>res://src/UI/Settings/ThemeSelector.tscn<>res://src/UI/Settings/BackgroundSelector.tscn
-SettingsDialog.gd::GDScript::-1::1695390325::0::1::::<>Popup<>::
+SettingsDialog.gd::GDScript::-1::1695477894::0::1::::<>Popup<>::
 SettingsDialog.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/UIGeneralSettings.tscn<>res://src/UI/Settings/SettingsDialog.gd<>res://src/UI/Settings/GameplaySettings.tscn
 ThemeSelector.gd::GDScript::-1::1695390325::0::1::::<>HBoxContainer<>::
 ThemeSelector.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/ThemeSelector.gd<>res://assets/Icons/Lock.svg
 UIGeneralSettings.gd::GDScript::-1::1695390325::0::1::::<>Control<>::
 UIGeneralSettings.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/Components/UIResolutionSelector.tscn<>res://src/UI/Settings/UIGeneralSettings.gd<>res://src/UI/Settings/Components/UISettingCheckbox.tscn<>res://src/UI/Settings/Components/VolumeSlider.gd
-::res://src/UI/Settings/Components/::1665763270
+::res://src/UI/Settings/Components/::1695477851
 BackgroundBtn.gd::GDScript::-1::1695390325::0::1::::UIBackgroundBtn<>Button<>::
 BackgroundBtn.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://assets/Icons/Lock.svg<>res://src/UI/Settings/Components/BackgroundBtn.gd<>res://assets/Themes/Blue/HyperCasualUI/tickIcon.png
 SettingsBtn.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Components/SettingsBtn.gd<>res://src/UI/Settings/SettingsDialog.tscn
-UIResolutionSelector.gd::GDScript::-1::1695390325::0::1::::<>Control<>::
+UIResolutionSelector.gd::GDScript::-1::1695477851::0::1::::<>Control<>::
 UIResolutionSelector.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/Components/UIResolutionSelector.gd
 UISettingCheckbox.gd::GDScript::-1::1695390325::0::1::::UISettingCheckbox<>Control<>::
 UISettingCheckbox.tscn::PackedScene::-1::1695390325::0::1::::<><>::res://src/UI/Settings/Components/UISettingCheckbox.gd

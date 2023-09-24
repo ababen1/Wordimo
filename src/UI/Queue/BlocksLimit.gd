@@ -12,8 +12,7 @@ const TEMPLATE = """
 var DEFAULT_STATE = {
 	"shake_rate": 0.0,
 	"shake_level": 0.0,
-	"color": get_color("default_color"),
-	"align": RichTextLabel.ALIGNMENT_CENTER,
+	"color": Color.BLACK,
 }
 var state = DEFAULT_STATE: set = set_state
 
@@ -30,8 +29,7 @@ func set_state(val: Dictionary) -> void:
 	state = val
 	clear()
 	push_color(state.get("color", DEFAULT_STATE.color))
-	push_align(state.get("align", DEFAULT_STATE.align))
-	append_bbcode(TEMPLATE.format({
+	add_text(TEMPLATE.format({
 		"max": max_blocks, 
 		"blocks": blocks_in_queue,
 		"shake_rate": state.get("shake_rate", DEFAULT_STATE.shake_rate),
